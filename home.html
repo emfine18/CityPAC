@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CityPAC</title>
 
+  <!-- GOOGLE FONT -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
@@ -19,7 +20,10 @@
       color: #111;
     }
 
-    /* NAV */
+    /* ==============================
+       HEADER / NAV STYLES
+       ============================== */
+
     nav {
       position: absolute;
       top: 0;
@@ -85,10 +89,13 @@
       background: #ffffff;
     }
 
-    /* HERO */
+    /* ==============================
+       HERO SECTION STYLES
+       ============================== */
+
     .hero {
       width: 100%;
-      height: 65vh; /* SHORTER HERO */
+      height: 65vh; /* shorter hero */
       position: relative;
       overflow: hidden;
     }
@@ -100,10 +107,14 @@
       display: block;
     }
 
-    /* TAGLINE */
+    /* ==============================
+       TAGLINE / DIVIDER STYLES
+       ============================== */
+
     .tagline {
       max-width: 1200px;
       margin: 40px auto;
+      padding: 0 24px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -112,6 +123,7 @@
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 1px;
+      text-align: center;
     }
 
     .tagline::before,
@@ -132,7 +144,10 @@
       width: 20px;
     }
 
-    /* ABOUT */
+    /* ==============================
+       ABOUT SECTION STYLES
+       ============================== */
+
     .about {
       max-width: 1200px;
       margin: 80px auto;
@@ -163,7 +178,10 @@
       margin-bottom: 16px;
     }
 
-    /* MOBILE */
+    /* ==============================
+       MOBILE STYLES
+       ============================== */
+
     @media (max-width: 900px) {
       .menu {
         position: absolute;
@@ -202,7 +220,9 @@
 
 <body>
 
-<!-- NAV -->
+<!-- ==============================
+     HEADER STARTS HERE
+     ============================== -->
 <nav>
   <div class="nav-inner">
     <div class="logo">
@@ -223,24 +243,41 @@
     </div>
   </div>
 </nav>
+<!-- ==============================
+     HEADER ENDS HERE
+     ============================== -->
 
-<!-- HERO -->
+<!-- ==============================
+     HERO STARTS HERE
+     ============================== -->
 <section class="hero">
-  <img src="images/HeroArtboard 2.png" alt="CityPAC Hero">
+  <img src="images/HeroArtboard 2.png" alt="CityPAC Hero Image">
 </section>
+<!-- ==============================
+     HERO ENDS HERE
+     ============================== -->
 
-<!-- TAGLINE -->
+<!-- ==============================
+     TAGLINE STARTS HERE
+     ============================== -->
 <div class="tagline">
   <div class="stars">
     <img src="images/chicago-star.png" alt="Star">
   </div>
+
   40+ Years of Pro-Israel Political Advocacy
+
   <div class="stars">
     <img src="images/chicago-star.png" alt="Star">
   </div>
 </div>
+<!-- ==============================
+     TAGLINE ENDS HERE
+     ============================== -->
 
-<!-- ABOUT -->
+<!-- ==============================
+     ABOUT STARTS HERE
+     ============================== -->
 <section class="about">
   <img src="images/HeroArtboard 2.png" alt="Chicago">
   <div class="about-content">
@@ -257,12 +294,21 @@
     </p>
   </div>
 </section>
+<!-- ==============================
+     ABOUT ENDS HERE
+     ============================== -->
 
+<!-- ==============================
+     SCRIPTS START HERE
+     ============================== -->
 <script>
   function toggleMenu() {
     document.getElementById("menu").classList.toggle("show");
   }
 </script>
+<!-- ==============================
+     SCRIPTS END HERE
+     ============================== -->
 
 </body>
 </html>
