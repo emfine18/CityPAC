@@ -5,21 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CityPAC</title>
 
-  <!-- Font -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
-    * {
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
-    }
+    * { box-sizing: border-box; font-family: 'Poppins', sans-serif; }
 
-    body {
-      margin: 0;
-      background: #000;
-    }
+    body { margin: 0; background: #000; color: #111; }
 
-    /* ---------- NAV ---------- */
+    /* NAV */
     nav {
       position: absolute;
       top: 0;
@@ -37,11 +30,9 @@
       color: #fff;
     }
 
-    .logo {
-      font-weight: 700;
-      font-size: 20px;
-      letter-spacing: 1px;
-      text-transform: uppercase;
+    .logo img {
+      height: 42px;
+      display: block;
     }
 
     .menu {
@@ -60,7 +51,6 @@
       padding-bottom: 6px;
     }
 
-    /* Blue hover line */
     .menu a::after {
       content: "";
       position: absolute;
@@ -76,7 +66,6 @@
       width: 100%;
     }
 
-    /* ---------- HAMBURGER ---------- */
     .hamburger {
       display: none;
       flex-direction: column;
@@ -90,10 +79,10 @@
       background: #fff;
     }
 
-    /* ---------- HERO ---------- */
+    /* HERO */
     .hero {
-      position: relative;
       height: 100vh;
+      position: relative;
     }
 
     .hero img {
@@ -109,28 +98,87 @@
       inset: 0;
       background: linear-gradient(
         to bottom,
-        rgba(0,0,0,0.55),
+        rgba(0,0,0,0.45),
         rgba(0,0,0,0.2)
       );
     }
 
-    /* ---------- STARS ---------- */
-    .stars {
+    .hero-content {
       position: absolute;
-      bottom: 40px;
-      width: 100%;
+      inset: 0;
       display: flex;
+      align-items: center;
+      z-index: 2;
+      color: #fff;
+    }
+
+    .hero-inner {
+      max-width: 1200px;
+      margin: auto;
+      padding: 0 24px;
+    }
+
+    .hero h1 {
+      font-size: 44px;
+      max-width: 700px;
+      line-height: 1.2;
+      margin-bottom: 12px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      max-width: 600px;
+    }
+
+    /* SIGNUP */
+    .signup {
+      background: #fff;
+      padding: 60px 24px;
+      text-align: center;
+    }
+
+    .signup h2 {
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .signup p {
+      max-width: 600px;
+      margin: 0 auto 28px;
+      color: #333;
+    }
+
+    .signup form {
+      display: flex;
+      gap: 12px;
       justify-content: center;
-      gap: 18px;
-      z-index: 3;
+      flex-wrap: wrap;
     }
 
-    .stars img {
-      width: 28px;
-      height: auto;
+    .signup input {
+      padding: 14px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 15px;
+      min-width: 180px;
     }
 
-    /* ---------- MOBILE ---------- */
+    .signup input.email {
+      min-width: 260px;
+    }
+
+    .signup button {
+      padding: 14px 24px;
+      background: #1a5fa3;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    /* MOBILE */
     @media (max-width: 900px) {
       .menu {
         position: absolute;
@@ -138,62 +186,71 @@
         right: 24px;
         background: rgba(0,0,0,0.9);
         flex-direction: column;
-        gap: 20px;
         padding: 20px;
+        gap: 20px;
         display: none;
       }
 
-      .menu.show {
-        display: flex;
-      }
-
-      .hamburger {
-        display: flex;
-      }
+      .menu.show { display: flex; }
+      .hamburger { display: flex; }
     }
   </style>
 </head>
 
 <body>
 
-  <!-- NAV -->
-  <nav>
-    <div class="nav-inner">
-      <div class="logo">CityPAC</div>
-
-      <div class="menu" id="menu">
-        <a href="home.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="join.html">Join</a>
-        <a href="donate.html">Donate</a>
-      </div>
-
-      <div class="hamburger" onclick="toggleMenu()">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
+<nav>
+  <div class="nav-inner">
+    <div class="logo">
+      <img src="citypaclogo.png" alt="CityPAC Logo">
     </div>
-  </nav>
 
-  <!-- HERO -->
-  <section class="hero">
-    <img src="Hero.png" alt="CityPAC Hero Image">
-
-    <!-- STARS -->
-    <div class="stars">
-      <img src="CB72F2EF-BBA9-4DE7-A9A7-D6708F82978C.png" alt="Star">
-      <img src="CB72F2EF-BBA9-4DE7-A9A7-D6708F82978C.png" alt="Star">
-      <img src="CB72F2EF-BBA9-4DE7-A9A7-D6708F82978C.png" alt="Star">
+    <div class="menu" id="menu">
+      <a href="home.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="join.html">Join</a>
+      <a href="donate.html">Donate</a>
     </div>
-  </section>
 
-  <!-- JS -->
-  <script>
-    function toggleMenu() {
-      document.getElementById('menu').classList.toggle('show');
-    }
-  </script>
+    <div class="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <img src="Hero.png" alt="CityPAC Hero">
+  <div class="hero-content">
+    <div class="hero-inner">
+      <h1>Building Lasting Congressional Support for Israel</h1>
+      <p>
+        CityPAC brings together the next generation of civic leaders committed
+        to strengthening the U.S.–Israel relationship through bipartisan advocacy.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="signup">
+  <h2>Stay in the Loop</h2>
+  <p>
+    Stay informed about events, advocacy opportunities, and ways to get involved with CityPAC.
+  </p>
+
+  <!-- REPLACE action URL with your Google Form -->
+  <form action="PASTE_GOOGLE_FORM_ACTION_URL_HERE" method="POST" target="_blank">
+    <input name="entry.NAME_ID" placeholder="Name">
+    <input name="entry.PHONE_ID" placeholder="Phone">
+    <input name="entry.EMAIL_ID" class="email" placeholder="Email" required>
+    <button type="submit">Submit</button>
+  </form>
+</section>
+
+<script>
+  function toggleMenu() {
+    document.getElementById("menu").classList.toggle("show");
+  }
+</script>
 
 </body>
 </html>
