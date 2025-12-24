@@ -102,7 +102,7 @@
     .tagline-wrapper {
       border-top: 6px solid #44b6e5;
       border-bottom: 6px solid #44b6e5;
-      padding: 22px 0;
+      padding: 10px 0;   /* LESS WHITE SPACE */
       margin: 0;
     }
 
@@ -113,14 +113,13 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 24px;
+      gap: 18px;
       color: #44b6e5;
-      font-size: 26px;
+      font-size: clamp(16px, 3vw, 26px); /* RESPONSIVE TEXT */
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 1px;
       white-space: nowrap;
-      overflow-x: auto;
     }
 
     .stars {
@@ -130,7 +129,7 @@
     }
 
     .stars img {
-      width: 22px;
+      width: clamp(14px, 2vw, 22px);
     }
 
     /* ==============================
