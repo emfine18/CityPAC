@@ -15,8 +15,7 @@
 
     body {
       margin: 0;
-      background: #000;
-      color: #111;
+      background: #ffffff;
     }
 
     /* NAV */
@@ -34,11 +33,11 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      color: #fff;
     }
 
     .logo img {
       height: 40px;
+      display: block;
     }
 
     .menu {
@@ -48,7 +47,9 @@
 
     .menu a {
       position: relative;
-      color: #fff;
+      display: inline-block;
+      width: fit-content;
+      color: #ffffff;
       text-decoration: none;
       font-size: 14px;
       font-weight: 600;
@@ -81,93 +82,18 @@
     .hamburger span {
       width: 26px;
       height: 3px;
-      background: #fff;
+      background: #ffffff;
     }
 
     /* HERO */
     .hero {
-      height: 100vh;
-      position: relative;
+      width: 100%;
     }
 
     .hero img {
       width: 100%;
-      height: 100%;
-      object-fit: cover;
+      height: auto;
       display: block;
-    }
-
-    .hero::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        to bottom,
-        rgba(0,0,0,0.45),
-        rgba(0,0,0,0.2)
-      );
-    }
-
-    /* STARS */
-    .stars {
-      position: absolute;
-      bottom: 40px;
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      gap: 16px;
-      z-index: 2;
-    }
-
-    .stars img {
-      width: 26px;
-    }
-
-    /* SIGNUP */
-    .signup {
-      background: #fff;
-      padding: 56px 24px;
-      text-align: center;
-    }
-
-    .signup h2 {
-      margin-bottom: 12px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    .signup p {
-      margin-bottom: 28px;
-      color: #333;
-    }
-
-    .signup form {
-      display: flex;
-      gap: 12px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    .signup input {
-      padding: 14px;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-      font-size: 15px;
-      min-width: 180px;
-    }
-
-    .signup input.email {
-      min-width: 260px;
-    }
-
-    .signup button {
-      padding: 14px 24px;
-      background: #1a5fa3;
-      color: #fff;
-      border: none;
-      border-radius: 6px;
-      font-weight: 600;
-      cursor: pointer;
     }
 
     /* MOBILE */
@@ -199,7 +125,7 @@
 <nav>
   <div class="nav-inner">
     <div class="logo">
-      <img src="citypaclogo.png" alt="CityPAC">
+      <img src="images/citypaclogo.png" alt="CityPAC Logo">
     </div>
 
     <div class="menu" id="menu">
@@ -210,37 +136,15 @@
     </div>
 
     <div class="hamburger" onclick="toggleMenu()">
-      <span></span><span></span><span></span>
+      <span></span>
+      <span></span>
+      <span></span>
     </div>
   </div>
 </nav>
 
 <section class="hero">
-  <img src="HeroArtboard 2.png" alt="CityPAC Hero">
-
-  <div class="stars">
-    <img src="CB72F2EF-BBA9-4DE7-A9A7-D6708F82978C.png">
-    <img src="CB72F2EF-BBA9-4DE7-A9A7-D6708F82978C.png">
-    <img src="CB72F2EF-BBA9-4DE7-A9A7-D6708F82978C.png">
-  </div>
-</section>
-
-<section class="signup">
-  <h2>Stay in the Loop</h2>
-  <p>Stay informed about events, advocacy opportunities, and ways to get involved.</p>
-
-  <form
-    action="https://docs.google.com/forms/d/e/1FAIpQLSfKL57BfdLd6taVbvT2GdzJx_SAfbMHzrWPnYZkS8cydOXcew/formResponse"
-    method="POST"
-    target="hidden_iframe"
-  >
-    <input name="entry.1111111111" placeholder="Name">
-    <input name="entry.2222222222" placeholder="Phone">
-    <input name="entry.3333333333" class="email" placeholder="Email" required>
-    <button type="submit">Submit</button>
-  </form>
-
-  <iframe name="hidden_iframe" style="display:none;"></iframe>
+  <img src="images/HeroArtboard 2.png" alt="CityPAC Hero Image">
 </section>
 
 <script>
