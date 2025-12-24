@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CityPAC</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
 
   <style>
     * { box-sizing: border-box; font-family: 'Poppins', sans-serif; }
@@ -17,7 +17,7 @@
     }
 
     /* ==============================
-       HEADER / NAV STYLES
+       HEADER
        ============================== */
     nav {
       position: absolute;
@@ -29,30 +29,28 @@
     .nav-inner {
       max-width: 1200px;
       margin: auto;
-      padding: 24px;
+      padding: 22px 24px;
       display: flex;
-      justify-content: center; /* CENTER CONTENT */
       align-items: center;
-      gap: 48px;
+      justify-content: space-between;
     }
 
     .logo img {
-      height: 52px; /* SLIGHTLY LARGER LOGO */
+      height: 56px;
       display: block;
     }
 
     .menu {
       display: flex;
-      gap: 32px;
+      gap: 40px;
     }
 
     .menu a {
       position: relative;
       display: inline-block;
-      width: fit-content;
       color: #ffffff;
       text-decoration: none;
-      font-size: 14px;
+      font-size: 22px; /* MATCHES LOGO HEIGHT VISUALLY */
       font-weight: 600;
       text-transform: uppercase;
       padding-bottom: 6px;
@@ -76,22 +74,19 @@
       flex-direction: column;
       gap: 6px;
       cursor: pointer;
-      position: absolute;
-      right: 24px;
     }
 
     .hamburger span {
-      width: 26px;
+      width: 28px;
       height: 3px;
       background: #ffffff;
     }
 
     /* ==============================
-       HERO STYLES
+       HERO
        ============================== */
     .hero {
       height: 65vh;
-      position: relative;
       overflow: hidden;
     }
 
@@ -102,81 +97,55 @@
       display: block;
     }
 
-    .hero-overlay {
-      position: absolute;
-      inset: 0;
-      background: rgba(0,0,0,0.35);
-      display: flex;
-      align-items: center;
-    }
-
-    .hero-content {
-      max-width: 1200px;
-      margin: auto;
-      padding: 0 24px;
-      color: #ffffff;
-      text-align: center;
-    }
-
-    .hero-content h1 {
-      font-size: 44px;
-      max-width: 720px;
-      margin: 0 auto 12px;
-    }
-
-    .hero-content p {
-      font-size: 18px;
-      max-width: 620px;
-      margin: auto;
-    }
-
     /* ==============================
        TAGLINE
        ============================== */
+    .tagline-wrapper {
+      border-top: 3px solid #44b6e5;
+      border-bottom: 3px solid #44b6e5;
+      padding: 26px 0;
+      margin: 40px 0;
+    }
+
     .tagline {
       max-width: 1200px;
-      margin: 40px auto;
+      margin: auto;
       padding: 0 24px;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 16px;
+      gap: 24px;
       color: #44b6e5;
+      font-size: 28px;
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 1px;
       text-align: center;
     }
 
-    .tagline::before,
-    .tagline::after {
-      content: "";
-      flex: 1;
-      height: 2px;
-      background: #44b6e5;
+    .stars {
+      display: flex;
+      gap: 6px;
     }
 
-    .tagline img { width: 20px; }
+    .stars img {
+      width: 22px;
+      display: block;
+    }
 
     /* ==============================
        SIGNUP
        ============================== */
     .signup {
-      background: #f7f9fb;
-      padding: 64px 24px;
+      padding: 28px 24px;
       text-align: center;
     }
 
     .signup h2 {
-      color: #44b6e5;
+      color: #e53935;
       text-transform: uppercase;
       letter-spacing: 1px;
-      margin-bottom: 12px;
-    }
-
-    .signup p {
-      max-width: 600px;
-      margin: 0 auto 28px;
+      margin-bottom: 18px;
     }
 
     .signup form {
@@ -187,17 +156,17 @@
     }
 
     .signup input {
-      padding: 14px;
+      padding: 12px;
       border-radius: 6px;
       border: 1px solid #ccc;
-      font-size: 15px;
+      font-size: 14px;
       min-width: 180px;
     }
 
     .signup input.email { min-width: 260px; }
 
     .signup button {
-      padding: 14px 24px;
+      padding: 12px 22px;
       background: #44b6e5;
       color: #ffffff;
       border: none;
@@ -238,13 +207,21 @@
     }
 
     /* ==============================
+       FOOTER
+       ============================== */
+    footer {
+      background: #111;
+      color: #ffffff;
+      text-align: center;
+      padding: 28px 20px;
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    /* ==============================
        MOBILE
        ============================== */
     @media (max-width: 900px) {
-      .nav-inner {
-        justify-content: center;
-      }
-
       .menu {
         position: absolute;
         top: 80px;
@@ -256,14 +233,23 @@
         display: none;
       }
 
-      .menu a { color: #44b6e5; }
+      .menu a {
+        color: #44b6e5;
+        font-size: 18px;
+      }
 
       .menu.show { display: flex; }
 
       .hamburger { display: flex; }
 
-      .about { flex-direction: column; }
-      .about img, .about-content { width: 100%; }
+      .about {
+        flex-direction: column;
+      }
+
+      .about img,
+      .about-content {
+        width: 100%;
+      }
     }
   </style>
 </head>
@@ -271,7 +257,7 @@
 <body>
 
 <!-- ==============================
-     HEADER STARTS HERE
+     HEADER
      ============================== -->
 <nav>
   <div class="nav-inner">
@@ -291,47 +277,42 @@
     </div>
   </div>
 </nav>
-<!-- ==============================
-     HEADER ENDS HERE
-     ============================== -->
 
 <!-- ==============================
-     HERO STARTS HERE
+     HERO
      ============================== -->
 <section class="hero">
   <img src="images/pexels-chaitaastic-2083840.jpg" alt="CityPAC Hero">
-  <div class="hero-overlay">
-    <div class="hero-content">
-      <h1>Building Lasting Congressional Support for Israel</h1>
-      <p>
-        CityPAC brings together civic leaders committed to strengthening the
-        U.S.–Israel relationship through bipartisan political advocacy.
-      </p>
+</section>
+
+<!-- ==============================
+     TAGLINE
+     ============================== -->
+<div class="tagline-wrapper">
+  <div class="tagline">
+    <div class="stars">
+      <img src="images/chistars.png">
+      <img src="images/chistars.png">
+      <img src="images/chistars.png">
+      <img src="images/chistars.png">
+    </div>
+
+    40+ Years of Pro-Israel Political Advocacy
+
+    <div class="stars">
+      <img src="images/chistars.png">
+      <img src="images/chistars.png">
+      <img src="images/chistars.png">
+      <img src="images/chistars.png">
     </div>
   </div>
-</section>
-<!-- ==============================
-     HERO ENDS HERE
-     ============================== -->
-
-<!-- ==============================
-     TAGLINE STARTS HERE
-     ============================== -->
-<div class="tagline">
-  <img src="images/chicago-star.png" alt="Star">
-  40+ Years of Pro-Israel Political Advocacy
-  <img src="images/chicago-star.png" alt="Star">
 </div>
-<!-- ==============================
-     TAGLINE ENDS HERE
-     ============================== -->
 
 <!-- ==============================
-     SIGNUP STARTS HERE
+     SIGNUP
      ============================== -->
 <section class="signup">
   <h2>Stay in the Loop</h2>
-  <p>Get updates on events, advocacy opportunities, and ways to get involved.</p>
 
   <form
     action="https://docs.google.com/forms/d/e/1FAIpQLSfKL57BfdLd6taVbvT2GdzJx_SAfbMHzrWPnYZkS8cydOXcew/formResponse"
@@ -346,12 +327,9 @@
 
   <iframe name="hidden_iframe" style="display:none;"></iframe>
 </section>
-<!-- ==============================
-     SIGNUP ENDS HERE
-     ============================== -->
 
 <!-- ==============================
-     ABOUT STARTS HERE
+     ABOUT
      ============================== -->
 <section class="about">
   <img src="images/ChicagoSign.png" alt="Chicago Sign">
@@ -368,9 +346,14 @@
     </p>
   </div>
 </section>
+
 <!-- ==============================
-     ABOUT ENDS HERE
+     FOOTER
      ============================== -->
+<footer>
+  Paid for by CityPAC and not authorized by any candidate or candidate committee.<br>
+  Contributions to CityPAC are not deductible for federal income tax purposes.
+</footer>
 
 <script>
   function toggleMenu() {
