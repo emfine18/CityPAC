@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CityPAC</title>
 
-  <!-- GOOGLE FONT -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
@@ -32,11 +31,15 @@
       margin: auto;
       padding: 24px;
       display: flex;
-      justify-content: space-between;
+      justify-content: center; /* CENTER CONTENT */
       align-items: center;
+      gap: 48px;
     }
 
-    .logo img { height: 40px; }
+    .logo img {
+      height: 52px; /* SLIGHTLY LARGER LOGO */
+      display: block;
+    }
 
     .menu {
       display: flex;
@@ -73,6 +76,8 @@
       flex-direction: column;
       gap: 6px;
       cursor: pointer;
+      position: absolute;
+      right: 24px;
     }
 
     .hamburger span {
@@ -110,21 +115,23 @@
       margin: auto;
       padding: 0 24px;
       color: #ffffff;
+      text-align: center;
     }
 
     .hero-content h1 {
       font-size: 44px;
       max-width: 720px;
-      margin-bottom: 12px;
+      margin: 0 auto 12px;
     }
 
     .hero-content p {
       font-size: 18px;
       max-width: 620px;
+      margin: auto;
     }
 
     /* ==============================
-       TAGLINE STYLES
+       TAGLINE
        ============================== */
     .tagline {
       max-width: 1200px;
@@ -149,10 +156,10 @@
       background: #44b6e5;
     }
 
-    .stars img { width: 20px; }
+    .tagline img { width: 20px; }
 
     /* ==============================
-       SIGNUP STYLES
+       SIGNUP
        ============================== */
     .signup {
       background: #f7f9fb;
@@ -161,10 +168,10 @@
     }
 
     .signup h2 {
+      color: #44b6e5;
       text-transform: uppercase;
       letter-spacing: 1px;
       margin-bottom: 12px;
-      color: #44b6e5;
     }
 
     .signup p {
@@ -200,7 +207,7 @@
     }
 
     /* ==============================
-       ABOUT STYLES
+       ABOUT
        ============================== */
     .about {
       max-width: 1200px;
@@ -231,9 +238,13 @@
     }
 
     /* ==============================
-       MOBILE STYLES
+       MOBILE
        ============================== */
     @media (max-width: 900px) {
+      .nav-inner {
+        justify-content: center;
+      }
+
       .menu {
         position: absolute;
         top: 80px;
