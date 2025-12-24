@@ -96,90 +96,97 @@
       display: block;
     }
 
-    /* ==============================
-       TAGLINE
-       ============================== */
-    .tagline-wrapper {
-      border-top: 6px solid #44b6e5;
-      border-bottom: 6px solid #44b6e5;
-      padding: 10px 0;   /* LESS WHITE SPACE */
-      margin: 0;
-    }
+    /* ================= TAGLINE ================= */
+.tagline-wrapper {
+  border-top: 6px solid #44b6e5;
+  border-bottom: 6px solid #44b6e5;
+  padding: 8px 0; /* tighter top/bottom space */
+  margin: 0;
+}
 
-    .tagline {
-      max-width: 1200px;
-      margin: auto;
-      padding: 0 24px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 18px;
-      color: #44b6e5;
-      font-size: clamp(16px, 3vw, 26px); /* RESPONSIVE TEXT */
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      white-space: nowrap;
-    }
+.tagline {
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(8px, 2vw, 18px);
+  color: #44b6e5;
+  font-size: clamp(14px, 2.6vw, 26px); /* SHRINKS WITH WIDTH */
+  font-weight: 600;
+  text-transform: uppercase;
+  white-space: nowrap; /* never stacks */
+}
 
-    .stars {
-      display: flex;
-      gap: 6px;
-      flex-shrink: 0;
-    }
+.stars {
+  display: flex;
+  gap: clamp(3px, 1vw, 6px);
+  flex-shrink: 0;
+}
 
-    .stars img {
-      width: clamp(14px, 2vw, 22px);
-    }
+.stars img {
+  width: clamp(12px, 2vw, 22px); /* stars shrink with screen */
+}
 
-    /* ==============================
-       SIGNUP
-       ============================== */
-    .signup {
-      padding: 28px 24px;
-      text-align: center;
-    }
+/* ================= SIGNUP ================= */
+.signup {
+  padding: 26px 24px 18px; /* smaller gap below */
+  text-align: center;
+}
 
-    .signup h2 {
-      color: #e53935;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 18px;
-    }
+.signup h2 {
+  color: #e53935;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+}
 
-    .signup form {
-      display: flex;
-      gap: 12px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
+.signup form {
+  max-width: 1000px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  align-items: end;
+}
 
-    .signup input {
-      padding: 12px;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-      font-size: 14px;
-      min-width: 180px;
-    }
+.signup input,
+.signup button {
+  height: 54px; /* ensures equal height */
+  font-size: 15px;
+}
 
-    .signup input.email { min-width: 260px; }
+.signup input {
+  padding: 0 14px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
 
-    .signup button {
-      padding: 12px 22px;
-      background: #44b6e5;
-      color: #ffffff;
-      border: none;
-      border-radius: 6px;
-      font-weight: 600;
-      cursor: pointer;
-    }
+.signup button {
+  background: #44b6e5;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
 
+/* EMAIL DROPS TO SECOND ROW IMMEDIATELY */
+@media (max-width: 900px) {
+  .signup form {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .signup input.email {
+    grid-column: span 2;
+  }
+}
     /* ==============================
        ABOUT
        ============================== */
     .about {
       max-width: 1200px;
-      margin: 80px auto;
+      margin: 40px auto; 60px
       padding: 0 24px;
       display: flex;
       gap: 40px;
