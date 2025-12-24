@@ -8,25 +8,25 @@
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
     * { box-sizing: border-box; font-family: 'Poppins', sans-serif; }
     body { margin: 0; background: #f5f5f5; color:#111; }
-    .container { max-width: 1200px; margin: auto; background: #fff; border: 4px solid #000; }
+    .container { max-width: 1200px; margin: auto; background: #fff; }
 
     /* NAV OVER HERO */
     .nav-overlay { position:absolute; top:0; left:0; width:100%; z-index:10; }
     .nav-inner { max-width:1200px; margin:auto; display:flex; justify-content:space-between; align-items:center; padding:20px; }
-    .nav-logo { color:#fff; font-weight:700; }
-    .nav-links a { color:#fff; margin-left:20px; text-decoration:none; font-weight:500; }
+    .nav-logo { color:#fff; font-weight:800; letter-spacing:1px; text-transform:uppercase; }
+    .nav-links a { color:#fff; margin-left:28px; text-decoration:none; font-weight:600; letter-spacing:0.5px; text-transform:uppercase; }
 
     /* HERO */
     .hero { position: relative; }
     .hero img { width: 100%; display: block; }
-    .hero::after { content:''; position:absolute; inset:0; background:linear-gradient(to bottom, rgba(0,0,0,0.45), rgba(0,0,0,0.15)); }
+    .hero::after { content:''; position:absolute; inset:0; background:linear-gradient(to bottom, rgba(0,0,0,0.55), rgba(0,0,0,0.2)); }
 
     /* TAGLINE */
-    .tagline { text-transform: uppercase; letter-spacing: 1.5px; border-top: 4px solid #6bb6e5; border-bottom: 4px solid #6bb6e5; padding: 10px; text-align: center; font-weight: 600; color: #6bb6e5; }
+    .tagline { border-top: none; border-bottom: none; padding: 22px 10px; text-align: center; font-weight: 600; color: #1a5fa3; background:#f0f6fb; text-transform:uppercase; letter-spacing:2px; }
     .stars { color: #d32f2f; font-size: 18px; }
 
     /* SIGNUP */
-    .signup { display: flex; flex-direction: column; gap: 14px; padding: 20px; }
+    .signup { display: flex; flex-direction: column; gap: 18px; padding: 40px 20px; background:#ffffff; }
     .signup .label { background: #e53935; color: white; font-weight: 700; padding: 10px 14px; font-size: 18px; border-radius: 6px; width: 100%; text-align: center; }
     .signup .fields { display: flex; gap: 12px; width: 100%; }
     .signup input { flex: 1; padding: 10px; border: none; background: #6bb6e5; color: white; font-size: 15px; border-radius: 6px; }
@@ -39,11 +39,11 @@
     .signup button { padding: 10px 18px; border: none; background: #e53935; color: #fff; font-weight: 600; cursor: pointer; }
 
     /* ABOUT */
-    .about { display: flex; gap: 20px; padding: 20px; border-top: 4px solid #6bb6e5; }
+    .about { display: flex; gap: 40px; padding: 50px 20px; border-top: none; }
     .about img { width: 40%; object-fit: cover; }
     .about-content { width: 60%; }
     .about h2 { background: #e53935; color: white; display: inline-block; padding: 6px 14px; border-radius: 6px; }
-    .about p { font-size: 14px; line-height: 1.6; }
+    .about p { font-size: 16px; line-height: 1.8; color:#222; }
 
     /* FOOTER */
     .footer { background: #000; color: white; font-size: 12px; padding: 15px; text-align: center; }
@@ -69,7 +69,7 @@
   </nav>
   <div class="container">
     <div class="hero">
-      <img src="previewArtboard 2.jpeg" alt="Chicago skyline" />
+      <img src="Hero.png" alt="Chicago skyline" />
       <div class="logo">CityPAC</div>
     </div>
 
@@ -114,4 +114,3 @@
   </div>
 </body>
 </html>
-
