@@ -37,12 +37,11 @@
 
     .logo img {
       height: 56px;
-      display: block;
     }
 
     .menu {
       display: flex;
-      gap: 40px;
+      gap: 32px;
     }
 
     .menu a {
@@ -50,7 +49,7 @@
       display: inline-block;
       color: #ffffff;
       text-decoration: none;
-      font-size: 22px; /* MATCHES LOGO HEIGHT VISUALLY */
+      font-size: 18px;
       font-weight: 600;
       text-transform: uppercase;
       padding-bottom: 6px;
@@ -101,10 +100,10 @@
        TAGLINE
        ============================== */
     .tagline-wrapper {
-      border-top: 3px solid #44b6e5;
-      border-bottom: 3px solid #44b6e5;
-      padding: 26px 0;
-      margin: 40px 0;
+      border-top: 6px solid #44b6e5;
+      border-bottom: 6px solid #44b6e5;
+      padding: 22px 0;
+      margin: 0;
     }
 
     .tagline {
@@ -116,21 +115,22 @@
       justify-content: center;
       gap: 24px;
       color: #44b6e5;
-      font-size: 28px;
+      font-size: 26px;
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 1px;
-      text-align: center;
+      white-space: nowrap;
+      overflow-x: auto;
     }
 
     .stars {
       display: flex;
       gap: 6px;
+      flex-shrink: 0;
     }
 
     .stars img {
       width: 22px;
-      display: block;
     }
 
     /* ==============================
@@ -213,9 +213,26 @@
       background: #111;
       color: #ffffff;
       text-align: center;
-      padding: 28px 20px;
+      padding: 36px 20px;
       font-size: 12px;
       line-height: 1.6;
+    }
+
+    .footer-menu {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin-bottom: 16px;
+      flex-wrap: nowrap;
+      white-space: nowrap;
+    }
+
+    .footer-menu a {
+      color: #44b6e5;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 13px;
+      text-transform: uppercase;
     }
 
     /* ==============================
@@ -235,7 +252,7 @@
 
       .menu a {
         color: #44b6e5;
-        font-size: 18px;
+        font-size: 16px;
       }
 
       .menu.show { display: flex; }
@@ -256,9 +273,7 @@
 
 <body>
 
-<!-- ==============================
-     HEADER
-     ============================== -->
+<!-- HEADER -->
 <nav>
   <div class="nav-inner">
     <div class="logo">
@@ -278,16 +293,12 @@
   </div>
 </nav>
 
-<!-- ==============================
-     HERO
-     ============================== -->
+<!-- HERO -->
 <section class="hero">
   <img src="images/pexels-chaitaastic-2083840.jpg" alt="CityPAC Hero">
 </section>
 
-<!-- ==============================
-     TAGLINE
-     ============================== -->
+<!-- TAGLINE -->
 <div class="tagline-wrapper">
   <div class="tagline">
     <div class="stars">
@@ -308,9 +319,7 @@
   </div>
 </div>
 
-<!-- ==============================
-     SIGNUP
-     ============================== -->
+<!-- SIGNUP -->
 <section class="signup">
   <h2>Stay in the Loop</h2>
 
@@ -328,9 +337,7 @@
   <iframe name="hidden_iframe" style="display:none;"></iframe>
 </section>
 
-<!-- ==============================
-     ABOUT
-     ============================== -->
+<!-- ABOUT -->
 <section class="about">
   <img src="images/ChicagoSign.png" alt="Chicago Sign">
   <div class="about-content">
@@ -347,10 +354,15 @@
   </div>
 </section>
 
-<!-- ==============================
-     FOOTER
-     ============================== -->
+<!-- FOOTER -->
 <footer>
+  <div class="footer-menu">
+    <a href="home.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="join.html">Join</a>
+    <a href="donate.html">Donate</a>
+  </div>
+
   Paid for by CityPAC and not authorized by any candidate or candidate committee.<br>
   Contributions to CityPAC are not deductible for federal income tax purposes.
 </footer>
