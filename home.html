@@ -16,6 +16,7 @@
     body {
       margin: 0;
       background: #ffffff;
+      color: #111;
     }
 
     /* NAV */
@@ -37,7 +38,6 @@
 
     .logo img {
       height: 40px;
-      display: block;
     }
 
     .menu {
@@ -64,7 +64,7 @@
       bottom: 0;
       width: 0;
       height: 3px;
-      background: #1a5fa3;
+      background: #44b6e5;
       transition: width 0.25s ease;
     }
 
@@ -88,12 +88,79 @@
     /* HERO */
     .hero {
       width: 100%;
+      height: 65vh; /* SHORTER HERO */
+      position: relative;
+      overflow: hidden;
     }
 
     .hero img {
       width: 100%;
-      height: auto;
+      height: 100%;
+      object-fit: cover;
       display: block;
+    }
+
+    /* TAGLINE */
+    .tagline {
+      max-width: 1200px;
+      margin: 40px auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      color: #44b6e5;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .tagline::before,
+    .tagline::after {
+      content: "";
+      flex: 1;
+      height: 2px;
+      background: #44b6e5;
+    }
+
+    .stars {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .stars img {
+      width: 20px;
+    }
+
+    /* ABOUT */
+    .about {
+      max-width: 1200px;
+      margin: 80px auto;
+      padding: 0 24px;
+      display: flex;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .about img {
+      width: 45%;
+      border-radius: 8px;
+    }
+
+    .about-content {
+      width: 55%;
+    }
+
+    .about h2 {
+      color: #44b6e5;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .about p {
+      line-height: 1.7;
+      margin-bottom: 16px;
     }
 
     /* MOBILE */
@@ -102,11 +169,15 @@
         position: absolute;
         top: 80px;
         right: 24px;
-        background: rgba(0,0,0,0.9);
+        background: #ffffff;
         flex-direction: column;
         padding: 20px;
         gap: 20px;
         display: none;
+      }
+
+      .menu a {
+        color: #44b6e5;
       }
 
       .menu.show {
@@ -116,12 +187,22 @@
       .hamburger {
         display: flex;
       }
+
+      .about {
+        flex-direction: column;
+      }
+
+      .about img,
+      .about-content {
+        width: 100%;
+      }
     }
   </style>
 </head>
 
 <body>
 
+<!-- NAV -->
 <nav>
   <div class="nav-inner">
     <div class="logo">
@@ -143,8 +224,38 @@
   </div>
 </nav>
 
+<!-- HERO -->
 <section class="hero">
-  <img src="images/HeroArtboard 2.png" alt="CityPAC Hero Image">
+  <img src="images/HeroArtboard 2.png" alt="CityPAC Hero">
+</section>
+
+<!-- TAGLINE -->
+<div class="tagline">
+  <div class="stars">
+    <img src="images/chicago-star.png" alt="Star">
+  </div>
+  40+ Years of Pro-Israel Political Advocacy
+  <div class="stars">
+    <img src="images/chicago-star.png" alt="Star">
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about">
+  <img src="images/HeroArtboard 2.png" alt="Chicago">
+  <div class="about-content">
+    <h2>About CityPAC</h2>
+    <p>
+      Founded in 1984, CityPAC brings together generations of engaged Chicagoans
+      dedicated to strengthening the U.S.–Israel relationship through bipartisan
+      political advocacy.
+    </p>
+    <p>
+      CityPAC is an independent, volunteer-driven organization committed to
+      educating, engaging, and empowering civic leaders to participate directly
+      in the political process.
+    </p>
+  </div>
 </section>
 
 <script>
