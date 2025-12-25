@@ -1,120 +1,336 @@
-<!-- ================= HEADER + HERO ================= -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>About CityPAC</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+* { box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+
+body {
+  margin: 0;
+  background: #ffffff;
+  color: #111;
+}
+
+/* ================= HEADER ================= */
+.site-header {
+  position: relative;
+  background: #003366;
+}
+
+.header-inner {
+  max-width: 1200px;
+  margin: auto;
+  padding: 22px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-logo img { height: 56px; }
+
+.header-menu {
+  display: flex;
+  gap: 32px;
+}
+
+.header-menu a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 600;
+  text-transform: uppercase;
+  position: relative;
+  padding-bottom: 6px;
+}
+
+.header-menu a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 3px;
+  background: #ffffff;
+  transition: width .25s ease;
+}
+
+.header-menu a:hover::after { width: 100%; }
+
+/* ================= HERO ================= */
+.about-hero {
+  background: #f5f9fc;
+  border-bottom: 6px solid #44b6e5;
+}
+
+.about-hero-inner {
+  max-width: 1200px;
+  margin: auto;
+  padding: 80px 24px 70px;
+  text-align: center;
+}
+
+.about-hero h1 {
+  font-size: 42px;
+  color: #003366;
+  margin-bottom: 18px;
+}
+
+.about-hero p {
+  max-width: 820px;
+  margin: auto;
+  font-size: 18px;
+  line-height: 1.7;
+  color: #333;
+}
+
+/* ================= SECTIONS ================= */
+.section {
+  max-width: 1200px;
+  margin: 70px auto;
+  padding: 0 24px;
+}
+
+.section h2 {
+  color: #44b6e5;
+  text-transform: uppercase;
+  font-size: 26px;
+  margin-bottom: 22px;
+}
+
+.section p {
+  max-width: 900px;
+  font-size: 16px;
+  line-height: 1.8;
+  margin-bottom: 18px;
+}
+
+/* ================= VALUES ================= */
+.values {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 36px;
+  margin-top: 36px;
+}
+
+.value-card {
+  border: 2px solid #e6eef5;
+  border-radius: 12px;
+  padding: 28px;
+}
+
+.value-card h3 {
+  color: #003366;
+  margin-bottom: 12px;
+}
+
+.value-card p {
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* ================= CTA ================= */
+.about-cta {
+  background: #003366;
+  color: #ffffff;
+  text-align: center;
+  padding: 70px 24px;
+}
+
+.about-cta h2 {
+  color: #ffffff;
+  margin-bottom: 18px;
+}
+
+.about-cta p {
+  max-width: 720px;
+  margin: auto;
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+/* ================= FOOTER ================= */
+.site-footer {
+  background: #003366;
+  color: #ffffff;
+  font-size: 12px;
+}
+
+.footer-top-line {
+  height: 4px;
+  background: #44b6e5;
+}
+
+.footer-inner {
+  max-width: 1200px;
+  margin: auto;
+  padding: 32px 24px;
+  text-align: center;
+}
+
+.footer-disclaimer {
+  border: 1px solid #ffffff;
+  border-radius: 6px;
+  padding: 14px 18px;
+  margin-bottom: 22px;
+}
+
+.footer-logo img {
+  height: 48px;
+  margin-bottom: 18px;
+}
+
+.footer-menu {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin-bottom: 18px;
+}
+
+.footer-menu a {
+  color: #44b6e5;
+  text-decoration: none;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+/* ================= MOBILE ================= */
+@media (max-width: 900px) {
+  .values {
+    grid-template-columns: 1fr;
+  }
+
+  .about-hero h1 {
+    font-size: 32px;
+  }
+}
+</style>
+</head>
+
+<body>
+
 <header class="site-header">
   <div class="header-inner">
-    <div class="logo">
-      <a href="/">ANU ZOCHRIM</a>
+    <div class="header-logo">
+      <img src="images/citypaclogo.png" alt="CityPAC Logo">
     </div>
-
-    <button class="menu-toggle" aria-label="Open Menu">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-
-    <nav class="site-nav">
-      <a href="/about.html">About</a>
-      <a href="/database.html">Database</a>
-      <a href="/stories.html">Stories</a>
-      <a href="/contact.html">Contact</a>
+    <nav class="header-menu">
+      <a href="home.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="join.html">Join</a>
+      <a href="donate.html">Donate</a>
     </nav>
   </div>
 </header>
 
-<section class="hero">
-  <!-- Hero image only, no text -->
+<!-- HERO -->
+<section class="about-hero">
+  <div class="about-hero-inner">
+    <h1>Who We Are</h1>
+    <p>
+      CityPAC is a Chicago-based, independent, bipartisan political organization
+      dedicated to strengthening the U.S.–Israel relationship by supporting
+      Congressional leaders who share our commitment to Israel’s security,
+      democracy, and future.
+    </p>
+  </div>
 </section>
 
-<!-- ================= STYLES ================= -->
-<style>
-/* Reset */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+<!-- MISSION -->
+<section class="section">
+  <h2>Our Mission</h2>
+  <p>
+    Founded in 1984, CityPAC brings together generations of engaged Chicagoans
+    in their 20s, 30s, and 40s who believe that a strong U.S.–Israel relationship
+    is vital to American interests and democratic values.
+  </p>
+  <p>
+    We work to educate, engage, and empower civic leaders while supporting
+    bipartisan candidates who advocate for Israel’s security and a shared
+    commitment to democracy.
+  </p>
+</section>
 
-/* Header */
-.site-header {
-  position: absolute;
-  top: 0;
-  width: 100%;
-  z-index: 1000;
-}
+<!-- VALUES -->
+<section class="section">
+  <h2>What We Stand For</h2>
 
-.header-inner {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 24px;
-}
+  <div class="values">
+    <div class="value-card">
+      <h3>Bipartisanship</h3>
+      <p>
+        CityPAC proudly supports leaders from both parties who demonstrate
+        a commitment to the U.S.–Israel relationship.
+      </p>
+    </div>
 
-.logo a {
-  color: white;
-  text-decoration: none;
-  font-family: "Noto Serif", serif;
-  font-size: 1.2rem;
-  letter-spacing: 1px;
-}
+    <div class="value-card">
+      <h3>Community Leadership</h3>
+      <p>
+        We cultivate the next generation of civic leaders by creating meaningful
+        opportunities for political engagement.
+      </p>
+    </div>
 
-/* Hamburger */
-.menu-toggle {
-  background: none;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
+    <div class="value-card">
+      <h3>Impact & Integrity</h3>
+      <p>
+        As an all-volunteer organization, CityPAC is driven by impact,
+        accountability, and responsible political advocacy.
+      </p>
+    </div>
+  </div>
+</section>
 
-.menu-toggle span {
-  width: 26px;
-  height: 2px;
-  background: white;
-}
+<!-- IMPACT -->
+<section class="section">
+  <h2>Our Impact</h2>
+  <p>
+    Over four decades, CityPAC has helped sustain strong Congressional support
+    for Israel by backing candidates who understand the importance of a secure,
+    democratic Jewish state.
+  </p>
+  <p>
+    Through education, advocacy, and direct political engagement, we continue
+    to play a unique role in Chicago’s civic and political landscape.
+  </p>
+</section>
 
-/* Nav */
-.site-nav {
-  position: fixed;
-  top: 0;
-  right: -100%;
-  height: 100vh;
-  width: 260px;
-  background: #111;
-  display: flex;
-  flex-direction: column;
-  padding: 80px 24px;
-  gap: 20px;
-  transition: right 0.3s ease;
-}
+<!-- CTA -->
+<section class="about-cta">
+  <h2>Get Involved</h2>
+  <p>
+    Whether you’re new to political advocacy or a seasoned leader,
+    CityPAC offers meaningful ways to engage, learn, and make a difference.
+  </p>
+</section>
 
-.site-nav a {
-  color: white;
-  text-decoration: none;
-  font-size: 1.1rem;
-  font-family: "Noto Serif", serif;
-}
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-top-line"></div>
+  <div class="footer-inner">
+    <div class="footer-disclaimer">
+      Paid for by CityPAC and not authorized by any candidate or candidate committee.
+      Contributions to CityPAC are not deductible for federal income tax purposes.
+    </div>
 
-.site-nav.open {
-  right: 0;
-}
+    <div class="footer-logo">
+      <img src="images/citypaclogo.png" alt="CityPAC Logo">
+    </div>
 
-/* Hero */
-.hero {
-  height: 100vh;
-  width: 100%;
-  background-image: url("YOUR-HERO-IMAGE.jpg");
-  background-size: cover;
-  background-position: center;
-}
-</style>
+    <nav class="footer-menu">
+      <a href="home.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="join.html">Join</a>
+      <a href="donate.html">Donate</a>
+    </nav>
 
-<!-- ================= SCRIPT ================= -->
-<script>
-const toggle = document.querySelector(".menu-toggle");
-const nav = document.querySelector(".site-nav");
+    © 2025 CityPAC. All rights reserved.
+  </div>
+</footer>
 
-toggle.addEventListener("click", () => {
-  nav.classList.toggle("open");
-});
-</script>
-<!-- ================= END HEADER + HERO ================= -->
+</body>
+</html>
