@@ -1,17 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Join CityPAC</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
 
 <style>
-* {
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
-}
+* { box-sizing: border-box; font-family: 'Poppins', sans-serif; }
 
 body {
   margin: 0;
@@ -24,7 +21,7 @@ body {
   position: absolute;
   top: 0;
   width: 100%;
-  z-index: 50;
+  z-index: 30;
 }
 
 .header-inner {
@@ -36,23 +33,20 @@ body {
   align-items: center;
 }
 
-.header-logo img {
-  height: 56px;
-}
+.header-logo img { height: 56px; }
 
-/* MENU */
 .header-menu {
   display: flex;
   align-items: center;
-  gap: 28px;
+  gap: 18px;
 }
 
 .header-menu a {
   color: #ffffff;
   text-decoration: none;
-  font-size: 16px;
   font-weight: 600;
   text-transform: uppercase;
+  font-size: 15px;
   position: relative;
   padding-bottom: 6px;
 }
@@ -65,41 +59,35 @@ body {
   width: 0;
   height: 3px;
   background: #ffffff;
-  transition: width 0.25s ease;
+  transition: width .25s ease;
 }
 
-.header-menu a:hover::after {
-  width: 100%;
-}
+.header-menu a:hover::after { width: 100%; }
 
-/* DONATE BUTTON */
+/* Donate button */
 .header-menu .donate-btn {
-  padding: 10px 22px;
-  border-radius: 999px;
-  background: #44b6e5;
-  color: #ffffff;
+  background: #e04b3f;
+  color: #ffffff !important;
+  padding: 10px 18px;
+  border-radius: 10px;
   font-weight: 700;
 }
+.header-menu .donate-btn::after { display: none; }
 
-.header-menu .donate-btn::after {
-  display: none;
-}
-
-/* HAMBURGER */
+/* Hamburger */
 .hamburger {
   display: none;
   flex-direction: column;
   gap: 6px;
   cursor: pointer;
 }
-
 .hamburger span {
   width: 26px;
   height: 3px;
   background: #ffffff;
 }
 
-/* MOBILE HEADER */
+/* MOBILE MENU */
 @media (max-width: 900px) {
   .hamburger { display: flex; }
 
@@ -109,11 +97,11 @@ body {
     right: 24px;
     background: #ffffff;
     padding: 18px 22px;
-    border-radius: 10px;
+    border-radius: 8px;
     display: none;
     flex-direction: column;
     gap: 16px;
-    box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+    box-shadow: 0 10px 30px rgba(0,0,0,.15);
   }
 
   .header-menu.show { display: flex; }
@@ -126,95 +114,98 @@ body {
   .header-menu a::after {
     background: #44b6e5;
   }
+
+  .header-menu .donate-btn {
+    color: #ffffff !important;
+  }
 }
 
-/* ================= HERO ================= */
-.join-hero {
-  height: 60vh;
-  background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)),
-              url("images/pexels-chaitaastic-2083840.jpg") center/cover no-repeat;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+/* ================= PAGE HEADER ================= */
+.page-header {
+  background: linear-gradient(to bottom, #0f2f5f, #003366);
   color: #ffffff;
+  padding: 140px 24px 80px;
   text-align: center;
 }
 
-.join-hero h1 {
-  font-size: clamp(32px, 5vw, 52px);
-  font-weight: 700;
+.page-header h1 {
+  font-size: 42px;
+  margin-bottom: 12px;
 }
 
-/* ================= JOIN SECTION ================= */
-.join-section {
+.page-header p {
+  max-width: 700px;
+  margin: auto;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+/* ================= CLUBS ================= */
+.clubs {
   max-width: 1200px;
   margin: 80px auto;
   padding: 0 24px;
 }
 
-.join-section h2 {
-  color: #44b6e5;
-  font-size: 32px;
-  text-transform: uppercase;
-  margin-bottom: 40px;
-  text-align: center;
-}
-
-/* CLUB GRID */
 .club-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
 }
 
 .club {
   border: 2px solid #44b6e5;
-  border-radius: 16px;
-  padding: 28px;
+  border-radius: 14px;
+  padding: 32px;
   text-align: center;
+  transition: transform .2s ease, box-shadow .2s ease;
 }
 
-.club h3 {
+.club:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 30px rgba(0,0,0,.12);
+}
+
+.club h2 {
   background: #44b6e5;
   color: #ffffff;
   padding: 14px;
-  border-radius: 12px;
-  margin: -28px -28px 20px;
-  font-size: 18px;
+  border-radius: 10px;
+  font-size: 20px;
+  margin-bottom: 18px;
   text-transform: uppercase;
 }
 
-.club p {
-  font-size: 15px;
-  line-height: 1.6;
-  margin-bottom: 18px;
-}
-
-.club .amount {
-  font-size: 22px;
+.club .price {
+  font-size: 28px;
   font-weight: 700;
   color: #003366;
-  margin-bottom: 20px;
+  margin-bottom: 14px;
+}
+
+.club p {
+  line-height: 1.6;
+  margin-bottom: 24px;
 }
 
 .club a {
   display: inline-block;
-  padding: 12px 26px;
-  border-radius: 999px;
-  background: #44b6e5;
+  background: #003366;
   color: #ffffff;
-  font-weight: 700;
+  padding: 12px 28px;
+  border-radius: 8px;
+  font-weight: 600;
   text-decoration: none;
 }
 
-/* RESPONSIVE CLUB GRID */
-@media (max-width: 1100px) {
+/* RESPONSIVE */
+@media (max-width: 1000px) {
   .club-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 650px) {
   .club-grid {
     grid-template-columns: 1fr;
   }
@@ -224,7 +215,7 @@ body {
 .site-footer {
   background: #003366;
   color: #ffffff;
-  font-size: 13px;
+  font-size: 12px;
 }
 
 .footer-top-line {
@@ -239,28 +230,23 @@ body {
   text-align: center;
 }
 
-/* DISCLAIMER BOX */
 .footer-disclaimer {
   border: 1px solid #ffffff;
   border-radius: 6px;
   padding: 14px 18px;
   margin-bottom: 22px;
-  line-height: 1.5;
 }
 
-/* LOGO */
 .footer-logo img {
   height: 48px;
   margin-bottom: 18px;
 }
 
-/* MENU */
 .footer-menu {
   display: flex;
   justify-content: center;
   gap: 24px;
   margin-bottom: 18px;
-  flex-wrap: wrap;
 }
 
 .footer-menu a {
@@ -268,45 +254,19 @@ body {
   text-decoration: none;
   font-weight: 600;
   text-transform: uppercase;
-  font-size: 13px;
-  position: relative;
-  padding-bottom: 4px;
 }
-
-.footer-menu a::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 0;
-  height: 2px;
-  background: #44b6e5;
-  transition: width 0.25s ease;
-}
-
-.footer-menu a:hover::after {
-  width: 100%;
-}
-
-/* COPYRIGHT */
-.footer-copy {
-  font-size: 12px;
-  opacity: 0.85;
-}
-
 </style>
 </head>
 
 <body>
 
-<!-- HEADER -->
 <header class="site-header">
   <div class="header-inner">
     <a href="home.html" class="header-logo">
       <img src="images/citypaclogo.png" alt="CityPAC">
     </a>
 
-    <nav class="header-menu" id="headerMenu">
+    <nav class="header-menu" id="menu">
       <a href="home.html">Home</a>
       <a href="about.html">About</a>
       <a href="join.html">Join</a>
@@ -320,60 +280,61 @@ body {
   </div>
 </header>
 
-<!-- HERO -->
-<section class="join-hero">
+<section class="page-header">
   <h1>Join CityPAC</h1>
+  <p>
+    Become part of Chicago’s next generation of pro-Israel leaders through
+    exclusive access to political engagement, education, and community.
+  </p>
 </section>
 
-<!-- JOIN -->
-<section class="join-section">
-  <h2>Membership Levels</h2>
-
+<section class="clubs">
   <div class="club-grid">
+
     <div class="club">
-      <h3>Young Leaders</h3>
-      <p>Engage with CityPAC’s next generation of leaders through events and advocacy.</p>
-      <div class="amount">$250</div>
-      <a href="donate.html">Join</a>
+      <h2>Chai Society</h2>
+      <div class="price">$1,080 / year</div>
+      <p>
+        Our most engaged young professionals.
+        Exclusive access to premier Pro-Israel events
+        in Chicago and beyond.
+      </p>
+      <a href="#">Join Chai Society</a>
     </div>
 
     <div class="club">
-      <h3>Ambassador</h3>
-      <p>Support bipartisan pro-Israel candidates and attend exclusive briefings.</p>
-      <div class="amount">$500</div>
-      <a href="donate.html">Join</a>
+      <h2>Gold Coast Society</h2>
+      <div class="price">$720 / year</div>
+      <p>
+        For young professionals in their 30’s.
+        Access to CityPAC programming and Pro-Israel networking events.
+      </p>
+      <a href="#">Join Gold Coast</a>
     </div>
 
     <div class="club">
-      <h3>Leadership Circle</h3>
-      <p>Play a direct role in CityPAC’s political engagement and strategy.</p>
-      <div class="amount">$1,000</div>
-      <a href="donate.html">Join</a>
+      <h2>Lake Shore Society</h2>
+      <div class="price">$360 / year</div>
+      <p>
+        For young professionals in their 20’s.
+        Includes CityPAC programs, events, and community engagement.
+      </p>
+      <a href="#">Join Lake Shore</a>
     </div>
 
-    <div class="club">
-      <h3>Chairman’s Council</h3>
-      <p>CityPAC’s highest level of engagement and national impact.</p>
-      <div class="amount">$2,500+</div>
-      <a href="donate.html">Join</a>
-    </div>
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer class="site-footer">
   <div class="footer-top-line"></div>
-
   <div class="footer-inner">
     <div class="footer-disclaimer">
       Paid for by CityPAC and not authorized by any candidate or candidate committee.
       Contributions to CityPAC are not deductible for federal income tax purposes.
     </div>
-
     <div class="footer-logo">
-      <img src="images/citypaclogo.png" alt="CityPAC Logo">
+      <img src="images/citypaclogo.png" alt="">
     </div>
-
     <nav class="footer-menu">
       <a href="home.html">Home</a>
       <a href="about.html">About</a>
@@ -381,22 +342,13 @@ body {
       <a href="contact.html">Contact</a>
       <a href="donate.html">Donate</a>
     </nav>
-
-    <div class="footer-copy">
-      © 2025 CityPAC. All rights reserved.
-    </div>
+    © 2025 CityPAC. All rights reserved.
   </div>
 </footer>
 
 <script>
-document.addEventListener("DOMContentLoaded", function () {
-  const burger = document.getElementById("hamburger");
-  const menu = document.getElementById("headerMenu");
-
-  burger.addEventListener("click", function () {
-    menu.classList.toggle("show");
-  });
-});
+document.getElementById("hamburger").onclick = () =>
+  document.getElementById("menu").classList.toggle("show");
 </script>
 
 </body>
