@@ -1,1 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Join CityPAC</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+* { box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+
+body {
+  margin: 0;
+  background: #ffffff;
+  color: #111;
+}
+
+/* ================= HEADER ================= */
+.site-header {
+  background: #003366;
+}
+
+.header-inner {
+  max-width: 1200px;
+  margin: auto;
+  padding: 22px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-logo img { height: 56px; }
+
+.header-menu {
+  display: flex;
+  gap: 32px;
+}
+
+.header-menu a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 600;
+  text-transform: uppercase;
+  position: relative;
+  padding-bottom: 6px;
+}
+
+.header-menu a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 3px;
+  background: #ffffff;
+  transition: width .25s ease;
+}
+
+.header-menu a:hover::after { width: 100%; }
+
+/* ================= HERO ================= */
+.join-hero {
+  background: #f5f9fc;
+  border-bottom: 6px solid #44b6e5;
+}
+
+.join-hero-inner {
+  max-width: 1200px;
+  margin: auto;
+  padding: 80px 24px 70px;
+  text-align: center;
+}
+
+.join-hero h1 {
+  font-size: 42px;
+  color: #003366;
+  margin-bottom: 18px;
+}
+
+.join-hero p {
+  max-width: 820px;
+  margin: auto;
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+/* ================= CLUB LEVELS ================= */
+.club-section {
+  max-width: 1200px;
+  margin: 70px auto;
+  padding: 0 24px;
+}
+
+.club-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.club-card {
+  border: 2px solid #e6eef5;
+  border-radius: 16px;
+  padding: 32px 28px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.club-card.featured {
+  border-color: #44b6e5;
+  box-shadow: 0 10px 30px rgba(68,182,229,0.15);
+}
+
+.club-card h3 {
+  color: #003366;
+  font-size: 22px;
+  margin-bottom: 8px;
+}
+
+.club-price {
+  color: #44b6e5;
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 18px;
+}
+
+.club-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 24px;
+  text-align: left;
+  flex-grow: 1;
+}
+
+.club-card li {
+  margin-bottom: 12px;
+  font-size: 15px;
+}
+
+.club-card button {
+  background: #44b6e5;
+  color: #ffffff;
+  border: none;
+  border-radius: 12px;
+  padding: 14px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* ================= CTA ================= */
+.join-cta {
+  background: #003366;
+  color: #ffffff;
+  text-align: center;
+  padding: 70px 24px;
+}
+
+.join-cta h2 {
+  margin-bottom: 16px;
+}
+
+.join-cta p {
+  max-width: 720px;
+  margin: auto;
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+/* ================= FOOTER ================= */
+.site-footer {
+  background: #003366;
+  color: #ffffff;
+  font-size: 12px;
+}
+
+.footer-top-line {
+  height: 4px;
+  background: #44b6e5;
+}
+
+.footer-inner {
+  max-width: 1200px;
+  margin: auto;
+  padding: 32px 24px;
+  text-align: center;
+}
+
+.footer-disclaimer {
+  border: 1px solid #ffffff;
+  border-radius: 6px;
+  padding: 14px 18px;
+  margin-bottom: 22px;
+}
+
+.footer-logo img {
+  height: 48px;
+  margin-bottom: 18px;
+}
+
+.footer-menu {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin-bottom: 18px;
+}
+
+.footer-menu a {
+  color: #44b6e5;
+  text-decoration: none;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+/* ================= MOBILE ================= */
+@media (max-width: 900px) {
+  .club-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .join-hero h1 {
+    font-size: 32px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="header-logo">
+      <img src="images/citypaclogo.png" alt="CityPAC Logo">
+    </div>
+    <nav class="header-menu">
+      <a href="home.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="join.html">Join</a>
+      <a href="donate.html">Donate</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="join-hero">
+  <div class="join-hero-inner">
+    <h1>Join CityPAC</h1>
+    <p>
+      CityPAC offers multiple membership levels that provide meaningful
+      opportunities to engage with political leaders, strengthen the
+      U.S.–Israel relationship, and make an impact in Chicago and beyond.
+    </p>
+  </div>
+</section>
+
+<!-- CLUB LEVELS -->
+<section class="club-section">
+  <div class="club-grid">
+
+    <div class="club-card">
+      <h3>Young Leaders Club</h3>
+      <div class="club-price">$500+</div>
+      <ul>
+        <li>Invitations to member-only briefings</li>
+        <li>Access to CityPAC networking events</li>
+        <li>Engagement with emerging political leaders</li>
+      </ul>
+      <button onclick="location.href='donate.html'">Join Now</button>
+    </div>
+
+    <div class="club-card featured">
+      <h3>Leadership Circle</h3>
+      <div class="club-price">$1,800+</div>
+      <ul>
+        <li>Exclusive access to elected officials</li>
+        <li>Private policy discussions and receptions</li>
+        <li>Priority invitations to national programs</li>
+      </ul>
+      <button onclick="location.href='donate.html'">Join Now</button>
+    </div>
+
+    <div class="club-card">
+      <h3>Chairman’s Council</h3>
+      <div class="club-price">$5,000+</div>
+      <ul>
+        <li>High-level engagement with senior leaders</li>
+        <li>Small-group strategy briefings</li>
+        <li>Recognition as a leading CityPAC supporter</li>
+      </ul>
+      <button onclick="location.href='donate.html'">Join Now</button>
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="join-cta">
+  <h2>Be Part of the Impact</h2>
+  <p>
+    Joining CityPAC means standing with leaders who support a strong
+    U.S.–Israel relationship and investing in the future of political advocacy.
+  </p>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-top-line"></div>
+  <div class="footer-inner">
+    <div class="footer-disclaimer">
+      Paid for by CityPAC and not authorized by any candidate or candidate committee.
+      Contributions to CityPAC are not deductible for federal income tax purposes.
+    </div>
+
+    <div class="footer-logo">
+      <img src="images/citypaclogo.png" alt="CityPAC Logo">
+    </div>
+
+    <nav class="footer-menu">
+      <a href="home.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="join.html">Join</a>
+      <a href="donate.html">Donate</a>
+    </nav>
+
+    © 2025 CityPAC. All rights reserved.
+  </div>
+</footer>
+
+</body>
+</html>
