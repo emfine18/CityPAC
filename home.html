@@ -300,25 +300,142 @@
 
 <header class="site-header">
   <div class="header-inner">
-    <div class="header-disclaimer">
-      Paid for by CityPAC and not authorized by any candidate or candidate committee.
+    <div class="header-logo">
+      <img src="images/citypaclogo.png" alt="CityPAC Logo">
     </div>
 
-    <div class="header-main">
-      <div class="header-logo">
-        <img src="images/citypaclogo.png" alt="CityPAC Logo">
-      </div>
+    <nav class="header-menu" id="headerMenu">
+      <a href="home.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="join.html">Join</a>
+      <a href="donate.html">Donate</a>
+    </nav>
 
-      <nav class="header-menu">
-        <a href="home.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="join.html">Join</a>
-        <a href="donate.html">Donate</a>
-      </nav>
+    <div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
     </div>
   </div>
 </header>
 
+<style>
+/* =========================
+   HEADER (CLEAN FIX)
+   ========================= */
+
+.site-header {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 30;
+}
+
+.header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 22px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header-logo img {
+  height: 56px;
+}
+
+/* DESKTOP MENU */
+.header-menu {
+  display: flex;
+  gap: 32px;
+}
+
+.header-menu a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 600;
+  text-transform: uppercase;
+  position: relative;
+  padding-bottom: 6px;
+}
+
+/* underline only word width */
+.header-menu a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 3px;
+  background: #ffffff;
+  transition: width 0.25s ease;
+}
+
+.header-menu a:hover::after {
+  width: 100%;
+}
+
+/* HAMBURGER */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.hamburger span {
+  width: 26px;
+  height: 3px;
+  background: #ffffff;
+}
+
+/* MOBILE */
+@media (max-width: 900px) {
+  .hamburger {
+    display: flex;
+  }
+
+  .header-menu {
+    position: absolute;
+    top: 72px;
+    right: 24px;
+    background: #ffffff;
+    padding: 18px 20px;
+    border-radius: 8px;
+    display: none;
+    flex-direction: column;
+    gap: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  }
+
+  .header-menu.show {
+    display: flex;
+  }
+
+  .header-menu a {
+    color: #44b6e5;
+    font-size: 16px;
+    width: fit-content;
+  }
+
+  .header-menu a::after {
+    background: #44b6e5;
+  }
+}
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const burger = document.getElementById("hamburger");
+  const menu = document.getElementById("headerMenu");
+
+  burger.addEventListener("click", function () {
+    menu.classList.toggle("show");
+  });
+});
+</script>
+  
 <section class="hero">
   <img src="images/pexels-chaitaastic-2083840.jpg" alt="CityPAC Hero">
 </section>
