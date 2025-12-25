@@ -297,15 +297,22 @@ body {
   gap: 18px;
 }
 
+.home-images {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  max-width: 420px;           /* prevents images from overpowering text */
+}
+
 .home-images img {
   width: 100%;
-  aspect-ratio: 4 / 3; /* RECTANGLE */
+  height: 220px;              /* FIXED, CONTROLLED HEIGHT */
   object-fit: cover;
   border-radius: 10px;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
   cursor: pointer;
 }
-
+  
 /* POP EFFECT */
 .home-images img:hover {
   transform: translateY(-6px);
@@ -371,7 +378,16 @@ body {
     width: 100%;
     text-align: center;
   }
-}
+
+  @media (max-width: 900px) {
+  .home-images {
+    max-width: 100%;
+  }
+
+  .home-images img {
+    height: 200px;
+  }
+  }
   
 /* ================= FOOTER ================= */
 .site-footer {
