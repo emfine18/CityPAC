@@ -575,10 +575,6 @@ body {
 </footer>
   
 <script>
-document.getElementById("hamburger").onclick = () =>
-  document.getElementById("menu").classList.toggle("show");
-
-document.getElementById("signupForm").addEventListener("submit", function(e){
   e.preventDefault();
   const btn = document.getElementById("signupBtn");
   const success = document.getElementById("signupSuccess");
@@ -596,117 +592,73 @@ document.getElementById("signupForm").addEventListener("submit", function(e){
   });
 });
 </script>
-  
+
+</script>
+
 <script>
-document.getElementById("signupForm").addEventListener("submit", function(e) {
+const signupForm = document.getElementById("signupForm");
+const signupBtn = document.getElementById("signupBtn");
+const signupSuccess = document.getElementById("signupSuccess");
+
+signupForm.addEventListener("submit", function (e) {
   e.preventDefault();
 
-  const btn = document.getElementById("signupBtn");
-  const success = document.getElementById("signupSuccess");
-
-  btn.disabled = true;
-  btn.innerText = "Submitting…";
+  signupBtn.disabled = true;
+  signupBtn.innerText = "Submitting…";
 
   fetch(
     "https://script.google.com/macros/s/AKfycbyMnbkQ0C_34sPpiuuUiiCRAL-Z9SmMYa9rZiWMbPTaF3aAyFjwn7FWRBYkdGsI0r-a2A/exec",
-    { method: "POST", body: new URLSearchParams(new FormData(e.target)) }
-  )
-  .then(() => {
-    btn.innerText = "Submitted ✓";
-    success.style.display = "block";
-    launchConfettiFromButton(btn);
-    e.target.reset();
-  })
-  .catch(() => {
-    btn.disabled = false;
-    btn.innerText = "Submit";
-    alert("Submission failed. Please try again.");
-  });
-});
-  
-</script>
-  
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  const form = document.getElementById("signupForm");
-  const btn = document.getElementById("signupBtn");
-  const success = document.getElementById("signupSuccess");
-
-  if (!form || !btn) return;
-
-  form.addEventListener("submit", function (e) {
-    e.preventDefault();
-
-    btn.disabled = true;
-    btn.innerText = "Submitting…";
-
-    fetch(
-      "https://script.google.com/macros/s/AKfycbyMnbkQ0C_34sPpiuuUiiCRAL-Z9SmMYa9rZiWMbPTaF3aAyFjwn7FWRBYkdGsI0r-a2A/exec",
-      { method: "POST", body: new URLSearchParams(new FormData(form)) }
-    )
-    .then(() => {
-      btn.innerText = "Submitted ✓";
-      success.style.display = "block";
-      launchConfetti(btn);
-
-      // Delay reset so animation shows
-      setTimeout(() => form.reset(), 1200);
-    })
-    .catch(() => {
-      btn.disabled = false;
-      btn.innerText = "Submit";
-      alert("Submission failed. Please try again.");
-    });
+    {
+      method: "POST",
+      mode: "no-cors",
+      body: new URLSearchParams(new FormData(signupForm))
+    }
+  ).then(() => {
+    signupBtn.innerText = "Submitted ✓";
+    signupSuccess.style.display = "block";
+    launchEmojiConfetti(signupBtn);
+    signupForm.reset();
   });
 });
 
-<script>
+/* REAL EMOJI CONFETTI — GOES EVERYWHERE */
 function launchEmojiConfetti(button) {
   const rect = button.getBoundingClientRect();
-  const emojis = ["🎉", "✨", "🇺🇸", "🇮🇱", "💙"];
+  const emojis = ["🎉", "✨", "🇺🇸", "🇮🇱"];
 
   const startX = rect.left + rect.width / 2;
   const startY = rect.top + rect.height / 2;
 
-  for (let i = 0; i < 80; i++) {
+  for (let i = 0; i < 120; i++) {
     const emoji = document.createElement("span");
     emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
 
     emoji.style.position = "fixed";
     emoji.style.left = startX + "px";
     emoji.style.top = startY + "px";
-    emoji.style.fontSize = "28px";          // BIG & VISIBLE
+    emoji.style.fontSize = "30px";
     emoji.style.pointerEvents = "none";
     emoji.style.zIndex = "999999";
-    emoji.style.willChange = "transform, opacity";
 
     document.body.appendChild(emoji);
 
-    const angle = Math.random() * Math.PI * 2;  // FULL CIRCLE
-    const distance = 300 + Math.random() * 400;
-
-    const x = Math.cos(angle) * distance;
-    const y = Math.sin(angle) * distance;
+    const angle = Math.random() * Math.PI * 2;
+    const distance = 400 + Math.random() * 500;
 
     emoji.animate(
       [
-        { transform: "translate(0,0) scale(1)", opacity: 1 },
+        { transform: "translate(0,0)", opacity: 1 },
         {
-          transform: `translate(${x}px, ${y}px) rotate(${Math.random() * 720}deg) scale(0.6)`,
+          transform: `translate(${Math.cos(angle)*distance}px, ${Math.sin(angle)*distance}px) rotate(${Math.random()*720}deg)`,
           opacity: 0
         }
       ],
-      {
-        duration: 4200,                       // LASTS LONGER
-        easing: "cubic-bezier(.2,.6,.2,1)"
-      }
+      { duration: 4200, easing: "ease-out" }
     );
 
     setTimeout(() => emoji.remove(), 4500);
   }
 }
-</script>
-
 </script>
   
 </body>
