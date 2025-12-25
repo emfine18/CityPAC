@@ -314,7 +314,7 @@ body {
 .site-footer {
   background: #003366;
   color: #ffffff;
-  font-size: 12px;
+  font-size: 13px;
 }
 
 .footer-top-line {
@@ -328,6 +328,62 @@ body {
   padding: 32px 24px;
   text-align: center;
 }
+
+/* DISCLAIMER BOX */
+.footer-disclaimer {
+  border: 1px solid #ffffff;
+  border-radius: 6px;
+  padding: 14px 18px;
+  margin-bottom: 22px;
+  line-height: 1.5;
+}
+
+/* LOGO */
+.footer-logo img {
+  height: 48px;
+  margin-bottom: 18px;
+}
+
+/* MENU */
+.footer-menu {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+
+.footer-menu a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 13px;
+  position: relative;
+  padding-bottom: 4px;
+}
+
+.footer-menu a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background: #44b6e5;
+  transition: width 0.25s ease;
+}
+
+.footer-menu a:hover::after {
+  width: 100%;
+}
+
+/* COPYRIGHT */
+.footer-copy {
+  font-size: 12px;
+  opacity: 0.85;
+}
+  
 </style>
 </head>
 
@@ -403,11 +459,31 @@ body {
 
 <footer class="site-footer">
   <div class="footer-top-line"></div>
+
   <div class="footer-inner">
-    © 2025 CityPAC. All rights reserved.
+    <div class="footer-disclaimer">
+      Paid for by CityPAC and not authorized by any candidate or candidate committee.
+      Contributions to CityPAC are not deductible for federal income tax purposes.
+    </div>
+
+    <div class="footer-logo">
+      <img src="images/citypaclogo.png" alt="CityPAC Logo">
+    </div>
+
+    <nav class="footer-menu">
+      <a href="home.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="join.html">Join</a>
+      <a href="contact.html">Contact</a>
+      <a href="donate.html">Donate</a>
+    </nav>
+
+    <div class="footer-copy">
+      © 2025 CityPAC. All rights reserved.
+    </div>
   </div>
 </footer>
-
+  
 <script>
 document.getElementById("hamburger").onclick = () =>
   document.getElementById("menu").classList.toggle("show");
