@@ -1,1 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us | CityPAC</title>
 
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      margin: 0;
+      background: #ffffff;
+      color: #111;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* ================= HEADER ================= */
+    header.site-header {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      z-index: 50;
+    }
+
+    .header-inner {
+      max-width: 1200px;
+      margin: auto;
+      padding: 22px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .header-logo img {
+      height: 56px;
+    }
+
+    .header-menu {
+      display: flex;
+      gap: 32px;
+    }
+
+    .header-menu a {
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 600;
+      text-transform: uppercase;
+      position: relative;
+      padding-bottom: 6px;
+    }
+
+    .header-menu a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 3px;
+      background: #ffffff;
+      transition: width 0.25s ease;
+    }
+
+    .header-menu a:hover::after {
+      width: 100%;
+    }
+
+    /* ================= HERO SPACER ================= */
+    .hero-spacer {
+      height: 140px;
+      background: linear-gradient(to bottom, #0f2f5f, #003366);
+    }
+
+    /* ================= CONTACT SECTION ================= */
+    .contact {
+      max-width: 1200px;
+      margin: 60px auto;
+      padding: 0 24px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .contact-image img {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    .contact-content h1 {
+      font-size: 42px;
+      margin-bottom: 16px;
+    }
+
+    .socials {
+      display: flex;
+      gap: 18px;
+      margin-bottom: 28px;
+    }
+
+    .socials a {
+      color: #003366;
+      font-size: 22px;
+      text-decoration: none;
+    }
+
+    /* ================= FORM ================= */
+    .contact-form label {
+      font-weight: 500;
+      font-size: 14px;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      height: 52px;
+      padding: 0 14px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      margin-bottom: 18px;
+      font-size: 15px;
+    }
+
+    .contact-form textarea {
+      height: 120px;
+      padding-top: 12px;
+      resize: vertical;
+    }
+
+    .contact-form .row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .contact-form button {
+      background: #003366;
+      color: #ffffff;
+      border: none;
+      padding: 14px 28px;
+      font-size: 16px;
+      font-weight: 600;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .contact-form button:disabled {
+      background: #9bb4d1;
+      cursor: default;
+    }
+
+    .contact-success {
+      display: none;
+      margin-top: 18px;
+      font-weight: 600;
+      color: #44b6e5;
+    }
+
+    /* ================= FOOTER ================= */
+    footer.site-footer {
+      margin-top: auto;
+      background: #003366;
+      color: #ffffff;
+      font-size: 12px;
+    }
+
+    .footer-top-line {
+      height: 4px;
+      background: #44b6e5;
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: auto;
+      padding: 32px 24px;
+      text-align: center;
+    }
+
+    .footer-disclaimer {
+      border: 1px solid #ffffff;
+      border-radius: 6px;
+      padding: 14px 18px;
+      margin-bottom: 22px;
+    }
+
+    .footer-logo img {
+      height: 48px;
+      margin-bottom: 18px;
+    }
+
+    .footer-menu {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin-bottom: 18px;
+    }
+
+    .footer-menu a {
+      color: #44b6e5;
+      text-decoration: none;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    /* ================= MOBILE ================= */
+    @media (max-width: 900px) {
+      .contact {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-content h1 {
+        font-size: 34px;
+      }
+
+      .contact-form .row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="home.html" class="header-logo">
+      <img src="images/citypaclogo.png" alt="CityPAC Logo">
+    </a>
+    <nav class="header-menu">
+      <a href="home.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="join.html">Join</a>
+      <a href="donate.html">Donate</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero-spacer"></div>
+
+<section class="contact">
+  <div class="contact-image">
+    <img src="images/american-flag.jpg" alt="American Flag">
+  </div>
+
+  <div class="contact-content">
+    <h1>Contact us.</h1>
+
+    <div class="socials">
+      <a href="#">🐦</a>
+      <a href="#">📘</a>
+      <a href="#">📸</a>
+    </div>
+
+    <form id="contactForm" class="contact-form">
+      <label>Name (required)</label>
+      <div class="row">
+        <input name="firstName" placeholder="First Name" required>
+        <input name="lastName" placeholder="Last Name" required>
+      </div>
+
+      <label>Email (required)</label>
+      <input type="email" name="email" required>
+
+      <label>Phone</label>
+      <input name="phone">
+
+      <label>Message (required)</label>
+      <textarea name="message" required></textarea>
+
+      <button type="submit" id="contactBtn">Send</button>
+
+      <div class="contact-success" id="contactSuccess">
+        Message sent ✓
+      </div>
+    </form>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-top-line"></div>
+  <div class="footer-inner">
+    <div class="footer-disclaimer">
+      Paid for by CityPAC and not authorized by any candidate or candidate committee.
+      Contributions to CityPAC are not deductible for federal income tax purposes.
+    </div>
+
+    <div class="footer-logo">
+      <img src="images/citypaclogo.png" alt="">
+    </div>
+
+    <nav class="footer-menu">
+      <a href="home.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="join.html">Join</a>
+      <a href="donate.html">Donate</a>
+    </nav>
+
+    © 2025 CityPAC. All rights reserved.
+  </div>
+</footer>
+
+<script>
+document.getElementById("contactForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  const btn = document.getElementById("contactBtn");
+  const success = document.getElementById("contactSuccess");
+  btn.disabled = true;
+  btn.innerText = "Sending…";
+
+  const data = new URLSearchParams(new FormData(this));
+
+  fetch(
+    "https://script.google.com/macros/s/AKfycbyMnbkQ0C_34sPpiuuUiiCRAL-Z9SmMYa9rZiWMbPTaF3aAyFjwn7FWRBYkdGsI0r-a2A/exec",
+    { method: "POST", body: data }
+  )
+  .then(() => {
+    btn.innerText = "Sent ✓";
+    success.style.display = "block";
+    this.reset();
+  })
+  .catch(() => {
+    btn.disabled = false;
+    btn.innerText = "Send";
+    alert("Message failed to send. Please try again.");
+  });
+});
+</script>
+
+</body>
+</html>
