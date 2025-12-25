@@ -16,11 +16,11 @@ body {
   color: #111;
 }
 
-/* ================= HEADER ================= */
+/* ================= NAVY HEADER (NO HERO) ================= */
 .site-header {
-  position: absolute;
-  top: 0;
+  background: #003366;
   width: 100%;
+  position: relative;
   z-index: 20;
 }
 
@@ -37,28 +37,23 @@ body {
   height: 56px;
 }
 
-/* ================= HEADER MENU ================= */
-
+/* MENU */
 .header-menu {
   display: flex;
   align-items: center;
   gap: 18px;
 }
 
-/* ===== DESKTOP MENU LINKS ===== */
 .header-menu a {
-  color: #ffffff;               /* WHITE on desktop */
+  color: #ffffff;
   text-decoration: none;
   font-weight: 600;
   text-transform: uppercase;
   font-size: 15px;
   position: relative;
   padding-bottom: 6px;
-  display: flex;
-  align-items: center;
 }
 
-/* WHITE underline on desktop */
 .header-menu a::after {
   content: "";
   position: absolute;
@@ -74,25 +69,19 @@ body {
   width: 100%;
 }
 
-/* ===== DONATE BUTTON ===== */
+/* DONATE BUTTON */
 .header-menu .donate-btn {
   background: #e04b3f;
-  color: #ffffff !important;    /* ALWAYS white */
+  color: #ffffff !important;
   padding: 10px 18px;
   border-radius: 10px;
   font-weight: 700;
-  line-height: 1;
 }
 
-.header-menu .donate-btn::after {
-  display: none;                /* no underline */
-}
+.header-menu .donate-btn::after { display: none; }
+.header-menu .donate-btn:hover { background: #c93c32; }
 
-.header-menu .donate-btn:hover {
-  background: #c93c32;
-}
-
-/* ===== HAMBURGER ICON ===== */
+/* HAMBURGER */
 .hamburger {
   display: none;
   flex-direction: column;
@@ -103,18 +92,16 @@ body {
 .hamburger span {
   width: 26px;
   height: 3px;
-  background: #ffffff;          /* WHITE lines */
+  background: #ffffff;
 }
 
-/* ================= MOBILE MENU ================= */
+/* MOBILE MENU */
 @media (max-width: 900px) {
-  .hamburger {
-    display: flex;
-  }
+  .hamburger { display: flex; }
 
   .header-menu {
     position: absolute;
-    top: 78px;
+    top: 72px;
     right: 24px;
     background: #ffffff;
     padding: 18px 22px;
@@ -126,28 +113,43 @@ body {
     align-items: flex-start;
   }
 
-  .header-menu.show {
-    display: flex;
-  }
+  .header-menu.show { display: flex; }
 
-  /* ===== HAMBURGER MENU LINKS ===== */
   .header-menu a {
-    color: #44b6e5;             /* BLUE in hamburger */
+    color: #44b6e5;
   }
 
   .header-menu a::after {
-    background: #44b6e5;        /* BLUE underline */
+    background: #44b6e5;
   }
 
-  /* KEEP DONATE BUTTON WHITE TEXT */
   .header-menu .donate-btn {
     color: #ffffff !important;
     padding: 8px 14px;
     border-radius: 8px;
-    font-size: 15px;
   }
 }
-  
+
+/* ================= PAGE INTRO ================= */
+.page-header {
+  background: #f6f9fc;
+  padding: 70px 24px 50px;
+  text-align: center;
+}
+
+.page-header h1 {
+  font-size: 42px;
+  margin-bottom: 16px;
+  color: #003366;
+}
+
+.page-header p {
+  max-width: 820px;
+  margin: auto;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
 /* ================= ABOUT CONTENT ================= */
 .about-section {
   max-width: 1000px;
@@ -204,7 +206,7 @@ body {
   }
 }
 
-/* ================= FOOTER ================= */
+/* ================= FOOTER (UNCHANGED) ================= */
 .site-footer {
   background: #003366;
   color: #ffffff;
@@ -223,7 +225,6 @@ body {
   text-align: center;
 }
 
-/* DISCLAIMER BOX */
 .footer-disclaimer {
   border: 1px solid #ffffff;
   border-radius: 6px;
@@ -232,13 +233,11 @@ body {
   line-height: 1.5;
 }
 
-/* LOGO */
 .footer-logo img {
   height: 48px;
   margin-bottom: 18px;
 }
 
-/* MENU */
 .footer-menu {
   display: flex;
   justify-content: center;
@@ -272,18 +271,15 @@ body {
   width: 100%;
 }
 
-/* COPYRIGHT */
 .footer-copy {
   font-size: 12px;
   opacity: 0.85;
 }
-  
 </style>
 </head>
 
 <body>
 
-<!-- HEADER -->
 <header class="site-header">
   <div class="header-inner">
     <a href="home.html" class="header-logo">
@@ -304,18 +300,14 @@ body {
   </div>
 </header>
 
-<!-- PAGE HEADER -->
 <section class="page-header">
-  <div class="page-header-inner">
-    <h1>Who We Are</h1>
-    <p>
-      CityPAC is an independent, bipartisan, pro-Israel political action committee
-      dedicated to strengthening the U.S.–Israel relationship.
-    </p>
-  </div>
+  <h1>Who We Are</h1>
+  <p>
+    CityPAC is an independent, bipartisan, pro-Israel political action committee
+    dedicated to strengthening the U.S.–Israel relationship.
+  </p>
 </section>
 
-<!-- ABOUT CONTENT -->
 <section class="about-section">
 
   <div class="about-block">
@@ -335,18 +327,17 @@ body {
       participate in meaningful social and educational programming.
     </p>
     <p>
-      Through its work, CityPAC not only strengthens Congressional support for
-      Israel, but also develops the next generation of Jewish civic leaders.
+      Through its work, CityPAC strengthens Congressional support for Israel
+      while developing the next generation of Jewish civic leaders.
     </p>
   </div>
 
   <div class="about-block">
     <h2>Our History</h2>
     <p>
-      Founded in 1984, CityPAC has been led by hundreds of committed Jewish
-      Chicagoans in their 20s, 30s, and early 40s who share one overriding goal:
-      supporting candidates who believe in a strong and enduring U.S.–Israel
-      relationship.
+      Founded in 1984, CityPAC has contributed more than $1.4 million to over
+      400 pro-Israel Congressional candidates from both political parties
+      across all 50 states.
     </p>
   </div>
 
@@ -369,7 +360,6 @@ body {
 
 <footer class="site-footer">
   <div class="footer-top-line"></div>
-
   <div class="footer-inner">
     <div class="footer-disclaimer">
       Paid for by CityPAC and not authorized by any candidate or candidate committee.
