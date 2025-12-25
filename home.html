@@ -590,25 +590,6 @@ body {
   </div>
 </footer>
   
-<script>
-  e.preventDefault();
-  const btn = document.getElementById("signupBtn");
-  const success = document.getElementById("signupSuccess");
-
-  btn.disabled = true;
-  btn.innerText = "Submitting…";
-
-  fetch(
-    "https://script.google.com/macros/s/AKfycbyMnbkQ0C_34sPpiuuUiiCRAL-Z9SmMYa9rZiWMbPTaF3aAyFjwn7FWRBYkdGsI0r-a2A/exec",
-    { method: "POST", body: new URLSearchParams(new FormData(e.target)) }
-  ).then(() => {
-    btn.innerText = "Submitted ✓";
-    success.style.display = "block";
-    e.target.reset();
-  });
-});
-</script>
-
 </script>
 
 <script>
@@ -675,6 +656,19 @@ function launchEmojiConfetti(button) {
     setTimeout(() => emoji.remove(), 4500);
   }
 }
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const hamburger = document.getElementById("hamburger");
+  const menu = document.getElementById("menu");
+
+  if (!hamburger || !menu) return;
+
+  hamburger.addEventListener("click", function () {
+    menu.classList.toggle("show");
+  });
+});
 </script>
   
 </body>
