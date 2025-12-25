@@ -1,378 +1,111 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About CityPAC</title>
+<!-- ================= OUR PRIORITIES ================= -->
+<section class="priorities">
+  <h2>Our Priorities</h2>
 
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+  <div class="priorities-grid">
 
-  <style>
-    * {
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
-    }
-
-    body {
-      margin: 0;
-      background: #ffffff;
-      color: #111;
-    }
-
-    /* ================= HEADER ================= */
-    .site-header {
-      position: absolute;
-      top: 0;
-      width: 100%;
-      z-index: 50;
-    }
-
-    .header-inner {
-      max-width: 1200px;
-      margin: auto;
-      padding: 22px 24px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .header-logo img {
-      height: 56px;
-    }
-
-    .header-menu {
-      display: flex;
-      gap: 32px;
-    }
-
-    .header-menu a {
-      color: #ffffff;
-      text-decoration: none;
-      font-size: 18px;
-      font-weight: 600;
-      text-transform: uppercase;
-      position: relative;
-      padding-bottom: 6px;
-    }
-
-    .header-menu a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      width: 0;
-      height: 3px;
-      background: #ffffff;
-      transition: width 0.25s ease;
-    }
-
-    .header-menu a:hover::after {
-      width: 100%;
-    }
-
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 6px;
-      cursor: pointer;
-    }
-
-    .hamburger span {
-      width: 26px;
-      height: 3px;
-      background: #ffffff;
-    }
-
-    @media (max-width: 900px) {
-      .hamburger {
-        display: flex;
-      }
-
-      .header-menu {
-        position: absolute;
-        top: 72px;
-        right: 24px;
-        background: #ffffff;
-        padding: 18px 20px;
-        border-radius: 8px;
-        display: none;
-        flex-direction: column;
-        gap: 16px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-      }
-
-      .header-menu.show {
-        display: flex;
-      }
-
-      .header-menu a {
-        color: #44b6e5;
-        font-size: 16px;
-        width: fit-content;
-      }
-
-      .header-menu a::after {
-        background: #44b6e5;
-      }
-    }
-
-    /* ================= HERO ================= */
-    .about-hero {
-      height: 45vh;
-      background: #003366;
-      color: #ffffff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 0 24px;
-    }
-
-    .about-hero h1 {
-      font-size: clamp(34px, 5vw, 54px);
-      margin: 0;
-    }
-
-    /* ================= CONTENT ================= */
-    .content-wrapper {
-      max-width: 1100px;
-      margin: 70px auto;
-      padding: 0 24px;
-    }
-
-    .section {
-      margin-bottom: 64px;
-    }
-
-    .section h2 {
-      color: #003366;
-      font-size: 28px;
-      text-transform: uppercase;
-      margin-bottom: 24px;
-    }
-
-    .section p {
-      font-size: 16px;
-      line-height: 1.75;
-      margin-bottom: 16px;
-    }
-
-    /* ================= POLICY / PRIORITIES ================= */
-    .priorities-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 28px;
-    }
-
-    .priority-card {
-      padding: 28px 26px;
-      border-radius: 12px;
-      border: 2px solid transparent;
-      transition: border-color 0.25s ease, box-shadow 0.25s ease;
-    }
-
-    .priority-card:hover {
-      border-color: #44b6e5;
-      box-shadow: 0 12px 30px rgba(0,0,0,0.08);
-    }
-
-    .priority-card h3 {
-      color: #44b6e5;
-      font-size: 20px;
-      margin-bottom: 12px;
-      text-transform: uppercase;
-    }
-
-    .priority-card p {
-      font-size: 15px;
-      line-height: 1.6;
-    }
-
-    /* ================= FOOTER ================= */
-    .site-footer {
-      background: #003366;
-      color: #ffffff;
-      font-size: 12px;
-    }
-
-    .footer-top-line {
-      height: 4px;
-      background: #44b6e5;
-    }
-
-    .footer-inner {
-      max-width: 1200px;
-      margin: auto;
-      padding: 32px 24px;
-      text-align: center;
-    }
-
-    .footer-disclaimer {
-      border: 1px solid #ffffff;
-      border-radius: 6px;
-      padding: 14px 18px;
-      margin-bottom: 22px;
-    }
-
-    .footer-logo img {
-      height: 48px;
-      margin-bottom: 18px;
-    }
-
-    .footer-menu {
-      display: flex;
-      justify-content: center;
-      gap: 24px;
-      margin-bottom: 18px;
-    }
-
-    .footer-menu a {
-      color: #44b6e5;
-      text-decoration: none;
-      font-weight: 600;
-      text-transform: uppercase;
-    }
-  </style>
-</head>
-
-<body>
-
-<header class="site-header">
-  <div class="header-inner">
-    <a href="home.html" class="header-logo">
-      <img src="images/citypaclogo.png" alt="CityPAC Logo">
-    </a>
-
-    <nav class="header-menu" id="headerMenu">
-      <a href="home.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="join.html">Join</a>
-      <a href="contact.html">Contact</a>
-      <a href="donate.html">Donate</a>
-    </nav>
-
-    <div class="hamburger" id="hamburger">
-      <span></span><span></span><span></span>
+    <div class="priority-card">
+      <div class="priority-title">U.S.–Israel Alliance</div>
+      <p>
+        Ensuring unwavering bipartisan Congressional support for Israel’s
+        security, legitimacy, and right to self-defense.
+      </p>
     </div>
-  </div>
-</header>
 
-<section class="about-hero">
-  <h1>About CityPAC</h1>
+    <div class="priority-card">
+      <div class="priority-title">Bipartisan Engagement</div>
+      <p>
+        Supporting candidates from both political parties who share CityPAC’s
+        commitment to a strong and enduring U.S.–Israel relationship.
+      </p>
+    </div>
+
+    <div class="priority-card">
+      <div class="priority-title">Next Generation Leadership</div>
+      <p>
+        Empowering young Jewish professionals to engage directly in the
+        political process through education, advocacy, and leadership
+        opportunities.
+      </p>
+    </div>
+
+    <div class="priority-card">
+      <div class="priority-title">Political Impact</div>
+      <p>
+        Directly contributing to pro-Israel candidates and strengthening
+        Congressional coalitions that support Israel.
+      </p>
+    </div>
+
+  </div>
 </section>
 
-<div class="content-wrapper">
+<style>
+/* ================= OUR PRIORITIES ================= */
 
-  <!-- MISSION -->
-  <section class="section">
-    <h2>Mission</h2>
-    <p>
-      CityPAC is an independent, bipartisan, pro-Israel political action committee (PAC)
-      dedicated to strengthening the U.S.–Israel relationship.
-    </p>
-    <p>
-      Unique to Chicago, CityPAC is an all-volunteer organization that empowers young men
-      and women to get directly involved in the political process, to learn about and
-      support Israel, and to plan and participate in social and educational programs
-      important to the pro-Israel community.
-    </p>
-    <p>
-      Through its work, CityPAC not only helps to maintain strong and steadfast
-      Congressional support for Israel, but it also provides ongoing, real-world
-      leadership opportunities for the Jewish community in Chicago.
-    </p>
-  </section>
+.priorities {
+  max-width: 1200px;
+  margin: 80px auto;
+  padding: 0 24px;
+}
 
-  <!-- PRIORITIES -->
-  <section class="section">
-    <h2>Our Priorities</h2>
+.priorities h2 {
+  font-size: 32px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 40px;
+  color: #0f2f5f;
+}
 
-    <div class="priorities-grid">
-      <div class="priority-card">
-        <h3>U.S.–Israel Alliance</h3>
-        <p>
-          Ensuring unwavering bipartisan Congressional support for Israel’s security,
-          legitimacy, and right to self-defense.
-        </p>
-      </div>
+/* GRID */
+.priorities-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 across on desktop */
+  gap: 28px;
+}
 
-      <div class="priority-card">
-        <h3>Bipartisan Engagement</h3>
-        <p>
-          Supporting candidates from both political parties who share CityPAC’s
-          commitment to a strong and enduring U.S.–Israel relationship.
-        </p>
-      </div>
+/* CARD */
+.priority-card {
+  border: 2px solid #44b6e5;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #ffffff;
+}
 
-      <div class="priority-card">
-        <h3>Next Generation Leadership</h3>
-        <p>
-          Empowering young Jewish professionals to engage directly in the political
-          process through education, advocacy, and leadership opportunities.
-        </p>
-      </div>
+/* TITLE BAR */
+.priority-title {
+  background: #44b6e5;
+  color: #ffffff;
+  padding: 18px 20px;
+  font-size: 18px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
 
-      <div class="priority-card">
-        <h3>Political Impact</h3>
-        <p>
-          Directly contributing to pro-Israel candidates and strengthening Congressional
-          coalitions that support Israel.
-        </p>
-      </div>
-    </div>
-  </section>
+/* BODY */
+.priority-card p {
+  padding: 22px 20px 26px;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #111;
+  margin: 0;
+}
 
-  <!-- HISTORY -->
-  <section class="section">
-    <h2>History</h2>
-    <p>
-      Since 1984, CityPAC — led by the efforts of hundreds of committed Jewish Chicagoans
-      in their 20s, 30s, and early 40s — has had one overriding mission: to support
-      candidates for and members of Congress who share the PAC’s commitment to a strong
-      and enduring U.S.–Israel relationship.
-    </p>
-    <p>
-      CityPAC has contributed more than <strong>$1.4 million</strong> to over
-      <strong>400 pro-Israel Congressional candidates</strong> from both political
-      parties and from all 50 states.
-    </p>
-  </section>
+/* TABLET — 2 x 2 */
+@media (max-width: 1100px) {
+  .priorities-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
 
-</div>
+/* MOBILE — 1 per row */
+@media (max-width: 600px) {
+  .priorities-grid {
+    grid-template-columns: 1fr;
+  }
 
-<footer class="site-footer">
-  <div class="footer-top-line"></div>
-  <div class="footer-inner">
-    <div class="footer-disclaimer">
-      Paid for by CityPAC and not authorized by any candidate or candidate committee.
-      Contributions to CityPAC are not deductible for federal income tax purposes.
-    </div>
-
-    <div class="footer-logo">
-      <img src="images/citypaclogo.png" alt="">
-    </div>
-
-    <nav class="footer-menu">
-      <a href="home.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="join.html">Join</a>
-      <a href="donate.html">Donate</a>
-    </nav>
-
-    © 2025 CityPAC. All rights reserved.
-  </div>
-</footer>
-
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-  const burger = document.getElementById("hamburger");
-  const menu = document.getElementById("headerMenu");
-
-  burger.addEventListener("click", function () {
-    menu.classList.toggle("show");
-  });
-});
-</script>
-
-</body>
-</html>
+  .priorities h2 {
+    font-size: 26px;
+  }
+}
+</style>
