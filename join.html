@@ -16,12 +16,12 @@ body {
   color: #111;
 }
 
-/* ================= HEADER ================= */
+/* ================= NAVY HEADER (IDENTICAL TO ABOUT) ================= */
 .site-header {
-  position: absolute;
-  top: 0;
+  background: #003366;
   width: 100%;
-  z-index: 30;
+  position: relative;
+  z-index: 20;
 }
 
 .header-inner {
@@ -59,12 +59,11 @@ body {
   width: 0;
   height: 3px;
   background: #ffffff;
-  transition: width .25s ease;
+  transition: width 0.25s ease;
 }
 
 .header-menu a:hover::after { width: 100%; }
 
-/* Donate button */
 .header-menu .donate-btn {
   background: #e04b3f;
   color: #ffffff !important;
@@ -73,8 +72,8 @@ body {
   font-weight: 700;
 }
 .header-menu .donate-btn::after { display: none; }
+.header-menu .donate-btn:hover { background: #c93c32; }
 
-/* Hamburger */
 .hamburger {
   display: none;
   flex-direction: column;
@@ -87,13 +86,12 @@ body {
   background: #ffffff;
 }
 
-/* MOBILE MENU */
 @media (max-width: 900px) {
   .hamburger { display: flex; }
 
   .header-menu {
     position: absolute;
-    top: 78px;
+    top: 72px;
     right: 24px;
     background: #ffffff;
     padding: 18px 22px;
@@ -101,40 +99,37 @@ body {
     display: none;
     flex-direction: column;
     gap: 16px;
-    box-shadow: 0 10px 30px rgba(0,0,0,.15);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    align-items: flex-start;
   }
 
   .header-menu.show { display: flex; }
 
-  .header-menu a {
-    color: #44b6e5;
-    width: fit-content;
-  }
-
-  .header-menu a::after {
-    background: #44b6e5;
-  }
+  .header-menu a { color: #44b6e5; }
+  .header-menu a::after { background: #44b6e5; }
 
   .header-menu .donate-btn {
     color: #ffffff !important;
+    padding: 8px 14px;
+    border-radius: 8px;
   }
 }
 
-/* ================= PAGE HEADER ================= */
+/* ================= PAGE INTRO ================= */
 .page-header {
-  background: linear-gradient(to bottom, #0f2f5f, #003366);
-  color: #ffffff;
-  padding: 140px 24px 80px;
+  background: #f6f9fc;
+  padding: 70px 24px 50px;
   text-align: center;
 }
 
 .page-header h1 {
   font-size: 42px;
-  margin-bottom: 12px;
+  margin-bottom: 16px;
+  color: #003366;
 }
 
 .page-header p {
-  max-width: 700px;
+  max-width: 820px;
   margin: auto;
   font-size: 18px;
   line-height: 1.6;
@@ -143,79 +138,80 @@ body {
 /* ================= CLUBS ================= */
 .clubs {
   max-width: 1200px;
-  margin: 80px auto;
+  margin: 70px auto;
   padding: 0 24px;
 }
 
 .club-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 32px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
 }
 
 .club {
   border: 2px solid #44b6e5;
-  border-radius: 14px;
-  padding: 32px;
+  border-radius: 12px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
   text-align: center;
-  transition: transform .2s ease, box-shadow .2s ease;
 }
 
-.club:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 14px 30px rgba(0,0,0,.12);
-}
-
+/* TITLE BAR */
 .club h2 {
   background: #44b6e5;
   color: #ffffff;
-  padding: 14px;
-  border-radius: 10px;
-  font-size: 20px;
-  margin-bottom: 18px;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 18px;
   text-transform: uppercase;
-}
-
-.club .price {
-  font-size: 28px;
-  font-weight: 700;
-  color: #003366;
   margin-bottom: 14px;
 }
 
-.club p {
-  line-height: 1.6;
-  margin-bottom: 24px;
+/* CONTENT */
+.club .price {
+  font-size: 24px;
+  font-weight: 700;
+  color: #003366;
+  margin-bottom: 10px;
 }
 
+.club ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 22px;
+  flex-grow: 1;
+}
+
+.club ul li {
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+
+/* BUTTON */
 .club a {
-  display: inline-block;
   background: #003366;
   color: #ffffff;
-  padding: 12px 28px;
+  padding: 12px 0;
   border-radius: 8px;
   font-weight: 600;
   text-decoration: none;
 }
 
 /* RESPONSIVE */
-@media (max-width: 1000px) {
-  .club-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+@media (max-width: 1100px) {
+  .club-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
-@media (max-width: 650px) {
-  .club-grid {
-    grid-template-columns: 1fr;
-  }
+@media (max-width: 600px) {
+  .club-grid { grid-template-columns: 1fr; }
 }
 
-/* ================= FOOTER ================= */
+/* ================= FOOTER (IDENTICAL TO ABOUT) ================= */
 .site-footer {
   background: #003366;
   color: #ffffff;
-  font-size: 12px;
+  font-size: 13px;
 }
 
 .footer-top-line {
@@ -235,6 +231,7 @@ body {
   border-radius: 6px;
   padding: 14px 18px;
   margin-bottom: 22px;
+  line-height: 1.5;
 }
 
 .footer-logo img {
@@ -247,6 +244,7 @@ body {
   justify-content: center;
   gap: 24px;
   margin-bottom: 18px;
+  flex-wrap: wrap;
 }
 
 .footer-menu a {
@@ -254,6 +252,27 @@ body {
   text-decoration: none;
   font-weight: 600;
   text-transform: uppercase;
+  font-size: 13px;
+  position: relative;
+  padding-bottom: 4px;
+}
+
+.footer-menu a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background: #44b6e5;
+  transition: width 0.25s ease;
+}
+
+.footer-menu a:hover::after { width: 100%; }
+
+.footer-copy {
+  font-size: 12px;
+  opacity: 0.85;
 }
 </style>
 </head>
@@ -283,8 +302,7 @@ body {
 <section class="page-header">
   <h1>Join CityPAC</h1>
   <p>
-    Become part of Chicago’s next generation of pro-Israel leaders through
-    exclusive access to political engagement, education, and community.
+    Become part of Chicago’s next generation of pro-Israel leaders.
   </p>
 </section>
 
@@ -294,31 +312,36 @@ body {
     <div class="club">
       <h2>Chai Society</h2>
       <div class="price">$1,080 / year</div>
-      <p>
-        Our most engaged young professionals.
-        Exclusive access to premier Pro-Israel events
-        in Chicago and beyond.
-      </p>
+      <ul>
+        <li>Most engaged young professionals</li>
+        <li>Exclusive Pro-Israel events</li>
+        <li>Chicago & national access</li>
+        <li>Premium CityPAC programming</li>
+      </ul>
       <a href="#">Join Chai Society</a>
     </div>
 
     <div class="club">
       <h2>Gold Coast Society</h2>
       <div class="price">$720 / year</div>
-      <p>
-        For young professionals in their 30’s.
-        Access to CityPAC programming and Pro-Israel networking events.
-      </p>
+      <ul>
+        <li>Young professionals (30s)</li>
+        <li>CityPAC programming</li>
+        <li>Pro-Israel networking</li>
+        <li>Exclusive events</li>
+      </ul>
       <a href="#">Join Gold Coast</a>
     </div>
 
     <div class="club">
       <h2>Lake Shore Society</h2>
       <div class="price">$360 / year</div>
-      <p>
-        For young professionals in their 20’s.
-        Includes CityPAC programs, events, and community engagement.
-      </p>
+      <ul>
+        <li>Young professionals (20s)</li>
+        <li>CityPAC events</li>
+        <li>Community engagement</li>
+        <li>Leadership development</li>
+      </ul>
       <a href="#">Join Lake Shore</a>
     </div>
 
@@ -332,9 +355,11 @@ body {
       Paid for by CityPAC and not authorized by any candidate or candidate committee.
       Contributions to CityPAC are not deductible for federal income tax purposes.
     </div>
+
     <div class="footer-logo">
-      <img src="images/citypaclogo.png" alt="">
+      <img src="images/citypaclogo.png" alt="CityPAC Logo">
     </div>
+
     <nav class="footer-menu">
       <a href="home.html">Home</a>
       <a href="about.html">About</a>
@@ -342,7 +367,10 @@ body {
       <a href="contact.html">Contact</a>
       <a href="donate.html">Donate</a>
     </nav>
-    © 2025 CityPAC. All rights reserved.
+
+    <div class="footer-copy">
+      © 2025 CityPAC. All rights reserved.
+    </div>
   </div>
 </footer>
 
