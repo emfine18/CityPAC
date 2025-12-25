@@ -89,51 +89,36 @@
       display: block;
     }
 
-/* =========================
-   TAGLINE (STAR FIX)
-   ========================= */
+    /* ================= TAGLINE ================= */
+    .tagline-wrapper {
+      border-top: 6px solid #44b6e5;
+      border-bottom: 6px solid #44b6e5;
+      padding: 8px 0;
+    }
 
-.tagline-wrapper {
-  border-top: 6px solid #44b6e5;
-  border-bottom: 6px solid #44b6e5;
-  padding: 6px 0;
-  overflow: hidden; /* prevents cut-off */
-}
+    .tagline {
+      max-width: 1200px;
+      margin: auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: clamp(8px, 2vw, 18px);
+      color: #44b6e5;
+      font-size: clamp(14px, 2.6vw, 26px);
+      font-weight: 600;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
 
-.tagline {
-  max-width: 1200px;
-  margin: auto;
-  padding: 0 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: clamp(8px, 2vw, 18px);
-  color: #44b6e5;
-  font-size: clamp(14px, 2.4vw, 26px);
-  font-weight: 600;
-  text-transform: uppercase;
-  white-space: nowrap;
-}
+    .stars {
+      display: flex;
+      gap: clamp(3px, 1vw, 6px);
+    }
 
-.tagline-text {
-  flex-shrink: 0;
-}
-
-.stars {
-  display: flex;
-  gap: clamp(4px, 1vw, 8px);
-}
-
-.stars img {
-  width: clamp(12px, 2vw, 22px);
-}
-
-/* MOBILE: ONLY 2 STARS PER SIDE */
-@media (max-width: 600px) {
-  .desktop-only {
-    display: none;
-  }
-}
+    .stars img {
+      width: clamp(12px, 2vw, 22px);
+    }
 
     /* ================= SIGNUP ================= */
     .signup {
@@ -284,27 +269,15 @@
 
 <div class="tagline-wrapper">
   <div class="tagline">
-    <div class="stars left">
-      <img src="images/chistars.png">
-      <img src="images/chistars.png">
-      <img src="images/chistars.png" class="desktop-only">
-      <img src="images/chistars.png" class="desktop-only">
+    <div class="stars">
+      <img src="images/chistars.png"><img src="images/chistars.png"><img src="images/chistars.png"><img src="images/chistars.png">
     </div>
-
-    <span class="tagline-text">
-      40+ Years of Pro-Israel Political Advocacy
-    </span>
-
-    <div class="stars right">
-      <img src="images/chistars.png">
-      <img src="images/chistars.png">
-      <img src="images/chistars.png" class="desktop-only">
-      <img src="images/chistars.png" class="desktop-only">
+    40+ Years of Pro-Israel Political Advocacy
+    <div class="stars">
+      <img src="images/chistars.png"><img src="images/chistars.png"><img src="images/chistars.png"><img src="images/chistars.png">
     </div>
   </div>
 </div>
-
-  
 
 <section class="signup">
   <h2>Stay in the Loop</h2>
@@ -444,6 +417,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 </script>
+
   
   <section class="about">
   <img src="images/ChicagoSign.png">
@@ -461,110 +435,26 @@ document.addEventListener("DOMContentLoaded", function () {
   </div>
 </section>
 
-<footer class="site-footer">
-  <div class="footer-top-line"></div>
+<footer>
+  <div class="footer-disclaimer">
+    Paid for by CityPAC and not authorized by any candidate or candidate committee.<br>
+    Contributions to CityPAC are not deductible for federal income tax purposes.
+  </div>
 
-  <div class="footer-inner">
-    <div class="footer-disclaimer">
-      Paid for by CityPAC and not authorized by any candidate or candidate committee.<br>
-      Contributions to CityPAC are not deductible for federal income tax purposes.
-    </div>
-
-    <div class="footer-logo">
-      <img src="images/citypaclogo.png" alt="CityPAC Logo">
-    </div>
-
-    <nav class="footer-menu">
-      <a href="home.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="join.html">Join</a>
-      <a href="donate.html">Donate</a>
-    </nav>
-
-    <div class="footer-copy">
-      © 2025 CityPAC. All rights reserved.
-    </div>
+  <div class="footer-menu">
+    <a href="home.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="join.html">Join</a>
+    <a href="donate.html">Donate</a>
   </div>
 </footer>
 
-<style>
-/* =========================
-   FOOTER (FINAL)
-   ========================= */
 
-html, body {
-  height: 100%;
+<script>
+function toggleMenu() {
+  document.getElementById("menu").classList.toggle("show");
 }
-
-body {
-  display: flex;
-  flex-direction: column;
-}
-
-.site-footer {
-  margin-top: auto;
-  background: #003366;
-  color: #ffffff;
-  font-size: 12px;
-}
-
-.footer-top-line {
-  height: 4px;
-  background: #44b6e5;
-}
-
-.footer-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 32px 24px;
-  text-align: center;
-}
-
-.footer-disclaimer {
-  border: 1px solid #ffffff;
-  border-radius: 6px;
-  padding: 14px 18px;
-  margin-bottom: 22px;
-  line-height: 1.5;
-}
-
-.footer-logo img {
-  height: 48px;
-  margin-bottom: 18px;
-}
-
-.footer-menu {
-  display: flex;
-  justify-content: center;
-  gap: 24px;
-  margin-bottom: 18px;
-  white-space: nowrap;
-}
-
-.footer-menu a {
-  color: #44b6e5;
-  text-decoration: none;
-  font-weight: 600;
-  text-transform: uppercase;
-  font-size: 13px;
-}
-
-.footer-copy {
-  font-size: 12px;
-  opacity: 0.9;
-}
-
-/* MOBILE */
-@media (max-width: 600px) {
-  .footer-menu {
-    gap: 16px;
-  }
-
-  .footer-logo img {
-    height: 42px;
-  }
-}
-</style>
+</script>
 
 </body>
 </html>
