@@ -281,19 +281,37 @@
 
 <section class="signup">
   <h2>Stay in the Loop</h2>
+
   <form
     action="https://docs.google.com/forms/d/e/1FAIpQLSfKL57BfdLd6taVbvT2GdzJx_SAfbMHzrWPnYZkS8cydOXcew/formResponse"
     method="POST"
     target="hidden_iframe"
+    onsubmit="handleSignupSubmit()"
   >
     <input name="entry.1668233922" placeholder="Name">
     <input name="entry.318895234" placeholder="Phone">
     <input name="entry.1545107694" class="email" placeholder="Email" required>
-    <button type="submit">Submit</button>
+    <button type="submit" id="signupButton">Submit</button>
   </form>
+
   <iframe name="hidden_iframe" style="display:none;"></iframe>
+
+  <p id="signupSuccess" style="display:none; color:#44b6e5; font-weight:600; margin-top:12px;">
+    Thanks for signing up!
+  </p>
 </section>
 
+<script>
+  function handleSignupSubmit() {
+    const btn = document.getElementById("signupButton");
+    btn.disabled = true;
+    btn.innerText = "Submitted";
+
+    setTimeout(function () {
+      document.getElementById("signupSuccess").style.display = "block";
+    }, 500);
+  }
+</script>
 <section class="about">
   <img src="images/ChicagoSign.png">
   <div class="about-content">
