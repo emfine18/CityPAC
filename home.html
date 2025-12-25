@@ -16,9 +16,7 @@
       color: #111;
     }
 
-    /* ==============================
-       HEADER
-       ============================== */
+    /* ================= HEADER ================= */
     nav {
       position: absolute;
       top: 0;
@@ -31,13 +29,11 @@
       margin: auto;
       padding: 22px 24px;
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
     }
 
-    .logo img {
-      height: 56px;
-    }
+    .logo img { height: 56px; }
 
     .menu {
       display: flex;
@@ -46,8 +42,7 @@
 
     .menu a {
       position: relative;
-      display: inline-block;
-      color: #ffffff;
+      color: #fff;
       text-decoration: none;
       font-size: 18px;
       font-weight: 600;
@@ -81,9 +76,7 @@
       background: #ffffff;
     }
 
-    /* ==============================
-       HERO
-       ============================== */
+    /* ================= HERO ================= */
     .hero {
       height: 65vh;
       overflow: hidden;
@@ -97,127 +90,81 @@
     }
 
     /* ================= TAGLINE ================= */
-.tagline-wrapper {
-  border-top: 6px solid #44b6e5;
-  border-bottom: 6px solid #44b6e5;
-  padding: 8px 0; /* tighter top/bottom space */
-  margin: 0;
-}
-
-.tagline {
-  max-width: 1200px;
-  margin: auto;
-  padding: 0 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: clamp(8px, 2vw, 18px);
-  color: #44b6e5;
-  font-size: clamp(14px, 2.6vw, 26px); /* SHRINKS WITH WIDTH */
-  font-weight: 600;
-  text-transform: uppercase;
-  white-space: nowrap; /* never stacks */
-}
-
-.stars {
-  display: flex;
-  gap: clamp(3px, 1vw, 6px);
-  flex-shrink: 0;
-}
-
-.stars img {
-  width: clamp(12px, 2vw, 22px); /* stars shrink with screen */
-}
-
-/* ================= SIGNUP ================= */
-    
-<!-- ==============================
-     STAY IN THE LOOP (ALL-IN-ONE)
-     ============================== -->
-<style>
-  .signup {
-    padding: 22px 24px 18px;
-    text-align: center;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
-  .signup h2 {
-    color: #e53935;
-    margin-bottom: 14px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-  }
-
-  /* DESKTOP: ALL ON ONE LINE */
-  .signup form {
-    max-width: 1100px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 0.9fr 0.9fr 1.4fr 0.7fr;
-    gap: 16px;
-    align-items: end;
-  }
-
-  .signup input,
-  .signup button {
-    height: 54px;
-    font-size: 15px;
-  }
-
-  .signup input {
-    padding: 0 14px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-  }
-
-  .signup button {
-    background: #44b6e5;
-    color: #ffffff;
-    border: none;
-    border-radius: 8px;
-    font-weight: 600;
-    cursor: pointer;
-  }
-
-  /* TABLET & MOBILE */
-  @media (max-width: 1100px) {
-    .signup form {
-      grid-template-columns: 1fr 1fr;
-      max-width: 100%;
+    .tagline-wrapper {
+      border-top: 6px solid #44b6e5;
+      border-bottom: 6px solid #44b6e5;
+      padding: 8px 0;
     }
 
-    .signup input.email {
-      grid-column: 1 / 2;
+    .tagline {
+      max-width: 1200px;
+      margin: auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: clamp(8px, 2vw, 18px);
+      color: #44b6e5;
+      font-size: clamp(14px, 2.6vw, 26px);
+      font-weight: 600;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .stars {
+      display: flex;
+      gap: clamp(3px, 1vw, 6px);
+    }
+
+    .stars img {
+      width: clamp(12px, 2vw, 22px);
+    }
+
+    /* ================= SIGNUP ================= */
+    .signup {
+      padding: 22px 24px 18px;
+      text-align: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .signup h2 {
+      color: #e53935;
+      margin-bottom: 14px;
+      text-transform: uppercase;
+    }
+
+    .signup form {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 0.9fr 0.9fr 1.4fr 0.7fr;
+      gap: 16px;
+      align-items: end;
+    }
+
+    .signup input,
+    .signup button {
+      height: 54px;
+      font-size: 15px;
+    }
+
+    .signup input {
+      padding: 0 14px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
     }
 
     .signup button {
-      grid-column: 2 / 3;
-      width: 100%;
+      background: #44b6e5;
+      color: #ffffff;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
     }
-  }
-</style>
 
-<section class="signup">
-  <h2>Stay in the Loop</h2>
-
-  <form
-    action="https://docs.google.com/forms/d/e/1FAIpQLSfKL57BfdLd6taVbvT2GdzJx_SAfbMHzrWPnYZkS8cydOXcew/formResponse"
-    method="POST"
-    target="hidden_iframe"
-  >
-    <input name="entry.1111111111" placeholder="Name">
-    <input name="entry.2222222222" placeholder="Phone">
-    <input name="entry.3333333333" class="email" placeholder="Email" required>
-    <button type="submit">Submit</button>
-  </form>
-
-  <iframe name="hidden_iframe" style="display:none;"></iframe>
-</section>
-  
-    /* ==============================
-       ABOUT
-       ============================== */
+    /* ================= ABOUT ================= */
     .about {
       max-width: 1200px;
       margin: 50px auto;
@@ -234,23 +181,9 @@
 
     .about-content { width: 55%; }
 
-    .about h2 {
-      color: #44b6e5;
-      margin-bottom: 16px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    .about p {
-      line-height: 1.7;
-      margin-bottom: 16px;
-    }
-
-    /* ==============================
-       FOOTER
-       ============================== */
+    /* ================= FOOTER ================= */
     footer {
-      background: #111;
+      background: #003366;
       color: #ffffff;
       text-align: center;
       padding: 36px 20px;
@@ -263,7 +196,6 @@
       justify-content: center;
       gap: 24px;
       margin-bottom: 16px;
-      flex-wrap: nowrap;
       white-space: nowrap;
     }
 
@@ -275,217 +207,113 @@
       text-transform: uppercase;
     }
 
-    /* ==============================
-       MOBILE
-       ============================== */
-    /* ==============================
-   MOBILE
-   ============================== */
-@media (max-width: 900px) {
-  .menu {
-    position: absolute;
-    top: 80px;
-    right: 24px;
-    background: #ffffff;
-    flex-direction: column;
-    padding: 20px;
-    gap: 20px;
-    display: none;
-    align-items: flex-start;
-  }
+    /* ================= MOBILE ================= */
+    @media (max-width: 1100px) {
+      .signup form {
+        grid-template-columns: 1fr 1fr;
+      }
 
-  .menu a {
-    color: #44b6e5;
-    font-size: 16px;
-    display: inline-block;
-    width: fit-content; /* underline = word width */
-  }
+      .signup input.email { grid-column: 1 / 2; }
+      .signup button { grid-column: 2 / 3; width: 100%; }
+    }
 
-  .menu a::after {
-    background: #44b6e5;
-    width: 0;
-    left: 0;
-  }
+    @media (max-width: 900px) {
+      .menu {
+        position: absolute;
+        top: 80px;
+        right: 24px;
+        background: #ffffff;
+        flex-direction: column;
+        padding: 20px;
+        gap: 20px;
+        display: none;
+        align-items: flex-start;
+      }
 
-  .menu a:hover::after {
-    width: 100%;
-  }
+      .menu a {
+        color: #44b6e5;
+        display: inline-block;
+        width: fit-content;
+      }
 
-  .menu.show {
-    display: flex;
-  }
+      .menu a::after { background: #44b6e5; }
 
-  .hamburger {
-    display: flex;
-  }
+      .menu.show { display: flex; }
+      .hamburger { display: flex; }
+      .hamburger span { background: #44b6e5; }
 
-  .about {
-    flex-direction: column;
-  }
-
-  .about img,
-  .about-content {
-    width: 100%;
-  }
-}
-    
+      .about { flex-direction: column; }
+      .about img, .about-content { width: 100%; }
+    }
   </style>
 </head>
 
 <body>
 
-<!-- HEADER -->
 <nav>
   <div class="nav-inner">
-    <div class="logo">
-      <img src="images/citypaclogo.png" alt="CityPAC Logo">
-    </div>
-
+    <div class="logo"><img src="images/citypaclogo.png"></div>
     <div class="menu" id="menu">
       <a href="home.html">Home</a>
       <a href="about.html">About</a>
       <a href="join.html">Join</a>
       <a href="donate.html">Donate</a>
     </div>
-
     <div class="hamburger" onclick="toggleMenu()">
       <span></span><span></span><span></span>
     </div>
   </div>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
-  <img src="images/pexels-chaitaastic-2083840.jpg" alt="CityPAC Hero">
+  <img src="images/pexels-chaitaastic-2083840.jpg">
 </section>
 
-<!-- TAGLINE -->
 <div class="tagline-wrapper">
   <div class="tagline">
     <div class="stars">
-      <img src="images/chistars.png">
-      <img src="images/chistars.png">
-      <img src="images/chistars.png">
-      <img src="images/chistars.png">
+      <img src="images/chistars.png"><img src="images/chistars.png"><img src="images/chistars.png"><img src="images/chistars.png">
     </div>
-
     40+ Years of Pro-Israel Political Advocacy
-
     <div class="stars">
-      <img src="images/chistars.png">
-      <img src="images/chistars.png">
-      <img src="images/chistars.png">
-      <img src="images/chistars.png">
+      <img src="images/chistars.png"><img src="images/chistars.png"><img src="images/chistars.png"><img src="images/chistars.png">
     </div>
   </div>
 </div>
 
-/* ==============================
-   STAY IN THE LOOP (SIGN UP)
-   ============================== */
-.signup {
-  padding: 22px 24px 18px;
-  text-align: center;
-  max-width: 1200px;
-  margin: 0 auto;
-}
+<section class="signup">
+  <h2>Stay in the Loop</h2>
+  <form action="https://docs.google.com/forms/d/e/1FAIpQLSfKL57BfdLd6taVbvT2GdzJx_SAfbMHzrWPnYZkS8cydOXcew/formResponse" method="POST" target="hidden_iframe">
+    <input placeholder="Name">
+    <input placeholder="Phone">
+    <input class="email" placeholder="Email">
+    <button type="submit">Submit</button>
+  </form>
+  <iframe name="hidden_iframe" style="display:none;"></iframe>
+</section>
 
-.signup h2 {
-  color: #e53935;
-  margin-bottom: 14px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-/* DESKTOP GRID */
-.signup form {
-  max-width: 1100px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 0.9fr 0.9fr 1.4fr 0.7fr;
-  gap: 16px;
-  align-items: end;
-}
-
-.signup input,
-.signup button {
-  height: 54px;
-  font-size: 15px;
-}
-
-.signup input {
-  padding: 0 14px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-}
-
-.signup button {
-  background: #44b6e5;
-  color: #ffffff;
-  border: none;
-  border-radius: 8px;
-  font-weight: 600;
-  cursor: pointer;
-}
-
-/* TABLET & MOBILE */
-@media (max-width: 900px) {
-  .signup form {
-    grid-template-columns: 1fr 1fr;
-    max-width: 100%;
-  }
-
-  .signup input.email {
-    grid-column: 1 / 2; /* longer than name */
-  }
-
-  .signup button {
-    grid-column: 2 / 3;
-    width: 100%;
-  }
-}
-
-<!-- ABOUT -->
 <section class="about">
-  <img src="images/ChicagoSign.png" alt="Chicago Sign">
+  <img src="images/ChicagoSign.png">
   <div class="about-content">
     <h2>About CityPAC</h2>
-    <p>
-      Founded in 1984, CityPAC brings together generations of engaged Chicagoans
-      dedicated to strengthening the U.S.–Israel relationship through bipartisan
-      political advocacy.
-    </p>
-    <p>
-      CityPAC is an independent, volunteer-driven organization committed to
-      educating, engaging, and empowering civic leaders.
-    </p>
+    <p>Founded in 1984, CityPAC brings together generations of engaged Chicagoans dedicated to bipartisan political advocacy.</p>
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
-  footer {
-  background: #003366;
-  color: #ffffff;
-  text-align: center;
-  padding: 36px 20px;
-  font-size: 12px;
-  line-height: 1.6;
-}
   <div class="footer-menu">
     <a href="home.html">Home</a>
     <a href="about.html">About</a>
     <a href="join.html">Join</a>
     <a href="donate.html">Donate</a>
   </div>
-
-  Paid for by CityPAC and not authorized by any candidate or candidate committee.Contributions to CityPAC are not deductible for federal income tax purposes.
+  Paid for by CityPAC and not authorized by any candidate or candidate committee.
 </footer>
 
 <script>
-  function toggleMenu() {
-    document.getElementById("menu").classList.toggle("show");
-  }
+function toggleMenu() {
+  document.getElementById("menu").classList.toggle("show");
+}
 </script>
 
 </body>
