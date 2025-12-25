@@ -22,68 +22,69 @@
       color: #111;
     }
 
-    /* ================= HEADER ================= */
-    header.site-header {
+    /* ==============================
+       HEADER
+       ============================== */
+    nav {
       position: absolute;
       top: 0;
       width: 100%;
-      z-index: 20;
-      color: #ffffff;
+      z-index: 10;
     }
 
-    .header-inner {
+    .nav-inner {
       max-width: 1200px;
-      margin: 0 auto;
-      padding: 16px 24px 0;
-    }
-
-    .header-disclaimer {
-      border: 1px solid #ffffff;
-      border-radius: 6px;
-      padding: 10px 14px;
-      font-size: 11px;
-      text-align: center;
-      margin-bottom: 14px;
-    }
-
-    .header-main {
+      margin: auto;
+      padding: 22px 24px;
       display: flex;
+      align-items: center;
       justify-content: space-between;
-      align-items: flex-end;
     }
 
-    .header-logo img {
+    .logo img {
       height: 56px;
     }
 
-    .header-menu {
+    .menu {
       display: flex;
       gap: 32px;
     }
 
-    .header-menu a {
+    .menu a {
+      position: relative;
+      display: inline-block;
       color: #ffffff;
       text-decoration: none;
       font-size: 18px;
       font-weight: 600;
       text-transform: uppercase;
-      position: relative;
       padding-bottom: 6px;
     }
 
-    .header-menu a::after {
+    .menu a::after {
       content: "";
       position: absolute;
       left: 0;
       bottom: 0;
       width: 0;
       height: 3px;
-      background: #ffffff;
+      background: #44b6e5;
       transition: width 0.25s ease;
     }
 
-    .header-menu a:hover::after {
-      width: 100%;
+    .menu a:hover::after { width: 100%; }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 6px;
+      cursor: pointer;
+    }
+
+    .hamburger span {
+      width: 28px;
+      height: 3px;
+      background: #ffffff;
     }
 
     /* ================= HERO ================= */
