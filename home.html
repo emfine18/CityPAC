@@ -289,12 +289,15 @@
     <button type="submit">Submit</button>
   </form>
 
-  <p class="signup-success" id="signupSuccess">
+  <p id="signupSuccess" class="signup-success">
     Thanks for signing up!
   </p>
 </section>
 
 <style>
+  /* =========================
+     SIGN UP – DESKTOP
+     ========================= */
   .signup {
     max-width: 1200px;
     margin: 40px auto;
@@ -341,24 +344,36 @@
     font-weight: 600;
   }
 
-  /* MOBILE */
-  @media (max-width: 900px) {
+  /* =========================
+     SIGN UP – MOBILE
+     ========================= */
+  @media (max-width: 768px) {
+    .signup {
+      padding: 0 16px;
+      margin: 28px auto;
+    }
+
+    .signup h2 {
+      font-size: 18px;
+      margin-bottom: 12px;
+    }
+
     .signup-form {
-      grid-template-columns: 1fr 1fr;
-    }
-
-    .signup-form input[name="email"] {
-      grid-column: 1 / 2;
-    }
-
-    .signup-form button {
-      grid-column: 2 / 3;
-      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
     }
 
     .signup-form input,
     .signup-form button {
-      height: 48px;
+      width: 100%;
+      height: 46px;
+      font-size: 14px;
+      border-radius: 6px;
+    }
+
+    .signup-success {
+      text-align: center;
       font-size: 14px;
     }
   }
@@ -369,31 +384,28 @@ document.addEventListener("DOMContentLoaded", function () {
   const form = document.getElementById("signupForm");
   const success = document.getElementById("signupSuccess");
 
-  form.addEventListener("submit", async function (e) {
+  form.addEventListener("submit", function (e) {
     e.preventDefault();
 
-    const payload = {
-      name: form.name.value,
-      phone: form.phone.value,
-      email: form.email.value
-    };
+    const data = new URLSearchParams();
+    data.append("name", form.name.value);
+    data.append("phone", form.phone.value);
+    data.append("email", form.email.value);
 
-    try {
-      await fetch(
-        "https://script.google.com/macros/s/AKfycbyMnbkQ0C_34sPpiuuUiiCRAL-Z9SmMYa9rZiWMbPTaF3aAyFjwn7FWRBYkdGsI0r-a2A/exec",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(payload)
-        }
-      );
-
+    fetch(
+      "https://script.google.com/macros/s/AKfycbyMnbkQ0C_34sPpiuuUiiCRAL-Z9SmMYa9rZiWMbPTaF3aAyFjwn7FWRBYkdGsI0r-a2A/exec",
+      {
+        method: "POST",
+        body: data
+      }
+    )
+    .then(() => {
       success.style.display = "block";
       form.reset();
-    } catch (err) {
+    })
+    .catch(() => {
       alert("Submission failed. Please try again.");
-      console.error(err);
-    }
+    });
   });
 });
 </script>
