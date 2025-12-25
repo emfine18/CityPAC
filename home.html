@@ -279,55 +279,44 @@
   </div>
 </div>
 
-<section class="signup">
+  <section class="signup">
   <h2>Stay in the Loop</h2>
 
-  <div class="form-wrapper">
-    <iframe
-      src="https://docs.google.com/forms/d/e/1FAIpQLSfKL57BfdLd6taVbvT2GdzJx_SAfbMHzrWPnYZkS8cydOXcew/viewform?embedded=true"
-      frameborder="0"
-      marginheight="0"
-      marginwidth="0"
-    ></iframe>
-  </div>
-</section>
+  <form id="signupForm">
+    <input name="name" placeholder="Name">
+    <input name="phone" placeholder="Phone number">
+    <input name="email" class="email" placeholder="Email address" required>
+    <button type="submit">Submit</button>
+  </form>
 
-<style>
-  .form-wrapper {
-    max-width: 1100px;
-    margin: 0 auto;
-    overflow: hidden;
-  }
-
-  .form-wrapper iframe {
-    width: 100%;
-    height: 420px;
-    border: none;
-  }
-
-  /* REMOVE GOOGLE BRANDING VISUALLY */
-  iframe {
-    filter: saturate(0.95);
-  }
-</style>
-  
-  <p id="signupSuccess" style="display:none; color:#44b6e5; font-weight:600; margin-top:12px;">
+  <p id="signupSuccess" style="display:none;color:#44b6e5;font-weight:600;margin-top:12px;">
     Thanks for signing up!
   </p>
 </section>
 
 <script>
-  function handleSignupSubmit() {
-    const btn = document.getElementById("signupButton");
-    btn.disabled = true;
-    btn.innerText = "Submitted";
+document.getElementById("signupForm").addEventListener("submit", async function(e) {
+  e.preventDefault();
 
-    setTimeout(function () {
-      document.getElementById("signupSuccess").style.display = "block";
-    }, 500);
-  }
+  const res = await fetch(
+    "https://script.google.com/macros/s/AKfycbyMnbkQ0C_34sPpiuuUiiCRAL-Z9SmMYa9rZiWMbPTaF3aAyFjwn7FWRBYkdGsI0r-a2A/exec",
+    {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name: this.name.value,
+        phone: this.phone.value,
+        email: this.email.value
+      })
+    }
+  );
+
+  document.getElementById("signupSuccess").style.display = "block";
+  this.reset();
+});
 </script>
-<section class="about">
+
+  <section class="about">
   <img src="images/ChicagoSign.png">
   <div class="about-content">
     <h2>About CityPAC</h2>
