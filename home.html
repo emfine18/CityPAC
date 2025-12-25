@@ -279,40 +279,122 @@
   </div>
 </div>
 
-  <section class="signup">
+<section class="signup">
   <h2>Stay in the Loop</h2>
 
-  <form id="signupForm">
-    <input name="name" placeholder="Name">
-    <input name="phone" placeholder="Phone number">
-    <input name="email" class="email" placeholder="Email address" required>
+  <form id="signupForm" class="signup-form">
+    <input type="text" name="name" placeholder="Name">
+    <input type="text" name="phone" placeholder="Phone number">
+    <input type="email" name="email" placeholder="Email address" required>
     <button type="submit">Submit</button>
   </form>
 
-  <p id="signupSuccess" style="display:none;color:#44b6e5;font-weight:600;margin-top:12px;">
+  <p class="signup-success" id="signupSuccess">
     Thanks for signing up!
   </p>
 </section>
 
-<script>
-document.getElementById("signupForm").addEventListener("submit", async function(e) {
-  e.preventDefault();
+<style>
+  .signup {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 24px;
+  }
 
-  const res = await fetch(
-    "https://script.google.com/macros/s/AKfycbyMnbkQ0C_34sPpiuuUiiCRAL-Z9SmMYa9rZiWMbPTaF3aAyFjwn7FWRBYkdGsI0r-a2A/exec",
-    {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        name: this.name.value,
-        phone: this.phone.value,
-        email: this.email.value
-      })
+  .signup h2 {
+    color: #e53935;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+
+  .signup-form {
+    display: grid;
+    grid-template-columns: 0.9fr 0.9fr 1.4fr 0.6fr;
+    gap: 16px;
+    align-items: center;
+  }
+
+  .signup-form input,
+  .signup-form button {
+    height: 54px;
+    font-size: 15px;
+    border-radius: 8px;
+  }
+
+  .signup-form input {
+    border: 1px solid #ccc;
+    padding: 0 14px;
+  }
+
+  .signup-form button {
+    background: #44b6e5;
+    color: #ffffff;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .signup-success {
+    display: none;
+    margin-top: 12px;
+    color: #44b6e5;
+    font-weight: 600;
+  }
+
+  /* MOBILE */
+  @media (max-width: 900px) {
+    .signup-form {
+      grid-template-columns: 1fr 1fr;
     }
-  );
 
-  document.getElementById("signupSuccess").style.display = "block";
-  this.reset();
+    .signup-form input[name="email"] {
+      grid-column: 1 / 2;
+    }
+
+    .signup-form button {
+      grid-column: 2 / 3;
+      width: 100%;
+    }
+
+    .signup-form input,
+    .signup-form button {
+      height: 48px;
+      font-size: 14px;
+    }
+  }
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.getElementById("signupForm");
+  const success = document.getElementById("signupSuccess");
+
+  form.addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    const payload = {
+      name: form.name.value,
+      phone: form.phone.value,
+      email: form.email.value
+    };
+
+    try {
+      await fetch(
+        "https://script.google.com/macros/s/AKfycbyMnbkQ0C_34sPpiuuUiiCRAL-Z9SmMYa9rZiWMbPTaF3aAyFjwn7FWRBYkdGsI0r-a2A/exec",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        }
+      );
+
+      success.style.display = "block";
+      form.reset();
+    } catch (err) {
+      alert("Submission failed. Please try again.");
+      console.error(err);
+    }
+  });
 });
 </script>
 
