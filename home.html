@@ -130,57 +130,91 @@
 }
 
 /* ================= SIGNUP ================= */
-.signup {
-  padding: 26px 24px 18px; /* smaller gap below */
-  text-align: center;
-}
+    
+<!-- ==============================
+     STAY IN THE LOOP (ALL-IN-ONE)
+     ============================== -->
+<style>
+  .signup {
+    padding: 22px 24px 18px;
+    text-align: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
 
-.signup h2 {
-  color: #e53935;
-  margin-bottom: 16px;
-  text-transform: uppercase;
-}
+  .signup h2 {
+    color: #e53935;
+    margin-bottom: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
 
-.signup form {
-  max-width: 1000px;
-  margin: auto;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-  align-items: end;
-}
-
-.signup input,
-.signup button {
-  height: 54px; /* ensures equal height */
-  font-size: 15px;
-}
-
-.signup input {
-  padding: 0 14px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-}
-
-.signup button {
-  background: #44b6e5;
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  font-weight: 600;
-  cursor: pointer;
-}
-
-/* EMAIL DROPS TO SECOND ROW IMMEDIATELY */
-@media (max-width: 900px) {
+  /* DESKTOP: ALL ON ONE LINE */
   .signup form {
-    grid-template-columns: repeat(2, 1fr);
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 0.9fr 0.9fr 1.4fr 0.7fr;
+    gap: 16px;
+    align-items: end;
   }
 
-  .signup input.email {
-    grid-column: span 2;
+  .signup input,
+  .signup button {
+    height: 54px;
+    font-size: 15px;
   }
-}
+
+  .signup input {
+    padding: 0 14px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+  }
+
+  .signup button {
+    background: #44b6e5;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  /* TABLET & MOBILE */
+  @media (max-width: 1100px) {
+    .signup form {
+      grid-template-columns: 1fr 1fr;
+      max-width: 100%;
+    }
+
+    .signup input.email {
+      grid-column: 1 / 2;
+    }
+
+    .signup button {
+      grid-column: 2 / 3;
+      width: 100%;
+    }
+  }
+</style>
+
+<section class="signup">
+  <h2>Stay in the Loop</h2>
+
+  <form
+    action="https://docs.google.com/forms/d/e/1FAIpQLSfKL57BfdLd6taVbvT2GdzJx_SAfbMHzrWPnYZkS8cydOXcew/formResponse"
+    method="POST"
+    target="hidden_iframe"
+  >
+    <input name="entry.1111111111" placeholder="Name">
+    <input name="entry.2222222222" placeholder="Phone">
+    <input name="entry.3333333333" class="email" placeholder="Email" required>
+    <button type="submit">Submit</button>
+  </form>
+
+  <iframe name="hidden_iframe" style="display:none;"></iframe>
+</section>
+  
     /* ==============================
        ABOUT
        ============================== */
