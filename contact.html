@@ -166,52 +166,80 @@
       color: #44b6e5;
     }
 
-    /* ================= FOOTER ================= */
-    footer.site-footer {
-      margin-top: auto;
-      background: #003366;
-      color: #ffffff;
-      font-size: 12px;
-    }
+/* ================= FOOTER ================= */
+.site-footer {
+  background: #003366;
+  color: #ffffff;
+  font-size: 13px;
+}
 
-    .footer-top-line {
-      height: 4px;
-      background: #44b6e5;
-    }
+.footer-top-line {
+  height: 4px;
+  background: #44b6e5;
+}
 
-    .footer-inner {
-      max-width: 1200px;
-      margin: auto;
-      padding: 32px 24px;
-      text-align: center;
-    }
+.footer-inner {
+  max-width: 1200px;
+  margin: auto;
+  padding: 32px 24px;
+  text-align: center;
+}
 
-    .footer-disclaimer {
-      border: 1px solid #ffffff;
-      border-radius: 6px;
-      padding: 14px 18px;
-      margin-bottom: 22px;
-    }
+/* DISCLAIMER BOX */
+.footer-disclaimer {
+  border: 1px solid #ffffff;
+  border-radius: 6px;
+  padding: 14px 18px;
+  margin-bottom: 22px;
+  line-height: 1.5;
+}
 
-    .footer-logo img {
-      height: 48px;
-      margin-bottom: 18px;
-    }
+/* LOGO */
+.footer-logo img {
+  height: 48px;
+  margin-bottom: 18px;
+}
 
-    .footer-menu {
-      display: flex;
-      justify-content: center;
-      gap: 24px;
-      margin-bottom: 18px;
-    }
+/* MENU */
+.footer-menu {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
 
-    .footer-menu a {
-      color: #44b6e5;
-      text-decoration: none;
-      font-weight: 600;
-      text-transform: uppercase;
-    }
+.footer-menu a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 13px;
+  position: relative;
+  padding-bottom: 4px;
+}
 
+.footer-menu a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background: #44b6e5;
+  transition: width 0.25s ease;
+}
+
+.footer-menu a:hover::after {
+  width: 100%;
+}
+
+/* COPYRIGHT */
+.footer-copy {
+  font-size: 12px;
+  opacity: 0.85;
+}
+    
     /* ================= MOBILE ================= */
     @media (max-width: 900px) {
       .contact {
@@ -289,6 +317,7 @@
 
 <footer class="site-footer">
   <div class="footer-top-line"></div>
+
   <div class="footer-inner">
     <div class="footer-disclaimer">
       Paid for by CityPAC and not authorized by any candidate or candidate committee.
@@ -296,19 +325,23 @@
     </div>
 
     <div class="footer-logo">
-      <img src="images/citypaclogo.png" alt="">
+      <img src="images/citypaclogo.png" alt="CityPAC Logo">
     </div>
 
     <nav class="footer-menu">
       <a href="home.html">Home</a>
       <a href="about.html">About</a>
       <a href="join.html">Join</a>
+      <a href="contact.html">Contact</a>
       <a href="donate.html">Donate</a>
     </nav>
 
-    © 2025 CityPAC. All rights reserved.
+    <div class="footer-copy">
+      © 2025 CityPAC. All rights reserved.
+    </div>
   </div>
 </footer>
+
 
 <script>
 document.getElementById("contactForm").addEventListener("submit", function(e) {
