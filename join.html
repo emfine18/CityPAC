@@ -224,8 +224,7 @@ body {
 .site-footer {
   background: #003366;
   color: #ffffff;
-  margin-top: 80px;
-  font-size: 12px;
+  font-size: 13px;
 }
 
 .footer-top-line {
@@ -240,31 +239,61 @@ body {
   text-align: center;
 }
 
+/* DISCLAIMER BOX */
 .footer-disclaimer {
   border: 1px solid #ffffff;
   border-radius: 6px;
   padding: 14px 18px;
   margin-bottom: 22px;
+  line-height: 1.5;
 }
 
+/* LOGO */
 .footer-logo img {
   height: 48px;
   margin-bottom: 18px;
 }
 
+/* MENU */
 .footer-menu {
   display: flex;
   justify-content: center;
   gap: 24px;
   margin-bottom: 18px;
+  flex-wrap: wrap;
 }
 
 .footer-menu a {
-  color: #44b6e5;
+  color: #ffffff;
   text-decoration: none;
   font-weight: 600;
   text-transform: uppercase;
+  font-size: 13px;
+  position: relative;
+  padding-bottom: 4px;
 }
+
+.footer-menu a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background: #44b6e5;
+  transition: width 0.25s ease;
+}
+
+.footer-menu a:hover::after {
+  width: 100%;
+}
+
+/* COPYRIGHT */
+.footer-copy {
+  font-size: 12px;
+  opacity: 0.85;
+}
+
 </style>
 </head>
 
@@ -334,6 +363,7 @@ body {
 <!-- FOOTER -->
 <footer class="site-footer">
   <div class="footer-top-line"></div>
+
   <div class="footer-inner">
     <div class="footer-disclaimer">
       Paid for by CityPAC and not authorized by any candidate or candidate committee.
@@ -341,7 +371,7 @@ body {
     </div>
 
     <div class="footer-logo">
-      <img src="images/citypaclogo.png" alt="">
+      <img src="images/citypaclogo.png" alt="CityPAC Logo">
     </div>
 
     <nav class="footer-menu">
@@ -352,7 +382,9 @@ body {
       <a href="donate.html">Donate</a>
     </nav>
 
-    © 2025 CityPAC. All rights reserved.
+    <div class="footer-copy">
+      © 2025 CityPAC. All rights reserved.
+    </div>
   </div>
 </footer>
 
