@@ -279,8 +279,7 @@ body {
   }
 }
 
-  
-/* ================= HOME STORY ================= */
+  /* ================= HOME STORY ================= */
 .home-story {
   max-width: 1200px;
   margin: 60px auto;
@@ -291,18 +290,26 @@ body {
   align-items: center;
 }
 
-/* IMAGES */
+/* IMAGE STACK */
 .home-images {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  flex-direction: column;
   gap: 18px;
 }
 
 .home-images img {
   width: 100%;
-  aspect-ratio: 1 / 1; /* SQUARE */
+  aspect-ratio: 4 / 3; /* RECTANGLE */
   object-fit: cover;
   border-radius: 10px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  cursor: pointer;
+}
+
+/* POP EFFECT */
+.home-images img:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.18);
 }
 
 /* CONTENT */
@@ -323,7 +330,8 @@ body {
 .home-buttons {
   display: flex;
   gap: 16px;
-  margin-top: 24px;
+  margin-top: 26px;
+  flex-wrap: wrap;
 }
 
 .action-btn {
@@ -338,6 +346,14 @@ body {
 
 .action-btn.secondary {
   background: #003366;
+}
+
+.action-btn.donate {
+  background: #e04b3f;
+}
+
+.action-btn.donate:hover {
+  background: #c93c32;
 }
 
 /* MOBILE */
@@ -499,7 +515,7 @@ body {
 <section class="home-story">
   <div class="home-images">
     <img src="images/ChicagoSign.png" alt="Chicago">
-    <img src="images/capitol.jpg" alt="Capitol Hill">
+    <img src="images/capitol.png" alt="Capitol Hill">
   </div>
 
   <div class="home-content">
@@ -524,8 +540,9 @@ body {
     </p>
 
     <div class="home-buttons">
-      <a href="join.html" class="action-btn">Join Today</a>
       <a href="about.html" class="action-btn secondary">Learn More</a>
+      <a href="join.html" class="action-btn">Join Today</a>
+      <a href="donate.html" class="action-btn donate">Donate</a>
     </div>
   </div>
 </section>
