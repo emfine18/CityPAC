@@ -42,7 +42,7 @@
 
     .menu a {
       position: relative;
-      color: #fff;
+      color: #ffffff;
       text-decoration: none;
       font-size: 18px;
       font-weight: 600;
@@ -120,92 +120,48 @@
       width: clamp(12px, 2vw, 22px);
     }
 
-<!-- ==============================
-     STAY IN THE LOOP (FINAL CLEAN)
-     ============================== -->
-<style>
-  .signup {
-    max-width: 1200px;
-    margin: 40px auto 30px;
-    padding: 0 24px;
-  }
-
-  .signup-inner {
-    max-width: 1100px;
-  }
-
-  .signup h2 {
-    color: #e53935;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    margin-bottom: 14px;
-  }
-
-  /* DESKTOP: SINGLE ROW, ALIGNED WITH ABOUT IMAGE */
-  .signup form {
-    display: grid;
-    grid-template-columns: 0.85fr 0.85fr 1.6fr 0.6fr;
-    gap: 16px;
-    align-items: center;
-  }
-
-  .signup input,
-  .signup button {
-    height: 54px;
-    font-size: 15px;
-  }
-
-  .signup input {
-    padding: 0 14px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-  }
-
-  .signup button {
-    background: #44b6e5;
-    color: #fff;
-    border: none;
-    border-radius: 8px;
-    font-weight: 600;
-    cursor: pointer;
-  }
-
-  /* TABLET + MOBILE (KEEP WHAT ALREADY LOOKS GOOD) */
-  @media (max-width: 1100px) {
-    .signup form {
-      grid-template-columns: 1fr 1fr;
+    /* ================= SIGNUP ================= */
+    .signup {
+      max-width: 1200px;
+      margin: 40px auto 30px;
+      padding: 0 24px;
     }
 
-    .signup input.email {
-      grid-column: 1 / 2;
+    .signup h2 {
+      color: #e53935;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 14px;
+    }
+
+    .signup form {
+      display: grid;
+      grid-template-columns: 0.85fr 0.85fr 1.6fr 0.6fr;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .signup input,
+    .signup button {
+      height: 54px;
+      font-size: 15px;
+    }
+
+    .signup input {
+      padding: 0 14px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
     }
 
     .signup button {
-      grid-column: 2 / 3;
-      width: 100%;
+      background: #44b6e5;
+      color: #ffffff;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
     }
-  }
-</style>
 
-<section class="signup">
-  <div class="signup-inner">
-    <h2>Stay in the Loop</h2>
-
-    <form
-      action="https://docs.google.com/forms/d/e/1FAIpQLSfKL57BfdLd6taVbvT2GdzJx_SAfbMHzrWPnYZkS8cydOXcew/formResponse"
-      method="POST"
-      target="hidden_iframe"
-    >
-      <input name="entry.1111111111" placeholder="Name">
-      <input name="entry.2222222222" placeholder="Phone">
-      <input name="entry.3333333333" class="email" placeholder="Email" required>
-      <button type="submit">Submit</button>
-    </form>
-
-    <iframe name="hidden_iframe" style="display:none;"></iframe>
-  </div>
-</section>
-  
     /* ================= ABOUT ================= */
     .about {
       max-width: 1200px;
@@ -325,10 +281,14 @@
 
 <section class="signup">
   <h2>Stay in the Loop</h2>
-  <form action="https://docs.google.com/forms/d/e/1FAIpQLSfKL57BfdLd6taVbvT2GdzJx_SAfbMHzrWPnYZkS8cydOXcew/formResponse" method="POST" target="hidden_iframe">
-    <input placeholder="Name">
-    <input placeholder="Phone">
-    <input class="email" placeholder="Email">
+  <form
+    action="https://docs.google.com/forms/d/e/1FAIpQLSfKL57BfdLd6taVbvT2GdzJx_SAfbMHzrWPnYZkS8cydOXcew/formResponse"
+    method="POST"
+    target="hidden_iframe"
+  >
+    <input name="entry.1111111111" placeholder="Name">
+    <input name="entry.2222222222" placeholder="Phone">
+    <input name="entry.3333333333" class="email" placeholder="Email" required>
     <button type="submit">Submit</button>
   </form>
   <iframe name="hidden_iframe" style="display:none;"></iframe>
@@ -338,7 +298,15 @@
   <img src="images/ChicagoSign.png">
   <div class="about-content">
     <h2>About CityPAC</h2>
-    <p>Founded in 1984, CityPAC brings together generations of engaged Chicagoans dedicated to bipartisan political advocacy.</p>
+    <p>
+      Founded in 1984, CityPAC brings together generations of engaged Chicagoans
+      dedicated to strengthening the U.S.–Israel relationship through bipartisan
+      political advocacy.
+    </p>
+    <p>
+      CityPAC is an independent, volunteer-driven organization committed to
+      educating, engaging, and empowering civic leaders.
+    </p>
   </div>
 </section>
 
@@ -349,7 +317,8 @@
     <a href="join.html">Join</a>
     <a href="donate.html">Donate</a>
   </div>
-  Paid for by CityPAC and not authorized by any candidate or candidate committee.
+  Paid for by CityPAC and not authorized by any candidate or candidate committee.<br>
+  Contributions to CityPAC are not deductible for federal income tax purposes.
 </footer>
 
 <script>
