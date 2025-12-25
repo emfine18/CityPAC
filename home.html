@@ -22,69 +22,68 @@
       color: #111;
     }
 
-    /* ==============================
-       HEADER
-       ============================== */
-    nav {
+    /* ================= HEADER ================= */
+    header.site-header {
       position: absolute;
       top: 0;
       width: 100%;
-      z-index: 10;
+      z-index: 20;
+      color: #ffffff;
     }
 
-    .nav-inner {
+    .header-inner {
       max-width: 1200px;
-      margin: auto;
-      padding: 22px 24px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      margin: 0 auto;
+      padding: 16px 24px 0;
     }
 
-    .logo img {
+    .header-disclaimer {
+      border: 1px solid #ffffff;
+      border-radius: 6px;
+      padding: 10px 14px;
+      font-size: 11px;
+      text-align: center;
+      margin-bottom: 14px;
+    }
+
+    .header-main {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .header-logo img {
       height: 56px;
     }
 
-    .menu {
+    .header-menu {
       display: flex;
       gap: 32px;
     }
 
-    .menu a {
-      position: relative;
-      display: inline-block;
+    .header-menu a {
       color: #ffffff;
       text-decoration: none;
       font-size: 18px;
       font-weight: 600;
       text-transform: uppercase;
+      position: relative;
       padding-bottom: 6px;
     }
 
-    .menu a::after {
+    .header-menu a::after {
       content: "";
       position: absolute;
       left: 0;
       bottom: 0;
       width: 0;
       height: 3px;
-      background: #44b6e5;
+      background: #ffffff;
       transition: width 0.25s ease;
     }
 
-    .menu a:hover::after { width: 100%; }
-
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 6px;
-      cursor: pointer;
-    }
-
-    .hamburger span {
-      width: 28px;
-      height: 3px;
-      background: #ffffff;
+    .header-menu a:hover::after {
+      width: 100%;
     }
 
     /* ================= HERO ================= */
@@ -299,6 +298,12 @@
 
 <body>
 
+<header class="site-header">
+  <div class="header-inner">
+    <div class="header-disclaimer">
+      Paid for by CityPAC and not authorized by any candidate or candidate committee.
+    </div>
+
     <div class="header-main">
       <div class="header-logo">
         <img src="images/citypaclogo.png" alt="CityPAC Logo">
@@ -342,16 +347,188 @@
   <h2>Stay in the Loop</h2>
 
   <form id="signupForm" class="signup-form">
-    <input name="name" placeholder="Name">
-    <input name="phone" placeholder="Phone number">
-    <input name="email" placeholder="Email address" required>
-    <button type="submit" id="signupBtn">Submit</button>
+    <!-- ROW 1 -->
+    <div class="signup-row">
+      <input
+        type="text"
+        name="name"
+        placeholder="Name"
+        required
+      />
+      <input
+        type="tel"
+        name="phone"
+        placeholder="Phone number"
+        required
+      />
+    </div>
+
+    <!-- ROW 2 -->
+    <div class="signup-row">
+      <input
+        type="email"
+        name="email"
+        placeholder="Email address"
+        required
+      />
+      <button type="submit" id="signupBtn">Submit</button>
+    </div>
   </form>
 
-  <p class="signup-success" id="signupSuccess">
-    Thanks for signing up!
-  </p>
+  <div class="signup-success" id="signupSuccess">
+    Submitted ✓
+  </div>
 </section>
+
+<style>
+/* =========================
+   SIGNUP
+   ========================= */
+
+.signup {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 24px;
+  text-align: center;
+}
+
+.signup h2 {
+  color: #e53935;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+/* FORM LAYOUT */
+.signup-form {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.signup-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.signup input,
+.signup button {
+  height: 56px;
+  font-size: 16px;
+  border-radius: 10px;
+}
+
+/* INPUTS */
+.signup input {
+  border: 2px solid #d0d0d0;
+  padding: 0 16px;
+  transition: border-color 0.2s ease;
+}
+
+.signup input:focus {
+  outline: none;
+  border-color: #44b6e5;
+}
+
+/* BUTTON */
+.signup button {
+  background: #44b6e5;
+  color: #ffffff;
+  border: none;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.signup button:disabled {
+  background: #9acfea;
+  cursor: default;
+}
+
+/* SUCCESS MESSAGE */
+.signup-success {
+  display: none;
+  margin-top: 18px;
+  font-size: 20px;
+  font-weight: 700;
+  color: #44b6e5;
+}
+
+/* MOBILE */
+@media (max-width: 700px) {
+  .signup-row {
+    grid-template-columns: 1fr;
+  }
+
+  .signup input,
+  .signup button {
+    height: 48px;
+    font-size: 14px;
+  }
+
+  .signup-success {
+    font-size: 18px;
+  }
+}
+</style>
+
+<script>
+document.getElementById("signupForm").addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  const form = e.target;
+  const btn = document.getElementById("signupBtn");
+  const success = document.getElementById("signupSuccess");
+
+  const name = form.name.value.trim();
+  const phone = form.phone.value.trim();
+  const email = form.email.value.trim();
+
+  /* ===== VALIDATION ===== */
+
+  // Email (simple but real)
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    alert("Please enter a valid email address.");
+    return;
+  }
+
+  // Phone (digits only, must be 10)
+  const digits = phone.replace(/\D/g, "");
+  if (digits.length !== 10) {
+    alert("Please enter a valid 10-digit phone number.");
+    return;
+  }
+
+  /* ===== SUBMIT ===== */
+
+  btn.disabled = true;
+  btn.innerText = "Submitting…";
+
+  const data = new URLSearchParams();
+  data.append("name", name);
+  data.append("phone", digits);
+  data.append("email", email);
+
+  fetch(
+    "https://script.google.com/macros/s/AKfycbyMnbkQ0C_34sPpiuuUiiCRAL-Z9SmMYa9rZiWMbPTaF3aAyFjwn7FWRBYkdGsI0r-a2A/exec",
+    {
+      method: "POST",
+      body: data
+    }
+  )
+  .then(() => {
+    btn.innerText = "Submitted ✓";
+    success.style.display = "block";
+    form.reset();
+  })
+  .catch(() => {
+    btn.disabled = false;
+    btn.innerText = "Submit";
+    alert("Submission failed. Please try again.");
+  });
+});
+</script>
 
 <section class="about">
   <img src="images/ChicagoSign.png" alt="Chicago">
