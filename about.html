@@ -18,9 +18,10 @@ body {
 
 /* ================= HEADER ================= */
 .site-header {
-  position: relative;
+  position: absolute;
+  top: 0;
   width: 100%;
-  background: #003366;
+  z-index: 20;
 }
 
 .header-inner {
@@ -36,22 +37,28 @@ body {
   height: 56px;
 }
 
+/* ================= HEADER MENU ================= */
+
 .header-menu {
   display: flex;
   align-items: center;
   gap: 18px;
 }
 
+/* ===== DESKTOP MENU LINKS ===== */
 .header-menu a {
-  color: #ffffff;
+  color: #ffffff;               /* WHITE on desktop */
   text-decoration: none;
   font-weight: 600;
   text-transform: uppercase;
   font-size: 15px;
   position: relative;
   padding-bottom: 6px;
+  display: flex;
+  align-items: center;
 }
 
+/* WHITE underline on desktop */
 .header-menu a::after {
   content: "";
   position: absolute;
@@ -60,24 +67,32 @@ body {
   width: 0;
   height: 3px;
   background: #ffffff;
-  transition: width .25s ease;
+  transition: width 0.25s ease;
 }
 
 .header-menu a:hover::after {
   width: 100%;
 }
 
+/* ===== DONATE BUTTON ===== */
 .header-menu .donate-btn {
   background: #e04b3f;
+  color: #ffffff !important;    /* ALWAYS white */
   padding: 10px 18px;
   border-radius: 10px;
   font-weight: 700;
+  line-height: 1;
 }
 
 .header-menu .donate-btn::after {
-  display: none;
+  display: none;                /* no underline */
 }
 
+.header-menu .donate-btn:hover {
+  background: #c93c32;
+}
+
+/* ===== HAMBURGER ICON ===== */
 .hamburger {
   display: none;
   flex-direction: column;
@@ -88,11 +103,14 @@ body {
 .hamburger span {
   width: 26px;
   height: 3px;
-  background: #ffffff;
+  background: #ffffff;          /* WHITE lines */
 }
 
+/* ================= MOBILE MENU ================= */
 @media (max-width: 900px) {
-  .hamburger { display: flex; }
+  .hamburger {
+    display: flex;
+  }
 
   .header-menu {
     position: absolute;
@@ -104,43 +122,32 @@ body {
     display: none;
     flex-direction: column;
     gap: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    align-items: flex-start;
   }
 
-  .header-menu.show { display: flex; }
+  .header-menu.show {
+    display: flex;
+  }
 
+  /* ===== HAMBURGER MENU LINKS ===== */
   .header-menu a {
-    color: #44b6e5;
+    color: #44b6e5;             /* BLUE in hamburger */
   }
 
   .header-menu a::after {
-    background: #44b6e5;
+    background: #44b6e5;        /* BLUE underline */
+  }
+
+  /* KEEP DONATE BUTTON WHITE TEXT */
+  .header-menu .donate-btn {
+    color: #ffffff !important;
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-size: 15px;
   }
 }
-
-/* ================= PAGE HEADER ================= */
-.page-header {
-  background: #f5f8fb;
-  padding: 70px 24px;
-}
-
-.page-header-inner {
-  max-width: 900px;
-  margin: auto;
-  text-align: center;
-}
-
-.page-header h1 {
-  color: #003366;
-  font-size: 36px;
-  margin-bottom: 14px;
-}
-
-.page-header p {
-  font-size: 18px;
-  line-height: 1.6;
-  color: #333;
-}
-
+  
 /* ================= ABOUT CONTENT ================= */
 .about-section {
   max-width: 1000px;
