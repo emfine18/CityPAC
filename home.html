@@ -383,9 +383,14 @@
 document.addEventListener("DOMContentLoaded", function () {
   const form = document.getElementById("signupForm");
   const success = document.getElementById("signupSuccess");
+  const btn = document.getElementById("signupBtn");
 
   form.addEventListener("submit", function (e) {
     e.preventDefault();
+
+    // Visual feedback immediately
+    btn.disabled = true;
+    btn.innerText = "Submitting…";
 
     const data = new URLSearchParams();
     data.append("name", form.name.value);
@@ -400,16 +405,19 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     )
     .then(() => {
+      btn.innerText = "Submitted ✓";
       success.style.display = "block";
       form.reset();
     })
     .catch(() => {
+      btn.disabled = false;
+      btn.innerText = "Submit";
       alert("Submission failed. Please try again.");
     });
   });
 });
 </script>
-
+  
   <section class="about">
   <img src="images/ChicagoSign.png">
   <div class="about-content">
