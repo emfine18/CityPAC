@@ -19,7 +19,7 @@
       color: #111;
     }
 
-    /* ================= HEADER (SAME AS HOME) ================= */
+    /* ================= HEADER ================= */
     .site-header {
       position: absolute;
       top: 0;
@@ -120,53 +120,72 @@
     .about-hero {
       height: 45vh;
       background: #003366;
+      color: #ffffff;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
-      color: #ffffff;
       padding: 0 24px;
     }
 
     .about-hero h1 {
-      font-size: clamp(32px, 5vw, 52px);
-      font-weight: 700;
+      font-size: clamp(34px, 5vw, 54px);
       margin: 0;
     }
 
     /* ================= CONTENT ================= */
-    .about-wrapper {
+    .content-wrapper {
       max-width: 1100px;
-      margin: 60px auto;
+      margin: 70px auto;
       padding: 0 24px;
     }
 
-    .about-section {
-      background: #ffffff;
-      padding: 40px;
+    .section {
+      margin-bottom: 64px;
+    }
+
+    .section h2 {
+      color: #003366;
+      font-size: 28px;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+
+    .section p {
+      font-size: 16px;
+      line-height: 1.75;
+      margin-bottom: 16px;
+    }
+
+    /* ================= POLICY / PRIORITIES ================= */
+    .priorities-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 28px;
+    }
+
+    .priority-card {
+      padding: 28px 26px;
       border-radius: 12px;
-      margin-bottom: 32px;
       border: 2px solid transparent;
       transition: border-color 0.25s ease, box-shadow 0.25s ease;
     }
 
-    /* BLUE OUTLINE ONLY ON HOVER */
-    .about-section:hover {
+    .priority-card:hover {
       border-color: #44b6e5;
       box-shadow: 0 12px 30px rgba(0,0,0,0.08);
     }
 
-    .about-section h2 {
+    .priority-card h3 {
       color: #44b6e5;
+      font-size: 20px;
+      margin-bottom: 12px;
       text-transform: uppercase;
-      font-size: 22px;
-      margin-bottom: 18px;
     }
 
-    .about-section p {
-      line-height: 1.75;
-      margin-bottom: 16px;
-      font-size: 16px;
+    .priority-card p {
+      font-size: 15px;
+      line-height: 1.6;
     }
 
     /* ================= FOOTER ================= */
@@ -218,7 +237,6 @@
 
 <body>
 
-<!-- HEADER -->
 <header class="site-header">
   <div class="header-inner">
     <a href="home.html" class="header-logo">
@@ -239,16 +257,15 @@
   </div>
 </header>
 
-<!-- HERO -->
 <section class="about-hero">
   <h1>About CityPAC</h1>
 </section>
 
-<!-- CONTENT -->
-<div class="about-wrapper">
+<div class="content-wrapper">
 
-  <div class="about-section">
-    <h2>Who We Are</h2>
+  <!-- MISSION -->
+  <section class="section">
+    <h2>Mission</h2>
     <p>
       CityPAC is an independent, bipartisan, pro-Israel political action committee (PAC)
       dedicated to strengthening the U.S.–Israel relationship.
@@ -264,10 +281,50 @@
       Congressional support for Israel, but it also provides ongoing, real-world
       leadership opportunities for the Jewish community in Chicago.
     </p>
-  </div>
+  </section>
 
-  <div class="about-section">
-    <h2>Our History</h2>
+  <!-- PRIORITIES -->
+  <section class="section">
+    <h2>Our Priorities</h2>
+
+    <div class="priorities-grid">
+      <div class="priority-card">
+        <h3>U.S.–Israel Alliance</h3>
+        <p>
+          Ensuring unwavering bipartisan Congressional support for Israel’s security,
+          legitimacy, and right to self-defense.
+        </p>
+      </div>
+
+      <div class="priority-card">
+        <h3>Bipartisan Engagement</h3>
+        <p>
+          Supporting candidates from both political parties who share CityPAC’s
+          commitment to a strong and enduring U.S.–Israel relationship.
+        </p>
+      </div>
+
+      <div class="priority-card">
+        <h3>Next Generation Leadership</h3>
+        <p>
+          Empowering young Jewish professionals to engage directly in the political
+          process through education, advocacy, and leadership opportunities.
+        </p>
+      </div>
+
+      <div class="priority-card">
+        <h3>Political Impact</h3>
+        <p>
+          Directly contributing to pro-Israel candidates and strengthening Congressional
+          coalitions that support Israel.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HISTORY -->
+  <section class="section">
+    <h2>History</h2>
     <p>
       Since 1984, CityPAC — led by the efforts of hundreds of committed Jewish Chicagoans
       in their 20s, 30s, and early 40s — has had one overriding mission: to support
@@ -279,11 +336,10 @@
       <strong>400 pro-Israel Congressional candidates</strong> from both political
       parties and from all 50 states.
     </p>
-  </div>
+  </section>
 
 </div>
 
-<!-- FOOTER -->
 <footer class="site-footer">
   <div class="footer-top-line"></div>
   <div class="footer-inner">
