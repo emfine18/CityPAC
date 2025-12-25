@@ -256,9 +256,13 @@
         display: none;
       }
 
-      .menu a {
-        color: #44b6e5;
-        font-size: 16px;
+.menu a {
+  color: #44b6e5;
+  font-size: 16px;
+  display: inline-block;   /* KEY FIX */
+  width: fit-content;      /* underline matches word only */
+}
+      
       }
 
       .menu.show { display: flex; }
