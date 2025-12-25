@@ -244,40 +244,57 @@
     /* ==============================
        MOBILE
        ============================== */
-    @media (max-width: 900px) {
-      .menu {
-        position: absolute;
-        top: 80px;
-        right: 24px;
-        background: #ffffff;
-        flex-direction: column;
-        padding: 20px;
-        gap: 20px;
-        display: none;
-      }
+    /* ==============================
+   MOBILE
+   ============================== */
+@media (max-width: 900px) {
+  .menu {
+    position: absolute;
+    top: 80px;
+    right: 24px;
+    background: #ffffff;
+    flex-direction: column;
+    padding: 20px;
+    gap: 20px;
+    display: none;
+    align-items: flex-start;
+  }
 
-.menu a {
-  color: #44b6e5;
-  font-size: 16px;
-  display: inline-block;   /* KEY FIX */
-  width: fit-content;      /* underline matches word only */
+  .menu a {
+    color: #44b6e5;
+    font-size: 16px;
+    display: inline-block;
+    width: fit-content; /* underline = word width */
+  }
+
+  .menu a::after {
+    background: #44b6e5;
+    width: 0;
+    left: 0;
+  }
+
+  .menu a:hover::after {
+    width: 100%;
+  }
+
+  .menu.show {
+    display: flex;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .about {
+    flex-direction: column;
+  }
+
+  .about img,
+  .about-content {
+    width: 100%;
+  }
 }
-      
-      }
-
-      .menu.show { display: flex; }
-
-      .hamburger { display: flex; }
-
-      .about {
-        flex-direction: column;
-      }
-
-      .about img,
-      .about-content {
-        width: 100%;
-      }
-    }
+    
   </style>
 </head>
 
