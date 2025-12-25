@@ -216,20 +216,22 @@ body {
   text-align: center;
 }
 
+/* DISCLAIMER BOX */
 .footer-disclaimer {
   border: 1px solid #ffffff;
   border-radius: 6px;
   padding: 14px 18px;
   margin-bottom: 22px;
   line-height: 1.5;
-  font-size: 12px;
 }
 
+/* LOGO */
 .footer-logo img {
   height: 48px;
   margin-bottom: 18px;
 }
 
+/* MENU */
 .footer-menu {
   display: flex;
   justify-content: center;
@@ -244,17 +246,31 @@ body {
   font-weight: 600;
   text-transform: uppercase;
   font-size: 13px;
+  position: relative;
+  padding-bottom: 4px;
 }
 
-.footer-menu a:hover {
-  text-decoration: underline;
+.footer-menu a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background: #44b6e5;
+  transition: width 0.25s ease;
 }
 
+.footer-menu a:hover::after {
+  width: 100%;
+}
+
+/* COPYRIGHT */
 .footer-copy {
   font-size: 12px;
-  opacity: 0.9;
+  opacity: 0.85;
 }
-
+  
 </style>
 </head>
 
