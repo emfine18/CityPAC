@@ -279,6 +279,34 @@ body {
   }
 }
 
+/* ===== FEATURE TITLE (FTLTTH STYLE) ===== */
+.home-title {
+  position: relative;
+  padding-left: 18px; /* space for red bar */
+  margin-bottom: 22px;
+  max-width: 22ch;
+}
+
+.home-title::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.15em;
+  width: 6px;
+  height: 100%;
+  background: #c7332e;
+  border-radius: 2px;
+}
+
+.home-title span {
+  display: block;
+  color: #44b6e5;
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: 1.1;
+  font-size: clamp(26px, 4vw, 40px); /* responsive but controlled */
+}
+  
   /* ================= HOME STORY ================= */
 .home-story {
   max-width: 1200px;
@@ -541,35 +569,6 @@ body {
   <span>From the Loop<br>to the Hill</span>
 </h2>
 
-  /* ===== FEATURE TITLE (FTLTTH STYLE) ===== */
-.home-title {
-  position: relative;
-  padding-left: 18px;              /* space for red bar */
-  margin-bottom: 22px;
-  max-width: 22ch;
-}
-
-.home-title::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0.2em;
-  width: 6px;
-  height: 100%;
-  background: #c7332e;             /* RED BAR */
-  border-radius: 2px;
-}
-
-.home-title span {
-  display: block;
-  color: #44b6e5;
-  font-weight: 700;
-  text-transform: uppercase;
-  line-height: 1.1;
-
-  /* 🔥 RESPONSIVE SIZE — NOT TOO BIG */
-  font-size: clamp(26px, 4vw, 40px);
-}
   
   
     <p>
