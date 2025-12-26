@@ -12,12 +12,13 @@
 
 body {
   margin: 0;
-  color: #111;
+  color: #ffffff;
   background: linear-gradient(
     to bottom,
-    rgba(0,51,102,0.25) 0%,
-    rgba(255,255,255,1) 45%,
-    rgba(255,255,255,1) 100%
+    #003366 0%,
+    #003f7f 35%,
+    #005a99 70%,
+    #003366 100%
   );
 }
 
@@ -26,7 +27,7 @@ body {
   position: absolute;
   top: 0;
   width: 100%;
-  z-index: 20;
+  z-index: 50;
 }
 
 .header-inner {
@@ -62,7 +63,7 @@ body {
 
 /* ================= HERO ================= */
 .hero {
-  height: 55vh;
+  height: 60vh;
   position: relative;
   overflow: hidden;
 }
@@ -79,37 +80,53 @@ body {
   inset: 0;
   background: linear-gradient(
     to bottom,
-    rgba(0,0,0,0.25),
-    rgba(255,255,255,0.85)
+    rgba(0,0,0,0.15),
+    rgba(0,51,102,0.85)
   );
 }
 
-/* ================= EVENT CONTENT ================= */
-.event-wrapper {
+.hero-content {
+  position: absolute;
+  bottom: 60px;
+  left: 50%;
+  transform: translateX(-50%);
   max-width: 900px;
-  margin: -80px auto 0;
-  padding: 0 24px 80px;
+  padding: 0 24px;
+  text-align: center;
 }
 
-.event-card {
-  background: #ffffff;
-  border-radius: 14px;
-  padding: 36px;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.12);
-}
-
-.event-title {
-  font-size: clamp(28px, 4vw, 42px);
-  font-weight: 700;
+.hero-content h1 {
+  font-size: clamp(30px, 5vw, 52px);
   text-transform: uppercase;
-  color: #003366;
   margin-bottom: 12px;
 }
 
-.event-subtitle {
-  color: #44b6e5;
-  font-weight: 600;
-  margin-bottom: 28px;
+.hero-content p {
+  font-size: 18px;
+  line-height: 1.6;
+  opacity: 0.95;
+}
+
+/* ================= SECTIONS ================= */
+.section {
+  max-width: 900px;
+  margin: 80px auto;
+  padding: 0 24px;
+}
+
+.outline-box {
+  border: 2px solid rgba(255,255,255,0.85);
+  border-radius: 14px;
+  padding: 32px;
+  margin-bottom: 40px;
+}
+
+.section-title {
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 18px;
+  color: #ffffff;
+  font-size: 20px;
 }
 
 /* ================= FORM ================= */
@@ -126,10 +143,12 @@ form {
 }
 
 input, select, textarea {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.6);
+  color: #ffffff;
   height: 52px;
   padding: 0 14px;
   border-radius: 6px;
-  border: 1px solid #ccc;
   font-size: 15px;
 }
 
@@ -138,45 +157,39 @@ textarea {
   padding: 12px 14px;
 }
 
-label {
-  font-weight: 600;
-  margin-bottom: 4px;
-  display: block;
-}
-
-fieldset {
-  border: none;
-  padding: 0;
-}
-
-fieldset label {
-  font-weight: 500;
-  display: block;
+::placeholder {
+  color: rgba(255,255,255,0.7);
 }
 
 button {
-  margin-top: 24px;
   height: 54px;
   background: #44b6e5;
-  color: #fff;
   border: none;
-  font-size: 17px;
+  color: #fff;
+  font-size: 16px;
   font-weight: 600;
   border-radius: 6px;
   cursor: pointer;
+  margin-top: 10px;
 }
 
 /* ================= FOOTER ================= */
 .site-footer {
   background: #003366;
-  color: #fff;
+  color: #ffffff;
   padding: 32px 24px;
   text-align: center;
+  font-size: 13px;
 }
 
+/* ================= MOBILE ================= */
 @media (max-width: 700px) {
   .form-row {
     grid-template-columns: 1fr;
+  }
+
+  .hero-content {
+    bottom: 40px;
   }
 }
 </style>
@@ -186,7 +199,9 @@ button {
 
 <header class="site-header">
   <div class="header-inner">
-    <img src="images/citypaclogo.png" alt="CityPAC">
+    <div class="header-logo">
+      <img src="images/citypaclogo.png" alt="CityPAC">
+    </div>
     <nav class="header-menu">
       <a href="home.html">Home</a>
       <a href="about.html">About</a>
@@ -199,67 +214,71 @@ button {
 
 <section class="hero">
   <img src="images/ChicagoSign.png" alt="Chicago">
+  <div class="hero-content">
+    <h1>The 2026 Midterms & the U.S.–Israel Relationship</h1>
+    <p>
+      Join CityPAC for an in-depth discussion on the upcoming midterm elections,
+      U.S.–Israel policy, and the future of pro-Israel advocacy.
+    </p>
+  </div>
 </section>
 
-<section class="event-wrapper">
-  <div class="event-card">
-    <div class="event-title">The 2026 Midterms & the U.S.–Israel Relationship</div>
-    <div class="event-subtitle">CityPAC February Event</div>
+<section class="section">
 
-<form id="febEventForm">
-
-<label>Will you be attending?</label>
-<select name="attending" required>
-  <option value="">Select</option>
-  <option>Yes</option>
-</select>
-
-<label>How did you hear about this event?</label>
-<input name="hear_about" required>
-
-<div class="form-row">
-  <input name="first_name" placeholder="First name" required>
-  <input name="last_name" placeholder="Last name" required>
-</div>
-
-<div class="form-row">
-  <input name="age" placeholder="Age" required>
-  <input name="phone" placeholder="Phone number" required>
-</div>
-
-<input name="email" placeholder="Email" required>
-<input name="address" placeholder="Address" required>
-<input name="zip" placeholder="Zip Code" required>
-
-<input name="employer" placeholder="Current Employer" required>
-<input name="job_title" placeholder="Job Title" required>
-
-<label>Industry</label>
-<input name="industry" placeholder="Industry" required>
-
-<label>Professional Groups</label>
-<input name="professional_groups">
-
-<label>What interests you?</label>
-<input name="interests" required>
-
-<label>Involvement with Jewish / Pro-Israel orgs?</label>
-<select name="involvement" required>
-  <option value="">Select</option>
-  <option>Yes</option>
-  <option>No</option>
-</select>
-
-<label>Which organizations?</label>
-<input name="organizations">
-
-<label>Questions for the CityPAC Board?</label>
-<textarea name="questions"></textarea>
-
-<button type="submit">Submit RSVP</button>
-</form>
-
+  <div class="outline-box">
+    <div class="section-title">Event Information</div>
+    <p>
+      This exclusive CityPAC event brings together young professionals to engage
+      with policy experts, community leaders, and peers around the most important
+      political issues facing the pro-Israel community in 2026.
+    </p>
   </div>
+
+  <div class="outline-box">
+    <div class="section-title">RSVP</div>
+
+    <form id="febEventForm">
+      <select name="attending" required>
+        <option value="">Will you be attending?</option>
+        <option>Yes</option>
+      </select>
+
+      <input name="hear_about" placeholder="How did you hear about this event?" required>
+
+      <div class="form-row">
+        <input name="first_name" placeholder="First name" required>
+        <input name="last_name" placeholder="Last name" required>
+      </div>
+
+      <div class="form-row">
+        <input name="age" placeholder="Age" required>
+        <input name="phone" placeholder="Phone number" required>
+      </div>
+
+      <input name="email" placeholder="Email" required>
+      <input name="address" placeholder="Address" required>
+      <input name="zip" placeholder="Zip Code" required>
+
+      <input name="employer" placeholder="Current Employer" required>
+      <input name="job_title" placeholder="Job Title" required>
+      <input name="industry" placeholder="Industry" required>
+
+      <input name="professional_groups" placeholder="Professional groups (optional)">
+      <input name="interests" placeholder="What interests you about this event?" required>
+
+      <select name="involvement" required>
+        <option value="">Involvement with Jewish / Pro-Israel orgs?</option>
+        <option>Yes</option>
+        <option>No</option>
+      </select>
+
+      <input name="organizations" placeholder="Which organizations?">
+      <textarea name="questions" placeholder="Questions for the CityPAC Board?"></textarea>
+
+      <button type="submit">Submit RSVP</button>
+    </form>
+  </div>
+
 </section>
 
 <footer class="site-footer">
@@ -267,9 +286,7 @@ button {
 </footer>
 
 <script>
-const form = document.getElementById("febEventForm");
-
-form.addEventListener("submit", function(e) {
+document.getElementById("febEventForm").addEventListener("submit", function(e) {
   e.preventDefault();
 
   fetch(
@@ -277,11 +294,11 @@ form.addEventListener("submit", function(e) {
     {
       method: "POST",
       mode: "no-cors",
-      body: new FormData(form)
+      body: new FormData(this)
     }
   ).then(() => {
     alert("RSVP submitted successfully!");
-    form.reset();
+    this.reset();
   });
 });
 </script>
