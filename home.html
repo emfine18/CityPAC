@@ -318,18 +318,18 @@ body {
   align-items: stretch;
 }
 
-/* IMAGE STACK — MATCH TEXT HEIGHT */
+/* IMAGE STACK — FINAL, CONTROLLED SIZE */
 .home-images {
   display: flex;
   flex-direction: column;
   gap: 18px;
-  height: 100%;          /* 🔑 stretch to text column */
+  max-width: 520px;   /* limits width so it’s not half the browser */
 }
 
 .home-images img {
-  flex: 1;               /* 🔑 split space evenly */
   width: 100%;
-  object-fit: cover;     /* clean crop, no gray */
+  height: 260px;      /* desktop size */
+  object-fit: cover; /* no gray bars */
   border-radius: 10px;
 }
   
@@ -425,7 +425,7 @@ body {
   }
 
   .home-images img {
-    height: 200px;
+    height: 220px;
   }
 }
 
@@ -448,7 +448,7 @@ body {
   }
 
   .home-images img {
-    height: 180px;            /* consistent, not giant */
+    height: 200px;            /* consistent, not giant */
   }
 }
 
