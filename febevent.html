@@ -13,7 +13,7 @@
 body {
   margin: 0;
   color: #ffffff;
-  background: linear-gradient(180deg, #003366 0%, #0a2a4f 40%, #001b33 100%);
+  background: linear-gradient(to bottom, #66addb 0%, #2f347b 100%);
 }
 
 /* ================= HEADER ================= */
@@ -21,7 +21,7 @@ body {
   position: absolute;
   top: 0;
   width: 100%;
-  z-index: 20;
+  z-index: 50;
 }
 
 .header-inner {
@@ -37,7 +37,6 @@ body {
 
 .header-menu {
   display: flex;
-  align-items: center;
   gap: 18px;
 }
 
@@ -48,14 +47,13 @@ body {
   text-transform: uppercase;
   font-size: 15px;
   position: relative;
-  padding-bottom: 6px;
 }
 
 .header-menu a::after {
   content: "";
   position: absolute;
   left: 0;
-  bottom: 0;
+  bottom: -4px;
   width: 0;
   height: 3px;
   background: #ffffff;
@@ -68,7 +66,6 @@ body {
   background: #e04b3f;
   padding: 10px 18px;
   border-radius: 10px;
-  font-weight: 700;
 }
 
 .header-menu .donate-btn::after { display: none; }
@@ -76,7 +73,7 @@ body {
 /* ================= HERO ================= */
 .hero {
   position: relative;
-  height: 55vh;
+  height: 70vh;
   overflow: hidden;
 }
 
@@ -92,169 +89,113 @@ body {
   inset: 0;
   background: linear-gradient(
     to bottom,
-    rgba(0,27,51,0.2),
-    rgba(0,27,51,0.85)
+    rgba(102,173,219,0.65),
+    rgba(47,52,123,0.9)
   );
 }
 
-/* ================= EVENT INTRO ================= */
-.event-intro {
-  max-width: 900px;
-  margin: -80px auto 60px;
+.hero-content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
   padding: 0 24px;
-  position: relative;
   z-index: 2;
 }
 
-.event-intro h1 {
-  font-size: clamp(30px, 5vw, 48px);
+.hero h1 {
+  font-size: clamp(36px, 5vw, 64px);
   font-weight: 700;
-  line-height: 1.1;
-  margin-bottom: 14px;
+  margin-bottom: 12px;
 }
 
-.event-intro h1 span {
-  color: #44b6e5;
+.hero h2 {
+  font-size: 16px;
+  font-weight: 500;
+  opacity: 0.95;
 }
 
-.event-intro p {
-  font-size: 18px;
-  line-height: 1.6;
-  max-width: 720px;
+/* ================= CONTENT ================= */
+.page-content {
+  max-width: 900px;
+  margin: auto;
+  padding: 80px 24px 120px;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 40px;
 }
 
 /* ================= FORM ================= */
-.form-wrapper {
-  max-width: 900px;
-  margin: auto;
-  padding: 0 24px 80px;
-}
-
-.form-section {
-  border: 2px solid rgba(255,255,255,0.6);
-  border-radius: 14px;
-  padding: 28px;
-  margin-bottom: 28px;
-}
-
-.form-section h3 {
-  margin-top: 0;
-  margin-bottom: 18px;
-  text-transform: uppercase;
-  font-size: 18px;
-  letter-spacing: 0.05em;
-  color: #44b6e5;
-}
-
-.form-row {
+form {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-  margin-bottom: 16px;
+  gap: 18px;
 }
 
-.form-row.single {
-  grid-template-columns: 1fr;
+label {
+  font-size: 14px;
+  font-weight: 600;
 }
 
 input, select, textarea {
   width: 100%;
-  height: 48px;
-  padding: 0 14px;
-  border-radius: 6px;
-  border: none;
+  padding: 14px;
+  background: transparent;
+  border: 2px solid rgba(255,255,255,0.7);
+  border-radius: 8px;
+  color: #ffffff;
   font-size: 15px;
 }
 
-textarea {
-  height: 90px;
-  padding-top: 10px;
+input::placeholder,
+textarea::placeholder {
+  color: rgba(255,255,255,0.7);
 }
 
-input:focus, select:focus, textarea:focus {
-  outline: none;
-  box-shadow: 0 0 0 2px #44b6e5;
+select option {
+  color: #111;
 }
 
-/* ================= SUBMIT ================= */
-.submit-wrap {
-  text-align: center;
-  margin-top: 30px;
+.checkbox-group {
+  display: grid;
+  gap: 8px;
+}
+
+.checkbox-group label {
+  font-weight: 400;
 }
 
 button {
-  background: #44b6e5;
-  color: #ffffff;
+  margin-top: 24px;
+  padding: 16px;
+  background: #e04b3f;
   border: none;
-  padding: 14px 36px;
+  color: #ffffff;
   font-size: 16px;
-  font-weight: 600;
-  border-radius: 8px;
+  font-weight: 700;
+  border-radius: 10px;
   cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-button:hover:not(:disabled) {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 24px rgba(0,0,0,0.25);
-}
-
-button:disabled {
-  opacity: 0.8;
-  cursor: default;
 }
 
 /* ================= FOOTER ================= */
 .site-footer {
   background: #003366;
-  margin-top: 80px;
-}
-
-.footer-top-line {
-  height: 4px;
-  background: #44b6e5;
-}
-
-.footer-inner {
-  max-width: 1200px;
-  margin: auto;
   padding: 32px 24px;
   text-align: center;
-}
-
-.footer-disclaimer {
-  border: 1px solid #ffffff;
-  border-radius: 6px;
-  padding: 14px 18px;
-  margin-bottom: 22px;
-}
-
-.footer-logo img {
-  height: 48px;
-  margin-bottom: 18px;
-}
-
-.footer-menu {
-  display: flex;
-  justify-content: center;
-  gap: 24px;
-  flex-wrap: wrap;
-}
-
-.footer-menu a {
-  color: #ffffff;
-  text-decoration: none;
-  font-weight: 600;
   font-size: 13px;
 }
 
-.footer-copy {
-  font-size: 12px;
-  opacity: 0.85;
-}
-
-@media (max-width: 700px) {
-  .form-row { grid-template-columns: 1fr; }
+/* ================= CONFETTI ================= */
+.confetti {
+  position: fixed;
+  pointer-events: none;
+  font-size: 24px;
+  z-index: 9999;
 }
 </style>
 </head>
@@ -263,8 +204,8 @@ button:disabled {
 
 <header class="site-header">
   <div class="header-inner">
-    <a href="home.html" class="header-logo">
-      <img src="images/citypaclogo.png" alt="CityPAC">
+    <a class="header-logo" href="home.html">
+      <img src="images/citypaclogo.png">
     </a>
     <nav class="header-menu">
       <a href="home.html">Home</a>
@@ -277,140 +218,132 @@ button:disabled {
 </header>
 
 <section class="hero">
-  <img src="images/EVENTArtboard32.jpeg" alt="">
+  <img src="images/ChicagoSign.png">
+  <div class="hero-content">
+    <div>
+      <h1>THE 2026 MIDTERMS & THE U.S.–ISRAEL RELATIONSHIP</h1>
+      <h2>The Loop, Chicago • February XX, 2026</h2>
+    </div>
+  </div>
 </section>
 
-<section class="event-intro">
-  <h1>
-    <span>THE</span> 2026 Midterms &<br>
-    <span>THE</span> U.S.–Israel Relationship
-  </h1>
-  <p>
-    Join CityPAC for an in-depth conversation on the 2026 midterms,
-    U.S.–Israel relations, and the future of pro-Israel advocacy.
-  </p>
-</section>
+<section class="page-content">
+  <div class="section-title">RSVP</div>
 
-<section class="form-wrapper">
-<form id="febEventForm">
+  <form id="eventForm">
+    <label>Will you be attending?</label>
+    <select name="attending" required>
+      <option value="">Select</option>
+      <option>Yes</option>
+    </select>
 
-<div class="form-section">
-  <h3>Attendance</h3>
-  <select name="attendance" required>
-    <option value="">Will you be attending?</option>
-    <option>Yes</option>
-  </select>
-</div>
+    <label>How did you hear about this event?</label>
+    <input name="referral">
 
-<div class="form-section">
-  <h3>Personal Information</h3>
-  <div class="form-row">
-    <input name="first_name" placeholder="First Name" required>
-    <input name="last_name" placeholder="Last Name" required>
-  </div>
-  <div class="form-row">
-    <input name="age" placeholder="Age" required>
-    <input name="phone" placeholder="Phone Number" required>
-  </div>
-  <div class="form-row">
-    <input name="email" placeholder="Email" required>
-    <input name="address" placeholder="Address" required>
-  </div>
-  <div class="form-row single">
-    <input name="zip" placeholder="Zip Code" required>
-  </div>
-</div>
+    <label>First Name</label>
+    <input name="firstName" required>
 
-<div class="form-section">
-  <h3>Professional Information</h3>
-  <div class="form-row">
-    <input name="employer" placeholder="Current Employer" required>
-    <input name="job_title" placeholder="Job Title" required>
-  </div>
-  <select name="industry" required>
-    <option value="">Industry</option>
-    <option>Finance / Banking / Investment</option>
-    <option>Real Estate</option>
-    <option>Law</option>
-    <option>Consulting</option>
-    <option>Technology</option>
-    <option>Healthcare</option>
-    <option>Government / Policy</option>
-    <option>Nonprofit / Advocacy</option>
-    <option>Other</option>
-  </select>
-</div>
+    <label>Last Name</label>
+    <input name="lastName" required>
 
-<div class="form-section">
-  <h3>Other Information</h3>
-  <textarea name="interests" placeholder="What interests you about this event?"></textarea>
-  <textarea name="orgs" placeholder="Jewish / pro-Israel organizations you’ve been involved with"></textarea>
-  <textarea name="questions" placeholder="Questions for the CityPAC Board"></textarea>
-</div>
+    <label>Age</label>
+    <input name="age">
 
-<div class="submit-wrap">
-  <button type="submit" id="febSubmitBtn">Submit RSVP</button>
-</div>
+    <label>Phone Number</label>
+    <input name="phone">
 
-</form>
+    <label>Email</label>
+    <input name="email" required>
+
+    <label>Address</label>
+    <input name="address">
+
+    <label>Zip Code</label>
+    <input name="zip">
+
+    <label>Current Employer</label>
+    <input name="employer">
+
+    <label>Job Title</label>
+    <input name="job">
+
+    <label>Industry</label>
+    <select name="industry">
+      <option>Finance / Banking</option>
+      <option>Real Estate</option>
+      <option>Law</option>
+      <option>Consulting</option>
+      <option>Technology</option>
+      <option>Healthcare</option>
+      <option>Government</option>
+      <option>Political / Nonprofit</option>
+      <option>Education</option>
+      <option>Student</option>
+      <option>Other</option>
+    </select>
+
+    <label>Professional Groups (select all)</label>
+    <div class="checkbox-group">
+      <label><input type="checkbox" name="groups" value="Finance"> Finance</label>
+      <label><input type="checkbox" name="groups" value="Real Estate"> Real Estate</label>
+      <label><input type="checkbox" name="groups" value="Law"> Law</label>
+      <label><input type="checkbox" name="groups" value="Consulting"> Consulting</label>
+      <label><input type="checkbox" name="groups" value="Healthcare"> Healthcare</label>
+    </div>
+
+    <label>Organizations you've been involved with</label>
+    <div class="checkbox-group">
+      <label><input type="checkbox" name="orgs" value="AIPAC"> AIPAC</label>
+      <label><input type="checkbox" name="orgs" value="ADL"> ADL</label>
+      <label><input type="checkbox" name="orgs" value="CityPAC"> CityPAC</label>
+      <label><input type="checkbox" name="orgs" value="JUF"> JUF</label>
+      <label><input type="checkbox" name="orgs" value="AJC"> AJC</label>
+    </div>
+
+    <label>Questions for the CityPAC Board</label>
+    <textarea name="questions" rows="4"></textarea>
+
+    <button type="submit" id="submitBtn">Submit</button>
+  </form>
 </section>
 
 <footer class="site-footer">
-  <div class="footer-top-line"></div>
-  <div class="footer-inner">
-    <div class="footer-disclaimer">
-      Paid for by CityPAC and not authorized by any candidate or candidate committee.
-    </div>
-    <div class="footer-logo">
-      <img src="images/citypaclogo.png">
-    </div>
-    <nav class="footer-menu">
-      <a href="home.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="join.html">Join</a>
-      <a href="contact.html">Contact</a>
-      <a href="donate.html">Donate</a>
-    </nav>
-    <div class="footer-copy">© 2025 CityPAC</div>
-  </div>
+  © 2026 CityPAC. All rights reserved.
 </footer>
 
 <script>
-const form = document.getElementById("febEventForm");
-const btn = document.getElementById("febSubmitBtn");
+const form = document.getElementById("eventForm");
+const btn = document.getElementById("submitBtn");
 
 form.addEventListener("submit", e => {
   e.preventDefault();
-  btn.disabled = true;
   btn.innerText = "Submitting…";
+  btn.disabled = true;
 
-  fetch(
-    "https://script.google.com/macros/s/AKfycbxpltPUqdjcgKDbuEzGTPKW1-fwU-1PprbAIK_EQYlcKRoUAnqVhgJIa9JfNhdiRRlF/exec",
-    { method: "POST", mode: "no-cors", body: new FormData(form) }
-  ).then(() => {
+  fetch("https://script.google.com/macros/s/AKfycbxpltPUqdjcgKDbuEzGTPKW1-fwU-1PprbAIK_EQYlcKRoUAnqVhgJIa9JfNhdiRRlF/exec", {
+    method: "POST",
+    mode: "no-cors",
+    body: new FormData(form)
+  }).then(() => {
     btn.innerText = "Submitted ✓";
-    launchEmojiConfetti(btn);
-    form.reset();
+    launchConfetti();
   });
 });
 
-function launchEmojiConfetti(btn) {
-  const rect = btn.getBoundingClientRect();
+function launchConfetti() {
   const emojis = ["🎉","✨","🇺🇸","🇮🇱"];
-  for (let i = 0; i < 200; i++) {
-    const e = document.createElement("span");
-    e.textContent = emojis[Math.floor(Math.random()*emojis.length)];
-    e.style.position = "fixed";
-    e.style.left = rect.left + rect.width/2 + "px";
-    e.style.top = rect.top + "px";
-    e.style.fontSize = "28px";
-    e.style.pointerEvents = "none";
+  for (let i = 0; i < 150; i++) {
+    const e = document.createElement("div");
+    e.className = "confetti";
+    e.innerText = emojis[Math.floor(Math.random()*emojis.length)];
+    e.style.left = Math.random()*100+"vw";
+    e.style.top = "-10px";
     document.body.appendChild(e);
     e.animate([
-      { transform: "translate(0,0)", opacity: 1 },
-      { transform: `translate(${Math.random()*600-300}px,${Math.random()*-500}px)`, opacity: 0 }
+      { transform: "translateY(0)", opacity: 1 },
+      { transform: "translateY(100vh)", opacity: 0 }
     ], { duration: 2500 });
-    setTimeout(()=>e.remove(),2600);
+    setTimeout(() => e.remove(), 2500);
   }
 }
 </script>
