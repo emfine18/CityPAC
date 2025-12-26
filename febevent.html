@@ -13,7 +13,7 @@
 body {
   margin: 0;
   color: #ffffff;
-  background: linear-gradient(to bottom, #66addb 0%, #2f347b 100%);
+  background: linear-gradient(to bottom, #6fb6e3 0%, #2f347b 100%);
 }
 
 /* ================= HEADER ================= */
@@ -73,7 +73,7 @@ body {
 /* ================= HERO ================= */
 .hero {
   position: relative;
-  height: 70vh;
+  height: 72vh;
   overflow: hidden;
 }
 
@@ -83,36 +83,37 @@ body {
   object-fit: cover;
 }
 
+/* gradient overlay ON TOP of image */
 .hero::after {
   content: "";
   position: absolute;
   inset: 0;
   background: linear-gradient(
     to bottom,
-    rgba(102,173,219,0.65),
-    rgba(47,52,123,0.9)
+    rgba(111,182,227,0.45),
+    rgba(47,52,123,0.95)
   );
 }
 
 .hero-content {
   position: absolute;
   inset: 0;
+  z-index: 2;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   padding: 0 24px;
-  z-index: 2;
 }
 
 .hero h1 {
-  font-size: clamp(36px, 5vw, 64px);
+  font-size: clamp(38px, 5vw, 64px);
   font-weight: 700;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 
 .hero h2 {
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 500;
   opacity: 0.95;
 }
@@ -124,22 +125,27 @@ body {
   padding: 80px 24px 120px;
 }
 
-.section-title {
-  text-align: center;
-  font-size: 28px;
-  font-weight: 700;
-  margin-bottom: 40px;
-}
-
 /* ================= FORM ================= */
 form {
   display: grid;
-  gap: 18px;
+  gap: 14px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
 }
 
 label {
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
 }
 
 input, select, textarea {
@@ -157,17 +163,16 @@ textarea::placeholder {
   color: rgba(255,255,255,0.7);
 }
 
-select option {
-  color: #111;
-}
+select option { color: #111; }
 
 .checkbox-group {
   display: grid;
-  gap: 8px;
+  gap: 6px;
 }
 
 .checkbox-group label {
   font-weight: 400;
+  font-size: 14px;
 }
 
 button {
@@ -218,7 +223,7 @@ button {
 </header>
 
 <section class="hero">
-  <img src="images/ChicagoSign.png">
+  <img src="images/ChicagoSign.png" alt="">
   <div class="hero-content">
     <div>
       <h1>THE 2026 MIDTERMS & THE U.S.–ISRAEL RELATIONSHIP</h1>
@@ -228,47 +233,34 @@ button {
 </section>
 
 <section class="page-content">
-  <div class="section-title">RSVP</div>
+<form id="eventForm">
 
-  <form id="eventForm">
-    <label>Will you be attending?</label>
-    <select name="attending" required>
-      <option value="">Select</option>
-      <option>Yes</option>
-    </select>
+  <div class="form-row">
+    <div class="field">
+      <label>First Name</label>
+      <input name="firstName" placeholder="First name" required>
+    </div>
+    <div class="field">
+      <label>Last Name</label>
+      <input name="lastName" placeholder="Last name" required>
+    </div>
+  </div>
 
-    <label>How did you hear about this event?</label>
-    <input name="referral">
+  <div class="form-row">
+    <div class="field">
+      <label>Email</label>
+      <input name="email" placeholder="Email address" required>
+    </div>
+    <div class="field">
+      <label>Phone</label>
+      <input name="phone" placeholder="Phone number">
+    </div>
+  </div>
 
-    <label>First Name</label>
-    <input name="firstName" required>
-
-    <label>Last Name</label>
-    <input name="lastName" required>
-
-    <label>Age</label>
-    <input name="age">
-
-    <label>Phone Number</label>
-    <input name="phone">
-
-    <label>Email</label>
-    <input name="email" required>
-
-    <label>Address</label>
-    <input name="address">
-
-    <label>Zip Code</label>
-    <input name="zip">
-
-    <label>Current Employer</label>
-    <input name="employer">
-
-    <label>Job Title</label>
-    <input name="job">
-
+  <div class="field">
     <label>Industry</label>
     <select name="industry">
+      <option value="">Select industry</option>
       <option>Finance / Banking</option>
       <option>Real Estate</option>
       <option>Law</option>
@@ -281,7 +273,9 @@ button {
       <option>Student</option>
       <option>Other</option>
     </select>
+  </div>
 
+  <div class="field">
     <label>Professional Groups (select all)</label>
     <div class="checkbox-group">
       <label><input type="checkbox" name="groups" value="Finance"> Finance</label>
@@ -290,21 +284,15 @@ button {
       <label><input type="checkbox" name="groups" value="Consulting"> Consulting</label>
       <label><input type="checkbox" name="groups" value="Healthcare"> Healthcare</label>
     </div>
+  </div>
 
-    <label>Organizations you've been involved with</label>
-    <div class="checkbox-group">
-      <label><input type="checkbox" name="orgs" value="AIPAC"> AIPAC</label>
-      <label><input type="checkbox" name="orgs" value="ADL"> ADL</label>
-      <label><input type="checkbox" name="orgs" value="CityPAC"> CityPAC</label>
-      <label><input type="checkbox" name="orgs" value="JUF"> JUF</label>
-      <label><input type="checkbox" name="orgs" value="AJC"> AJC</label>
-    </div>
-
+  <div class="field">
     <label>Questions for the CityPAC Board</label>
-    <textarea name="questions" rows="4"></textarea>
+    <textarea name="questions" rows="4" placeholder="Type your question here…"></textarea>
+  </div>
 
-    <button type="submit" id="submitBtn">Submit</button>
-  </form>
+  <button type="submit" id="submitBtn">Submit</button>
+</form>
 </section>
 
 <footer class="site-footer">
@@ -332,7 +320,7 @@ form.addEventListener("submit", e => {
 
 function launchConfetti() {
   const emojis = ["🎉","✨","🇺🇸","🇮🇱"];
-  for (let i = 0; i < 150; i++) {
+  for (let i = 0; i < 120; i++) {
     const e = document.createElement("div");
     e.className = "confetti";
     e.innerText = emojis[Math.floor(Math.random()*emojis.length)];
