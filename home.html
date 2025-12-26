@@ -348,44 +348,20 @@ body {
   box-shadow: 0 12px 28px rgba(0,0,0,0.18);
 }
 
-/* FEATURE TITLE (FROM THE LOOP TO THE HILL) */
-.home-content h2 {
-  position: relative;
-  padding-left: 18px;          /* space for red bar */
-  margin: 12px 0 14px;         /* tighter vertical spacing */
-  color: #44b6e5;
-  text-transform: uppercase;
-  font-weight: 700;
-  line-height: 1.15;
-  font-size: clamp(26px, 4vw, 40px);
-  max-width: 22ch;
-  text-align: left;            /* 🔑 keeps it grounded */
-}
-
-/* RED BAR */
-.home-content h2::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0.2em;
-  width: 6px;
-  height: 100%;
-  background: #c7332e;
-  border-radius: 2px;
-}
-
 .home-title-center {
   text-align: center;
 }
   
+/* PARAGRAPH SPACING — FIXED */
 .home-content p {
-  line-height: 1.7;
-  margin-bottom: 5px;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
   font-size: 16px;
 }
 
-.home-content p:last-of-type {
-  margin-bottom: 0;
+.home-content p + p {
+  margin-top: 8px;
 }
   
 /* BUTTONS */
@@ -605,36 +581,39 @@ body {
     <img src="images/capitol.jpg" alt="Capitol Hill">
   </div>
 
-<h2 class="home-title">
-  <span>From the Loop<br>to the Hill</span>
-</h2>
+<div class="home-content">
 
-  
-  
-    <p>
-      CityPAC is an independent, bipartisan, pro-Israel political action committee (PAC)
-      dedicated to strengthening the U.S.-Israel relationship.
-    </p>
+  <h2 class="home-title">
+    <span>From the Loop</span>
+    <span>to the Hill</span>
+  </h2>
 
-    <p>
-      CityPAC is an all-volunteer organization that empowers young professionals in Chicago
-      to get directly involved in the political process, to learn about and support the
-      U.S.–Israel relationship, and to plan and participate in social and educational programs
-      important to the pro-Israel community.
-    </p>
+  <p>
+    CityPAC is an independent, bipartisan, pro-Israel political action committee (PAC)
+    dedicated to strengthening the U.S.-Israel relationship.
+  </p>
 
-    <p>
-      Through our work, CityPAC not only helps to maintain strong and steadfast Congressional
-      support for Israel, but it also provides ongoing, real-world leadership opportunities
-      for the Jewish and pro-Israel communities in Chicago.
-    </p>
+  <p>
+    CityPAC is an all-volunteer organization that empowers young professionals in Chicago
+    to get directly involved in the political process, to learn about and support the
+    U.S.–Israel relationship, and to plan and participate in social and educational programs
+    important to the pro-Israel community.
+  </p>
 
-    <div class="home-buttons">
-      <a href="about.html" class="action-btn secondary">Learn More</a>
-      <a href="join.html" class="action-btn">Join Today</a>
-      <a href="donate.html" class="action-btn donate">Donate</a>
-    </div>
+  <p>
+    Through our work, CityPAC not only helps to maintain strong and steadfast Congressional
+    support for Israel, but it also provides ongoing, real-world leadership opportunities
+    for the Jewish and pro-Israel communities in Chicago.
+  </p>
+
+  <div class="home-buttons">
+    <a href="about.html" class="action-btn secondary">Learn More</a>
+    <a href="join.html" class="action-btn">Join Today</a>
+    <a href="donate.html" class="action-btn donate">Donate</a>
   </div>
+
+</div>
+  
 </section>
   
 <footer class="site-footer">
