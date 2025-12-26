@@ -56,108 +56,94 @@ body {
   font-weight: 700;
 }
 
-/* ================= HERO ================= */
+/* ================= HERO — FINAL RESET ================= */
 .hero {
   position: relative;
-  min-height: 85vh;
-
+  min-height: 100vh;
   background:
     linear-gradient(
       to bottom,
-      rgba(92,162,211,0.25) 0%,     /* VERY light at top */
-      rgba(92,162,211,0.35) 35%,    /* still light */
-      rgba(47,48,118,0.75) 70%,     /* dark where text starts */
-      rgba(47,48,118,0.95) 100%     /* fully dark at bottom */
+      rgba(92,162,211,0.65) 0%,
+      rgba(47,48,118,0.92) 70%,
+      #2f3076 100%
     ),
     url("images/ChicagoSign.png") center / cover no-repeat;
-
-  display: flex;
-  align-items: flex-end;
 }
-  
+
 .hero-inner {
   max-width: 1100px;
-  margin: auto;
-  padding: 0 24px 26vh; /* controls vertical position */
+  margin: 0 auto;
+  padding: 0 24px;
+  position: absolute;
+  left: 50%;
+  bottom: 12%;
+  transform: translateX(-50%);
   text-align: center;
+  color: #ffffff;
 }
-  
+
 /* Eyebrow */
 .hero-eyebrow {
   font-size: 14px;
   letter-spacing: 1px;
-  text-transform: uppercase;
   opacity: 0.9;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
 }
 
 /* Title */
 .hero-title {
-  font-size: clamp(34px, 5vw, 60px);
+  font-size: clamp(36px, 5vw, 64px);
   font-weight: 700;
   line-height: 1.1;
   margin: 0 0 10px;
 }
 
-/* Subtitle */
+/* Sub */
 .hero-subtitle {
   font-size: 15px;
   letter-spacing: 1px;
-  margin-bottom: 36px;
+  margin-bottom: 34px;
+  opacity: 0.95;
 }
 
-/* ================= SPEAKERS ================= */
+/* Speakers */
 .speakers {
   display: flex;
   justify-content: center;
-  gap: 56px;
-  margin-bottom: 36px;
+  gap: 64px;
+  margin-bottom: 32px;
 }
 
 .speaker {
   text-align: center;
 }
 
-.speaker .circle {
-  width: 120px;
-  height: 120px;
+.speaker-circle {
+  width: 130px;
+  height: 130px;
   background: #c98a3a;
   border-radius: 50%;
   margin: 0 auto 12px;
 }
 
-.speaker h4 {
-  margin: 0;
+.speaker-name {
   font-size: 14px;
   font-weight: 600;
 }
 
-.speaker span {
+.speaker-role {
   font-size: 12px;
   opacity: 0.85;
 }
 
-/* ================= DESCRIPTION ================= */
+/* Description */
 .hero-description {
-  max-width: 880px;
-  margin: auto;
+  max-width: 900px;
+  margin: 0 auto;
   font-size: 15px;
   line-height: 1.65;
   opacity: 0.95;
-}
-
-.hero::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 120px;
-  background: linear-gradient(
-    to bottom,
-    rgba(47,48,118,0) 0%,
-    rgba(47,48,118,1) 100%
-  );
 }
   
 /* ================= RSVP ================= */
@@ -258,14 +244,15 @@ button {
 
     <div class="speakers">
       <div class="speaker">
-        <div class="circle"></div>
-        <h4>Andy Hochberg</h4>
-        <span>Founder & CEO, Next Realty</span>
+        <div class="speaker-circle"></div>
+        <div class="speaker-name">Andy Hochberg</div>
+        <div class="speaker-role">Founder & CEO, Next Realty</div>
       </div>
+
       <div class="speaker">
-        <div class="circle"></div>
-        <h4>Emily Pevnick</h4>
-        <span>Board Member, CityPAC</span>
+        <div class="speaker-circle"></div>
+        <div class="speaker-name">Emily Pevnick</div>
+        <div class="speaker-role">Board Member, CityPAC</div>
       </div>
     </div>
 
@@ -278,12 +265,12 @@ button {
       <br><br>
       Please complete this form by February 1st to confirm your attendance.
       Location to be shared 24 hours prior to the event.
-      Drinks, hors d’oeuvres, and dessert served.
+      Drinks, Hors d'oeuvres, and dessert served.
     </div>
 
   </div>
 </section>
-
+  
 <section class="rsvp">
   <div class="rsvp-inner">
     <h2>RSVP</h2>
