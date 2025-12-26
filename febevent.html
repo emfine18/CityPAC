@@ -12,8 +12,8 @@
 
 body {
   margin: 0;
-  color: #fff;
-  background: #2f3076;
+  color: #ffffff;
+  background: #ffffff;
 }
 
 /* ================= HEADER ================= */
@@ -21,7 +21,7 @@ body {
   position: absolute;
   top: 0;
   width: 100%;
-  z-index: 10;
+  z-index: 20;
 }
 
 .header-inner {
@@ -41,11 +41,11 @@ body {
 }
 
 .header-menu a {
-  color: #fff;
+  color: #ffffff;
   text-decoration: none;
   font-weight: 600;
   text-transform: uppercase;
-  font-size: 14px;
+  font-size: 15px;
 }
 
 .header-menu .donate-btn {
@@ -56,148 +56,153 @@ body {
 
 /* ================= HERO ================= */
 .hero {
-  position: relative;
   min-height: 90vh;
   background:
-    linear-gradient(to bottom, rgba(92,162,211,.85), rgba(47,48,118,.95)),
-    url("images/ChicagoSign.png") center/cover no-repeat;
+    linear-gradient(
+      to bottom,
+      rgba(92,162,211,0.75),
+      rgba(47,48,118,0.95)
+    ),
+    url("images/event-hero.jpg") center/cover no-repeat;
+  padding-top: 140px;
 }
 
-.hero-content {
-  max-width: 900px;
+.hero-inner {
+  max-width: 1100px;
   margin: auto;
-  padding: 160px 24px 80px;
-  text-align: center;
+  padding: 0 24px;
 }
 
-.hero h1 {
-  font-size: clamp(34px, 6vw, 56px);
+/* EVENT TITLE */
+.event-eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+.event-title {
+  font-size: clamp(36px, 5vw, 56px);
   font-weight: 700;
   line-height: 1.1;
-  margin-bottom: 10px;
+  margin-bottom: 24px;
 }
 
-.hero h2 {
-  font-weight: 400;
-  letter-spacing: .5px;
-  margin-bottom: 32px;
-}
-
-.speakers {
-  display: flex;
-  justify-content: center;
-  gap: 40px;
-  margin: 40px 0;
-}
-
-.speaker {
-  text-align: center;
-}
-
-.speaker .circle {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  background: #c88a3d;
-  margin-bottom: 10px;
-}
-
-/* ================= DESCRIPTION ================= */
-.hero p {
-  max-width: 820px;
-  margin: 18px auto;
-  font-size: 15px;
+.event-desc {
+  max-width: 720px;
+  font-size: 18px;
   line-height: 1.6;
 }
 
+/* ================= SPEAKERS ================= */
+.speakers {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+  margin-top: 80px;
+}
+
+.speaker {
+  background: rgba(255,255,255,0.08);
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.speaker img {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+}
+
+.speaker-info {
+  padding: 18px;
+}
+
+.speaker-name {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.speaker-title {
+  font-size: 14px;
+  opacity: 0.85;
+}
+
 /* ================= RSVP ================= */
-.rsvp {
-  background: #2f3076;
-  padding: 80px 24px;
+.rsvp-section {
+  background: #003366;
+  padding: 100px 24px;
 }
 
-.rsvp h3 {
-  text-align: center;
-  font-size: 28px;
-  margin-bottom: 32px;
-}
-
-form {
+.rsvp-inner {
   max-width: 900px;
   margin: auto;
-  display: grid;
-  gap: 14px;
 }
 
-.row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 14px;
+.rsvp-title {
+  text-align: center;
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 700;
+  margin-bottom: 48px;
 }
 
-input, select, textarea {
-  width: 100%;
-  padding: 14px;
-  background: transparent;
-  border: 2px solid #fff;
-  border-radius: 8px;
-  color: #fff;
-  font-size: 15px;
-}
-
-input::placeholder, textarea::placeholder {
-  color: rgba(255,255,255,.85);
-}
-
-select option { color: #000; }
-
-textarea { resize: vertical; }
-
-.checkbox-group {
-  display: grid;
-  gap: 6px;
-}
-
-.checkbox-group label {
-  display: flex;
-  gap: 8px;
-  align-items: center;
+/* FORM */
+.rsvp-section label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
   font-size: 14px;
 }
 
-button {
-  margin-top: 24px;
-  padding: 16px;
-  background: #44b6e5;
-  border: none;
-  border-radius: 10px;
-  font-size: 18px;
-  font-weight: 600;
-  color: #fff;
-  cursor: pointer;
+.rsvp-section input,
+.rsvp-section select,
+.rsvp-section textarea {
+  width: 100%;
+  padding: 14px 16px;
+  margin-bottom: 22px;
+  background: transparent;
+  border: 2px solid rgba(255,255,255,0.7);
+  border-radius: 6px;
+  color: #ffffff;
+  font-size: 15px;
 }
 
-button:disabled {
-  background: #8bbad4;
+.rsvp-section ::placeholder {
+  color: rgba(255,255,255,0.6);
+}
+
+.rsvp-section button {
+  background: #44b6e5;
+  color: #ffffff;
+  border: none;
+  padding: 14px 36px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
 }
 
 /* ================= FOOTER ================= */
 .site-footer {
   background: #003366;
-}
-
-.footer-inner {
-  max-width: 1200px;
-  margin: auto;
-  padding: 32px 24px;
+  padding: 40px 24px;
   text-align: center;
   font-size: 13px;
 }
 
-/* ================= MOBILE ================= */
-@media (max-width: 700px) {
-  .row { grid-template-columns: 1fr; }
-  .speakers { flex-direction: column; }
+.footer-logo img { height: 48px; margin-bottom: 16px; }
+
+.footer-menu {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.footer-menu a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 600;
 }
 </style>
 </head>
@@ -206,7 +211,7 @@ button:disabled {
 
 <header class="site-header">
   <div class="header-inner">
-    <a class="header-logo" href="home.html">
+    <a href="home.html" class="header-logo">
       <img src="images/citypaclogo.png">
     </a>
     <nav class="header-menu">
@@ -214,120 +219,105 @@ button:disabled {
       <a href="about.html">About</a>
       <a href="join.html">Join</a>
       <a href="contact.html">Contact</a>
-      <a class="donate-btn" href="donate.html">Donate</a>
+      <a href="donate.html" class="donate-btn">Donate</a>
     </nav>
   </div>
 </header>
 
 <section class="hero">
-  <div class="hero-content">
-    <h1>THE 2026 MIDTERMS &<br>THE U.S.–ISRAEL RELATIONSHIP</h1>
-    <h2>THE LOOP, CHICAGO • FEBRUARY XX, 2026</h2>
+  <div class="hero-inner">
+    <div class="event-eyebrow">CityPAC Presents</div>
+    <div class="event-title">
+      The 2026 Midterms<br>& the U.S.–Israel Relationship
+    </div>
+    <p class="event-desc">
+      Join CityPAC for an in-depth discussion on the upcoming midterms,
+      U.S.–Israel relations, and the future of bipartisan support.
+    </p>
 
     <div class="speakers">
       <div class="speaker">
-        <div class="circle"></div>
-        <strong>Andy Hochberg</strong><br>
-        Founder & CEO<br>Next Realty
+        <img src="images/speaker1.jpg">
+        <div class="speaker-info">
+          <div class="speaker-name">Speaker One</div>
+          <div class="speaker-title">Former Member of Congress</div>
+        </div>
       </div>
+
       <div class="speaker">
-        <div class="circle"></div>
-        <strong>Emily Pevnick</strong><br>
-        Board Member<br>CityPAC
+        <img src="images/speaker2.jpg">
+        <div class="speaker-info">
+          <div class="speaker-name">Speaker Two</div>
+          <div class="speaker-title">Foreign Policy Expert</div>
+        </div>
       </div>
     </div>
-
-    <p>
-      You are invited to join CityPAC for a timely discussion on the 2026 Midterms
-      and the U.S.–Israel relationship with fellow young professionals.
-    </p>
-
-    <p>
-      Please complete the form below by February 1st to confirm your attendance.
-      Location to be shared 24 hours prior.
-    </p>
   </div>
 </section>
 
-<section class="rsvp">
-<h3>RSVP</h3>
+<section class="rsvp-section">
+  <div class="rsvp-inner">
+    <h2 class="rsvp-title">RSVP</h2>
 
-<form id="febForm">
+    <form id="febEventForm">
+      <input name="attending" placeholder="Will you be attending?">
+      <input name="hear" placeholder="How did you hear about this event?">
+      <input name="first" placeholder="First Name">
+      <input name="last" placeholder="Last Name">
+      <input name="age" placeholder="Age">
+      <input name="phone" placeholder="Phone Number">
+      <input name="email" placeholder="Email">
+      <input name="address" placeholder="Address">
+      <input name="zip" placeholder="Zip Code">
 
-<select name="attending" required>
-  <option value="">Will you be attending?</option>
-  <option>Yes</option>
-</select>
+      <input name="employer" placeholder="Current Employer">
+      <input name="title" placeholder="Job Title">
 
-<input name="heard" placeholder="How did you hear about this event?" required>
+      <select name="industry">
+        <option value="">Industry</option>
+        <option>Finance</option>
+        <option>Real Estate</option>
+        <option>Law</option>
+        <option>Technology</option>
+        <option>Healthcare</option>
+        <option>Other</option>
+      </select>
 
-<div class="row">
-  <input name="first" placeholder="First name" required>
-  <input name="last" placeholder="Last name" required>
-</div>
+      <select name="groups">
+        <option value="">Professional Groups</option>
+        <option>Finance Professionals</option>
+        <option>Real Estate Professionals</option>
+        <option>Legal Professionals</option>
+      </select>
 
-<div class="row">
-  <input name="age" placeholder="Age" required>
-  <input name="phone" placeholder="Phone number" required>
-</div>
+      <textarea name="interest" placeholder="What interests you about this event?"></textarea>
+      <textarea name="orgs" placeholder="Jewish / Pro-Israel organizations you’ve been involved with"></textarea>
+      <textarea name="questions" placeholder="Questions for the CityPAC Board"></textarea>
 
-<input name="email" placeholder="Email" required>
-<input name="address" placeholder="Address" required>
-<input name="zip" placeholder="Zip Code" required>
-
-<input name="employer" placeholder="Current Employer" required>
-<input name="title" placeholder="Job Title" required>
-
-<select name="industry" required>
-  <option value="">Industry</option>
-  <option>Finance</option>
-  <option>Real Estate</option>
-  <option>Law</option>
-  <option>Consulting</option>
-  <option>Technology</option>
-  <option>Healthcare</option>
-  <option>Government</option>
-  <option>Nonprofit</option>
-  <option>Student</option>
-  <option>Other</option>
-</select>
-
-<select name="group" required>
-  <option value="">Professional Group</option>
-  <option>Finance</option>
-  <option>Real Estate</option>
-  <option>Law</option>
-  <option>Consulting</option>
-  <option>Healthcare</option>
-</select>
-
-<div class="checkbox-group">
-  <label><input type="checkbox" name="orgs" value="AIPAC"> AIPAC</label>
-  <label><input type="checkbox" name="orgs" value="ADL"> ADL</label>
-  <label><input type="checkbox" name="orgs" value="CityPAC"> CityPAC</label>
-  <label><input type="checkbox" name="orgs" value="JUF"> JUF</label>
-</div>
-
-<textarea name="questions" placeholder="Questions for the CityPAC Board"></textarea>
-
-<button id="submitBtn">Submit</button>
-
-</form>
+      <button type="submit" id="submitBtn">Submit</button>
+    </form>
+  </div>
 </section>
 
 <footer class="site-footer">
-  <div class="footer-inner">
-    © 2026 CityPAC. All rights reserved.
+  <div class="footer-logo">
+    <img src="images/citypaclogo.png">
   </div>
+  <nav class="footer-menu">
+    <a href="home.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="join.html">Join</a>
+    <a href="contact.html">Contact</a>
+    <a href="donate.html">Donate</a>
+  </nav>
 </footer>
 
 <script>
-const form = document.getElementById("febForm");
+const form = document.getElementById("febEventForm");
 const btn = document.getElementById("submitBtn");
 
 form.addEventListener("submit", e => {
   e.preventDefault();
-  btn.disabled = true;
   btn.innerText = "Submitting…";
 
   fetch("https://script.google.com/macros/s/AKfycbxpltPUqdjcgKDbuEzGTPKW1-fwU-1PprbAIK_EQYlcKRoUAnqVhgJIa9JfNhdiRRlF/exec", {
@@ -336,8 +326,27 @@ form.addEventListener("submit", e => {
     body: new FormData(form)
   }).then(() => {
     btn.innerText = "Submitted ✓";
+    launchEmojiConfetti(btn);
+    form.reset();
   });
 });
+
+function launchEmojiConfetti(btn) {
+  const emojis = ["🎉","✨","🇺🇸","🇮🇱"];
+  for (let i = 0; i < 200; i++) {
+    const e = document.createElement("span");
+    e.textContent = emojis[Math.floor(Math.random()*emojis.length)];
+    e.style.position = "fixed";
+    e.style.left = "50%";
+    e.style.top = "50%";
+    document.body.appendChild(e);
+    e.animate([
+      { transform: "translate(0,0)", opacity: 1 },
+      { transform: `translate(${Math.random()*800-400}px, ${Math.random()*800-400}px)`, opacity: 0 }
+    ], { duration: 2000 });
+    setTimeout(()=>e.remove(),2000);
+  }
+}
 </script>
 
 </body>
