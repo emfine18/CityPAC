@@ -307,7 +307,7 @@ body {
   font-size: clamp(26px, 4vw, 40px); /* responsive but controlled */
 }
 
-  /* ================= HOME STORY ================= */
+/* ================= HOME STORY ================= */
 .home-story {
   max-width: 1200px;
   margin: 60px auto;
@@ -315,24 +315,39 @@ body {
   display: grid;
   grid-template-columns: 1fr 1.2fr;
   gap: 48px;
-  align-items: stretch;
+  align-items: start; /* 🔑 critical: stops image stretching */
 }
 
-/* IMAGE STACK — FINAL, CONTROLLED SIZE */
+/* IMAGE STACK — FIXED SIZE, NEVER STRETCHES */
 .home-images {
   display: flex;
   flex-direction: column;
   gap: 18px;
-  max-width: 520px;   /* limits width so it’s not half the browser */
+  max-width: 460px; /* 🔑 keeps images sane */
 }
 
 .home-images img {
   width: 100%;
-  height: 260px;      /* desktop size */
-  object-fit: cover; /* no gray bars */
+  height: 220px;        /* 🔑 final desktop size */
+  object-fit: cover;   /* clean crop, no gray */
   border-radius: 10px;
 }
-  
+
+/* MOBILE */
+@media (max-width: 900px) {
+  .home-story {
+    grid-template-columns: 1fr;
+  }
+
+  .home-images {
+    max-width: 100%;
+  }
+
+  .home-images img {
+    height: 180px;
+  }
+}
+   
 /* POP EFFECT */
 .home-images img:hover {
   transform: translateY(-6px);
@@ -348,9 +363,9 @@ body {
   margin: 0;
   padding: 0;
   line-height: 1.6;
-  font-size: 16px;
+  font-size: clamp(15px, 1.8vw, 17px);
 }
-
+  
 .home-content p + p {
   margin-top: 8px;
 }
