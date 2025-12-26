@@ -55,60 +55,60 @@ body {
   font-weight: 700;
 }
 
-/* ================= HERO ================= */
+/* ================= HERO (IMAGE ONLY) ================= */
 .hero {
-  position: relative;
-  min-height: 100vh;
+  height: 80vh;
   background:
     linear-gradient(
       to bottom,
-      rgba(92,162,211,0.55) 0%,
-      rgba(47,48,118,0.85) 55%,
-      #2f3076 100%
+      rgba(92,162,211,0.6),
+      rgba(47,48,118,0.9),
+      #2f3076
     ),
     url("images/ChicagoSign.png") center / cover no-repeat;
 }
 
-.hero-inner {
+/* ================= EVENT CONTENT ================= */
+.event-content {
+  background: #2f3076;
+  padding: 80px 24px 110px;
+}
+
+.event-inner {
   max-width: 1100px;
-  position: absolute;
-  left: 50%;
-  bottom: 12%;
-  transform: translateX(-50%);
-  padding: 0 24px;
+  margin: auto;
   text-align: center;
 }
 
-/* Eyebrow */
-.hero-eyebrow {
+.event-eyebrow {
+  text-transform: uppercase;
   font-size: 14px;
   letter-spacing: 1px;
   opacity: 0.9;
   margin-bottom: 12px;
-  text-transform: uppercase;
 }
 
-/* Title */
-.hero-title {
-  font-size: clamp(36px, 5vw, 64px);
+.event-title {
+  font-size: clamp(38px, 5vw, 64px);
   font-weight: 700;
   line-height: 1.1;
   margin-bottom: 12px;
 }
 
-/* Subtitle */
-.hero-subtitle {
+.event-subtitle {
   font-size: 15px;
   letter-spacing: 1px;
-  margin-bottom: 40px;
+  margin-bottom: 48px;
+  opacity: 0.95;
 }
 
-/* Speakers */
+/* SPEAKERS */
 .speakers {
   display: flex;
   justify-content: center;
   gap: 64px;
-  margin-bottom: 36px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
 }
 
 .speaker {
@@ -133,8 +133,8 @@ body {
   opacity: 0.85;
 }
 
-/* Description */
-.hero-description {
+/* DESCRIPTION */
+.event-description {
   max-width: 900px;
   margin: auto;
   font-size: 15px;
@@ -156,18 +156,15 @@ body {
 .rsvp h2 {
   text-align: center;
   margin-bottom: 36px;
-  font-size: 28px;
 }
 
 /* FORM */
-#rsvpForm {
+form {
   display: grid;
   gap: 16px;
 }
 
-#rsvpForm input,
-#rsvpForm select,
-#rsvpForm textarea {
+input, select, textarea {
   width: 100%;
   background: transparent;
   border: 1px solid #ffffff;
@@ -177,8 +174,8 @@ body {
   font-size: 14px;
 }
 
-#rsvpForm input::placeholder,
-#rsvpForm textarea::placeholder {
+input::placeholder,
+textarea::placeholder {
   color: rgba(255,255,255,0.85);
 }
 
@@ -188,11 +185,7 @@ body {
   gap: 8px;
 }
 
-.checkbox-group label {
-  font-size: 14px;
-}
-
-#submitBtn {
+button {
   margin-top: 18px;
   padding: 14px;
   background: #44b6e5;
@@ -231,17 +224,19 @@ body {
   </div>
 </header>
 
-<section class="hero">
-  <div class="hero-inner">
+<section class="hero"></section>
 
-    <div class="hero-eyebrow">CityPAC Presents</div>
+<section class="event-content">
+  <div class="event-inner">
 
-    <h1 class="hero-title">
+    <div class="event-eyebrow">CityPAC Presents</div>
+
+    <h1 class="event-title">
       THE 2026 MIDTERMS & THE<br>
       U.S.–ISRAEL RELATIONSHIP
     </h1>
 
-    <div class="hero-subtitle">
+    <div class="event-subtitle">
       THE LOOP, CHICAGO • FEBRUARY 17, 2026
     </div>
 
@@ -251,6 +246,7 @@ body {
         <div class="speaker-name">Andy Hochberg</div>
         <div class="speaker-role">Founder & CEO, Next Realty</div>
       </div>
+
       <div class="speaker">
         <div class="speaker-circle"></div>
         <div class="speaker-name">Emily Pevnick</div>
@@ -258,15 +254,17 @@ body {
       </div>
     </div>
 
-    <div class="hero-description">
+    <p class="event-description">
       You are invited to join CityPAC on February 17th at 6:30 PM for a timely discussion on
       <strong>The 2026 Midterms and the U.S.–Israel Relationship</strong>.
-      Connect with fellow young, pro-Israel professionals for an in-depth discussion on the
-      future of bipartisan support for the U.S.–Israel relationship, with a focus on Illinois politics.
+      Connect with your fellow young, pro-Israel professionals for an in-depth discussion
+      on the future of bipartisan support for the U.S.–Israel relationship, with a focus on
+      the political landscape in Illinois.
       <br><br>
       Please complete this form by February 1st to confirm your attendance.
-      Location shared 24 hours prior. Drinks, hors d'oeuvres, and dessert served.
-    </div>
+      Location to be shared 24 hours prior to the event.
+      Drinks, hors d'oeuvres, and dessert served.
+    </p>
 
   </div>
 </section>
@@ -278,7 +276,6 @@ body {
     <form id="rsvpForm">
       <input name="attending" placeholder="Will you be attending?" required>
       <input name="referral" placeholder="How did you hear about this event?" required>
-
       <input name="first_name" placeholder="First name" required>
       <input name="last_name" placeholder="Last name" required>
       <input name="age" placeholder="Age" required>
@@ -286,7 +283,6 @@ body {
       <input name="email" placeholder="Email" required>
       <input name="address" placeholder="Address" required>
       <input name="zip" placeholder="Zip Code" required>
-
       <input name="employer" placeholder="Current Employer" required>
       <input name="title" placeholder="Job Title" required>
 
@@ -298,7 +294,7 @@ body {
         <option>Technology</option>
         <option>Healthcare</option>
         <option>Government / Public Policy</option>
-        <option>Political / Advocacy / Nonprofit</option>
+        <option>Nonprofit</option>
         <option>Education</option>
         <option>Student</option>
         <option>Other</option>
@@ -314,17 +310,6 @@ body {
       </select>
 
       <textarea name="interests" placeholder="What interests you about this event or future programs?" required></textarea>
-
-      <div class="checkbox-group">
-        <label><input type="checkbox" name="orgs" value="AIPAC"> AIPAC</label>
-        <label><input type="checkbox" name="orgs" value="ADL"> ADL</label>
-        <label><input type="checkbox" name="orgs" value="CityPAC"> CityPAC</label>
-        <label><input type="checkbox" name="orgs" value="JUF YLD"> JUF YLD</label>
-        <label><input type="checkbox" name="orgs" value="JCRC"> JCRC</label>
-        <label><input type="checkbox" name="orgs" value="AJC"> AJC</label>
-        <label><input type="checkbox" name="orgs" value="Chabad/Hillel"> Chabad / Hillel</label>
-      </div>
-
       <textarea name="questions" placeholder="Questions for the CityPAC Board?"></textarea>
 
       <button type="submit" id="submitBtn">Submit</button>
@@ -345,14 +330,11 @@ form.addEventListener("submit", e => {
   btn.textContent = "Submitting…";
   btn.disabled = true;
 
-  fetch(
-    "https://script.google.com/macros/s/AKfycbxpltPUqdjcgKDbuEzGTPKW1-fwU-1PprbAIK_EQYlcKRoUAnqVhgJIa9JfNhdiRRlF/exec",
-    {
-      method: "POST",
-      mode: "no-cors",
-      body: new FormData(form)
-    }
-  ).then(() => {
+  fetch("https://script.google.com/macros/s/AKfycbxpltPUqdjcgKDbuEzGTPKW1-fwU-1PprbAIK_EQYlcKRoUAnqVhgJIa9JfNhdiRRlF/exec", {
+    method: "POST",
+    mode: "no-cors",
+    body: new FormData(form)
+  }).then(() => {
     btn.textContent = "Submitted ✓";
     launchEmojiConfetti();
     form.reset();
