@@ -315,37 +315,24 @@ body {
   display: grid;
   grid-template-columns: 1fr 1.2fr;
   gap: 48px;
-  align-items: center;
   align-items: stretch;
 }
 
-/* IMAGE STACK */
+/* IMAGE STACK — MATCH TEXT HEIGHT */
 .home-images {
   display: flex;
   flex-direction: column;
   gap: 18px;
-}
-
-.home-images {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-  max-width: 420px;           /* prevents images from overpowering text */
-  height: 100%;
-
+  height: 100%;          /* 🔑 stretch to text column */
 }
 
 .home-images img {
+  flex: 1;               /* 🔑 split space evenly */
   width: 100%;
-  height: 220px;
-  object-fit: cover;      /* 🔑 THIS FIXES IT */
-  flex: 1;
-  object-fit: cover;
-  object-position: top center; /* 🔑 THIS IS THE FIX */
+  object-fit: cover;     /* clean crop, no gray */
   border-radius: 10px;
-}     
 }
-
+  
 /* POP EFFECT */
 .home-images img:hover {
   transform: translateY(-6px);
