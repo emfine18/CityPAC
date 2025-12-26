@@ -335,12 +335,9 @@ body {
 .home-images img {
   width: 100%;
   height: 220px;
-  object-fit: contain;     /* SHOW FULL IMAGE */
-  background: #f6f9fc;     /* fills empty space cleanly */
+  object-fit: cover;      /* 🔑 THIS FIXES IT */
   border-radius: 10px;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-  cursor: pointer;
-}
+}and     
   
 /* POP EFFECT */
 .home-images img:hover {
