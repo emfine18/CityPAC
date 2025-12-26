@@ -424,27 +424,19 @@ body {
     align-items: flex-start;
   }
 
-  .action-btn {
-    width: 100%;
-    text-align: center;
-  }
+/* IMAGE SIZING — FINAL, STABLE */
+.home-images {
+  max-width: 440px;          /* keeps images balanced vs text */
+}
 
-  .home-images {
-    max-width: 100%;
-  }
-
-  .home-images img {
-    height: 200px;
-  }
+.home-images img {
+  width: 100%;
+  aspect-ratio: 16 / 9;      /* consistent shape */
+  object-fit: contain;      /* NO CROPPING */
+  background: #f6f9fc;
+  border-radius: 10px;
 }
   
-  .home-images {
-    max-width: 100%;
-  }
-
-  .home-images img {
-    height: 200px;
-  }
 
   /* MOBILE TIGHTENING — HOME STORY */
 @media (max-width: 700px) {
@@ -457,7 +449,6 @@ body {
   }
 
   .home-images img {
-    height: 180px;            /* consistent, not giant */
   }
 }
 
