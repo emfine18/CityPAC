@@ -79,8 +79,8 @@ body {
   background:
     linear-gradient(
       to bottom,
-      rgba(92,162,211,0.45),   /* 🔑 lighter top so Chicago sign shows */
-      rgba(47,48,118,0.95)
+      rgba(92,162,211,0.45),   /* LIGHT blue at top */
+      rgba(47,48,118,0.95)    /* DARK blue at bottom */
     ),
     url("images/ChicagoSign.png") center / cover no-repeat;
 
@@ -88,15 +88,16 @@ body {
   align-items: flex-start;   /* 🔑 text starts lower, not centered */
   padding-top: 160px;        /* 🔑 pushes text DOWN */
 }
-  oka
 
 .hero-inner {
   max-width: 1100px;
   margin: auto;
-  padding: 0 24px;
+  padding: 180px 24px 120px;  /* 🔑 THIS moves text DOWN */
   text-align: center;
 }
 
+  
+  
 .hero h1 {
   font-size: clamp(34px, 5vw, 58px);
   font-weight: 700;
@@ -248,9 +249,23 @@ button {
 
 <section class="hero">
   <div class="hero-inner">
-    <h1>THE 2026 MIDTERMS & THE<br>U.S.–ISRAEL RELATIONSHIP</h1>
-    <div class="sub">THE LOOP, CHICAGO • FEBRUARY XX, 2026</div>
 
+    <!-- CityPAC Presents (ADD THIS FIRST) -->
+    <div class="hero-eyebrow">
+      CityPAC Presents
+    </div>
+
+    <!-- Main Title -->
+    <h1 class="hero-title">
+      THE 2026 MIDTERMS & THE<br>
+      U.S.–ISRAEL RELATIONSHIP
+    </h1>
+
+    <!-- Subtitle -->
+    <div class="hero-subtitle">
+      THE LOOP, CHICAGO • FEBRUARY XX, 2026
+    </div>
+    
     <div class="speakers">
       <div class="speaker">
         <div class="circle"></div>
@@ -262,14 +277,18 @@ button {
         <h4>Emily Pevnick</h4>
         <span>Board Member, CityPAC</span>
       </div>
-    </div>
-
-    <p>
-      You are invited to join CityPAC for a timely discussion on the 2026 Midterms
-      and the U.S.–Israel relationship.
-    </p>
-  </div>
-</section>
+<div class="hero-description">
+  You are invited to join CityPAC on February 17th at 6:30 PM for a timely discussion on
+  <strong>The 2026 Midterms and the U.S.–Israel Relationship</strong>.
+  Connect with your fellow young, pro-Israel professionals for an in-depth discussion
+  on the future of bipartisan support for the U.S.–Israel relationship, with a focus on
+  the political landscape in Illinois.
+  <br><br>
+  Please complete this form by February 1st to confirm your attendance.
+  Location to be shared 24 hours prior to the event.
+  Drinks, Hors d'oeuvres, and dessert served.
+</div>
+    </section>
 
 <section class="rsvp">
   <div class="rsvp-inner">
