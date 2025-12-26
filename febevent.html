@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>February Event | CityPAC</title>
+<title>CityPAC | February Event</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
 
@@ -12,8 +12,13 @@
 
 body {
   margin: 0;
-  background: #ffffff;
   color: #111;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,51,102,0.25) 0%,
+    rgba(255,255,255,1) 45%,
+    rgba(255,255,255,1) 100%
+  );
 }
 
 /* ================= HEADER ================= */
@@ -33,262 +38,146 @@ body {
   align-items: center;
 }
 
-.header-logo img {
-  height: 56px;
-}
-
-/* ================= HEADER MENU ================= */
+.header-logo img { height: 56px; }
 
 .header-menu {
   display: flex;
-  align-items: center;
   gap: 18px;
 }
 
-/* ===== DESKTOP MENU LINKS ===== */
 .header-menu a {
-  color: #ffffff;               /* WHITE on desktop */
+  color: #ffffff;
   text-decoration: none;
   font-weight: 600;
   text-transform: uppercase;
   font-size: 15px;
-  position: relative;
-  padding-bottom: 6px;
-  display: flex;
-  align-items: center;
 }
 
-/* WHITE underline on desktop */
-.header-menu a::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 0;
-  height: 3px;
-  background: #ffffff;
-  transition: width 0.25s ease;
-}
-
-.header-menu a:hover::after {
-  width: 100%;
-}
-
-/* ===== DONATE BUTTON ===== */
 .header-menu .donate-btn {
   background: #e04b3f;
-  color: #ffffff !important;    /* ALWAYS white */
   padding: 10px 18px;
   border-radius: 10px;
-  font-weight: 700;
-  line-height: 1;
+  color: #fff;
 }
 
-.header-menu .donate-btn::after {
-  display: none;                /* no underline */
-}
-
-.header-menu .donate-btn:hover {
-  background: #c93c32;
-}
-
-/* ===== HAMBURGER ICON ===== */
-.hamburger {
-  display: none;
-  flex-direction: column;
-  gap: 6px;
-  cursor: pointer;
-}
-
-.hamburger span {
-  width: 26px;
-  height: 3px;
-  background: #ffffff;          /* WHITE lines */
-}
-
-/* ================= MOBILE MENU ================= */
-@media (max-width: 900px) {
-  .hamburger {
-    display: flex;
-  }
-
-  .header-menu {
-    position: absolute;
-    top: 78px;
-    right: 24px;
-    background: #ffffff;
-    padding: 18px 22px;
-    border-radius: 8px;
-    display: none;
-    flex-direction: column;
-    gap: 16px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-    align-items: flex-start;
-  }
-
-  .header-menu.show {
-    display: flex;
-  }
-
-  /* ===== HAMBURGER MENU LINKS ===== */
-  .header-menu a {
-    color: #44b6e5;             /* BLUE in hamburger */
-  }
-
-  .header-menu a::after {
-    background: #44b6e5;        /* BLUE underline */
-  }
-
-  /* KEEP DONATE BUTTON WHITE TEXT */
-  .header-menu .donate-btn {
-    color: #ffffff !important;
-    padding: 8px 14px;
-    border-radius: 8px;
-    font-size: 15px;
-  }
-}
-  
 /* ================= HERO ================= */
-.event-hero {
-  min-height: 100vh;
-  background:
-    linear-gradient(
-      rgba(14, 40, 94, 0.85),
-      rgba(24, 28, 92, 0.9)
-    ),
-    url("images/ChicagoSign.png") center 35% / cover no-repeat;
-  padding: 180px 24px 80px;
-  color: #ffffff;
+.hero {
+  height: 55vh;
+  position: relative;
+  overflow: hidden;
 }
 
-.event-inner {
-  max-width: 960px;
-  margin: auto;
-  text-align: center;
+.hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-/* ================= EVENT TITLE ================= */
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.25),
+    rgba(255,255,255,0.85)
+  );
+}
+
+/* ================= EVENT CONTENT ================= */
+.event-wrapper {
+  max-width: 900px;
+  margin: -80px auto 0;
+  padding: 0 24px 80px;
+}
+
+.event-card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 36px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.12);
+}
+
 .event-title {
-  font-size: clamp(34px, 6vw, 56px);
+  font-size: clamp(28px, 4vw, 42px);
   font-weight: 700;
-  line-height: 1.15;
+  text-transform: uppercase;
+  color: #003366;
   margin-bottom: 12px;
 }
 
 .event-subtitle {
-  font-size: 15px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  opacity: 0.9;
-  margin-bottom: 40px;
-}
-
-/* ================= SPEAKERS ================= */
-.speakers {
-  display: flex;
-  justify-content: center;
-  gap: 36px;
-  margin-bottom: 40px;
-}
-
-.speaker {
-  text-align: center;
-}
-
-.speaker-circle {
-  width: 140px;
-  height: 140px;
-  border-radius: 50%;
-  background: #c98a3e;
-  margin-bottom: 12px;
-}
-
-.speaker-name {
-  font-weight: 700;
-}
-
-.speaker-title {
-  font-size: 13px;
-  opacity: 0.85;
-}
-
-/* ================= EVENT TEXT ================= */
-.event-text {
-  max-width: 760px;
-  margin: auto;
-  font-size: 15px;
-  line-height: 1.7;
-  opacity: 0.95;
-}
-
-/* ================= RSVP FORM ================= */
-.rsvp-section {
-  margin-top: 60px;
-}
-
-.rsvp-title {
-  font-size: 26px;
+  color: #44b6e5;
   font-weight: 600;
-  margin-bottom: 20px;
+  margin-bottom: 28px;
 }
 
-.rsvp-form {
-  max-width: 720px;
-  margin: auto;
+/* ================= FORM ================= */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
-.rsvp-row {
+.form-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 16px;
-  margin-bottom: 16px;
 }
 
-.rsvp-row.full {
-  grid-template-columns: 1fr;
-}
-
-.rsvp-form input {
+input, select, textarea {
   height: 52px;
   padding: 0 14px;
   border-radius: 6px;
-  border: none;
+  border: 1px solid #ccc;
   font-size: 15px;
 }
 
-.rsvp-form button {
+textarea {
+  height: 100px;
+  padding: 12px 14px;
+}
+
+label {
+  font-weight: 600;
+  margin-bottom: 4px;
+  display: block;
+}
+
+fieldset {
+  border: none;
+  padding: 0;
+}
+
+fieldset label {
+  font-weight: 500;
+  display: block;
+}
+
+button {
+  margin-top: 24px;
   height: 54px;
   background: #44b6e5;
-  color: #ffffff;
+  color: #fff;
   border: none;
-  font-size: 16px;
+  font-size: 17px;
   font-weight: 600;
   border-radius: 6px;
   cursor: pointer;
-}
-
-@media (max-width: 700px) {
-  .speakers {
-    flex-direction: column;
-  }
-
-  .rsvp-row {
-    grid-template-columns: 1fr;
-  }
 }
 
 /* ================= FOOTER ================= */
 .site-footer {
   background: #003366;
-  color: #ffffff;
-  font-size: 13px;
-}
-
-.footer-inner {
-  max-width: 1200px;
-  margin: auto;
+  color: #fff;
   padding: 32px 24px;
   text-align: center;
+}
+
+@media (max-width: 700px) {
+  .form-row {
+    grid-template-columns: 1fr;
+  }
 }
 </style>
 </head>
@@ -297,109 +186,102 @@ body {
 
 <header class="site-header">
   <div class="header-inner">
-    <a href="home.html" class="header-logo">
-      <img src="images/citypaclogo.png" alt="CityPAC">
-    </a>
-
-    <nav class="header-menu" id="menu">
+    <img src="images/citypaclogo.png" alt="CityPAC">
+    <nav class="header-menu">
       <a href="home.html">Home</a>
       <a href="about.html">About</a>
       <a href="join.html">Join</a>
       <a href="contact.html">Contact</a>
       <a href="donate.html" class="donate-btn">Donate</a>
     </nav>
-
-    <div class="hamburger" id="hamburger">
-      <span></span><span></span><span></span>
-    </div>
   </div>
 </header>
 
-  
-<section class="event-hero">
-  <div class="event-inner">
+<section class="hero">
+  <img src="images/ChicagoSign.png" alt="Chicago">
+</section>
 
-    <h1 class="event-title">
-      The 2026 Midterms & The<br>
-      U.S.–Israel Relationship
-    </h1>
+<section class="event-wrapper">
+  <div class="event-card">
+    <div class="event-title">The 2026 Midterms & the U.S.–Israel Relationship</div>
+    <div class="event-subtitle">CityPAC February Event</div>
 
-    <div class="event-subtitle">
-      The Loop, Chicago • February XX, 2026
-    </div>
+<form id="febEventForm">
 
-    <div class="speakers">
-      <div class="speaker">
-        <div class="speaker-circle"></div>
-        <div class="speaker-name">Andy Hochberg</div>
-        <div class="speaker-title">Founder & CEO, Next Realty</div>
-      </div>
+<label>Will you be attending?</label>
+<select name="attending" required>
+  <option value="">Select</option>
+  <option>Yes</option>
+</select>
 
-      <div class="speaker">
-        <div class="speaker-circle"></div>
-        <div class="speaker-name">Emily Pevnick</div>
-        <div class="speaker-title">Board Member, CityPAC</div>
-      </div>
-    </div>
+<label>How did you hear about this event?</label>
+<input name="hear_about" required>
 
-    <div class="event-text">
-      You are invited to join CityPAC for a timely discussion on the 2026 Midterms
-      and the U.S.–Israel relationship. Connect with fellow young, pro-Israel
-      professionals for an in-depth conversation on bipartisan support for Israel.
-      <br><br>
-      Please complete the RSVP below by February 1st. Location details will be
-      shared 24 hours prior to the event. Drinks and hors d’oeuvres provided.
-    </div>
+<div class="form-row">
+  <input name="first_name" placeholder="First name" required>
+  <input name="last_name" placeholder="Last name" required>
+</div>
 
-    <div class="rsvp-section">
-      <div class="rsvp-title">RSVP</div>
+<div class="form-row">
+  <input name="age" placeholder="Age" required>
+  <input name="phone" placeholder="Phone number" required>
+</div>
 
-      <form class="rsvp-form" id="rsvpForm">
-        <div class="rsvp-row">
-          <input name="name" placeholder="Full Name" required>
-          <input name="email" placeholder="Email Address" required>
-        </div>
+<input name="email" placeholder="Email" required>
+<input name="address" placeholder="Address" required>
+<input name="zip" placeholder="Zip Code" required>
 
-        <div class="rsvp-row">
-          <input name="phone" placeholder="Phone Number" required>
-          <input name="company" placeholder="Organization / Employer">
-        </div>
+<input name="employer" placeholder="Current Employer" required>
+<input name="job_title" placeholder="Job Title" required>
 
-        <div class="rsvp-row full">
-          <button type="submit" id="rsvpBtn">RSVP</button>
-        </div>
-      </form>
-    </div>
+<label>Industry</label>
+<input name="industry" placeholder="Industry" required>
+
+<label>Professional Groups</label>
+<input name="professional_groups">
+
+<label>What interests you?</label>
+<input name="interests" required>
+
+<label>Involvement with Jewish / Pro-Israel orgs?</label>
+<select name="involvement" required>
+  <option value="">Select</option>
+  <option>Yes</option>
+  <option>No</option>
+</select>
+
+<label>Which organizations?</label>
+<input name="organizations">
+
+<label>Questions for the CityPAC Board?</label>
+<textarea name="questions"></textarea>
+
+<button type="submit">Submit RSVP</button>
+</form>
 
   </div>
 </section>
 
 <footer class="site-footer">
-  <div class="footer-inner">
-    © 2025 CityPAC. All rights reserved.
-  </div>
+  Paid for by CityPAC. © 2025
 </footer>
 
 <script>
-const rsvpForm = document.getElementById("rsvpForm");
-const rsvpBtn = document.getElementById("rsvpBtn");
+const form = document.getElementById("febEventForm");
 
-rsvpForm.addEventListener("submit", function (e) {
+form.addEventListener("submit", function(e) {
   e.preventDefault();
 
-  rsvpBtn.disabled = true;
-  rsvpBtn.innerText = "Submitting…";
-
   fetch(
-    "https://script.google.com/macros/s/YOUR_GOOGLE_SCRIPT_URL/exec",
+    "https://script.google.com/macros/s/AKfycbxpltPUqdjcgKDbuEzGTPKW1-fwU-1PprbAIK_EQYlcKRoUAnqVhgJIa9JfNhdiRRlF/exec",
     {
       method: "POST",
       mode: "no-cors",
-      body: new URLSearchParams(new FormData(rsvpForm))
+      body: new FormData(form)
     }
   ).then(() => {
-    rsvpBtn.innerText = "You're RSVP’d ✓";
-    rsvpForm.reset();
+    alert("RSVP submitted successfully!");
+    form.reset();
   });
 });
 </script>
