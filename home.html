@@ -201,7 +201,7 @@ body {
 
 .signup {
   max-width: 820px;
-  margin: 18px auto 0;
+  margin: 6px auto 0;
   padding: 0 24px;
   text-align: center;
 }
@@ -209,9 +209,8 @@ body {
 .signup h2 {
   color: #e53935;
   text-transform: uppercase;
-  font-size: clamp(36px, 8vw, 64px);
-  margin-bottom: 20px;
-}
+  font-size: clamp(24px, 4.5vw, 36px);
+  margin: 6px 0 18px;}
 
 /* ROWS */
 .signup-row {
@@ -325,7 +324,7 @@ body {
   color: #44b6e5;
   text-transform: uppercase;
   text-align: center;
-  font-size: clamp(36px, 8vw, 64px);
+  font-size: clamp(24px, 4.5vw, 36px);
   margin-bottom: 18px;
   max-width: 14ch;      /* PREVENTS SINGLE WORD HANGING */
   line-height: 1.15;
@@ -397,7 +396,7 @@ body {
   }
   }
   
-/* ================= FOOTER ================= */
+/* ================= FOOTER (IDENTICAL TO ABOUT) ================= */
 .site-footer {
   background: #003366;
   color: #ffffff;
@@ -416,7 +415,6 @@ body {
   text-align: center;
 }
 
-/* DISCLAIMER BOX */
 .footer-disclaimer {
   border: 1px solid #ffffff;
   border-radius: 6px;
@@ -425,13 +423,11 @@ body {
   line-height: 1.5;
 }
 
-/* LOGO */
 .footer-logo img {
   height: 48px;
   margin-bottom: 18px;
 }
 
-/* MENU */
 .footer-menu {
   display: flex;
   justify-content: center;
@@ -461,15 +457,13 @@ body {
   transition: width 0.25s ease;
 }
 
-.footer-menu a:hover::after {
-  width: 100%;
-}
+.footer-menu a:hover::after { width: 100%; }
 
-/* COPYRIGHT */
 .footer-copy {
   font-size: 12px;
   opacity: 0.85;
 }
+
   
 </style>
 </head>
@@ -573,7 +567,6 @@ body {
   
 <footer class="site-footer">
   <div class="footer-top-line"></div>
-
   <div class="footer-inner">
     <div class="footer-disclaimer">
       Paid for by CityPAC and not authorized by any candidate or candidate committee.
@@ -597,6 +590,7 @@ body {
     </div>
   </div>
 </footer>
+
   
 </script>
 
