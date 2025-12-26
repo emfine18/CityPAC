@@ -79,70 +79,54 @@ body {
   background:
     linear-gradient(
       to bottom,
-      rgba(92,162,211,0.45),
+      rgba(92,162,211,0.45),   /* 🔑 lighter top so Chicago sign shows */
       rgba(47,48,118,0.95)
+      rgba(92,162,211,0.45),   /* LIGHT blue at top */
+      rgba(47,48,118,0.95)    /* DARK blue at bottom */
     ),
     url("images/ChicagoSign.png") center / cover no-repeat;
-}
-  
+
   display: flex;
-  align-items: flex-start;
-  padding-top: 140px; /* pushes content DOWN */
+  align-items: flex-start;   /* 🔑 text starts lower, not centered */
+  padding-top: 160px;        /* 🔑 pushes text DOWN */
 }
+  oka
 
 .hero-inner {
-  position: absolute;
-  left: 50%;
-  bottom: 10%;              /* 🔑 controls how far DOWN it sits */
-  transform: translateX(-50%);
-  width: 100%;
   max-width: 1100px;
+  margin: auto;
   padding: 0 24px;
+  padding: 180px 24px 120px;  /* 🔑 THIS moves text DOWN */
   text-align: center;
-
-/* Eyebrow */
-.hero-eyebrow {
-  font-size: 14px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  opacity: 0.95;
-  margin-bottom: 14px;
 }
 
-/* Title */
-.hero-title {
-  font-size: clamp(36px, 5vw, 60px);
+  
+  
+.hero h1 {
+  font-size: clamp(34px, 5vw, 58px);
   font-weight: 700;
-  line-height: 1.1;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
-/* Subtitle */
-.hero-subtitle {
+.hero .sub {
   font-size: 16px;
   letter-spacing: 1px;
-  opacity: 0.9;
-  margin-bottom: 34px;
+  margin-bottom: 28px;
 }
 
-/* Description */
-.hero-description {
-  max-width: 900px;
-  margin: 0 auto 48px;
-  font-size: 15px;
-  line-height: 1.65;
-  opacity: 0.95;
-}
-
-/* Speakers */
+/* ================= SPEAKERS ================= */
 .speakers {
   display: flex;
   justify-content: center;
+  align-items: flex-start;
   gap: 56px;
-  margin-top: 20px;
+  margin: 36px 0 40px;
 }
 
 .speaker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;   /* 🔑 centers text under circle */
   text-align: center;
 }
 
@@ -151,7 +135,7 @@ body {
   height: 120px;
   background: #c98a3a;
   border-radius: 50%;
-  margin: 0 auto 12px;
+  margin-bottom: 12px;
 }
 
 .speaker h4 {
@@ -268,54 +252,57 @@ button {
 </header>
 
 <section class="hero">
-<div class="hero-inner">
+  <div class="hero-inner">
+    <h1>THE 2026 MIDTERMS & THE<br>U.S.–ISRAEL RELATIONSHIP</h1>
+    <div class="sub">THE LOOP, CHICAGO • FEBRUARY XX, 2026</div>
 
-  <!-- CityPAC Presents -->
-  <div class="hero-eyebrow">
-    CityPAC Presents
-  </div>
-
-  <!-- Main Title -->
-  <h1 class="hero-title">
-    THE 2026 MIDTERMS & THE<br>
-    U.S.–ISRAEL RELATIONSHIP
-  </h1>
-
-  <!-- Subtitle -->
-  <div class="hero-subtitle">
-    THE LOOP, CHICAGO • FEBRUARY 17, 2026
-  </div>
-
-  <!-- 🔑 SPEAKERS (NOW ABOVE DESCRIPTION) -->
-  <div class="speakers">
-    <div class="speaker">
-      <div class="circle"></div>
-      <h4>Andy Hochberg</h4>
-      <span>Founder & CEO, Next Realty</span>
+    <!-- CityPAC Presents (ADD THIS FIRST) -->
+    <div class="hero-eyebrow">
+      CityPAC Presents
     </div>
 
-    <div class="speaker">
-      <div class="circle"></div>
-      <h4>Emily Pevnick</h4>
-      <span>Board Member, CityPAC</span>
+    <!-- Main Title -->
+    <h1 class="hero-title">
+      THE 2026 MIDTERMS & THE<br>
+      U.S.–ISRAEL RELATIONSHIP
+    </h1>
+
+    <!-- Subtitle -->
+    <div class="hero-subtitle">
+      THE LOOP, CHICAGO • FEBRUARY XX, 2026
     </div>
-  </div>
+    
+    <div class="speakers">
+      <div class="speaker">
+        <div class="circle"></div>
+        <h4>Andy Hochberg</h4>
+        <span>Founder & CEO, Next Realty</span>
+      </div>
+      <div class="speaker">
+        <div class="circle"></div>
+        <h4>Emily Pevnick</h4>
+        <span>Board Member, CityPAC</span>
+      </div>
+    </div>
 
-  <!-- 🔑 DESCRIPTION (NOW BELOW SPEAKERS) -->
-  <div class="hero-description">
-    You are invited to join CityPAC on February 17th at 6:30 PM for a timely discussion on
-    <strong>The 2026 Midterms and the U.S.–Israel Relationship</strong>.
-    Connect with your fellow young, pro-Israel professionals for an in-depth discussion
-    on the future of bipartisan support for the U.S.–Israel relationship, with a focus on
-    the political landscape in Illinois.
-    <br><br>
-    Please complete this form by February 1st to confirm your attendance.
-    Location to be shared 24 hours prior to the event.
-    Drinks, Hors d'oeuvres, and dessert served.
+    <p>
+      You are invited to join CityPAC for a timely discussion on the 2026 Midterms
+      and the U.S.–Israel relationship.
+    </p>
   </div>
-
-</div>
 </section>
+<div class="hero-description">
+  You are invited to join CityPAC on February 17th at 6:30 PM for a timely discussion on
+  <strong>The 2026 Midterms and the U.S.–Israel Relationship</strong>.
+  Connect with your fellow young, pro-Israel professionals for an in-depth discussion
+  on the future of bipartisan support for the U.S.–Israel relationship, with a focus on
+  the political landscape in Illinois.
+  <br><br>
+  Please complete this form by February 1st to confirm your attendance.
+  Location to be shared 24 hours prior to the event.
+  Drinks, Hors d'oeuvres, and dessert served.
+</div>
+    </section>
 
 <section class="rsvp">
   <div class="rsvp-inner">
