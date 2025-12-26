@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CityPAC | February Event</title>
+<title>The 2026 Midterms & the U.S.–Israel Relationship | CityPAC</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
 
@@ -13,13 +13,7 @@
 body {
   margin: 0;
   color: #ffffff;
-  background: linear-gradient(
-    to bottom,
-    #003366 0%,
-    #003f7f 35%,
-    #005a99 70%,
-    #003366 100%
-  );
+  background: linear-gradient(180deg, #003366 0%, #0a2a4f 40%, #001b33 100%);
 }
 
 /* ================= HEADER ================= */
@@ -27,7 +21,7 @@ body {
   position: absolute;
   top: 0;
   width: 100%;
-  z-index: 50;
+  z-index: 20;
 }
 
 .header-inner {
@@ -43,6 +37,7 @@ body {
 
 .header-menu {
   display: flex;
+  align-items: center;
   gap: 18px;
 }
 
@@ -52,19 +47,36 @@ body {
   font-weight: 600;
   text-transform: uppercase;
   font-size: 15px;
+  position: relative;
+  padding-bottom: 6px;
 }
+
+.header-menu a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 3px;
+  background: #ffffff;
+  transition: width 0.25s ease;
+}
+
+.header-menu a:hover::after { width: 100%; }
 
 .header-menu .donate-btn {
   background: #e04b3f;
   padding: 10px 18px;
   border-radius: 10px;
-  color: #fff;
+  font-weight: 700;
 }
+
+.header-menu .donate-btn::after { display: none; }
 
 /* ================= HERO ================= */
 .hero {
-  height: 60vh;
   position: relative;
+  height: 55vh;
   overflow: hidden;
 }
 
@@ -80,117 +92,169 @@ body {
   inset: 0;
   background: linear-gradient(
     to bottom,
-    rgba(0,0,0,0.15),
-    rgba(0,51,102,0.85)
+    rgba(0,27,51,0.2),
+    rgba(0,27,51,0.85)
   );
 }
 
-.hero-content {
-  position: absolute;
-  bottom: 60px;
-  left: 50%;
-  transform: translateX(-50%);
+/* ================= EVENT INTRO ================= */
+.event-intro {
   max-width: 900px;
+  margin: -80px auto 60px;
   padding: 0 24px;
-  text-align: center;
+  position: relative;
+  z-index: 2;
 }
 
-.hero-content h1 {
-  font-size: clamp(30px, 5vw, 52px);
-  text-transform: uppercase;
-  margin-bottom: 12px;
+.event-intro h1 {
+  font-size: clamp(30px, 5vw, 48px);
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 14px;
 }
 
-.hero-content p {
+.event-intro h1 span {
+  color: #44b6e5;
+}
+
+.event-intro p {
   font-size: 18px;
   line-height: 1.6;
-  opacity: 0.95;
-}
-
-/* ================= SECTIONS ================= */
-.section {
-  max-width: 900px;
-  margin: 80px auto;
-  padding: 0 24px;
-}
-
-.outline-box {
-  border: 2px solid rgba(255,255,255,0.85);
-  border-radius: 14px;
-  padding: 32px;
-  margin-bottom: 40px;
-}
-
-.section-title {
-  text-transform: uppercase;
-  font-weight: 700;
-  margin-bottom: 18px;
-  color: #ffffff;
-  font-size: 20px;
+  max-width: 720px;
 }
 
 /* ================= FORM ================= */
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+.form-wrapper {
+  max-width: 900px;
+  margin: auto;
+  padding: 0 24px 80px;
+}
+
+.form-section {
+  border: 2px solid rgba(255,255,255,0.6);
+  border-radius: 14px;
+  padding: 28px;
+  margin-bottom: 28px;
+}
+
+.form-section h3 {
+  margin-top: 0;
+  margin-bottom: 18px;
+  text-transform: uppercase;
+  font-size: 18px;
+  letter-spacing: 0.05em;
+  color: #44b6e5;
 }
 
 .form-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 16px;
+  margin-bottom: 16px;
+}
+
+.form-row.single {
+  grid-template-columns: 1fr;
 }
 
 input, select, textarea {
-  background: transparent;
-  border: 1px solid rgba(255,255,255,0.6);
-  color: #ffffff;
-  height: 52px;
+  width: 100%;
+  height: 48px;
   padding: 0 14px;
   border-radius: 6px;
+  border: none;
   font-size: 15px;
 }
 
 textarea {
-  height: 100px;
-  padding: 12px 14px;
+  height: 90px;
+  padding-top: 10px;
 }
 
-::placeholder {
-  color: rgba(255,255,255,0.7);
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #44b6e5;
+}
+
+/* ================= SUBMIT ================= */
+.submit-wrap {
+  text-align: center;
+  margin-top: 30px;
 }
 
 button {
-  height: 54px;
   background: #44b6e5;
+  color: #ffffff;
   border: none;
-  color: #fff;
+  padding: 14px 36px;
   font-size: 16px;
   font-weight: 600;
-  border-radius: 6px;
+  border-radius: 8px;
   cursor: pointer;
-  margin-top: 10px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.25);
+}
+
+button:disabled {
+  opacity: 0.8;
+  cursor: default;
 }
 
 /* ================= FOOTER ================= */
 .site-footer {
   background: #003366;
-  color: #ffffff;
+  margin-top: 80px;
+}
+
+.footer-top-line {
+  height: 4px;
+  background: #44b6e5;
+}
+
+.footer-inner {
+  max-width: 1200px;
+  margin: auto;
   padding: 32px 24px;
   text-align: center;
+}
+
+.footer-disclaimer {
+  border: 1px solid #ffffff;
+  border-radius: 6px;
+  padding: 14px 18px;
+  margin-bottom: 22px;
+}
+
+.footer-logo img {
+  height: 48px;
+  margin-bottom: 18px;
+}
+
+.footer-menu {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.footer-menu a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 600;
   font-size: 13px;
 }
 
-/* ================= MOBILE ================= */
-@media (max-width: 700px) {
-  .form-row {
-    grid-template-columns: 1fr;
-  }
+.footer-copy {
+  font-size: 12px;
+  opacity: 0.85;
+}
 
-  .hero-content {
-    bottom: 40px;
-  }
+@media (max-width: 700px) {
+  .form-row { grid-template-columns: 1fr; }
 }
 </style>
 </head>
@@ -199,9 +263,9 @@ button {
 
 <header class="site-header">
   <div class="header-inner">
-    <div class="header-logo">
+    <a href="home.html" class="header-logo">
       <img src="images/citypaclogo.png" alt="CityPAC">
-    </div>
+    </a>
     <nav class="header-menu">
       <a href="home.html">Home</a>
       <a href="about.html">About</a>
@@ -213,94 +277,142 @@ button {
 </header>
 
 <section class="hero">
-  <img src="images/ChicagoSign.png" alt="Chicago">
-  <div class="hero-content">
-    <h1>The 2026 Midterms & the U.S.–Israel Relationship</h1>
-    <p>
-      Join CityPAC for an in-depth discussion on the upcoming midterm elections,
-      U.S.–Israel policy, and the future of pro-Israel advocacy.
-    </p>
-  </div>
+  <img src="images/EVENTArtboard32.jpeg" alt="">
 </section>
 
-<section class="section">
+<section class="event-intro">
+  <h1>
+    <span>THE</span> 2026 Midterms &<br>
+    <span>THE</span> U.S.–Israel Relationship
+  </h1>
+  <p>
+    Join CityPAC for an in-depth conversation on the 2026 midterms,
+    U.S.–Israel relations, and the future of pro-Israel advocacy.
+  </p>
+</section>
 
-  <div class="outline-box">
-    <div class="section-title">Event Information</div>
-    <p>
-      This exclusive CityPAC event brings together young professionals to engage
-      with policy experts, community leaders, and peers around the most important
-      political issues facing the pro-Israel community in 2026.
-    </p>
+<section class="form-wrapper">
+<form id="febEventForm">
+
+<div class="form-section">
+  <h3>Attendance</h3>
+  <select name="attendance" required>
+    <option value="">Will you be attending?</option>
+    <option>Yes</option>
+  </select>
+</div>
+
+<div class="form-section">
+  <h3>Personal Information</h3>
+  <div class="form-row">
+    <input name="first_name" placeholder="First Name" required>
+    <input name="last_name" placeholder="Last Name" required>
   </div>
-
-  <div class="outline-box">
-    <div class="section-title">RSVP</div>
-
-    <form id="febEventForm">
-      <select name="attending" required>
-        <option value="">Will you be attending?</option>
-        <option>Yes</option>
-      </select>
-
-      <input name="hear_about" placeholder="How did you hear about this event?" required>
-
-      <div class="form-row">
-        <input name="first_name" placeholder="First name" required>
-        <input name="last_name" placeholder="Last name" required>
-      </div>
-
-      <div class="form-row">
-        <input name="age" placeholder="Age" required>
-        <input name="phone" placeholder="Phone number" required>
-      </div>
-
-      <input name="email" placeholder="Email" required>
-      <input name="address" placeholder="Address" required>
-      <input name="zip" placeholder="Zip Code" required>
-
-      <input name="employer" placeholder="Current Employer" required>
-      <input name="job_title" placeholder="Job Title" required>
-      <input name="industry" placeholder="Industry" required>
-
-      <input name="professional_groups" placeholder="Professional groups (optional)">
-      <input name="interests" placeholder="What interests you about this event?" required>
-
-      <select name="involvement" required>
-        <option value="">Involvement with Jewish / Pro-Israel orgs?</option>
-        <option>Yes</option>
-        <option>No</option>
-      </select>
-
-      <input name="organizations" placeholder="Which organizations?">
-      <textarea name="questions" placeholder="Questions for the CityPAC Board?"></textarea>
-
-      <button type="submit">Submit RSVP</button>
-    </form>
+  <div class="form-row">
+    <input name="age" placeholder="Age" required>
+    <input name="phone" placeholder="Phone Number" required>
   </div>
+  <div class="form-row">
+    <input name="email" placeholder="Email" required>
+    <input name="address" placeholder="Address" required>
+  </div>
+  <div class="form-row single">
+    <input name="zip" placeholder="Zip Code" required>
+  </div>
+</div>
 
+<div class="form-section">
+  <h3>Professional Information</h3>
+  <div class="form-row">
+    <input name="employer" placeholder="Current Employer" required>
+    <input name="job_title" placeholder="Job Title" required>
+  </div>
+  <select name="industry" required>
+    <option value="">Industry</option>
+    <option>Finance / Banking / Investment</option>
+    <option>Real Estate</option>
+    <option>Law</option>
+    <option>Consulting</option>
+    <option>Technology</option>
+    <option>Healthcare</option>
+    <option>Government / Policy</option>
+    <option>Nonprofit / Advocacy</option>
+    <option>Other</option>
+  </select>
+</div>
+
+<div class="form-section">
+  <h3>Other Information</h3>
+  <textarea name="interests" placeholder="What interests you about this event?"></textarea>
+  <textarea name="orgs" placeholder="Jewish / pro-Israel organizations you’ve been involved with"></textarea>
+  <textarea name="questions" placeholder="Questions for the CityPAC Board"></textarea>
+</div>
+
+<div class="submit-wrap">
+  <button type="submit" id="febSubmitBtn">Submit RSVP</button>
+</div>
+
+</form>
 </section>
 
 <footer class="site-footer">
-  Paid for by CityPAC. © 2025
+  <div class="footer-top-line"></div>
+  <div class="footer-inner">
+    <div class="footer-disclaimer">
+      Paid for by CityPAC and not authorized by any candidate or candidate committee.
+    </div>
+    <div class="footer-logo">
+      <img src="images/citypaclogo.png">
+    </div>
+    <nav class="footer-menu">
+      <a href="home.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="join.html">Join</a>
+      <a href="contact.html">Contact</a>
+      <a href="donate.html">Donate</a>
+    </nav>
+    <div class="footer-copy">© 2025 CityPAC</div>
+  </div>
 </footer>
 
 <script>
-document.getElementById("febEventForm").addEventListener("submit", function(e) {
+const form = document.getElementById("febEventForm");
+const btn = document.getElementById("febSubmitBtn");
+
+form.addEventListener("submit", e => {
   e.preventDefault();
+  btn.disabled = true;
+  btn.innerText = "Submitting…";
 
   fetch(
     "https://script.google.com/macros/s/AKfycbxpltPUqdjcgKDbuEzGTPKW1-fwU-1PprbAIK_EQYlcKRoUAnqVhgJIa9JfNhdiRRlF/exec",
-    {
-      method: "POST",
-      mode: "no-cors",
-      body: new FormData(this)
-    }
+    { method: "POST", mode: "no-cors", body: new FormData(form) }
   ).then(() => {
-    alert("RSVP submitted successfully!");
-    this.reset();
+    btn.innerText = "Submitted ✓";
+    launchEmojiConfetti(btn);
+    form.reset();
   });
 });
+
+function launchEmojiConfetti(btn) {
+  const rect = btn.getBoundingClientRect();
+  const emojis = ["🎉","✨","🇺🇸","🇮🇱"];
+  for (let i = 0; i < 200; i++) {
+    const e = document.createElement("span");
+    e.textContent = emojis[Math.floor(Math.random()*emojis.length)];
+    e.style.position = "fixed";
+    e.style.left = rect.left + rect.width/2 + "px";
+    e.style.top = rect.top + "px";
+    e.style.fontSize = "28px";
+    e.style.pointerEvents = "none";
+    document.body.appendChild(e);
+    e.animate([
+      { transform: "translate(0,0)", opacity: 1 },
+      { transform: `translate(${Math.random()*600-300}px,${Math.random()*-500}px)`, opacity: 0 }
+    ], { duration: 2500 });
+    setTimeout(()=>e.remove(),2600);
+  }
+}
 </script>
 
 </body>
