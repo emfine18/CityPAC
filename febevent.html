@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The 2026 Midterms & the U.S.–Israel Relationship | CityPAC</title>
+<title>The 2026 Midterms & the U.S.–Israel Relationship</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 * { box-sizing: border-box; font-family: 'Poppins', sans-serif; }
@@ -13,15 +13,15 @@
 body {
   margin: 0;
   color: #ffffff;
-  background: linear-gradient(to bottom, #6fb6e3 0%, #2f347b 100%);
+  background: linear-gradient(180deg, #5fa9d6 0%, #3f4a8a 60%, #2e2a72 100%);
 }
 
-/* ================= HEADER ================= */
+/* ================= HEADER (UNCHANGED) ================= */
 .site-header {
   position: absolute;
   top: 0;
   width: 100%;
-  z-index: 50;
+  z-index: 10;
 }
 
 .header-inner {
@@ -66,15 +66,15 @@ body {
   background: #e04b3f;
   padding: 10px 18px;
   border-radius: 10px;
+  font-weight: 700;
 }
 
-.header-menu .donate-btn::after { display: none; }
+.hamburger { display: none; }
 
 /* ================= HERO ================= */
 .hero {
+  height: 70vh;
   position: relative;
-  height: 72vh;
-  overflow: hidden;
 }
 
 .hero img {
@@ -83,52 +83,56 @@ body {
   object-fit: cover;
 }
 
-/* gradient overlay ON TOP of image */
 .hero::after {
   content: "";
   position: absolute;
   inset: 0;
   background: linear-gradient(
-    to bottom,
-    rgba(111,182,227,0.45),
-    rgba(47,52,123,0.95)
+    180deg,
+    rgba(63,74,138,0.85) 0%,
+    rgba(63,74,138,0.9) 50%,
+    rgba(63,74,138,1) 100%
   );
 }
 
 .hero-content {
   position: absolute;
   inset: 0;
-  z-index: 2;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 0 24px;
+  padding: 24px;
 }
 
-.hero h1 {
-  font-size: clamp(38px, 5vw, 64px);
+.hero-content h1 {
+  font-size: clamp(34px, 5vw, 56px);
   font-weight: 700;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
-.hero h2 {
-  font-size: 15px;
-  font-weight: 500;
-  opacity: 0.95;
+.hero-content p {
+  font-size: 16px;
+  opacity: 0.9;
 }
 
-/* ================= CONTENT ================= */
-.page-content {
+/* ================= PAGE CONTENT ================= */
+.page-wrap {
   max-width: 900px;
   margin: auto;
-  padding: 80px 24px 120px;
+  padding: 60px 24px 120px;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 26px;
+  margin: 80px 0 30px;
 }
 
 /* ================= FORM ================= */
 form {
   display: grid;
-  gap: 14px;
+  gap: 18px;
 }
 
 .form-row {
@@ -137,22 +141,11 @@ form {
   gap: 14px;
 }
 
-label {
-  font-size: 13px;
-  font-weight: 600;
-  margin-bottom: 2px;
-}
-
-.field {
-  display: flex;
-  flex-direction: column;
-}
-
 input, select, textarea {
   width: 100%;
   padding: 14px;
   background: transparent;
-  border: 2px solid rgba(255,255,255,0.7);
+  border: 2px solid rgba(255,255,255,0.6);
   border-radius: 8px;
   color: #ffffff;
   font-size: 15px;
@@ -160,47 +153,65 @@ input, select, textarea {
 
 input::placeholder,
 textarea::placeholder {
-  color: rgba(255,255,255,0.7);
+  color: rgba(255,255,255,0.8);
 }
 
 select option { color: #111; }
 
-.checkbox-group {
-  display: grid;
-  gap: 6px;
-}
+textarea { resize: vertical; min-height: 90px; }
 
 .checkbox-group label {
-  font-weight: 400;
-  font-size: 14px;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.checkbox-group input {
+  width: auto;
+  margin-right: 8px;
 }
 
 button {
-  margin-top: 24px;
+  margin-top: 30px;
   padding: 16px;
-  background: #e04b3f;
+  background: #44b6e5;
   border: none;
-  color: #ffffff;
-  font-size: 16px;
-  font-weight: 700;
-  border-radius: 10px;
+  color: #fff;
+  font-size: 17px;
+  font-weight: 600;
+  border-radius: 8px;
   cursor: pointer;
+}
+
+button:disabled {
+  background: #9bb4d1;
 }
 
 /* ================= FOOTER ================= */
 .site-footer {
   background: #003366;
-  padding: 32px 24px;
+  padding: 40px 24px;
   text-align: center;
+}
+
+.footer-logo img { height: 48px; margin-bottom: 18px; }
+
+.footer-menu {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.footer-menu a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 600;
   font-size: 13px;
 }
 
-/* ================= CONFETTI ================= */
-.confetti {
-  position: fixed;
-  pointer-events: none;
-  font-size: 24px;
-  z-index: 9999;
+/* ================= MOBILE ================= */
+@media (max-width: 700px) {
+  .form-row { grid-template-columns: 1fr; }
 }
 </style>
 </head>
@@ -209,8 +220,8 @@ button {
 
 <header class="site-header">
   <div class="header-inner">
-    <a class="header-logo" href="home.html">
-      <img src="images/citypaclogo.png">
+    <a href="home.html" class="header-logo">
+      <img src="images/citypaclogo.png" alt="CityPAC">
     </a>
     <nav class="header-menu">
       <a href="home.html">Home</a>
@@ -226,77 +237,99 @@ button {
   <img src="images/ChicagoSign.png" alt="">
   <div class="hero-content">
     <div>
-      <h1>THE 2026 MIDTERMS & THE U.S.–ISRAEL RELATIONSHIP</h1>
-      <h2>The Loop, Chicago • February XX, 2026</h2>
+      <h1>THE 2026 MIDTERMS &amp; THE U.S.–ISRAEL RELATIONSHIP</h1>
+      <p>THE LOOP, CHICAGO • FEBRUARY XX, 2026</p>
     </div>
   </div>
 </section>
 
-<section class="page-content">
+<div class="page-wrap">
+
+<h2 class="section-title">RSVP</h2>
+
 <form id="eventForm">
 
-  <div class="form-row">
-    <div class="field">
-      <label>First Name</label>
-      <input name="firstName" placeholder="First name" required>
-    </div>
-    <div class="field">
-      <label>Last Name</label>
-      <input name="lastName" placeholder="Last name" required>
-    </div>
-  </div>
+<select name="attending" required>
+  <option value="">Will you be attending?</option>
+  <option>Yes</option>
+</select>
 
-  <div class="form-row">
-    <div class="field">
-      <label>Email</label>
-      <input name="email" placeholder="Email address" required>
-    </div>
-    <div class="field">
-      <label>Phone</label>
-      <input name="phone" placeholder="Phone number">
-    </div>
-  </div>
+<input name="referral" placeholder="How did you hear about this event?" required>
 
-  <div class="field">
-    <label>Industry</label>
-    <select name="industry">
-      <option value="">Select industry</option>
-      <option>Finance / Banking</option>
-      <option>Real Estate</option>
-      <option>Law</option>
-      <option>Consulting</option>
-      <option>Technology</option>
-      <option>Healthcare</option>
-      <option>Government</option>
-      <option>Political / Nonprofit</option>
-      <option>Education</option>
-      <option>Student</option>
-      <option>Other</option>
-    </select>
-  </div>
+<div class="form-row">
+  <input name="first_name" placeholder="First Name" required>
+  <input name="last_name" placeholder="Last Name" required>
+</div>
 
-  <div class="field">
-    <label>Professional Groups (select all)</label>
-    <div class="checkbox-group">
-      <label><input type="checkbox" name="groups" value="Finance"> Finance</label>
-      <label><input type="checkbox" name="groups" value="Real Estate"> Real Estate</label>
-      <label><input type="checkbox" name="groups" value="Law"> Law</label>
-      <label><input type="checkbox" name="groups" value="Consulting"> Consulting</label>
-      <label><input type="checkbox" name="groups" value="Healthcare"> Healthcare</label>
-    </div>
-  </div>
+<div class="form-row">
+  <input name="age" placeholder="Age" required>
+  <input name="phone" placeholder="Phone Number" required>
+</div>
 
-  <div class="field">
-    <label>Questions for the CityPAC Board</label>
-    <textarea name="questions" rows="4" placeholder="Type your question here…"></textarea>
-  </div>
+<input name="email" placeholder="Email" required>
+<input name="address" placeholder="Address" required>
+<input name="zip" placeholder="Zip Code" required>
 
-  <button type="submit" id="submitBtn">Submit</button>
+<input name="employer" placeholder="Current Employer" required>
+<input name="job_title" placeholder="Job Title" required>
+
+<select name="industry" required>
+  <option value="">Industry</option>
+  <option>Finance / Banking / Investment</option>
+  <option>Real Estate</option>
+  <option>Law</option>
+  <option>Consulting</option>
+  <option>Technology</option>
+  <option>Healthcare</option>
+  <option>Government</option>
+  <option>Nonprofit</option>
+  <option>Student</option>
+  <option>Other</option>
+</select>
+
+<div class="checkbox-group">
+  <label><input type="checkbox" name="groups" value="Finance"> Finance Group</label>
+  <label><input type="checkbox" name="groups" value="Real Estate"> Real Estate Group</label>
+  <label><input type="checkbox" name="groups" value="Law"> Law Group</label>
+  <label><input type="checkbox" name="groups" value="Consulting"> Consulting Group</label>
+  <label><input type="checkbox" name="groups" value="Healthcare"> Healthcare Group</label>
+</div>
+
+<textarea name="interests" placeholder="What interests you about this event or future programs?" required></textarea>
+
+<select name="prior_involvement" required>
+  <option value="">Prior involvement with Jewish / Pro-Israel orgs?</option>
+  <option>Yes</option>
+  <option>No</option>
+</select>
+
+<div class="checkbox-group">
+  <label><input type="checkbox" name="orgs" value="AIPAC"> AIPAC</label>
+  <label><input type="checkbox" name="orgs" value="ADL"> ADL</label>
+  <label><input type="checkbox" name="orgs" value="CityPAC"> CityPAC</label>
+  <label><input type="checkbox" name="orgs" value="JUF YLD"> JUF YLD</label>
+  <label><input type="checkbox" name="orgs" value="Other"> Other</label>
+</div>
+
+<textarea name="questions" placeholder="Questions for the CityPAC Board"></textarea>
+
+<button type="submit" id="submitBtn">Submit</button>
+
 </form>
-</section>
+
+</div>
 
 <footer class="site-footer">
-  © 2026 CityPAC. All rights reserved.
+  <div class="footer-logo">
+    <img src="images/citypaclogo.png">
+  </div>
+  <nav class="footer-menu">
+    <a href="home.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="join.html">Join</a>
+    <a href="contact.html">Contact</a>
+    <a href="donate.html">Donate</a>
+  </nav>
 </footer>
 
 <script>
@@ -305,33 +338,31 @@ const btn = document.getElementById("submitBtn");
 
 form.addEventListener("submit", e => {
   e.preventDefault();
-  btn.innerText = "Submitting…";
   btn.disabled = true;
+  btn.innerText = "Submitting…";
 
   fetch("https://script.google.com/macros/s/AKfycbxpltPUqdjcgKDbuEzGTPKW1-fwU-1PprbAIK_EQYlcKRoUAnqVhgJIa9JfNhdiRRlF/exec", {
     method: "POST",
     mode: "no-cors",
-    body: new FormData(form)
+    body: new URLSearchParams(new FormData(form))
   }).then(() => {
     btn.innerText = "Submitted ✓";
-    launchConfetti();
+    confetti();
+    form.reset();
   });
 });
 
-function launchConfetti() {
-  const emojis = ["🎉","✨","🇺🇸","🇮🇱"];
-  for (let i = 0; i < 120; i++) {
-    const e = document.createElement("div");
-    e.className = "confetti";
-    e.innerText = emojis[Math.floor(Math.random()*emojis.length)];
-    e.style.left = Math.random()*100+"vw";
-    e.style.top = "-10px";
+function confetti() {
+  for (let i = 0; i < 200; i++) {
+    const e = document.createElement("span");
+    e.textContent = ["🎉","🇺🇸","🇮🇱"][Math.floor(Math.random()*3)];
+    e.style.position="fixed";
+    e.style.left=Math.random()*100+"vw";
+    e.style.top="-20px";
+    e.style.fontSize="24px";
     document.body.appendChild(e);
-    e.animate([
-      { transform: "translateY(0)", opacity: 1 },
-      { transform: "translateY(100vh)", opacity: 0 }
-    ], { duration: 2500 });
-    setTimeout(() => e.remove(), 2500);
+    e.animate([{transform:"translateY(0)"},{transform:"translateY(110vh)"}],{duration:3000});
+    setTimeout(()=>e.remove(),3000);
   }
 }
 </script>
