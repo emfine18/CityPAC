@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>February Event | CityPAC</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+* {
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  margin: 0;
+  background: #ffffff;
+  color: #ffffff;
+}
+
+/* ================= HEADER (SAME AS SITE) ================= */
+.site-header {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 20;
+}
+
+.header-inner {
+  max-width: 1200px;
+  margin: auto;
+  padding: 22px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-logo img {
+  height: 56px;
+}
+
+.header-menu {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.header-menu a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 15px;
+  position: relative;
+  padding-bottom: 6px;
+}
+
+.header-menu .donate-btn {
+  background: #e04b3f;
+  color: #ffffff;
+  padding: 10px 18px;
+  border-radius: 10px;
+  font-weight: 700;
+}
+
+/* ================= EVENT HERO ================= */
+.event-hero {
+  min-height: 100vh;
+  background:
+    linear-gradient(
+      rgba(14, 40, 94, 0.88),
+      rgba(24, 28, 92, 0.92)
+    ),
+    url("images/ChicagoSign.png") center / cover no-repeat;
+  padding: 140px 24px 80px;
+}
+
+.event-inner {
+  max-width: 900px;
+  margin: auto;
+  text-align: center;
+}
+
+/* TITLE */
+.event-title {
+  font-size: clamp(32px, 5vw, 56px);
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: 1.15;
+  margin-bottom: 10px;
+}
+
+.event-subtitle {
+  font-size: 16px;
+  letter-spacing: 1px;
+  margin-bottom: 40px;
+  opacity: 0.9;
+}
+
+/* SPEAKERS */
+.speakers {
+  display: flex;
+  justify-content: center;
+  gap: 48px;
+  margin: 40px 0;
+  flex-wrap: wrap;
+}
+
+.speaker {
+  text-align: center;
+}
+
+.speaker-photo {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: #c98b3a;
+  margin-bottom: 12px;
+}
+
+.speaker-name {
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.speaker-role {
+  font-size: 12px;
+  opacity: 0.85;
+}
+
+/* EVENT TEXT */
+.event-text {
+  font-size: 14px;
+  line-height: 1.6;
+  opacity: 0.95;
+  margin: 28px 0;
+}
+
+/* RSVP SECTION */
+.rsvp {
+  margin-top: 60px;
+  font-size: 20px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* ================= FOOTER (SAME AS SITE) ================= */
+.site-footer {
+  background: #003366;
+  color: #ffffff;
+  font-size: 13px;
+}
+
+.footer-top-line {
+  height: 4px;
+  background: #44b6e5;
+}
+
+.footer-inner {
+  max-width: 1200px;
+  margin: auto;
+  padding: 32px 24px;
+  text-align: center;
+}
+
+.footer-copy {
+  font-size: 12px;
+  opacity: 0.85;
+}
+
+/* MOBILE */
+@media (max-width: 700px) {
+  .speakers {
+    gap: 24px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="home.html" class="header-logo">
+      <img src="images/citypaclogo.png" alt="CityPAC">
+    </a>
+
+    <nav class="header-menu">
+      <a href="home.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="join.html">Join</a>
+      <a href="contact.html">Contact</a>
+      <a href="donate.html" class="donate-btn">Donate</a>
+    </nav>
+  </div>
+</header>
+
+<section class="event-hero">
+  <div class="event-inner">
+
+    <h1 class="event-title">
+      The 2026 Midterms &<br>
+      The U.S.–Israel Relationship
+    </h1>
+
+    <div class="event-subtitle">
+      The Loop, Chicago • February XX, 2026
+    </div>
+
+    <div class="speakers">
+      <div class="speaker">
+        <div class="speaker-photo"></div>
+        <div class="speaker-name">Andy Hochberg</div>
+        <div class="speaker-role">Founder & CEO<br>Next Realty</div>
+      </div>
+
+      <div class="speaker">
+        <div class="speaker-photo"></div>
+        <div class="speaker-name">Emily Pevnick</div>
+        <div class="speaker-role">Board Member<br>CityPAC</div>
+      </div>
+    </div>
+
+    <p class="event-text">
+      You are invited to join CityPAC for a timely discussion on the 2026 Midterms
+      and the U.S.–Israel relationship. Connect with fellow young, pro-Israel
+      professionals for an in-depth conversation on bipartisan support for Israel.
+    </p>
+
+    <p class="event-text">
+      Please complete the RSVP form by February 1st. Location details will be
+      shared 24 hours prior to the event. Drinks, hors d'oeuvres, and dessert
+      will be served.
+    </p>
+
+    <div class="rsvp">
+      Questions in a Google Form for RSVP
+    </div>
+
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-top-line"></div>
+  <div class="footer-inner">
+    <div class="footer-copy">
+      © 2025 CityPAC. All rights reserved.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
