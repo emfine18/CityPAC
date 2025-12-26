@@ -426,24 +426,19 @@ body {
   }
 
   .home-buttons {
-    flex-direction: column;
-    align-items: flex-start;
+    flex-direction: row;   /* 🔑 keep horizontal */
+    justify-content: flex-start;
+    gap: 12px;
+    flex-wrap: wrap;       /* allows wrap if screen is tiny */
   }
 
   .action-btn {
-    width: 100%;
-    text-align: center;
-  }
-
-  .home-images {
-    max-width: 100%;
-  }
-
-  .home-images img {
-    height: 220px;
+    width: auto;           /* 🔑 NO full-width buttons */
+    padding: 12px 22px;
+    font-size: 15px;
   }
 }
-
+  
   .home-images {
     max-width: 100%;
   }
