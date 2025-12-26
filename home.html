@@ -404,9 +404,17 @@ body {
 }
 
 .action-btn.secondary {
-  background: #44b6e5;
+  background: #003366;
 }
 
+.action-btn.donate {
+  background: #e04b3f; /* RED */
+}
+
+.action-btn.donate:hover {
+  background: #c93c32;
+}
+  
 @media (max-width: 900px) {
   .home-story {
     grid-template-columns: 1fr;
@@ -438,8 +446,22 @@ body {
   .home-images img {
     height: 200px;
   }
+
+  /* MOBILE TIGHTENING — HOME STORY */
+@media (max-width: 700px) {
+  .home-story {
+    margin-top: 32px;          /* pulls section up */
   }
-  
+
+  .home-images {
+    gap: 12px;                /* less space between images */
+  }
+
+  .home-images img {
+    height: 180px;            /* consistent, not giant */
+  }
+}
+
 /* ================= FOOTER (IDENTICAL TO ABOUT) ================= */
 .site-footer {
   background: #003366;
