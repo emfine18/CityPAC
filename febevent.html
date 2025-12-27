@@ -147,7 +147,7 @@ body {
     font-size: 15px;
   }
 }
-
+  
 /* ================= HERO ================= */
 .hero {
   position: relative;
@@ -429,7 +429,7 @@ body {
     </div>
   </div>
 </header>
-
+  
 <section class="hero"></section>
 
 <section class="event-info">
@@ -479,7 +479,6 @@ body {
   <div class="rsvp-inner">
 
 <form
-  id="rsvpForm"
   action="https://docs.google.com/forms/d/e/1FAIpQLSfu0GWSJGWBNMjTGMTRDV8V0U_QTOaGjisNtRrxfKqqMVl_vQ/formResponse"
   method="POST"
   target="_blank"
@@ -498,66 +497,78 @@ body {
   >
 
   <div class="rsvp-row">
-    <input name="entry.FIRSTNAME_ID" placeholder="First name *" required>
-    <input name="entry.LASTNAME_ID" placeholder="Last name *" required>
+    <input name="entry.276624258" placeholder="First name *" required>
+    <input name="entry.379031892" placeholder="Last name *" required>
   </div>
 
   <div class="rsvp-row three">
-    <input name="entry.AGE_ID" placeholder="Age *" required>
-    <input name="entry.PHONE_ID" placeholder="Phone *" required>
-    <input name="entry.EMAIL_ID" type="email" placeholder="Email *" required>
+    <input name="entry.896738026" placeholder="Age *" required>
+    <input name="entry.160040439" placeholder="Phone *" required>
+    <input type="email" name="entry.1580435886" placeholder="Email *" required>
   </div>
 
-  <input name="entry.ADDRESS_ID" placeholder="Address *" required>
-  <input name="entry.ZIP_ID" placeholder="Zip Code *" required>
+  <input name="entry.64126206" placeholder="Address *" required>
+  <input name="entry.1964079643" placeholder="Zip Code *" required>
 
-  <input name="entry.EMPLOYER_ID" placeholder="Employer *" required>
-  <input name="entry.TITLE_ID" placeholder="Job Title *" required>
+  <input name="entry.656163493" placeholder="Current Employer *" required>
+  <input name="entry.1690518663" placeholder="Job Title *" required>
 
-  <select name="entry.INDUSTRY_ID" required>
+  <select name="entry.1087078679" required>
     <option value="">Industry</option>
-    <option>Finance</option>
-    <option>Real Estate</option>
-    <option>Law</option>
+    <option>Finance / Banking / Investment Management / Credit / Private Equity</option>
+    <option>Real Estate / Development</option>
+    <option>Law / Legal Services</option>
     <option>Consulting</option>
-    <option>Technology</option>
-    <option>Healthcare</option>
-    <option>Government</option>
-    <option>Nonprofit</option>
+    <option>Technology / Software / IT</option>
+    <option>Healthcare / Life Sciences</option>
+    <option>Government / Public Policy</option>
+    <option>Political / Advocacy / Nonprofit</option>
+    <option>Marketing / Communications / Public Relations</option>
+    <option>Media / Journalism</option>
+    <option>Education</option>
+    <option>Student</option>
+    <option>Other</option>
   </select>
 
-  <select name="entry.GROUPS_ID">
+  <select name="entry.493137383">
     <option value="">Professional Group Interest</option>
-    <option>Finance</option>
-    <option>Real Estate</option>
-    <option>Law</option>
-    <option>Consulting</option>
-    <option>Healthcare</option>
+    <option>Young Professionals in Finance, Banking, Credit, Private Equity or Investment Management</option>
+    <option>Young Professionals in Real Estate</option>
+    <option>Young Professionals in Law and Legal Services</option>
+    <option>Young Professionals in Consulting</option>
+    <option>Young Professionals in Healthcare</option>
   </select>
 
-  <select name="entry.1418552658" required>
-    <option value="">Involved with Jewish / Pro-Israel orgs?</option>
-    <option>Yes</option>
-    <option>No</option>
+  <select name="entry.991937041" required>
+    <option value="">Have you been involved with Jewish / Pro-Israel organizations?</option>
+    <option value="Yes">Yes</option>
+    <option value="No">No</option>
   </select>
 
   <textarea
-    name="entry.ORGS_ID"
-    placeholder="Which organizations?"
+    name="entry.1041961967"
+    placeholder="Which Jewish and/or pro-Israel organizations?"
   ></textarea>
 
   <textarea
-    name="entry.QUESTIONS_ID"
-    placeholder="Any questions for CityPAC?"
+    name="entry.25377518"
+    placeholder="Any questions for the CityPAC Board?"
   ></textarea>
 
   <button type="submit">Submit</button>
 
 </form>
-  
 
-    </form>
-
+<div id="rsvpSuccess" style="
+  display:none;
+  margin-top:20px;
+  font-weight:600;
+  color:#ffffff;
+  text-align:center;
+">
+  Submitted ✓ Thank you for your RSVP, event location details will be shared 24 hours before the event begins!
+</div>
+    
   </div>
 </section>
   
@@ -623,6 +634,80 @@ function launchEmojiConfetti(anchor) {
     setTimeout(() => span.remove(), 3000);
   }
 }
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const hamburger = document.getElementById("hamburger");
+  const menu = document.getElementById("menu");
+
+  if (!hamburger || !menu) return;
+
+  hamburger.addEventListener("click", function () {
+    menu.classList.toggle("show");
+  });
+});
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.getElementById("rsvpForm");
+  const button = form.querySelector("button[type='submit']");
+  const success = document.getElementById("rsvpSuccess");
+
+  if (!form || !button) return;
+
+  form.addEventListener("submit", function () {
+    // UI only — do NOT prevent Google Form submission
+    button.disabled = true;
+    button.innerText = "Submitting…";
+
+    setTimeout(() => {
+      button.innerText = "Submitted ✓";
+      success.style.display = "block";
+      launchEmojiConfetti(button);
+    }, 1200);
+  });
+});
+
+/* 🎉 REAL EMOJI CONFETTI — FROM SUBMIT BUTTON */
+function launchEmojiConfetti(button) {
+  const rect = button.getBoundingClientRect();
+  const emojis = ["🎉", "✨", "🇺🇸", "🇮🇱"];
+
+  const startX = rect.left + rect.width / 2;
+  const startY = rect.top + rect.height / 2;
+
+  for (let i = 0; i < 300; i++) {
+    const emoji = document.createElement("span");
+    emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+
+    emoji.style.position = "fixed";
+    emoji.style.left = startX + "px";
+    emoji.style.top = startY + "px";
+    emoji.style.fontSize = "26px";
+    emoji.style.pointerEvents = "none";
+    emoji.style.zIndex = "999999";
+
+    document.body.appendChild(emoji);
+
+    const angle = Math.random() * Math.PI * 2;
+    const distance = 350 + Math.random() * 400;
+
+    emoji.animate(
+      [
+        { transform: "translate(0,0)", opacity: 1 },
+        {
+          transform: `translate(${Math.cos(angle)*distance}px, ${Math.sin(angle)*distance}px) rotate(${Math.random()*720}deg)`,
+          opacity: 0
+        }
+      ],
+      { duration: 4500, easing: "ease-out" }
+    );
+
+    setTimeout(() => emoji.remove(), 4500);
+  }
+}
+</script>
   
 </body>
 </html>
