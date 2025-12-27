@@ -33,129 +33,35 @@ body {
   align-items: center;
 }
 
-.header-logo img {
-  height: 56px;
-}
-
-/* ================= HEADER MENU ================= */
+.header-logo img { height: 56px; }
 
 .header-menu {
   display: flex;
-  align-items: center;
   gap: 18px;
 }
 
-/* ===== DESKTOP MENU LINKS ===== */
 .header-menu a {
-  color: #ffffff;               /* WHITE on desktop */
+  color: #ffffff;
   text-decoration: none;
   font-weight: 600;
   text-transform: uppercase;
   font-size: 15px;
-  position: relative;
-  padding-bottom: 6px;
-  display: flex;
-  align-items: center;
 }
 
-/* WHITE underline on desktop */
-.header-menu a::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 0;
-  height: 3px;
-  background: #ffffff;
-  transition: width 0.25s ease;
-}
-
-.header-menu a:hover::after {
-  width: 100%;
-}
-
-/* ===== DONATE BUTTON ===== */
 .header-menu .donate-btn {
   background: #e04b3f;
-  color: #ffffff !important;    /* ALWAYS white */
   padding: 10px 18px;
   border-radius: 10px;
   font-weight: 700;
-  line-height: 1;
 }
 
-.header-menu .donate-btn::after {
-  display: none;                /* no underline */
-}
-
-.header-menu .donate-btn:hover {
-  background: #c93c32;
-}
-
-/* ===== HAMBURGER ICON ===== */
-.hamburger {
-  display: none;
-  flex-direction: column;
-  gap: 6px;
-  cursor: pointer;
-}
-
-.hamburger span {
-  width: 26px;
-  height: 3px;
-  background: #ffffff;          /* WHITE lines */
-}
-
-/* ================= MOBILE MENU ================= */
-@media (max-width: 900px) {
-  .hamburger {
-    display: flex;
-  }
-
-  .header-menu {
-    position: absolute;
-    top: 78px;
-    right: 24px;
-    background: #ffffff;
-    padding: 18px 22px;
-    border-radius: 8px;
-    display: none;
-    flex-direction: column;
-    gap: 16px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-    align-items: flex-start;
-  }
-
-  .header-menu.show {
-    display: flex;
-  }
-
-  /* ===== HAMBURGER MENU LINKS ===== */
-  .header-menu a {
-    color: #44b6e5;             /* BLUE in hamburger */
-  }
-
-  .header-menu a::after {
-    background: #44b6e5;        /* BLUE underline */
-  }
-
-  /* KEEP DONATE BUTTON WHITE TEXT */
-  .header-menu .donate-btn {
-    color: #ffffff !important;
-    padding: 8px 14px;
-    border-radius: 8px;
-    font-size: 15px;
-  }
-}
-
-/* ================= HERO (IMAGE ONLY) ================= */
+/* ================= HERO ================= */
 .hero {
   position: relative;
-  height: 68vh; /* 🔑 reduced */
+  height: 68vh;
   background: url("images/ChicagoSign.png") center top / cover no-repeat;
 }
 
-/* light blue wash */
 .hero::before {
   content: "";
   position: absolute;
@@ -163,27 +69,24 @@ body {
   background: rgba(92,162,211,0.28);
 }
 
-/* 🔑 SHORTER bottom fade */
 .hero::after {
   content: "";
   position: absolute;
   bottom: 0;
-  left: 0;
   width: 100%;
-  height: 26%; /* 🔑 this removes the big blue block */
+  height: 26%;
   background: linear-gradient(
     to bottom,
-    rgba(47,48,118,0) 0%,
-    rgba(47,48,118,0.65) 55%,
-    #2f3076 100%
+    rgba(47,48,118,0),
+    rgba(47,48,118,0.65),
+    #2f3076
   );
-  pointer-events: none;
 }
 
 /* ================= EVENT CONTENT ================= */
 .event-content {
   background: #2f3076;
-  padding: 40px 24px 120px; /* 🔑 pulled up */
+  padding: 40px 24px 120px;
 }
 
 .event-inner {
@@ -193,26 +96,23 @@ body {
 }
 
 .event-eyebrow {
-  text-transform: uppercase;
   font-size: 14px;
   letter-spacing: 1px;
+  text-transform: uppercase;
   opacity: 0.9;
-  margin-top: -40px;   /* 👈 moves it UP */
   margin-bottom: 10px;
 }
-  
+
 .event-title {
   font-size: clamp(38px, 5vw, 64px);
   font-weight: 700;
   line-height: 1.1;
-  margin-bottom: 12px;
 }
 
 .event-subtitle {
   font-size: 15px;
   letter-spacing: 1px;
   margin-bottom: 48px;
-  opacity: 0.95;
 }
 
 /* SPEAKERS */
@@ -232,23 +132,14 @@ body {
   margin: 0 auto 12px;
 }
 
-.speaker-name {
-  font-size: 14px;
-  font-weight: 600;
-}
+.speaker-name { font-weight: 600; }
+.speaker-role { font-size: 12px; opacity: 0.85; }
 
-.speaker-role {
-  font-size: 12px;
-  opacity: 0.85;
-}
-
-/* DESCRIPTION */
 .event-description {
   max-width: 900px;
   margin: auto;
   font-size: 15px;
   line-height: 1.65;
-  opacity: 0.95;
 }
 
 /* ================= RSVP ================= */
@@ -272,123 +163,194 @@ form {
   gap: 16px;
 }
 
-/* FORM ROWS (FOR SIDE-BY-SIDE FIELDS) */
 .form-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 14px;
 }
 
-/* Uneven row (email wider than age, etc.) */
 .form-row.wide-left {
   grid-template-columns: 2fr 1fr;
 }
 
-/* Mobile fallback */
 @media (max-width: 700px) {
   .form-row,
   .form-row.wide-left {
     grid-template-columns: 1fr;
   }
 }
-  
-input, select, textarea {
-  width: 100%;
-  background: transparent;
-  border: 1px solid #ffffff;
-  color: #ffffff;
-  padding: 12px 14px;
-  border-radius: 6px;
-  font-size: 14px;
-}
 
-input::placeholder,
-textarea::placeholder {
-  color: rgba(255,255,255,0.85);
+input, select, textarea {
+  background: transparent;
+  border: 1px solid #fff;
+  color: #fff;
+  padding: 12px;
+  border-radius: 6px;
 }
 
 button {
-  margin-top: 18px;
-  padding: 14px;
   background: #44b6e5;
   border: none;
-  color: #ffffff;
+  padding: 14px;
+  color: #fff;
   font-size: 16px;
   font-weight: 600;
   border-radius: 6px;
   cursor: pointer;
 }
 
-/* ================= FOOTER (IDENTICAL TO ABOUT) ================= */
+/* ================= FOOTER ================= */
 .site-footer {
   background: #003366;
-  color: #ffffff;
-  font-size: 13px;
-}
-
-.footer-top-line {
-  height: 4px;
-  background: #44b6e5;
-}
-
-.footer-inner {
-  max-width: 1200px;
-  margin: auto;
-  padding: 32px 24px;
   text-align: center;
-}
-
-.footer-disclaimer {
-  border: 1px solid #ffffff;
-  border-radius: 6px;
-  padding: 14px 18px;
-  margin-bottom: 22px;
-  line-height: 1.5;
-}
-
-.footer-logo img {
-  height: 48px;
-  margin-bottom: 18px;
-}
-
-.footer-menu {
-  display: flex;
-  justify-content: center;
-  gap: 24px;
-  margin-bottom: 18px;
-  flex-wrap: wrap;
-}
-
-.footer-menu a {
-  color: #ffffff;
-  text-decoration: none;
-  font-weight: 600;
-  text-transform: uppercase;
+  padding: 32px 24px;
   font-size: 13px;
-  position: relative;
-  padding-bottom: 4px;
 }
+</style>
+</head>
 
-.footer-menu a::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 0;
-  height: 2px;
-  background: #44b6e5;
-  transition: width 0.25s ease;
-}
+<body>
 
-.footer-menu a:hover::after { width: 100%; }
+<header class="site-header">
+  <div class="header-inner">
+    <a href="home.html" class="header-logo">
+      <img src="images/citypaclogo.png" alt="CityPAC">
+    </a>
+    <nav class="header-menu">
+      <a href="home.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="join.html">Join</a>
+      <a href="contact.html">Contact</a>
+      <a href="donate.html" class="donate-btn">Donate</a>
+    </nav>
+  </div>
+</header>
 
-.footer-copy {
-  font-size: 12px;
-  opacity: 0.85;
+<section class="hero"></section>
 
- }
-</style> 
-    
+<section class="event-content">
+  <div class="event-inner">
+
+    <div class="event-eyebrow">CityPAC Presents</div>
+
+    <h1 class="event-title">
+      THE 2026 MIDTERMS & THE<br>U.S.–ISRAEL RELATIONSHIP
+    </h1>
+
+    <div class="event-subtitle">
+      THE LOOP, CHICAGO • FEBRUARY 17, 2026
+    </div>
+
+    <div class="speakers">
+      <div>
+        <div class="speaker-circle"></div>
+        <div class="speaker-name">Andy Hochberg</div>
+        <div class="speaker-role">Founder & CEO, Next Realty</div>
+      </div>
+      <div>
+        <div class="speaker-circle"></div>
+        <div class="speaker-name">Emily Pevnick</div>
+        <div class="speaker-role">Board Member, CityPAC</div>
+      </div>
+    </div>
+
+    <p class="event-description">
+      You are invited to join CityPAC on February 17th at 6:30 PM for a timely discussion on
+      <strong>The 2026 Midterms and the U.S.–Israel Relationship</strong>.
+      Please complete this form by February 1st to confirm your attendance.
+    </p>
+
+  </div>
+</section>
+
+<section class="rsvp">
+  <div class="rsvp-inner">
+    <h2>RSVP</h2>
+
+  <!-- Attendance -->
+<div class="form-row">
+  <input name="attending" placeholder="Will you be attending? *" required>
+  <input name="referral" placeholder="How did you hear about this event? *" required>
+</div>
+
+<!-- Name -->
+<div class="form-row">
+  <input name="first_name" placeholder="First name *" required>
+  <input name="last_name" placeholder="Last name *" required>
+</div>
+
+<!-- Contact -->
+<div class="form-row wide-left">
+  <input name="email" placeholder="Email *" required>
+  <input name="phone" placeholder="Phone number *" required>
+</div>
+
+<!-- Address -->
+<input name="address" placeholder="Address *" required>
+
+<div class="form-row">
+  <input name="zip" placeholder="Zip Code *" required>
+  <input name="age" placeholder="Age *" required>
+</div>
+
+<!-- Professional -->
+<input name="employer" placeholder="Current Employer *" required>
+<input name="title" placeholder="Job Title *" required>
+
+<select name="industry" required>
+  <option value="">Industry *</option>
+  <option>Finance / Banking / Investment Management / Credit / Private Equity</option>
+  <option>Real Estate / Development</option>
+  <option>Law / Legal Services</option>
+  <option>Consulting</option>
+  <option>Technology / Software / IT</option>
+  <option>Healthcare / Life Sciences</option>
+  <option>Government / Public Policy</option>
+  <option>Political / Advocacy / Nonprofit</option>
+  <option>Marketing / Communications / Public Relations</option>
+  <option>Media / Journalism</option>
+  <option>Education</option>
+  <option>Student</option>
+  <option>Other</option>
+</select>
+
+<select name="groups">
+  <option value="">Professional Group Interest</option>
+  <option>Young Professionals in Finance / Banking / Credit / PE</option>
+  <option>Young Professionals in Real Estate</option>
+  <option>Young Professionals in Law</option>
+  <option>Young Professionals in Consulting</option>
+  <option>Young Professionals in Healthcare</option>
+</select>
+
+<textarea
+  name="interests"
+  placeholder="What interests you about this event or future programs? *"
+  required></textarea>
+
+<select name="involvement" required>
+  <option value="">Have you been involved with Jewish / pro-Israel organizations? *</option>
+  <option>Yes</option>
+  <option>No</option>
+</select>
+
+<textarea
+  name="orgs"
+  placeholder="Which Jewish and/or pro-Israel organizations have you been involved with?"></textarea>
+
+<textarea
+  name="questions"
+  placeholder="Do you have any questions for the CityPAC Board?"></textarea>
+
+<button type="submit" id="submitBtn">Submit</button>
+
+      </div>
+</section>
+
+<footer class="site-footer">
+  © 2025 CityPAC. All rights reserved.
+</footer>
+
 <script>
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("rsvpForm");
@@ -401,38 +363,60 @@ document.addEventListener("DOMContentLoaded", () => {
 
   form.addEventListener("submit", e => {
     e.preventDefault();
-    btn.textContent = "Submitted ✓";
+
+    btn.textContent = "Submitting…";
     btn.disabled = true;
+
+    fetch(
+      "https://script.google.com/macros/s/AKfycbxpltPUqdjcgKDbuEzGTPKW1-fwU-1PprbAIK_EQYlcKRoUAnqVhgJIa9JfNhdiRRlF/exec",
+      {
+        method: "POST",
+        mode: "no-cors",
+        body: new URLSearchParams(new FormData(form))
+      }
+    ).then(() => {
+      btn.textContent = "Submitted ✓";
+      launchEmojiConfetti(btn);
+      form.reset();
+    });
   });
 });
+
+/* 🎉 CONFETTI */
+function launchEmojiConfetti(anchor) {
+  const rect = anchor.getBoundingClientRect();
+  const emojis = ["🎉", "✨", "🇺🇸", "🇮🇱"];
+
+  for (let i = 0; i < 200; i++) {
+    const span = document.createElement("span");
+    span.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+    span.style.position = "fixed";
+    span.style.left = rect.left + rect.width / 2 + "px";
+    span.style.top = rect.top + "px";
+    span.style.fontSize = "24px";
+    span.style.pointerEvents = "none";
+    span.style.zIndex = 9999;
+
+    document.body.appendChild(span);
+
+    const angle = Math.random() * Math.PI * 2;
+    const distance = 300 + Math.random() * 300;
+
+    span.animate(
+      [
+        { transform: "translate(0,0)", opacity: 1 },
+        {
+          transform: `translate(${Math.cos(angle)*distance}px, ${Math.sin(angle)*distance}px)`,
+          opacity: 0
+        }
+      ],
+      { duration: 3000, easing: "ease-out" }
+    );
+
+    setTimeout(() => span.remove(), 3000);
+  }
+}
 </script>
-
-<footer class="site-footer">
-  <div class="footer-top-line"></div>
-  <div class="footer-inner">
-    <div class="footer-disclaimer">
-      Paid for by CityPAC and not authorized by any candidate or candidate committee.
-      Contributions to CityPAC are not deductible for federal income tax purposes.
-    </div>
-
-    <div class="footer-logo">
-      <img src="images/citypaclogo.png" alt="CityPAC Logo">
-    </div>
-
-    <nav class="footer-menu">
-      <a href="home.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="join.html">Join</a>
-      <a href="contact.html">Contact</a>
-      <a href="donate.html">Donate</a>
-    </nav>
-
-    <div class="footer-copy">
-      © 2025 CityPAC. All rights reserved.
-    </div>
-  </div>
-</footer>
-
   
 </body>
 </html>
