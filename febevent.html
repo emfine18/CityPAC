@@ -80,7 +80,7 @@ body {
 /* ================= EVENT INFO ================= */
 .event-info {
   background: #2f3076;
-  padding: 40px 24px 100px;
+  padding: 10px 24px 100px;
 }
 
 .event-info-inner {
@@ -94,9 +94,10 @@ body {
   font-size: 14px;
   letter-spacing: 1px;
   opacity: 0.9;
-  margin-bottom: 12px;
+  margin-top: -30px;   /* moves CityPAC Presents UP */
+  margin-bottom: 10px;
 }
-
+  
 .event-title {
   font-size: clamp(40px, 5vw, 64px);
   font-weight: 700;
@@ -111,16 +112,118 @@ body {
   opacity: 0.95;
 }
 
+/* ================= SPEAKERS ================= */
+
+.speakers {
+  display: flex;
+  justify-content: center;
+  gap: 64px;
+  margin: 40px 0 48px;
+  flex-wrap: wrap;
+}
+
+.speaker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.speaker-circle {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  background: #c98a3a;
+  margin-bottom: 12px;
+}
+
+.speaker-name {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.speaker-role {
+  font-size: 12px;
+  opacity: 0.85;
+}
   
-/* ================= FOOTER ================= */
+  
+/* ================= FOOTER (UNCHANGED) ================= */
 .site-footer {
   background: #003366;
-  text-align: center;
-  padding: 32px 24px;
+  color: #ffffff;
   font-size: 13px;
 }
 
-/* ================= RSVP ================= */
+.footer-top-line {
+  height: 4px;
+  background: #44b6e5;
+}
+
+.footer-inner {
+  max-width: 1200px;
+  margin: auto;
+  padding: 32px 24px;
+  text-align: center;
+}
+
+.footer-disclaimer {
+  border: 1px solid #ffffff;
+  border-radius: 6px;
+  padding: 14px 18px;
+  margin-bottom: 22px;
+  line-height: 1.5;
+}
+
+.footer-logo img {
+  height: 48px;
+  margin-bottom: 18px;
+}
+
+.footer-menu {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+
+.footer-menu a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 13px;
+  position: relative;
+  padding-bottom: 4px;
+}
+
+.footer-menu a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background: #44b6e5;
+  transition: width 0.25s ease;
+}
+
+.footer-menu a:hover::after {
+  width: 100%;
+}
+
+.footer-copy {
+  font-size: 12px;
+  opacity: 0.85;
+}
+ </style>
+</head>
+<body>
+  
+  /* ================= RSVP ================= */
+
 .rsvp {
   background: #003366;
   padding: 90px 24px;
@@ -136,28 +239,39 @@ body {
   gap: 18px;
 }
 
+/* TWO COLUMN ROWS */
 .form-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 16px;
 }
 
+/* INPUTS — WHITE OUTLINE, WHITE TEXT */
 #rsvpForm input,
 #rsvpForm select,
 #rsvpForm textarea {
+  width: 100%;
   background: transparent;
-  border: 1.5px solid rgba(255,255,255,0.85);
+  border: 1.5px solid rgba(255,255,255,0.9);
   color: #ffffff;
   padding: 14px;
   font-size: 15px;
   border-radius: 6px;
 }
 
+/* PLACEHOLDERS */
+#rsvpForm input::placeholder,
+#rsvpForm textarea::placeholder {
+  color: rgba(255,255,255,0.75);
+}
+
+/* TEXTAREA */
 #rsvpForm textarea {
   min-height: 120px;
   resize: vertical;
 }
 
+/* BUTTON */
 #rsvpForm button {
   margin-top: 24px;
   background: #44b6e5;
@@ -170,6 +284,7 @@ body {
   cursor: pointer;
 }
 
+/* MOBILE */
 @media (max-width: 800px) {
   .form-row {
     grid-template-columns: 1fr;
@@ -185,16 +300,21 @@ body {
     <a href="home.html" class="header-logo">
       <img src="images/citypaclogo.png" alt="CityPAC">
     </a>
-    <nav class="header-menu">
+
+    <nav class="header-menu" id="menu">
       <a href="home.html">Home</a>
       <a href="about.html">About</a>
       <a href="join.html">Join</a>
       <a href="contact.html">Contact</a>
       <a href="donate.html" class="donate-btn">Donate</a>
     </nav>
+
+    <div class="hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
   </div>
 </header>
-
+  
 <section class="hero"></section>
 
 <section class="event-info">
@@ -211,18 +331,20 @@ body {
       THE LOOP, CHICAGO • FEBRUARY 17, 2026
     </div>
 
-    <div class="speakers">
-      <div>
-        <div class="speaker-circle"></div>
-        <div class="speaker-name">Andy Hochberg</div>
-        <div class="speaker-role">Founder & CEO, Next Realty</div>
-      </div>
-      <div>
-        <div class="speaker-circle"></div>
-        <div class="speaker-name">Emily Pevnick</div>
-        <div class="speaker-role">Board Member, CityPAC</div>
-      </div>
-    </div>
+ <div class="speakers">
+  <div class="speaker">
+    <div class="speaker-circle"></div>
+    <div class="speaker-name">Andy Hochberg</div>
+    <div class="speaker-role">Founder & CEO, Next Realty</div>
+  </div>
+
+  <div class="speaker">
+    <div class="speaker-circle"></div>
+    <div class="speaker-name">Emily Pevnick</div>
+    <div class="speaker-role">Board Member, CityPAC</div>
+  </div>
+</div>
+  
 
     <p class="event-description">
       You are invited to join CityPAC on February 17th at 6:30 PM for a timely discussion on
@@ -241,86 +363,154 @@ body {
 <section class="rsvp">
   <div class="rsvp-inner">
 
-    <form id="rsvpForm">
+<form id="rsvpForm">
 
-      <div class="form-row">
-        <input name="first_name" placeholder="First name *" required>
-        <input name="last_name" placeholder="Last name *" required>
-      </div>
+  <!-- SECTION 2: ATTENDANCE -->
+  <div>
+    <label style="display:block; margin-bottom:8px; font-weight:600;">
+      Will you be attending The 2026 Midterms and the U.S.–Israel Relationship? *
+    </label>
+    <label>
+      <input type="radio" name="attending" value="Yes" required> Yes
+    </label>
+    <label style="margin-left:20px;">
+      <input type="radio" name="attending" value="No"> No
+    </label>
+  </div>
 
-      <div class="form-row">
-        <input type="email" name="email" placeholder="Email *" required>
-        <input name="phone" placeholder="Phone number *" required>
-      </div>
+  <div>
+    <label style="display:block; margin-bottom:8px; font-weight:600;">
+      How did you hear about this event? *
+    </label>
+    <input name="referral" placeholder="How did you hear about this event?" required>
+  </div>
 
-      <div class="form-row">
-        <input name="zip" placeholder="Zip Code *" required>
-        <input name="age" placeholder="Age *" required>
-      </div>
+  <!-- SECTION 2: PERSONAL INFO -->
+  <div class="form-row">
+    <input name="first_name" placeholder="First name *" required>
+    <input name="last_name" placeholder="Last name *" required>
+  </div>
 
-      <input name="address" placeholder="Address *" required>
+  <div class="form-row">
+    <input name="age" placeholder="Age *" required>
+    <input name="phone" placeholder="Phone number *" required>
+  </div>
 
-      <div class="form-row">
-        <input name="employer" placeholder="Current Employer *" required>
-        <input name="title" placeholder="Job Title *" required>
-      </div>
+  <input type="email" name="email" placeholder="Email *" required>
 
-      <select name="industry" required>
-        <option value="">Industry *</option>
-        <option>Finance / Banking / Investment Management / Credit / Private Equity</option>
-        <option>Real Estate / Development</option>
-        <option>Law / Legal Services</option>
-        <option>Consulting</option>
-        <option>Technology / Software / IT</option>
-        <option>Healthcare / Life Sciences</option>
-        <option>Government / Public Policy</option>
-        <option>Political / Advocacy / Nonprofit</option>
-        <option>Marketing / Communications / Public Relations</option>
-        <option>Media / Journalism</option>
-        <option>Education</option>
-        <option>Student</option>
-        <option>Other</option>
-      </select>
+  <input name="address" placeholder="Address *" required>
 
-      <select name="groups">
-        <option value="">Professional Group Interest</option>
-        <option>Young Professionals in Finance</option>
-        <option>Young Professionals in Real Estate</option>
-        <option>Young Professionals in Law</option>
-        <option>Young Professionals in Consulting</option>
-        <option>Young Professionals in Healthcare</option>
-      </select>
+  <input name="zip" placeholder="Zip Code *" required>
 
-      <textarea
-        name="interests"
-        placeholder="What interests you about this event or future programs? *"
-        required></textarea>
+  <!-- SECTION 3: PROFESSIONAL INFO -->
+  <input name="employer" placeholder="Current Employer *" required>
 
-      <select name="involvement" required>
-        <option value="">Have you been involved with Jewish / pro-Israel organizations? *</option>
-        <option>Yes</option>
-        <option>No</option>
-      </select>
+  <input name="title" placeholder="Job Title *" required>
 
-      <textarea
-        name="orgs"
-        placeholder="Which Jewish and/or pro-Israel organizations have you been involved with?"></textarea>
+  <select name="industry" required>
+    <option value="">Industry *</option>
+    <option>Finance / Banking / Investment Management / Credit / Private Equity</option>
+    <option>Real Estate / Development</option>
+    <option>Law / Legal Services</option>
+    <option>Consulting</option>
+    <option>Technology / Software / IT</option>
+    <option>Healthcare / Life Sciences</option>
+    <option>Government / Public Policy</option>
+    <option>Political / Advocacy / Nonprofit</option>
+    <option>Marketing / Communications / Public Relations</option>
+    <option>Media / Journalism</option>
+    <option>Education</option>
+    <option>Student</option>
+    <option>Other</option>
+  </select>
 
-      <textarea
-        name="questions"
-        placeholder="Do you have any questions for the CityPAC Board?"></textarea>
+  <select name="groups" required>
+    <option value="">Professional Group Interest *</option>
+    <option>Young Professionals in Finance / Banking / Credit / PE</option>
+    <option>Young Professionals in Real Estate</option>
+    <option>Young Professionals in Law and Legal Services</option>
+    <option>Young Professionals in Consulting</option>
+    <option>Young Professionals in Healthcare</option>
+  </select>
 
-      <button type="submit" id="submitBtn">Submit</button>
+  <!-- SECTION 4: INTERESTS -->
+  <div>
+    <label style="display:block; margin-bottom:8px; font-weight:600;">
+      What interests you about this event or future programs? *
+    </label>
+    <label><input type="checkbox" name="interests[]" value="US-Israel policy"> U.S.–Israel policy</label><br>
+    <label><input type="checkbox" name="interests[]" value="2026 elections"> The 2026 elections</label><br>
+    <label><input type="checkbox" name="interests[]" value="Illinois politics"> Illinois politics</label><br>
+    <label><input type="checkbox" name="interests[]" value="Networking"> Networking with peers</label><br>
+    <label><input type="checkbox" name="interests[]" value="CityPAC"> CityPAC</label><br>
+    <label><input type="checkbox" name="interests[]" value="Other"> Other</label>
+  </div>
 
-    </form>
+  <div>
+    <label style="display:block; margin-bottom:8px; font-weight:600;">
+      Have you been involved with Jewish and/or pro-Israel organizations? *
+    </label>
+    <label>
+      <input type="radio" name="involvement" value="Yes" required> Yes
+    </label>
+    <label style="margin-left:20px;">
+      <input type="radio" name="involvement" value="No"> No
+    </label>
+  </div>
 
+  <div>
+    <label style="display:block; margin-bottom:8px; font-weight:600;">
+      Which Jewish and/or pro-Israel organizations have you been involved with?
+    </label>
+    <label><input type="checkbox" name="orgs[]" value="AIPAC"> AIPAC</label><br>
+    <label><input type="checkbox" name="orgs[]" value="ADL"> ADL</label><br>
+    <label><input type="checkbox" name="orgs[]" value="CityPAC"> CityPAC</label><br>
+    <label><input type="checkbox" name="orgs[]" value="JUF YLD"> JUF YLD</label><br>
+    <label><input type="checkbox" name="orgs[]" value="JCRC"> JCRC</label><br>
+    <label><input type="checkbox" name="orgs[]" value="Israel Bonds"> Israel Bonds</label><br>
+    <label><input type="checkbox" name="orgs[]" value="AJC"> AJC</label><br>
+    <label><input type="checkbox" name="orgs[]" value="Chabad / Hillel"> Chabad / Hillel</label><br>
+    <label><input type="checkbox" name="orgs[]" value="ICC"> Israel on Campus Coalition</label><br>
+    <label><input type="checkbox" name="orgs[]" value="Synagogue"> Local synagogue</label><br>
+    <label><input type="checkbox" name="orgs[]" value="Other"> Other</label>
+  </div>
+
+  <textarea
+    name="questions"
+    placeholder="Do you have any questions for the CityPAC Board?"></textarea>
+
+  <button type="submit" id="submitBtn">Submit</button>
+
+</form>
   </div>
 </section>
   
 <footer class="site-footer">
-  © 2025 CityPAC. All rights reserved.
-</footer>
+  <div class="footer-top-line"></div>
+  <div class="footer-inner">
+    <div class="footer-disclaimer">
+      Paid for by CityPAC and not authorized by any candidate or candidate committee.
+      Contributions to CityPAC are not deductible for federal income tax purposes.
+    </div>
 
+    <div class="footer-logo">
+      <img src="images/citypaclogo.png" alt="CityPAC Logo">
+    </div>
+
+    <nav class="footer-menu">
+      <a href="home.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="join.html">Join</a>
+      <a href="contact.html">Contact</a>
+      <a href="donate.html">Donate</a>
+    </nav>
+
+    <div class="footer-copy">
+      © 2025 CityPAC. All rights reserved.
+    </div>
+  </div>
+</footer>
+  
 <script>
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("rsvpForm");
