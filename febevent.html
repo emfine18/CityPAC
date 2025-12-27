@@ -21,7 +21,7 @@ body {
   position: absolute;
   top: 0;
   width: 100%;
-  z-index: 50;
+  z-index: 20;
 }
 
 .header-inner {
@@ -33,26 +33,119 @@ body {
   align-items: center;
 }
 
-.header-logo img { height: 56px; }
+.header-logo img {
+  height: 56px;
+}
+
+/* ================= HEADER MENU ================= */
 
 .header-menu {
   display: flex;
+  align-items: center;
   gap: 18px;
 }
 
+/* ===== DESKTOP MENU LINKS ===== */
 .header-menu a {
-  color: #ffffff;
+  color: #ffffff;               /* WHITE on desktop */
   text-decoration: none;
   font-weight: 600;
   text-transform: uppercase;
   font-size: 15px;
+  position: relative;
+  padding-bottom: 6px;
+  display: flex;
+  align-items: center;
 }
 
+/* WHITE underline on desktop */
+.header-menu a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 3px;
+  background: #ffffff;
+  transition: width 0.25s ease;
+}
+
+.header-menu a:hover::after {
+  width: 100%;
+}
+
+/* ===== DONATE BUTTON ===== */
 .header-menu .donate-btn {
   background: #e04b3f;
+  color: #ffffff !important;    /* ALWAYS white */
   padding: 10px 18px;
   border-radius: 10px;
   font-weight: 700;
+  line-height: 1;
+}
+
+.header-menu .donate-btn::after {
+  display: none;                /* no underline */
+}
+
+.header-menu .donate-btn:hover {
+  background: #c93c32;
+}
+
+/* ===== HAMBURGER ICON ===== */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.hamburger span {
+  width: 26px;
+  height: 3px;
+  background: #ffffff;          /* WHITE lines */
+}
+
+/* ================= MOBILE MENU ================= */
+@media (max-width: 900px) {
+  .hamburger {
+    display: flex;
+  }
+
+  .header-menu {
+    position: absolute;
+    top: 78px;
+    right: 24px;
+    background: #ffffff;
+    padding: 18px 22px;
+    border-radius: 8px;
+    display: none;
+    flex-direction: column;
+    gap: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    align-items: flex-start;
+  }
+
+  .header-menu.show {
+    display: flex;
+  }
+
+  /* ===== HAMBURGER MENU LINKS ===== */
+  .header-menu a {
+    color: #44b6e5;             /* BLUE in hamburger */
+  }
+
+  .header-menu a::after {
+    background: #44b6e5;        /* BLUE underline */
+  }
+
+  /* KEEP DONATE BUTTON WHITE TEXT */
+  .header-menu .donate-btn {
+    color: #ffffff !important;
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-size: 15px;
+  }
 }
 
 /* ================= HERO (IMAGE ONLY) ================= */
@@ -243,13 +336,18 @@ button {
     <a href="home.html" class="header-logo">
       <img src="images/citypaclogo.png" alt="CityPAC">
     </a>
-    <nav class="header-menu">
+
+    <nav class="header-menu" id="menu">
       <a href="home.html">Home</a>
       <a href="about.html">About</a>
       <a href="join.html">Join</a>
       <a href="contact.html">Contact</a>
       <a href="donate.html" class="donate-btn">Donate</a>
     </nav>
+
+    <div class="hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
   </div>
 </header>
 
