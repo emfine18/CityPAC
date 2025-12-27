@@ -479,9 +479,9 @@ body {
   <div class="rsvp-inner">
 
 <form
+  id="rsvpForm"
   action="https://docs.google.com/forms/d/e/1FAIpQLSfu0GWSJGWBNMjTGMTRDV8V0U_QTOaGjisNtRrxfKqqMVl_vQ/formResponse"
   method="POST"
-  target="_blank"
 >
 
   <select name="entry.1418552658" required>
@@ -597,79 +597,47 @@ body {
     </div>
   </div>
 </footer>
-  
-<script>
-
-/* 🎉 CONFETTI */
-function launchEmojiConfetti(anchor) {
-  const rect = anchor.getBoundingClientRect();
-  const emojis = ["🎉", "✨", "🇺🇸", "🇮🇱"];
-
-  for (let i = 0; i < 200; i++) {
-    const span = document.createElement("span");
-    span.textContent = emojis[Math.floor(Math.random() * emojis.length)];
-    span.style.position = "fixed";
-    span.style.left = rect.left + rect.width / 2 + "px";
-    span.style.top = rect.top + "px";
-    span.style.fontSize = "24px";
-    span.style.pointerEvents = "none";
-    span.style.zIndex = 9999;
-
-    document.body.appendChild(span);
-
-    const angle = Math.random() * Math.PI * 2;
-    const distance = 300 + Math.random() * 300;
-
-    span.animate(
-      [
-        { transform: "translate(0,0)", opacity: 1 },
-        {
-          transform: `translate(${Math.cos(angle)*distance}px, ${Math.sin(angle)*distance}px)`,
-          opacity: 0n  
-        }
-      ],
-      { duration: 3000, easing: "ease-out" }
-    );
-
-    setTimeout(() => span.remove(), 3000);
-  }
-}
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
+
+  /* ================= HAMBURGER MENU ================= */
   const hamburger = document.getElementById("hamburger");
   const menu = document.getElementById("menu");
 
-  if (!hamburger || !menu) return;
+  if (hamburger && menu) {
+    hamburger.addEventListener("click", function () {
+      menu.classList.toggle("show");
+    });
+  }
 
-  hamburger.addEventListener("click", function () {
-    menu.classList.toggle("show");
-  });
-});
-</script>
-
-<script>
-document.addEventListener("DOMContentLoaded", function () {
+  /* ================= RSVP FORM ================= */
   const form = document.getElementById("rsvpForm");
-  const button = form.querySelector("button[type='submit']");
+  const button = form?.querySelector("button[type='submit']");
   const success = document.getElementById("rsvpSuccess");
 
-  if (!form || !button) return;
+  if (!form || !button || !success) return;
 
-  form.addEventListener("submit", function () {
-    // UI only — do NOT prevent Google Form submission
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
     button.disabled = true;
     button.innerText = "Submitting…";
 
-    setTimeout(() => {
+    fetch(form.action, {
+      method: "POST",
+      mode: "no-cors",
+      body: new FormData(form)
+    }).then(() => {
       button.innerText = "Submitted ✓";
       success.style.display = "block";
       launchEmojiConfetti(button);
-    }, 1200);
+      form.reset();
+    });
   });
 });
 
-/* 🎉 REAL EMOJI CONFETTI — FROM SUBMIT BUTTON */
+/* ================= CONFETTI ================= */
 function launchEmojiConfetti(button) {
   const rect = button.getBoundingClientRect();
   const emojis = ["🎉", "✨", "🇺🇸", "🇮🇱"];
