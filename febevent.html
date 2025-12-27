@@ -367,6 +367,11 @@ body {
   color: rgba(255,255,255,0.7);
 }
 
+#rsvpForm input::-webkit-input-placeholder,
+#rsvpForm textarea::-webkit-input-placeholder {
+  color: rgba(255,255,255,0.7);
+}
+  
 /* TEXTAREA */
 #rsvpForm textarea {
   height: 120px;
@@ -400,6 +405,16 @@ body {
   cursor: pointer;
 }
 
+  #rsvpForm select {
+  color: #ffffff;
+}
+
+#rsvpForm select option {
+  color: #000000; /* dropdown list itself must be dark to stay readable */
+  background: #ffffff;
+}
+
+  
 #rsvpForm button:disabled {
   opacity: 0.7;
 }
@@ -415,7 +430,11 @@ body {
  </style>
 </head>
 <body>
-  
+
+  <iframe
+  name="hidden_iframe"
+  style="display:none;"
+></iframe>
 
 <header class="site-header">
   <div class="header-inner">
@@ -487,7 +506,7 @@ body {
 
 <form
   id="rsvpForm"
-  action="https://docs.google.com/forms/d/e/1FAIpQLSfu0GWSJGWBNMjTGMTRDV8V0U_QTOaGjisNtRrxfKqqMVl_vQ/formResponse"
+  action="https://script.google.com/macros/s/AKfycbxpltPUqdjcgKDbuEzGTPKW1-fwU-1PprbAIK_EQYlcKRoUAnqVhgJIa9JfNhdiRRlF/exec"
   method="POST"
 >
 
