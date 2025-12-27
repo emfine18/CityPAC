@@ -12,7 +12,7 @@
 
 body {
   margin: 0;
-  background: #2f3076;
+  background: #003366;
   color: #ffffff;
 }
 
@@ -315,7 +315,7 @@ body {
   /* ================= RSVP (CLEAN, WHITE, DROPDOWNS) ================= */
 
 .rsvp {
-  background: #003366;
+  background: #2f3072;
   padding: 90px 24px;
 }
 
@@ -511,7 +511,7 @@ body {
     <div class="rsvp-label">
       Will you be attending The 2026 Midterms and the U.S.–Israel Relationship?
     </div>
-    <select name="entry.1418552658" required>
+    <select name="attending" required>
       <option value="">Select one</option>
       <option>Yes</option>
       <option>No</option>
@@ -520,61 +520,60 @@ body {
 
   <div>
     <div class="rsvp-label">How did you hear about this event?</div>
-    <input name="entry.1203796393" required>
+    <input name="hear" required>
   </div>
 
   <div class="rsvp-row three">
     <div>
       <div class="rsvp-label">First name</div>
-      <input name="entry.276624258" required>
+      <input name="first_name" required>
     </div>
     <div>
       <div class="rsvp-label">Last name</div>
-      <input name="entry.379031892" required>
+      <input name="last_name" required>
     </div>
     <div>
       <div class="rsvp-label">Age</div>
-      <input name="entry.896738026" required>
+      <input name="age" required>
     </div>
   </div>
 
   <div class="rsvp-row two">
     <div>
       <div class="rsvp-label">Phone number</div>
-      <input name="entry.160040439" required>
+      <input name="phone" required>
     </div>
     <div>
       <div class="rsvp-label">Email</div>
-      <input type="email" name="entry.1580435886" required>
+      <input type="email" name="email" required>
     </div>
   </div>
 
   <div class="rsvp-row two">
     <div>
       <div class="rsvp-label">Address</div>
-      <input name="entry.64126206" required>
+      <input name="address" required>
     </div>
     <div>
       <div class="rsvp-label">Zip Code</div>
-      <input name="entry.1964079643" required>
+      <input name="zip" required>
     </div>
   </div>
 
   <div class="rsvp-row two">
-  <div>
-    <div class="rsvp-label">Current Employer</div>
-    <input name="entry.656163493" required>
+    <div>
+      <div class="rsvp-label">Current Employer</div>
+      <input name="employer" required>
+    </div>
+    <div>
+      <div class="rsvp-label">Job Title</div>
+      <input name="title" required>
+    </div>
   </div>
-
-  <div>
-    <div class="rsvp-label">Job Title</div>
-    <input name="entry.1690518663" required>
-  </div>
-</div>
 
   <div>
     <div class="rsvp-label">Industry</div>
-    <select name="entry.1087078679" required>
+    <select name="industry" required>
       <option value="">Select industry</option>
       <option>Finance / Banking / Investment Management / Credit / Private Equity</option>
       <option>Real Estate / Development</option>
@@ -596,7 +595,7 @@ body {
     <div class="rsvp-label">
       Would you like to join one of the following professional groups?
     </div>
-    <select name="entry.493137383">
+    <select name="group">
       <option value="">Optional</option>
       <option>Young Professionals in Finance</option>
       <option>Young Professionals in Real Estate</option>
@@ -610,7 +609,7 @@ body {
     <div class="rsvp-label">
       Do you currently have, or have you previously had, any involvement with Jewish and/or pro-Israel organizations?
     </div>
-    <select name="entry.991937041" required>
+    <select name="involved" required>
       <option value="">Select one</option>
       <option>Yes</option>
       <option>No</option>
@@ -621,19 +620,19 @@ body {
     <div class="rsvp-label">
       Which Jewish and/or pro-Israel organizations?
     </div>
-    <textarea name="entry.1041961967"></textarea>
+    <textarea name="organizations"></textarea>
   </div>
 
   <div>
     <div class="rsvp-label">
       Do you have any questions for the CityPAC Board?
     </div>
-    <textarea name="entry.25377518"></textarea>
+    <textarea name="questions"></textarea>
   </div>
 
   <button type="submit">Submit</button>
 </form>
-    
+
 <div id="rsvpSuccess" style="
   display:none;
   margin-top:20px;
@@ -641,9 +640,9 @@ body {
   color:#ffffff;
   text-align:center;
 ">
-  Submitted ✓ Thank you for your RSVP, event location details will be shared 24 hours before the event begins!
+  Thank you for your RSVP! Event location and check in details will be shared 24 hours before the event begins.
 </div>
-    
+
   </div>
 </section>
   
@@ -686,13 +685,11 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 </script>
 
-  <script>
+ <script>
 document.addEventListener("DOMContentLoaded", function () {
   const form = document.getElementById("rsvpForm");
   const button = form.querySelector("button[type='submit']");
   const success = document.getElementById("rsvpSuccess");
-
-  if (!form || !button || !success) return;
 
   form.addEventListener("submit", function (e) {
     e.preventDefault();
