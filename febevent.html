@@ -503,12 +503,8 @@ body {
 <section class="rsvp">
   <div class="rsvp-inner">
 
-<form
-  id="rsvpForm"
-  action="https://script.google.com/macros/s/AKfycbxpltPUqdjcgKDbuEzGTPKW1-fwU-1PprbAIK_EQYlcKRoUAnqVhgJIa9JfNhdiRRlF/exec"
-  method="POST"
->
-
+<form id="rsvpForm">
+    
   <!-- Attending -->
   <select name="entry.1418552658" required>
     <option value="">Will you be attending?</option>
@@ -665,16 +661,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
-
-  /* ================= HAMBURGER MENU ================= */
   const hamburger = document.getElementById("hamburger");
   const menu = document.getElementById("menu");
 
-  if (hamburger && menu) {
-    hamburger.addEventListener("click", function () {
-      menu.classList.toggle("show");
-    });
-  }
+  if (!hamburger || !menu) return;
+
+  hamburger.addEventListener("click", function () {
+    menu.classList.toggle("show");
+  });
+});
+</script>
 
   /* ================= RSVP FORM ================= */
   const form = document.getElementById("rsvpForm");
