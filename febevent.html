@@ -406,12 +406,9 @@ body {
 
 /* MOBILE */
 @media (max-width: 800px) {
-  .rsvp-row.two {
+  /* ONLY full-width rows should stack */
+  .rsvp-row.full {
     grid-template-columns: 1fr;
-  }
-
-  .rsvp-row.three {
-    grid-template-columns: 1fr 1fr 1fr;
   }
 }
   
