@@ -431,11 +431,6 @@ body {
 </head>
 <body>
 
-  <iframe
-  name="hidden_iframe"
-  style="display:none;"
-></iframe>
-
 <header class="site-header">
   <div class="header-inner">
     <a href="home.html" class="header-logo">
@@ -638,6 +633,34 @@ body {
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
+  const form = document.getElementById("rsvpForm");
+  const button = form.querySelector("button[type='submit']");
+  const success = document.getElementById("rsvpSuccess");
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    button.disabled = true;
+    button.innerText = "Submitting…";
+
+    fetch(
+      "https://script.google.com/macros/s/AKfycbxpltPUqdjcgKDbuEzGTPKW1-fwU-1PprbAIK_EQYlcKRoUAnqVhgJIa9JfNhdiRRlF/exec",
+      {
+        method: "POST",
+        mode: "no-cors",
+        body: new FormData(form)   // 🔑 THIS IS THE KEY DIFFERENCE
+      }
+    ).then(() => {
+      button.innerText = "Submitted ✓";
+      success.style.display = "block";
+      launchEmojiConfetti(button);
+      form.reset();
+    });
+  });
+});
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
 
   /* ================= HAMBURGER MENU ================= */
   const hamburger = document.getElementById("hamburger");
@@ -651,10 +674,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   /* ================= RSVP FORM ================= */
   const form = document.getElementById("rsvpForm");
-  const button = form?.querySelector("button[type='submit']");
+  const button = form.querySelector("button[type='submit']");
   const success = document.getElementById("rsvpSuccess");
-
-  if (!form || !button || !success) return;
 
   form.addEventListener("submit", function (e) {
     e.preventDefault();
@@ -662,11 +683,14 @@ document.addEventListener("DOMContentLoaded", function () {
     button.disabled = true;
     button.innerText = "Submitting…";
 
-    fetch(form.action, {
-      method: "POST",
-      mode: "no-cors",
-      body: new FormData(form)
-    }).then(() => {
+    fetch(
+      "https://script.google.com/macros/s/AKfycbxpltPUqdjcgKDbuEzGTPKW1-fwU-1PprbAIK_EQYlcKRoUAnqVhgJIa9JfNhdiRRlF/exec",
+      {
+        method: "POST",
+        mode: "no-cors",
+        body: new FormData(form)
+      }
+    ).then(() => {
       button.innerText = "Submitted ✓";
       success.style.display = "block";
       launchEmojiConfetti(button);
@@ -713,7 +737,7 @@ function launchEmojiConfetti(button) {
     setTimeout(() => emoji.remove(), 4500);
   }
 }
-</script>
+</script>  
   
 </body>
 </html>
