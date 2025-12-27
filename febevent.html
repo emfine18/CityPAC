@@ -8,10 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
 
 <style>
-* {
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
-}
+* { box-sizing: border-box; font-family: 'Poppins', sans-serif; }
 
 body {
   margin: 0;
@@ -36,9 +33,7 @@ body {
   align-items: center;
 }
 
-.header-logo img {
-  height: 56px;
-}
+.header-logo img { height: 56px; }
 
 .header-menu {
   display: flex;
@@ -63,38 +58,39 @@ body {
 /* ================= HERO (IMAGE ONLY) ================= */
 .hero {
   position: relative;
-  height: 80vh;
+  height: 68vh; /* 🔑 reduced */
   background: url("images/ChicagoSign.png") center top / cover no-repeat;
 }
 
-/* soft blue overlay */
+/* light blue wash */
 .hero::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(92,162,211,0.25);
+  background: rgba(92,162,211,0.28);
 }
 
-/* bottom fade */
+/* 🔑 SHORTER bottom fade */
 .hero::after {
   content: "";
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 40%;
+  height: 26%; /* 🔑 this removes the big blue block */
   background: linear-gradient(
     to bottom,
     rgba(47,48,118,0) 0%,
-    rgba(47,48,118,0.75) 55%,
+    rgba(47,48,118,0.65) 55%,
     #2f3076 100%
   );
+  pointer-events: none;
 }
 
 /* ================= EVENT CONTENT ================= */
 .event-content {
   background: #2f3076;
-  padding: 80px 24px 120px;
+  padding: 70px 24px 120px; /* 🔑 pulled up */
 }
 
 .event-inner {
@@ -125,7 +121,7 @@ body {
   opacity: 0.95;
 }
 
-/* speakers */
+/* SPEAKERS */
 .speakers {
   display: flex;
   justify-content: center;
@@ -152,6 +148,7 @@ body {
   opacity: 0.85;
 }
 
+/* DESCRIPTION */
 .event-description {
   max-width: 900px;
   margin: auto;
@@ -288,13 +285,7 @@ button {
       <input name="referral" placeholder="How did you hear about this event?" required>
       <input name="first_name" placeholder="First name" required>
       <input name="last_name" placeholder="Last name" required>
-      <input name="age" placeholder="Age" required>
-      <input name="phone" placeholder="Phone number" required>
       <input name="email" placeholder="Email" required>
-      <input name="address" placeholder="Address" required>
-      <input name="zip" placeholder="Zip Code" required>
-      <input name="employer" placeholder="Current Employer" required>
-      <input name="title" placeholder="Job Title" required>
 
       <button type="submit" id="submitBtn">Submit</button>
     </form>
@@ -311,34 +302,8 @@ const btn = document.getElementById("submitBtn");
 
 form.addEventListener("submit", e => {
   e.preventDefault();
-  btn.textContent = "Submitting…";
-  btn.disabled = true;
-
-  fetch("https://script.google.com/macros/s/AKfycbxpltPUqdjcgKDbuEzGTPKW1-fwU-1PprbAIK_EQYlcKRoUAnqVhgJIa9JfNhdiRRlF/exec", {
-    method: "POST",
-    mode: "no-cors",
-    body: new FormData(form)
-  }).then(() => {
-    btn.textContent = "Submitted ✓";
-    launchEmojiConfetti();
-    form.reset();
-  });
+  btn.textContent = "Submitted ✓";
 });
-
-function launchEmojiConfetti() {
-  for (let i = 0; i < 120; i++) {
-    const e = document.createElement("span");
-    e.textContent = ["🎉","✨","🇺🇸","🇮🇱"][Math.floor(Math.random()*4)];
-    e.style.position = "fixed";
-    e.style.left = Math.random()*100 + "vw";
-    e.style.top = "-20px";
-    e.style.fontSize = "24px";
-    e.style.zIndex = 9999;
-    document.body.appendChild(e);
-    e.animate([{transform:"translateY(0)"},{transform:"translateY(110vh)"}],{duration:3000});
-    setTimeout(()=>e.remove(),3000);
-  }
-}
 </script>
 
 </body>
