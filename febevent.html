@@ -206,6 +206,88 @@ button {
   padding: 32px 24px;
   font-size: 13px;
 }
+
+  /* ================= RSVP (MATCH CONTACT FORM) ================= */
+
+.rsvp {
+  background: #ffffff;
+  color: #111;
+}
+
+.rsvp-inner.contact {
+  max-width: 1200px;
+  margin: 80px auto;
+  padding: 0 24px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.contact-image img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.contact-form label {
+  font-weight: 500;
+  font-size: 14px;
+  margin-bottom: 6px;
+  display: block;
+}
+
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+  width: 100%;
+  height: 52px;
+  padding: 0 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-bottom: 18px;
+  font-size: 15px;
+  color: #111;
+  background: #ffffff;
+}
+
+.contact-form textarea {
+  height: 120px;
+  padding-top: 12px;
+  resize: vertical;
+}
+
+.contact-form .row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.contact-form button {
+  background: #003366;
+  color: #ffffff;
+  border: none;
+  padding: 14px 28px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.contact-success {
+  display: none;
+  margin-top: 18px;
+  font-weight: 600;
+  color: #44b6e5;
+}
+
+@media (max-width: 900px) {
+  .rsvp-inner.contact {
+    grid-template-columns: 1fr;
+  }
+  .contact-form .row {
+    grid-template-columns: 1fr;
+  }
+}
 </style>
 </head>
 
@@ -264,91 +346,67 @@ button {
 </section>
 
 <section class="rsvp">
-  <div class="rsvp-inner">
-    <h2>RSVP</h2>
-    <form id="rsvpForm">
+  <div class="rsvp-inner contact">
 
-  <!-- Attendance -->
-<div class="form-row">
-  <input name="attending" placeholder="Will you be attending? *" required>
-  <input name="referral" placeholder="How did you hear about this event? *" required>
-</div>
+    <div class="contact-image">
+      <img src="images/american-flag.jpg" alt="American Flag">
+    </div>
 
-<!-- Name -->
-<div class="form-row">
-  <input name="first_name" placeholder="First name *" required>
-  <input name="last_name" placeholder="Last name *" required>
-</div>
+    <form id="rsvpForm" class="contact-form">
 
-<!-- Contact -->
-<div class="form-row wide-left">
-  <input name="email" placeholder="Email *" required>
-  <input name="phone" placeholder="Phone number *" required>
-</div>
-
-<!-- Address -->
-<input name="address" placeholder="Address *" required>
-
-<div class="form-row">
-  <input name="zip" placeholder="Zip Code *" required>
-  <input name="age" placeholder="Age *" required>
-</div>
-
-<!-- Professional -->
-<input name="employer" placeholder="Current Employer *" required>
-<input name="title" placeholder="Job Title *" required>
-
-<select name="industry" required>
-  <option value="">Industry *</option>
-  <option>Finance / Banking / Investment Management / Credit / Private Equity</option>
-  <option>Real Estate / Development</option>
-  <option>Law / Legal Services</option>
-  <option>Consulting</option>
-  <option>Technology / Software / IT</option>
-  <option>Healthcare / Life Sciences</option>
-  <option>Government / Public Policy</option>
-  <option>Political / Advocacy / Nonprofit</option>
-  <option>Marketing / Communications / Public Relations</option>
-  <option>Media / Journalism</option>
-  <option>Education</option>
-  <option>Student</option>
-  <option>Other</option>
-</select>
-
-<select name="groups">
-  <option value="">Professional Group Interest</option>
-  <option>Young Professionals in Finance / Banking / Credit / PE</option>
-  <option>Young Professionals in Real Estate</option>
-  <option>Young Professionals in Law</option>
-  <option>Young Professionals in Consulting</option>
-  <option>Young Professionals in Healthcare</option>
-</select>
-
-<textarea
-  name="interests"
-  placeholder="What interests you about this event or future programs? *"
-  required></textarea>
-
-<select name="involvement" required>
-  <option value="">Have you been involved with Jewish / pro-Israel organizations? *</option>
-  <option>Yes</option>
-  <option>No</option>
-</select>
-
-<textarea
-  name="orgs"
-  placeholder="Which Jewish and/or pro-Israel organizations have you been involved with?"></textarea>
-
-<textarea
-  name="questions"
-  placeholder="Do you have any questions for the CityPAC Board?"></textarea>
-
-<button type="submit" id="submitBtn">Submit</button>
-
-  </form>
+      <label>Name (required)</label>
+      <div class="row">
+        <input name="first_name" placeholder="First Name" required>
+        <input name="last_name" placeholder="Last Name" required>
       </div>
-</section>
 
+      <label>Email (required)</label>
+      <input type="email" name="email" required>
+
+      <label>Phone</label>
+      <input name="phone">
+
+      <label>Will you be attending?</label>
+      <input name="attending" required>
+
+      <label>How did you hear about this event?</label>
+      <input name="referral">
+
+      <label>Current Employer</label>
+      <input name="employer">
+
+      <label>Job Title</label>
+      <input name="title">
+
+      <label>Industry</label>
+      <select name="industry">
+        <option value="">Select industry</option>
+        <option>Finance / Banking / PE</option>
+        <option>Real Estate</option>
+        <option>Law</option>
+        <option>Consulting</option>
+        <option>Technology</option>
+        <option>Healthcare</option>
+        <option>Government / Public Policy</option>
+        <option>Nonprofit</option>
+        <option>Student</option>
+        <option>Other</option>
+      </select>
+
+      <label>Questions / Comments</label>
+      <textarea name="questions"></textarea>
+
+      <button type="submit" id="submitBtn">Submit</button>
+
+      <div class="contact-success" id="rsvpSuccess">
+        Submitted ✓
+      </div>
+
+    </form>
+
+  </div>
+</section>
+  
 <footer class="site-footer">
   © 2025 CityPAC. All rights reserved.
 </footer>
