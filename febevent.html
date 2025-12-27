@@ -311,6 +311,93 @@ body {
   font-size: 12px;
   opacity: 0.85;
 }
+
+  /* ================= RSVP (CONTACT STYLE, WHITE) ================= */
+
+.rsvp {
+  background: #003366;
+  padding: 90px 24px;
+}
+
+.rsvp-inner {
+  max-width: 1200px;
+  margin: auto;
+}
+
+#rsvpForm {
+  max-width: 600px;
+  margin: auto;
+}
+
+/* labels */
+#rsvpForm label {
+  font-weight: 500;
+  font-size: 14px;
+  margin-bottom: 6px;
+  display: block;
+}
+
+/* inputs (white outline, white text) */
+#rsvpForm input[type="text"],
+#rsvpForm input[type="email"],
+#rsvpForm input[type="number"],
+#rsvpForm input[type="tel"],
+#rsvpForm select,
+#rsvpForm textarea {
+  width: 100%;
+  height: 52px;
+  padding: 0 14px;
+  border: 1.5px solid rgba(255,255,255,0.9);
+  border-radius: 6px;
+  margin-bottom: 18px;
+  font-size: 15px;
+  background: transparent;
+  color: #ffffff;
+}
+
+#rsvpForm textarea {
+  height: 120px;
+  padding-top: 12px;
+  resize: vertical;
+}
+
+/* placeholders */
+#rsvpForm input::placeholder,
+#rsvpForm textarea::placeholder {
+  color: rgba(255,255,255,0.7);
+}
+
+/* two-column rows */
+#rsvpForm .form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+/* submit button (matches contact) */
+#rsvpForm button {
+  background: #ffffff;
+  color: #003366;
+  border: none;
+  padding: 14px 28px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+#rsvpForm button:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+/* mobile */
+@media (max-width: 900px) {
+  #rsvpForm .form-row {
+    grid-template-columns: 1fr;
+  }
+}
+  
  </style>
 </head>
 <body>
@@ -610,8 +697,13 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 </script>
-
   
+</script>
+
+<script>
+document.getElementById("hamburger")?.addEventListener("click", function () {
+  document.getElementById("menu")?.classList.toggle("show");
+});
 </script>
   
 </body>
