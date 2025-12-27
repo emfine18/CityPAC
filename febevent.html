@@ -58,91 +58,60 @@ body {
 /* ================= HERO ================= */
 .hero {
   position: relative;
-  height: 68vh;
-  background: url("images/ChicagoSign.png") center -60px / cover no-repeat;
-}
-
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(92,162,211,0.28);
+  height: 70vh;
+  background: url("images/eventhero.png") center top / cover no-repeat;
 }
 
 .hero::after {
   content: "";
   position: absolute;
   bottom: 0;
+  left: 0;
   width: 100%;
-  height: 26%;
+  height: 30%;
   background: linear-gradient(
     to bottom,
-    rgba(47,48,118,0),
-    rgba(47,48,118,0.65),
-    #2f3076
+    rgba(47,48,118,0) 0%,
+    rgba(47,48,118,0.6) 60%,
+    #2f3076 100%
   );
 }
 
-/* ================= EVENT CONTENT ================= */
-.event-content {
+/* ================= EVENT INFO ================= */
+.event-info {
   background: #2f3076;
-  padding: 20px 24px 120px;
+  padding: 40px 24px 100px;
 }
 
-.event-inner {
+.event-info-inner {
   max-width: 1100px;
   margin: auto;
   text-align: center;
 }
 
 .event-eyebrow {
+  text-transform: uppercase;
   font-size: 14px;
   letter-spacing: 1px;
-  text-transform: uppercase;
   opacity: 0.9;
-  margin-top: -40px;   /* 👈 MOVE UP */
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
 .event-title {
-  font-size: clamp(38px, 5vw, 64px);
+  font-size: clamp(40px, 5vw, 64px);
   font-weight: 700;
   line-height: 1.1;
+  margin-bottom: 14px;
 }
 
 .event-subtitle {
   font-size: 15px;
   letter-spacing: 1px;
   margin-bottom: 48px;
+  opacity: 0.95;
 }
 
-/* SPEAKERS */
-.speakers {
-  display: flex;
-  justify-content: center;
-  gap: 64px;
-  margin-bottom: 48px;
-  flex-wrap: wrap;
-}
-
-.speaker-circle {
-  width: 130px;
-  height: 130px;
-  background: #c98a3a;
-  border-radius: 50%;
-  margin: 0 auto 12px;
-}
-
-.speaker-name { font-weight: 600; }
-.speaker-role { font-size: 12px; opacity: 0.85; }
-
-.event-description {
-  max-width: 900px;
-  margin: auto;
-  font-size: 15px;
-  line-height: 1.65;
-}
-
+  
 /* ================= FOOTER ================= */
 .site-footer {
   background: #003366;
@@ -151,30 +120,31 @@ body {
   font-size: 13px;
 }
 
-/* ================= RSVP (EVENT STYLE) ================= */
+/* ================= RSVP ================= */
+.rsvp {
+  background: #003366;
+  padding: 90px 24px;
+}
 
 .rsvp-inner {
   max-width: 900px;
   margin: auto;
 }
 
-.rsvp h2 {
-  text-align: center;
-  margin-bottom: 36px;
-  font-size: 32px;
-}
-
-/* FORM LAYOUT */
 #rsvpForm {
   display: grid;
   gap: 18px;
 }
 
-/* INPUTS */
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
 #rsvpForm input,
 #rsvpForm select,
 #rsvpForm textarea {
-  width: 100%;
   background: transparent;
   border: 1.5px solid rgba(255,255,255,0.85);
   color: #ffffff;
@@ -188,12 +158,6 @@ body {
   resize: vertical;
 }
 
-#rsvpForm input::placeholder,
-#rsvpForm textarea::placeholder {
-  color: rgba(255,255,255,0.75);
-}
-
-/* BUTTON */
 #rsvpForm button {
   margin-top: 24px;
   background: #44b6e5;
@@ -206,12 +170,6 @@ body {
   cursor: pointer;
 }
 
-#rsvpForm button:disabled {
-  opacity: 0.7;
-  cursor: default;
-}
-
-/* MOBILE */
 @media (max-width: 800px) {
   .form-row {
     grid-template-columns: 1fr;
@@ -239,13 +197,14 @@ body {
 
 <section class="hero"></section>
 
-<section class="event-content">
-  <div class="event-inner">
+<section class="event-info">
+  <div class="event-info-inner">
 
     <div class="event-eyebrow">CityPAC Presents</div>
 
     <h1 class="event-title">
-      THE 2026 MIDTERMS & THE<br>U.S.–ISRAEL RELATIONSHIP
+      THE 2026 MIDTERMS & THE<br>
+      U.S.–ISRAEL RELATIONSHIP
     </h1>
 
     <div class="event-subtitle">
@@ -268,12 +227,17 @@ body {
     <p class="event-description">
       You are invited to join CityPAC on February 17th at 6:30 PM for a timely discussion on
       <strong>The 2026 Midterms and the U.S.–Israel Relationship</strong>.
-      Please complete this form by February 1st to confirm your attendance.
+      Connect with fellow young, pro-Israel professionals for an in-depth conversation on
+      the future of bipartisan support for the U.S.–Israel relationship, with a focus on
+      the Illinois political landscape.
+      <br><br>
+      Please complete the form below by February 1st to confirm your attendance.
+      Location will be shared 24 hours prior. Drinks, hors d’oeuvres, and dessert served.
     </p>
 
   </div>
 </section>
-
+  
 <section class="rsvp">
   <div class="rsvp-inner">
 
@@ -301,10 +265,50 @@ body {
         <input name="title" placeholder="Job Title *" required>
       </div>
 
+      <select name="industry" required>
+        <option value="">Industry *</option>
+        <option>Finance / Banking / Investment Management / Credit / Private Equity</option>
+        <option>Real Estate / Development</option>
+        <option>Law / Legal Services</option>
+        <option>Consulting</option>
+        <option>Technology / Software / IT</option>
+        <option>Healthcare / Life Sciences</option>
+        <option>Government / Public Policy</option>
+        <option>Political / Advocacy / Nonprofit</option>
+        <option>Marketing / Communications / Public Relations</option>
+        <option>Media / Journalism</option>
+        <option>Education</option>
+        <option>Student</option>
+        <option>Other</option>
+      </select>
+
+      <select name="groups">
+        <option value="">Professional Group Interest</option>
+        <option>Young Professionals in Finance</option>
+        <option>Young Professionals in Real Estate</option>
+        <option>Young Professionals in Law</option>
+        <option>Young Professionals in Consulting</option>
+        <option>Young Professionals in Healthcare</option>
+      </select>
+
       <textarea
         name="interests"
         placeholder="What interests you about this event or future programs? *"
         required></textarea>
+
+      <select name="involvement" required>
+        <option value="">Have you been involved with Jewish / pro-Israel organizations? *</option>
+        <option>Yes</option>
+        <option>No</option>
+      </select>
+
+      <textarea
+        name="orgs"
+        placeholder="Which Jewish and/or pro-Israel organizations have you been involved with?"></textarea>
+
+      <textarea
+        name="questions"
+        placeholder="Do you have any questions for the CityPAC Board?"></textarea>
 
       <button type="submit" id="submitBtn">Submit</button>
 
