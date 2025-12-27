@@ -639,7 +639,7 @@ function launchEmojiConfetti(anchor) {
         { transform: "translate(0,0)", opacity: 1 },
         {
           transform: `translate(${Math.cos(angle)*distance}px, ${Math.sin(angle)*distance}px)`,
-          opacity: 0
+          opacity: 0n  
         }
       ],
       { duration: 3000, easing: "ease-out" }
