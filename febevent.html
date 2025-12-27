@@ -329,11 +329,18 @@ body {
   gap: 18px;
 }
 
-/* ROWS */
+/* RSVP GRID ROWS */
 .rsvp-row {
   display: grid;
-  grid-template-columns: 1fr 1fr;
   gap: 16px;
+}
+
+.rsvp-row.full {
+  grid-template-columns: 1fr;
+}
+
+.rsvp-row.two {
+  grid-template-columns: 1fr 1fr;
 }
 
 .rsvp-row.three {
