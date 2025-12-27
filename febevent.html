@@ -208,90 +208,86 @@ button {
   font-size: 13px;
 }
 
-  /* ================= RSVP (MATCH CONTACT FORM) ================= */
+/* ================= RSVP (EVENT STYLE) ================= */
 
 .rsvp {
-  background: #ffffff;
-  color: #111;
+  background: #003366;
+  color: #ffffff;
+  padding: 90px 24px;
 }
 
-.rsvp-inner.contact {
-  max-width: 1200px;
-  margin: 80px auto;
-  padding: 0 24px;
+.rsvp-inner {
+  max-width: 900px;
+  margin: auto;
+}
+
+.rsvp h2 {
+  text-align: center;
+  margin-bottom: 36px;
+  font-size: 32px;
+}
+
+/* FORM LAYOUT */
+#rsvpForm {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
-  align-items: center;
+  gap: 18px;
 }
 
-.contact-image img {
-  width: 100%;
-  border-radius: 10px;
-}
-
-.contact-form label {
-  font-weight: 500;
-  font-size: 14px;
-  margin-bottom: 6px;
-  display: block;
-}
-
-.contact-form input,
-.contact-form select,
-.contact-form textarea {
-  width: 100%;
-  height: 52px;
-  padding: 0 14px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  margin-bottom: 18px;
-  font-size: 15px;
-  color: #111;
-  background: #ffffff;
-}
-
-.contact-form textarea {
-  height: 120px;
-  padding-top: 12px;
-  resize: vertical;
-}
-
-.contact-form .row {
+/* TWO-COLUMN ROWS */
+.form-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 16px;
 }
 
-.contact-form button {
-  background: #003366;
+/* INPUTS */
+#rsvpForm input,
+#rsvpForm select,
+#rsvpForm textarea {
+  width: 100%;
+  background: transparent;
+  border: 1.5px solid rgba(255,255,255,0.85);
   color: #ffffff;
+  padding: 14px;
+  font-size: 15px;
+  border-radius: 6px;
+}
+
+#rsvpForm textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+#rsvpForm input::placeholder,
+#rsvpForm textarea::placeholder {
+  color: rgba(255,255,255,0.75);
+}
+
+/* BUTTON */
+#rsvpForm button {
+  margin-top: 24px;
+  background: #44b6e5;
   border: none;
-  padding: 14px 28px;
+  color: #ffffff;
   font-size: 16px;
   font-weight: 600;
+  padding: 14px;
   border-radius: 6px;
   cursor: pointer;
 }
 
-.contact-success {
-  display: none;
-  margin-top: 18px;
-  font-weight: 600;
-  color: #44b6e5;
+#rsvpForm button:disabled {
+  opacity: 0.7;
+  cursor: default;
 }
 
-@media (max-width: 900px) {
-  .rsvp-inner.contact {
-    grid-template-columns: 1fr;
-  }
-  .contact-form .row {
+/* MOBILE */
+@media (max-width: 800px) {
+  .form-row {
     grid-template-columns: 1fr;
   }
 }
-</style>
-</head>
-
+  
 <body>
 
 <header class="site-header">
@@ -347,63 +343,41 @@ button {
 </section>
 
 <section class="rsvp">
-  <div class="rsvp-inner contact">
+  <div class="rsvp-inner">
 
-    <div class="contact-image">
-      <img src="images/american-flag.jpg" alt="American Flag">
-    </div>
+    <form id="rsvpForm"
 
-    <form id="rsvpForm" class="contact-form">
+  <div class="form-row">
+    <input name="first_name" placeholder="First name *" required>
+    <input name="last_name" placeholder="Last name *" required>
+  </div>
 
-      <label>Name (required)</label>
-      <div class="row">
-        <input name="first_name" placeholder="First Name" required>
-        <input name="last_name" placeholder="Last Name" required>
-      </div>
+  <div class="form-row">
+    <input type="email" name="email" placeholder="Email *" required>
+    <input name="phone" placeholder="Phone number *" required>
+  </div>
 
-      <label>Email (required)</label>
-      <input type="email" name="email" required>
+  <div class="form-row">
+    <input name="zip" placeholder="Zip Code *" required>
+    <input name="age" placeholder="Age *" required>
+  </div>
 
-      <label>Phone</label>
-      <input name="phone">
+  <input name="address" placeholder="Address *" required>
 
-      <label>Will you be attending?</label>
-      <input name="attending" required>
+  <div class="form-row">
+    <input name="employer" placeholder="Current Employer *" required>
+    <input name="title" placeholder="Job Title *" required>
+  </div>
 
-      <label>How did you hear about this event?</label>
-      <input name="referral">
 
-      <label>Current Employer</label>
-      <input name="employer">
+  <textarea
+    name="interests"
+    placeholder="What interests you about this event or future programs? *"
+    required></textarea>
 
-      <label>Job Title</label>
-      <input name="title">
+  <button type="submit" id="submitBtn">Submit</button>
 
-      <label>Industry</label>
-      <select name="industry">
-        <option value="">Select industry</option>
-        <option>Finance / Banking / PE</option>
-        <option>Real Estate</option>
-        <option>Law</option>
-        <option>Consulting</option>
-        <option>Technology</option>
-        <option>Healthcare</option>
-        <option>Government / Public Policy</option>
-        <option>Nonprofit</option>
-        <option>Student</option>
-        <option>Other</option>
-      </select>
-
-      <label>Questions / Comments</label>
-      <textarea name="questions"></textarea>
-
-      <button type="submit" id="submitBtn">Submit</button>
-
-      <div class="contact-success" id="rsvpSuccess">
-        Submitted ✓
-      </div>
-
-    </form>
+</form>
 
   </div>
 </section>
