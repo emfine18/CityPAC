@@ -685,7 +685,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 </script>
 
- <script>
+<script>
 document.addEventListener("DOMContentLoaded", function () {
   const form = document.getElementById("rsvpForm");
   const button = form.querySelector("button[type='submit']");
@@ -697,14 +697,13 @@ document.addEventListener("DOMContentLoaded", function () {
     button.disabled = true;
     button.innerText = "Submitting…";
 
-  fetch(
-  "https://script.google.com/macros/s/AKfycbxpltPUqdjcgKDbuEzGTPKW1-fwU-1PprbAIK_EQYlcKRoUAnqVhgJIa9JfNhdiRRlF/exec",
-  {
-    method: "POST",
-    mode: "no-cors",
-    body: new URLSearchParams(new FormData(form))
-  }
-)
+    fetch(
+      "https://script.google.com/macros/s/AKfycbxpltPUqdjcgKDbuEzGTPKW1-fwU-1PprbAIK_EQYlcKRoUAnqVhgJIa9JfNhdiRRlF/exec",
+      {
+        method: "POST",
+        mode: "no-cors",
+        body: new URLSearchParams(new FormData(form))
+      }
     ).then(() => {
       button.innerText = "Submitted ✓";
       success.style.display = "block";
@@ -714,7 +713,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 </script>
-
+  
   <script>
 function launchEmojiConfetti(button) {
   const rect = button.getBoundingClientRect();
