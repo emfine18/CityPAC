@@ -143,63 +143,6 @@ body {
   line-height: 1.65;
 }
 
-/* ================= RSVP ================= */
-.rsvp {
-  background: #003366;
-  padding: 90px 24px;
-}
-
-.rsvp-inner {
-  max-width: 820px;
-  margin: auto;
-}
-
-.rsvp h2 {
-  text-align: center;
-  margin-bottom: 36px;
-}
-
-form {
-  display: grid;
-  gap: 16px;
-}
-
-.form-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 14px;
-}
-
-.form-row.wide-left {
-  grid-template-columns: 2fr 1fr;
-}
-
-@media (max-width: 700px) {
-  .form-row,
-  .form-row.wide-left {
-    grid-template-columns: 1fr;
-  }
-}
-
-input, select, textarea {
-  background: transparent;
-  border: 1px solid #fff;
-  color: #fff;
-  padding: 12px;
-  border-radius: 6px;
-}
-
-button {
-  background: #44b6e5;
-  border: none;
-  padding: 14px;
-  color: #fff;
-  font-size: 16px;
-  font-weight: 600;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
 /* ================= FOOTER ================= */
 .site-footer {
   background: #003366;
@@ -225,13 +168,6 @@ button {
 #rsvpForm {
   display: grid;
   gap: 18px;
-}
-
-/* TWO-COLUMN ROWS */
-.form-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
 }
 
 /* INPUTS */
@@ -282,6 +218,8 @@ button {
   }
 }
   
+  </style>
+</head>
 <body>
 
 <header class="site-header">
@@ -339,39 +277,38 @@ button {
 <section class="rsvp">
   <div class="rsvp-inner">
 
-    <form id="rsvpForm"
+    <form id="rsvpForm">
 
-  <div class="form-row">
-    <input name="first_name" placeholder="First name *" required>
-    <input name="last_name" placeholder="Last name *" required>
-  </div>
+      <div class="form-row">
+        <input name="first_name" placeholder="First name *" required>
+        <input name="last_name" placeholder="Last name *" required>
+      </div>
 
-  <div class="form-row">
-    <input type="email" name="email" placeholder="Email *" required>
-    <input name="phone" placeholder="Phone number *" required>
-  </div>
+      <div class="form-row">
+        <input type="email" name="email" placeholder="Email *" required>
+        <input name="phone" placeholder="Phone number *" required>
+      </div>
 
-  <div class="form-row">
-    <input name="zip" placeholder="Zip Code *" required>
-    <input name="age" placeholder="Age *" required>
-  </div>
+      <div class="form-row">
+        <input name="zip" placeholder="Zip Code *" required>
+        <input name="age" placeholder="Age *" required>
+      </div>
 
-  <input name="address" placeholder="Address *" required>
+      <input name="address" placeholder="Address *" required>
 
-  <div class="form-row">
-    <input name="employer" placeholder="Current Employer *" required>
-    <input name="title" placeholder="Job Title *" required>
-  </div>
+      <div class="form-row">
+        <input name="employer" placeholder="Current Employer *" required>
+        <input name="title" placeholder="Job Title *" required>
+      </div>
 
+      <textarea
+        name="interests"
+        placeholder="What interests you about this event or future programs? *"
+        required></textarea>
 
-  <textarea
-    name="interests"
-    placeholder="What interests you about this event or future programs? *"
-    required></textarea>
+      <button type="submit" id="submitBtn">Submit</button>
 
-  <button type="submit" id="submitBtn">Submit</button>
-
-</form>
+    </form>
 
   </div>
 </section>
