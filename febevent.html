@@ -6,55 +6,6 @@
 <title>The 2026 Midterms & the U.S.–Israel Relationship | CityPAC</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
-/* ================= RSVP FINAL CLEAN STYLES ================= */
-
-.rsvp {
-  background: #003366;
-}
-
-#rsvpForm input,
-#rsvpForm select,
-#rsvpForm textarea {
-  width: 100%;
-  background: transparent;
-  border: 1.5px solid rgba(255,255,255,0.9);
-  color: #ffffff;
-  padding: 14px;
-  font-size: 15px;
-  border-radius: 6px;
-}
-
-#rsvpForm input::placeholder,
-#rsvpForm textarea::placeholder {
-  color: rgba(255,255,255,0.75);
-}
-
-#rsvpForm label {
-  color: #ffffff;
-}
-
-#rsvpForm input[type="radio"],
-#rsvpForm input[type="checkbox"] {
-  margin-right: 6px;
-}
-
-#rsvpForm button {
-  margin-top: 28px;
-  background: #44b6e5;
-  border: none;
-  color: #ffffff;
-  font-size: 16px;
-  font-weight: 600;
-  padding: 14px;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-@media (max-width: 800px) {
-  .form-row {
-    grid-template-columns: 1fr;
-  }
-}
   
 <style>
 * { box-sizing: border-box; font-family: 'Poppins', sans-serif; }
@@ -646,6 +597,21 @@ function launchEmojiConfetti(anchor) {
     setTimeout(() => span.remove(), 3000);
   }
 }
+
+  <script>
+document.addEventListener("DOMContentLoaded", function () {
+  const hamburger = document.getElementById("hamburger");
+  const menu = document.getElementById("menu");
+
+  if (!hamburger || !menu) return;
+
+  hamburger.addEventListener("click", function () {
+    menu.classList.toggle("show");
+  });
+});
+</script>
+
+  
 </script>
   
 </body>
