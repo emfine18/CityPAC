@@ -389,6 +389,24 @@ button {
  }
 </style> 
     
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("rsvpForm");
+  const btn = document.getElementById("submitBtn");
+
+  if (!form || !btn) {
+    console.error("RSVP form or submit button missing");
+    return;
+  }
+
+  form.addEventListener("submit", e => {
+    e.preventDefault();
+    btn.textContent = "Submitted ✓";
+    btn.disabled = true;
+  });
+});
+</script>
+
 <footer class="site-footer">
   <div class="footer-top-line"></div>
   <div class="footer-inner">
@@ -415,23 +433,6 @@ button {
   </div>
 </footer>
 
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  const form = document.getElementById("rsvpForm");
-  const btn = document.getElementById("submitBtn");
-
-  if (!form || !btn) {
-    console.error("RSVP form or submit button missing");
-    return;
-  }
-
-  form.addEventListener("submit", e => {
-    e.preventDefault();
-    btn.textContent = "Submitted ✓";
-    btn.disabled = true;
-  });
-});
-</script>
-
+  
 </body>
 </html>
