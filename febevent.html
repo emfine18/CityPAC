@@ -644,10 +644,13 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 </script>
 
-  /* ================= RSVP FORM ================= */
+  <script>
+document.addEventListener("DOMContentLoaded", function () {
   const form = document.getElementById("rsvpForm");
   const button = form.querySelector("button[type='submit']");
   const success = document.getElementById("rsvpSuccess");
+
+  if (!form || !button || !success) return;
 
   form.addEventListener("submit", function (e) {
     e.preventDefault();
@@ -670,8 +673,9 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
+</script>
 
-/* ================= CONFETTI ================= */
+  <script>
 function launchEmojiConfetti(button) {
   const rect = button.getBoundingClientRect();
   const emojis = ["🎉", "✨", "🇺🇸", "🇮🇱"];
@@ -709,6 +713,8 @@ function launchEmojiConfetti(button) {
     setTimeout(() => emoji.remove(), 4500);
   }
 }
-</script>  
+</script>
+
+  
 </body>
 </html>
