@@ -633,34 +633,6 @@ body {
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
-  const form = document.getElementById("rsvpForm");
-  const button = form.querySelector("button[type='submit']");
-  const success = document.getElementById("rsvpSuccess");
-
-  form.addEventListener("submit", function (e) {
-    e.preventDefault();
-
-    button.disabled = true;
-    button.innerText = "Submitting…";
-
-    fetch(
-      "https://script.google.com/macros/s/AKfycbxpltPUqdjcgKDbuEzGTPKW1-fwU-1PprbAIK_EQYlcKRoUAnqVhgJIa9JfNhdiRRlF/exec",
-      {
-        method: "POST",
-        mode: "no-cors",
-        body: new FormData(form)   // 🔑 THIS IS THE KEY DIFFERENCE
-      }
-    ).then(() => {
-      button.innerText = "Submitted ✓";
-      success.style.display = "block";
-      launchEmojiConfetti(button);
-      form.reset();
-    });
-  });
-});
-
-<script>
-document.addEventListener("DOMContentLoaded", function () {
   const hamburger = document.getElementById("hamburger");
   const menu = document.getElementById("menu");
 
@@ -688,7 +660,7 @@ document.addEventListener("DOMContentLoaded", function () {
       {
         method: "POST",
         mode: "no-cors",
-        body: new FormData(form)
+        body: new URLSearchParams(new FormData(form))
       }
     ).then(() => {
       button.innerText = "Submitted ✓";
