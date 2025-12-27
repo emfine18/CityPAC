@@ -406,9 +406,12 @@ body {
 
 /* MOBILE */
 @media (max-width: 800px) {
-  .rsvp-row,
-  .rsvp-row.three {
+  .rsvp-row.two {
     grid-template-columns: 1fr;
+  }
+
+  .rsvp-row.three {
+    grid-template-columns: 1fr 1fr 1fr;
   }
 }
   
@@ -491,37 +494,44 @@ body {
   method="POST"
 >
 
+  <!-- Attending -->
   <select name="entry.1418552658" required>
     <option value="">Will you be attending?</option>
     <option value="Yes">Yes</option>
     <option value="No">No</option>
   </select>
 
+  <!-- How did you hear -->
   <input
     name="entry.1203796393"
     placeholder="How did you hear about this event?"
     required
   >
 
-<div class="rsvp-row three">
-  <input name="entry.276624258" placeholder="First name *" required>
-  <input name="entry.379031892" placeholder="Last name *" required>
-  <input name="entry.896738026" placeholder="Age *" required>
-</div>
-  
-<div class="rsvp-row two">
-  <input name="entry.160040439" placeholder="Phone *" required>
-  <input type="email" name="entry.1580435886" placeholder="Email *" required>
-</div>
-  
-<div class="rsvp-row two">
-  <input name="entry.64126206" placeholder="Address *" required>
-  <input name="entry.1964079643" placeholder="Zip Code *" required>
-</div>
-  
+  <!-- First | Last | Age -->
+  <div class="rsvp-row three">
+    <input name="entry.276624258" placeholder="First name *" required>
+    <input name="entry.379031892" placeholder="Last name *" required>
+    <input name="entry.896738026" placeholder="Age *" required>
+  </div>
+
+  <!-- Phone | Email -->
+  <div class="rsvp-row two">
+    <input name="entry.160040439" placeholder="Phone *" required>
+    <input type="email" name="entry.1580435886" placeholder="Email *" required>
+  </div>
+
+  <!-- Address | Zip -->
+  <div class="rsvp-row two">
+    <input name="entry.64126206" placeholder="Address *" required>
+    <input name="entry.1964079643" placeholder="Zip Code *" required>
+  </div>
+
+  <!-- Employer / Title -->
   <input name="entry.656163493" placeholder="Current Employer *" required>
   <input name="entry.1690518663" placeholder="Job Title *" required>
 
+  <!-- Industry -->
   <select name="entry.1087078679" required>
     <option value="">Industry</option>
     <option>Finance / Banking / Investment Management / Credit / Private Equity</option>
@@ -539,6 +549,7 @@ body {
     <option>Other</option>
   </select>
 
+  <!-- Professional Group -->
   <select name="entry.493137383">
     <option value="">Professional Group Interest</option>
     <option>Young Professionals in Finance, Banking, Credit, Private Equity or Investment Management</option>
@@ -548,26 +559,28 @@ body {
     <option>Young Professionals in Healthcare</option>
   </select>
 
+  <!-- Involved -->
   <select name="entry.991937041" required>
     <option value="">Have you been involved with Jewish / Pro-Israel organizations?</option>
     <option value="Yes">Yes</option>
     <option value="No">No</option>
   </select>
 
+  <!-- Which orgs -->
   <textarea
     name="entry.1041961967"
     placeholder="Which Jewish and/or pro-Israel organizations?"
   ></textarea>
 
+  <!-- Questions -->
   <textarea
     name="entry.25377518"
     placeholder="Any questions for the CityPAC Board?"
   ></textarea>
 
   <button type="submit">Submit</button>
-
 </form>
-
+    
 <div id="rsvpSuccess" style="
   display:none;
   margin-top:20px;
