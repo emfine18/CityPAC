@@ -310,9 +310,9 @@ body {
 .footer-copy {
   font-size: 12px;
   opacity: 0.85;
-}
+}  
 
-/* ================= RSVP (MATCH CONTACT, WHITE) ================= */
+  /* ================= RSVP (CLEAN, WHITE, DROPDOWNS) ================= */
 
 .rsvp {
   background: #003366;
@@ -320,58 +320,73 @@ body {
 }
 
 .rsvp-inner {
-  max-width: 1200px;
+  max-width: 900px;
   margin: auto;
 }
 
 #rsvpForm {
-  max-width: 600px;
-  margin: auto;
+  display: grid;
+  gap: 18px;
 }
 
-#rsvpForm label {
-  font-weight: 500;
-  font-size: 14px;
-  margin-bottom: 6px;
-  display: block;
+/* ROWS */
+.rsvp-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
 }
 
+.rsvp-row.three {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+/* INPUTS + SELECTS */
 #rsvpForm input,
 #rsvpForm select,
 #rsvpForm textarea {
   width: 100%;
   height: 52px;
   padding: 0 14px;
-  border: 1px solid rgba(255,255,255,0.9);
-  border-radius: 6px;
-  margin-bottom: 18px;
-  font-size: 15px;
   background: transparent;
+  border: 1.5px solid rgba(255,255,255,0.9);
+  border-radius: 6px;
+  font-size: 15px;
   color: #ffffff;
 }
 
+/* PLACEHOLDERS */
+#rsvpForm input::placeholder,
+#rsvpForm textarea::placeholder {
+  color: rgba(255,255,255,0.7);
+}
+
+/* TEXTAREA */
 #rsvpForm textarea {
   height: 120px;
   padding-top: 12px;
   resize: vertical;
 }
 
-#rsvpForm input::placeholder,
-#rsvpForm textarea::placeholder {
-  color: rgba(255,255,255,0.7);
+/* SELECT ARROW */
+#rsvpForm select {
+  appearance: none;
+  background-image:
+    linear-gradient(45deg, transparent 50%, white 50%),
+    linear-gradient(135deg, white 50%, transparent 50%);
+  background-position:
+    calc(100% - 18px) 22px,
+    calc(100% - 12px) 22px;
+  background-size: 6px 6px;
+  background-repeat: no-repeat;
 }
 
-#rsvpForm .form-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-}
-
+/* BUTTON */
 #rsvpForm button {
+  margin-top: 20px;
+  height: 54px;
   background: #ffffff;
   color: #003366;
   border: none;
-  padding: 14px 28px;
   font-size: 16px;
   font-weight: 600;
   border-radius: 6px;
@@ -379,11 +394,13 @@ body {
 }
 
 #rsvpForm button:disabled {
-  opacity: 0.6;
+  opacity: 0.7;
 }
 
-@media (max-width: 900px) {
-  #rsvpForm .form-row {
+/* MOBILE */
+@media (max-width: 800px) {
+  .rsvp-row,
+  .rsvp-row.three {
     grid-template-columns: 1fr;
   }
 }
@@ -457,129 +474,86 @@ body {
 
   </div>
 </section>
-  
+
 <section class="rsvp">
   <div class="rsvp-inner">
 
-<form id="rsvpForm">
+    <form id="rsvpForm">
 
-  <!-- SECTION 2: ATTENDANCE -->
-  <div>
-    <label style="display:block; margin-bottom:8px; font-weight:600;">
-      Will you be attending The 2026 Midterms and the U.S.–Israel Relationship? *
-    </label>
-    <label>
-      <input type="radio" name="attending" value="Yes" required> Yes
-    </label>
-    <label style="margin-left:20px;">
-      <input type="radio" name="attending" value="No"> No
-    </label>
-  </div>
+      <select name="attending" required>
+        <option value="">Will you be attending? *</option>
+        <option>Yes</option>
+        <option>No</option>
+      </select>
 
-  <div>
-    <label style="display:block; margin-bottom:8px; font-weight:600;">
-      How did you hear about this event? *
-    </label>
-    <input name="referral" placeholder="How did you hear about this event?" required>
-  </div>
+      <input
+        name="referral"
+        placeholder="How did you hear about this event? *"
+        required>
 
-  <!-- SECTION 2: PERSONAL INFO -->
-  <div class="form-row">
-    <input name="first_name" placeholder="First name *" required>
-    <input name="last_name" placeholder="Last name *" required>
-  </div>
+      <div class="rsvp-row">
+        <input name="first_name" placeholder="First name *" required>
+        <input name="last_name" placeholder="Last name *" required>
+      </div>
 
-  <div class="form-row">
-    <input name="age" placeholder="Age *" required>
-    <input name="phone" placeholder="Phone number *" required>
-  </div>
+      <div class="rsvp-row three">
+        <input name="age" placeholder="Age *" required>
+        <input name="phone" placeholder="Phone number *" required>
+        <input type="email" name="email" placeholder="Email *" required>
+      </div>
 
-  <input type="email" name="email" placeholder="Email *" required>
+      <input name="address" placeholder="Address *" required>
+      <input name="zip" placeholder="Zip Code *" required>
 
-  <input name="address" placeholder="Address *" required>
+      <input name="employer" placeholder="Current Employer *" required>
+      <input name="title" placeholder="Job Title *" required>
 
-  <input name="zip" placeholder="Zip Code *" required>
+      <select name="industry" required>
+        <option value="">Industry *</option>
+        <option>Finance / Banking / Investment Management / Credit / Private Equity</option>
+        <option>Real Estate / Development</option>
+        <option>Law / Legal Services</option>
+        <option>Consulting</option>
+        <option>Technology / Software / IT</option>
+        <option>Healthcare / Life Sciences</option>
+        <option>Government / Public Policy</option>
+        <option>Political / Advocacy / Nonprofit</option>
+        <option>Marketing / Communications / Public Relations</option>
+        <option>Media / Journalism</option>
+        <option>Education</option>
+        <option>Student</option>
+        <option>Other</option>
+      </select>
 
-  <!-- SECTION 3: PROFESSIONAL INFO -->
-  <input name="employer" placeholder="Current Employer *" required>
+      <select name="groups">
+        <option value="">Professional Group Interest</option>
+        <option>Young Professionals in Finance / Banking / Credit / PE</option>
+        <option>Young Professionals in Real Estate</option>
+        <option>Young Professionals in Law and Legal Services</option>
+        <option>Young Professionals in Consulting</option>
+        <option>Young Professionals in Healthcare</option>
+      </select>
 
-  <input name="title" placeholder="Job Title *" required>
+      <select name="involvement" required>
+        <option value="">Have you been involved with Jewish / pro-Israel organizations? *</option>
+        <option>Yes</option>
+        <option>No</option>
+      </select>
 
-  <select name="industry" required>
-    <option value="">Industry *</option>
-    <option>Finance / Banking / Investment Management / Credit / Private Equity</option>
-    <option>Real Estate / Development</option>
-    <option>Law / Legal Services</option>
-    <option>Consulting</option>
-    <option>Technology / Software / IT</option>
-    <option>Healthcare / Life Sciences</option>
-    <option>Government / Public Policy</option>
-    <option>Political / Advocacy / Nonprofit</option>
-    <option>Marketing / Communications / Public Relations</option>
-    <option>Media / Journalism</option>
-    <option>Education</option>
-    <option>Student</option>
-    <option>Other</option>
-  </select>
+      <textarea
+        name="orgs"
+        placeholder="Which Jewish and/or pro-Israel organizations have you been involved with?">
+      </textarea>
 
-  <select name="groups" required>
-    <option value="">Professional Group Interest *</option>
-    <option>Young Professionals in Finance / Banking / Credit / PE</option>
-    <option>Young Professionals in Real Estate</option>
-    <option>Young Professionals in Law and Legal Services</option>
-    <option>Young Professionals in Consulting</option>
-    <option>Young Professionals in Healthcare</option>
-  </select>
+      <textarea
+        name="questions"
+        placeholder="Any questions for the CityPAC Board?">
+      </textarea>
 
-  <!-- SECTION 4: INTERESTS -->
-  <div>
-    <label style="display:block; margin-bottom:8px; font-weight:600;">
-      What interests you about this event or future programs? *
-    </label>
-    <label><input type="checkbox" name="interests[]" value="US-Israel policy"> U.S.–Israel policy</label><br>
-    <label><input type="checkbox" name="interests[]" value="2026 elections"> The 2026 elections</label><br>
-    <label><input type="checkbox" name="interests[]" value="Illinois politics"> Illinois politics</label><br>
-    <label><input type="checkbox" name="interests[]" value="Networking"> Networking with peers</label><br>
-    <label><input type="checkbox" name="interests[]" value="CityPAC"> CityPAC</label><br>
-    <label><input type="checkbox" name="interests[]" value="Other"> Other</label>
-  </div>
+      <button type="submit" id="submitBtn">Submit</button>
 
-  <div>
-    <label style="display:block; margin-bottom:8px; font-weight:600;">
-      Have you been involved with Jewish and/or pro-Israel organizations? *
-    </label>
-    <label>
-      <input type="radio" name="involvement" value="Yes" required> Yes
-    </label>
-    <label style="margin-left:20px;">
-      <input type="radio" name="involvement" value="No"> No
-    </label>
-  </div>
+    </form>
 
-  <div>
-    <label style="display:block; margin-bottom:8px; font-weight:600;">
-      Which Jewish and/or pro-Israel organizations have you been involved with?
-    </label>
-    <label><input type="checkbox" name="orgs[]" value="AIPAC"> AIPAC</label><br>
-    <label><input type="checkbox" name="orgs[]" value="ADL"> ADL</label><br>
-    <label><input type="checkbox" name="orgs[]" value="CityPAC"> CityPAC</label><br>
-    <label><input type="checkbox" name="orgs[]" value="JUF YLD"> JUF YLD</label><br>
-    <label><input type="checkbox" name="orgs[]" value="JCRC"> JCRC</label><br>
-    <label><input type="checkbox" name="orgs[]" value="Israel Bonds"> Israel Bonds</label><br>
-    <label><input type="checkbox" name="orgs[]" value="AJC"> AJC</label><br>
-    <label><input type="checkbox" name="orgs[]" value="Chabad / Hillel"> Chabad / Hillel</label><br>
-    <label><input type="checkbox" name="orgs[]" value="ICC"> Israel on Campus Coalition</label><br>
-    <label><input type="checkbox" name="orgs[]" value="Synagogue"> Local synagogue</label><br>
-    <label><input type="checkbox" name="orgs[]" value="Other"> Other</label>
-  </div>
-
-  <textarea
-    name="questions"
-    placeholder="Do you have any questions for the CityPAC Board?"></textarea>
-
-  <button type="submit" id="submitBtn">Submit</button>
-
-</form>
   </div>
 </section>
   
@@ -676,14 +650,15 @@ function launchEmojiConfetti(anchor) {
 }
 
 <script>
-document.getElementById("hamburger").onclick = () =>
-  document.getElementById("menu").classList.toggle("show");
-});
-</script>
+document.addEventListener("DOMContentLoaded", function () {
+  const hamburger = document.getElementById("hamburger");
+  const menu = document.getElementById("menu");
 
-<script>
-document.getElementById("hamburger").onclick = () =>
-  document.getElementById("menu").classList.toggle("show");
+  if (!hamburger || !menu) return;
+
+  hamburger.addEventListener("click", function () {
+    menu.classList.toggle("show");
+  });
 });
 </script>
   
