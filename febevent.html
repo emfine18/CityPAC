@@ -178,6 +178,26 @@ form {
   gap: 16px;
 }
 
+/* FORM ROWS (FOR SIDE-BY-SIDE FIELDS) */
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+/* Uneven row (email wider than age, etc.) */
+.form-row.wide-left {
+  grid-template-columns: 2fr 1fr;
+}
+
+/* Mobile fallback */
+@media (max-width: 700px) {
+  .form-row,
+  .form-row.wide-left {
+    grid-template-columns: 1fr;
+  }
+}
+  
 input, select, textarea {
   width: 100%;
   background: transparent;
@@ -280,15 +300,25 @@ button {
   <div class="rsvp-inner">
     <h2>RSVP</h2>
 
-    <form id="rsvpForm">
-      <input name="attending" placeholder="Will you be attending?" required>
-      <input name="referral" placeholder="How did you hear about this event?" required>
-      <input name="first_name" placeholder="First name" required>
-      <input name="last_name" placeholder="Last name" required>
-      <input name="email" placeholder="Email" required>
+<form id="rsvpForm">
 
-      <button type="submit" id="submitBtn">Submit</button>
-    </form>
+  <!-- Attending + Referral -->
+  <div class="form-row">
+    <input name="attending" placeholder="Will you be attending?" required>
+    <input name="referral" placeholder="How did you hear about this event?" required>
+  </div>
+
+  <!-- First + Last -->
+  <div class="form-row">
+    <input name="first_name" placeholder="First name" required>
+    <input name="last_name" placeholder="Last name" required>
+  </div>
+
+  <!-- Email full width -->
+  <input name="email" placeholder="Email" required>
+
+  <button type="submit" id="submitBtn">Submit</button>
+</form>
   </div>
 </section>
 
