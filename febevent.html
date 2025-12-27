@@ -312,7 +312,7 @@ body {
   opacity: 0.85;
 }
 
-  /* ================= RSVP (CONTACT STYLE, WHITE) ================= */
+/* ================= RSVP (MATCH CONTACT, WHITE) ================= */
 
 .rsvp {
   background: #003366;
@@ -329,7 +329,6 @@ body {
   margin: auto;
 }
 
-/* labels */
 #rsvpForm label {
   font-weight: 500;
   font-size: 14px;
@@ -337,17 +336,13 @@ body {
   display: block;
 }
 
-/* inputs (white outline, white text) */
-#rsvpForm input[type="text"],
-#rsvpForm input[type="email"],
-#rsvpForm input[type="number"],
-#rsvpForm input[type="tel"],
+#rsvpForm input,
 #rsvpForm select,
 #rsvpForm textarea {
   width: 100%;
   height: 52px;
   padding: 0 14px;
-  border: 1.5px solid rgba(255,255,255,0.9);
+  border: 1px solid rgba(255,255,255,0.9);
   border-radius: 6px;
   margin-bottom: 18px;
   font-size: 15px;
@@ -361,20 +356,17 @@ body {
   resize: vertical;
 }
 
-/* placeholders */
 #rsvpForm input::placeholder,
 #rsvpForm textarea::placeholder {
   color: rgba(255,255,255,0.7);
 }
 
-/* two-column rows */
 #rsvpForm .form-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 16px;
 }
 
-/* submit button (matches contact) */
 #rsvpForm button {
   background: #ffffff;
   color: #003366;
@@ -388,10 +380,8 @@ body {
 
 #rsvpForm button:disabled {
   opacity: 0.6;
-  cursor: default;
 }
 
-/* mobile */
 @media (max-width: 900px) {
   #rsvpForm .form-row {
     grid-template-columns: 1fr;
@@ -701,8 +691,8 @@ document.addEventListener("DOMContentLoaded", function () {
 </script>
 
 <script>
-document.getElementById("hamburger")?.addEventListener("click", function () {
-  document.getElementById("menu")?.classList.toggle("show");
+document.getElementById("hamburger").onclick = () =>
+  document.getElementById("menu").classList.toggle("show");
 });
 </script>
   
