@@ -697,19 +697,19 @@ document.addEventListener("DOMContentLoaded", function () {
     button.disabled = true;
     button.innerText = "Submitting…";
 
-    fetch(
-      "https://script.google.com/macros/s/AKfycbxpltPUqdjcgKDbuEzGTPKW1-fwU-1PprbAIK_EQYlcKRoUAnqVhgJIa9JfNhdiRRlF/exec",
-      {
-        method: "POST",
-        mode: "no-cors",
-        body: new URLSearchParams(new FormData(form))
-      }
-    ).then(() => {
-      button.innerText = "Submitted ✓";
-      success.style.display = "block";
-      launchEmojiConfetti(button);
-      form.reset();
-    });
+fetch(
+  "https://docs.google.com/forms/d/e/1185fcMXKsc4Jx9olt-3ONZQUuZXnyUpMLiWwMJQ_EQc/formResponse",
+  {
+    method: "POST",
+    mode: "no-cors",
+    body: new URLSearchParams(new FormData(form))
+  }
+).then(() => {
+  button.innerText = "Submitted ✓";
+  success.style.display = "block";
+  launchEmojiConfetti(button);
+  form.reset();
+});
   });
 });
 </script>
