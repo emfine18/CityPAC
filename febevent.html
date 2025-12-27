@@ -430,60 +430,12 @@ body {
     grid-template-columns: 1fr;
   }
 }
-/* ================= B2 BOMBER FLYOVER ================= */
-.b2-flyover {
-  position: fixed;
-  top: 20%;
-  left: -520px;
-  width: 520px;
-  height: 140px;
-  pointer-events: none;
-  z-index: 999999;
-}
-
-.b2-svg {
-  width: 520px;
-  height: auto;
-  filter: drop-shadow(0 10px 18px rgba(0,0,0,0.45));
-  animation: b2-fly 6s linear forwards;
-}
-
-@keyframes b2-fly {
-  from { transform: translateX(-600px); }
-  to   { transform: translateX(calc(100vw + 600px)); }
-}
-
-.b2-particle {
-  position: fixed;
-  font-size: 22px;
-  pointer-events: none;
-  z-index: 999998;
-  animation: b2-particle 2.6s ease-out forwards;
-}
-
-@keyframes b2-particle {
-  from { opacity: 1; transform: translateY(0) scale(1); }
-  to   { opacity: 0; transform: translateY(70px) scale(0.5); }
-}
 
 </style>
 </head>
 <body>
 
 <body>
-
-<div id="b2Flyover" class="b2-flyover" aria-hidden="true">
-  <svg class="b2-svg" viewBox="0 0 512 128">
-    <path
-      d="M8 64
-         C60 40, 140 30, 256 28
-         C372 30, 452 40, 504 64
-         C452 88, 372 98, 256 100
-         C140 98, 60 88, 8 64 Z"
-      fill="#111"
-    />
-  </svg>
-</div>
   
 <header class="site-header">
   <div class="header-inner">
@@ -554,90 +506,128 @@ body {
   <div class="rsvp-inner">
 
 <form id="rsvpForm">
-    
-  <!-- Attending -->
-  <select name="entry.1418552658" required>
-    <option value="">Will you be attending?</option>
-    <option value="Yes">Yes</option>
-    <option value="No">No</option>
-  </select>
 
-  <!-- How did you hear -->
-  <input
-    name="entry.1203796393"
-    placeholder="How did you hear about this event?"
-    required
-  >
+  <div>
+    <div class="rsvp-label">
+      Will you be attending The 2026 Midterms and the U.S.–Israel Relationship?
+    </div>
+    <select name="entry.1418552658" required>
+      <option value="">Select one</option>
+      <option>Yes</option>
+      <option>No</option>
+    </select>
+  </div>
 
-  <!-- First | Last | Age -->
+  <div>
+    <div class="rsvp-label">How did you hear about this event?</div>
+    <input name="entry.1203796393" required>
+  </div>
+
   <div class="rsvp-row three">
-    <input name="entry.276624258" placeholder="First name *" required>
-    <input name="entry.379031892" placeholder="Last name *" required>
-    <input name="entry.896738026" placeholder="Age *" required>
+    <div>
+      <div class="rsvp-label">First name</div>
+      <input name="entry.276624258" required>
+    </div>
+    <div>
+      <div class="rsvp-label">Last name</div>
+      <input name="entry.379031892" required>
+    </div>
+    <div>
+      <div class="rsvp-label">Age</div>
+      <input name="entry.896738026" required>
+    </div>
   </div>
 
-  <!-- Phone | Email -->
   <div class="rsvp-row two">
-    <input name="entry.160040439" placeholder="Phone *" required>
-    <input type="email" name="entry.1580435886" placeholder="Email *" required>
+    <div>
+      <div class="rsvp-label">Phone number</div>
+      <input name="entry.160040439" required>
+    </div>
+    <div>
+      <div class="rsvp-label">Email</div>
+      <input type="email" name="entry.1580435886" required>
+    </div>
   </div>
 
-  <!-- Address | Zip -->
   <div class="rsvp-row two">
-    <input name="entry.64126206" placeholder="Address *" required>
-    <input name="entry.1964079643" placeholder="Zip Code *" required>
+    <div>
+      <div class="rsvp-label">Address</div>
+      <input name="entry.64126206" required>
+    </div>
+    <div>
+      <div class="rsvp-label">Zip Code</div>
+      <input name="entry.1964079643" required>
+    </div>
   </div>
 
-  <!-- Employer / Title -->
-  <input name="entry.656163493" placeholder="Current Employer *" required>
-  <input name="entry.1690518663" placeholder="Job Title *" required>
+  <div>
+    <div class="rsvp-label">Current Employer</div>
+    <input name="entry.656163493" required>
+  </div>
 
-  <!-- Industry -->
-  <select name="entry.1087078679" required>
-    <option value="">Industry</option>
-    <option>Finance / Banking / Investment Management / Credit / Private Equity</option>
-    <option>Real Estate / Development</option>
-    <option>Law / Legal Services</option>
-    <option>Consulting</option>
-    <option>Technology / Software / IT</option>
-    <option>Healthcare / Life Sciences</option>
-    <option>Government / Public Policy</option>
-    <option>Political / Advocacy / Nonprofit</option>
-    <option>Marketing / Communications / Public Relations</option>
-    <option>Media / Journalism</option>
-    <option>Education</option>
-    <option>Student</option>
-    <option>Other</option>
-  </select>
+  <div>
+    <div class="rsvp-label">Job Title</div>
+    <input name="entry.1690518663" required>
+  </div>
 
-  <!-- Professional Group -->
-  <select name="entry.493137383">
-    <option value="">Professional Group Interest</option>
-    <option>Young Professionals in Finance, Banking, Credit, Private Equity or Investment Management</option>
-    <option>Young Professionals in Real Estate</option>
-    <option>Young Professionals in Law and Legal Services</option>
-    <option>Young Professionals in Consulting</option>
-    <option>Young Professionals in Healthcare</option>
-  </select>
+  <div>
+    <div class="rsvp-label">Industry</div>
+    <select name="entry.1087078679" required>
+      <option value="">Select industry</option>
+      <option>Finance / Banking / Investment Management / Credit / Private Equity</option>
+      <option>Real Estate / Development</option>
+      <option>Law / Legal Services</option>
+      <option>Consulting</option>
+      <option>Technology / Software / IT</option>
+      <option>Healthcare / Life Sciences</option>
+      <option>Government / Public Policy</option>
+      <option>Political / Advocacy / Nonprofit</option>
+      <option>Marketing / Communications / Public Relations</option>
+      <option>Media / Journalism</option>
+      <option>Education</option>
+      <option>Student</option>
+      <option>Other</option>
+    </select>
+  </div>
 
-  <!-- Involved -->
-  <select name="entry.991937041" required>
-    <option value="">Have you been involved with Jewish / Pro-Israel organizations?</option>
-    <option value="Yes">Yes</option>
-    <option value="No">No</option>
-  </select>
+  <div>
+    <div class="rsvp-label">
+      Would you like to join one of the following professional groups?
+    </div>
+    <select name="entry.493137383">
+      <option value="">Optional</option>
+      <option>Young Professionals in Finance</option>
+      <option>Young Professionals in Real Estate</option>
+      <option>Young Professionals in Law</option>
+      <option>Young Professionals in Consulting</option>
+      <option>Young Professionals in Healthcare</option>
+    </select>
+  </div>
 
-  <!-- Which orgs -->
-  <textarea
-    name="entry.1041961967"
-    placeholder="Which Jewish and/or pro-Israel organizations?"
-  ></textarea>
+  <div>
+    <div class="rsvp-label">
+      Do you currently have, or have you previously had, any involvement with Jewish and/or pro-Israel organizations?
+    </div>
+    <select name="entry.991937041" required>
+      <option value="">Select one</option>
+      <option>Yes</option>
+      <option>No</option>
+    </select>
+  </div>
 
-  <!-- Questions -->
-  <textarea
-    name="entry.25377518"
-    placeholder="Any questions for the CityPAC Board?"
-  ></textarea>
+  <div>
+    <div class="rsvp-label">
+      Which Jewish and/or pro-Israel organizations?
+    </div>
+    <textarea name="entry.1041961967"></textarea>
+  </div>
+
+  <div>
+    <div class="rsvp-label">
+      Do you have any questions for the CityPAC Board?
+    </div>
+    <textarea name="entry.25377518"></textarea>
+  </div>
 
   <button type="submit">Submit</button>
 </form>
@@ -719,7 +709,6 @@ document.addEventListener("DOMContentLoaded", function () {
       button.innerText = "Submitted ✓";
       success.style.display = "block";
       launchEmojiConfetti(button);
-      launchB2Flyover(); // 👈 PUT THIS LINE HERE
       form.reset();
     });
   });
@@ -763,34 +752,6 @@ function launchEmojiConfetti(button) {
 
     setTimeout(() => emoji.remove(), 4500);
   }
-}
-</script>
-
-<script>
-function launchB2Flyover() {
-  const flyover = document.getElementById("b2Flyover");
-  const svg = flyover.querySelector(".b2-svg");
-
-  flyover.style.display = "block";
-
-  const particles = ["🇺🇸", "🎆", "✨"];
-  const emitter = setInterval(() => {
-    const rect = svg.getBoundingClientRect();
-    const p = document.createElement("span");
-
-    p.className = "b2-particle";
-    p.textContent = particles[Math.floor(Math.random() * particles.length)];
-    p.style.left = rect.left + 30 + "px";
-    p.style.top = rect.top + rect.height / 2 + "px";
-
-    document.body.appendChild(p);
-    setTimeout(() => p.remove(), 2600);
-  }, 90);
-
-  setTimeout(() => {
-    clearInterval(emitter);
-    flyover.style.display = "none";
-  }, 6000);
 }
 </script>
   
