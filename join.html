@@ -230,80 +230,78 @@ body {
   line-height: 1.6;
 }
 
-/* ================= CLUB LEVELS (FINAL FIXED) ================= */
+/* ================= CLUB LEVELS (TALL RECTANGLES) ================= */
 
 .clubs {
   background: #f6f9fc;
-  padding: 60px 24px;
+  padding: 70px 24px;
 }
 
 /* Grid */
 .club-grid {
-  max-width: 1300px;        /* enough room for 3 slim cards */
+  max-width: 1200px;             /* wide enough for 3 */
   margin: auto;
 
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* ALWAYS 3 on desktop */
-  gap: 28px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
 }
 
 /* Card */
 .club-card {
   background: #ffffff;
-  border-radius: 14px;
+  border-radius: 16px;
 
-  padding: 18px 16px;       /* thinner sides */
-  min-height: 260px;
-
-  max-width: 360px;         /* ⬅️ forces text to wrap DOWN */
+  padding: 28px 22px;            /* more vertical padding */
+  min-height: 360px;             /* ⬅️ TALLER */
+  max-width: 320px;              /* ⬅️ NARROWER */
   width: 100%;
-  margin: 0 auto;           /* center card in column */
+  margin: 0 auto;
 
   border: 1px solid #dbe7f1;
-  box-shadow: 0 10px 24px rgba(0,0,0,0.08);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
 
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .club-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 18px 40px rgba(0,0,0,0.14);
+  transform: translateY(-6px);
+  box-shadow: 0 22px 48px rgba(0,0,0,0.14);
 }
 
-/* Name */
+/* Title — KEEP LARGE */
 .club-name {
-  margin: 0 0 6px;
-  font-size: 16px;
+  margin: 0 0 10px;
+  font-size: 18px;               /* unchanged */
   font-weight: 700;
   text-transform: uppercase;
   color: #003366;
 }
 
-/* Price */
+/* Price — KEEP LARGE */
 .club-price {
-  font-size: 20px;
+  font-size: 26px;               /* unchanged / big */
   font-weight: 700;
   color: #0f2f5f;
-  margin-bottom: 10px;
+  margin-bottom: 16px;
 }
 
 .club-price span {
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 500;
   color: #6b7f95;
 }
 
 /* Description */
 .club-desc {
-  font-size: 13.5px;
-  line-height: 1.55;
+  font-size: 14.5px;             /* readable, not small */
+  line-height: 1.6;
   color: #2c3e50;
   margin: 0;
-  max-width: 95%;
 }
 
 /* Responsive — intentional only */
-@media (max-width: 1000px) {
+@media (max-width: 1050px) {
   .club-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -314,7 +312,7 @@ body {
     grid-template-columns: 1fr;
   }
 }
-
+  
 /* ================= FOOTER (IDENTICAL TO ABOUT) ================= */
 .site-footer {
   background: #003366;
