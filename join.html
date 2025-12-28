@@ -230,90 +230,79 @@ body {
   line-height: 1.6;
 }
 
-/* ================= CLUBS ================= */
+/* ================= CLUB LEVELS (SIMPLE REBUILD) ================= */
+
 .clubs {
-  background: #f6f9fc; /* same as footer */
-  padding: 80px 24px;
+  background: #f6f9fc;
+  padding: 60px 24px;
 }
 
 .club-grid {
-  max-width: 1200px;
+  max-width: 1100px;
   margin: auto;
   display: grid;
-  grid-template-columns: repeat(3, minmax(280px, 1fr));
-  gap: 32px;
-  align-items: stretch;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
 }
 
-.club {
+/* Card */
+.club-card {
   background: #ffffff;
-  border-radius: 18px;
-  padding: 20px 20px 18px; /* TOP | SIDES | BOTTOM */
-  text-align: center;
+  border-radius: 14px;
+  padding: 24px 22px;
 
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  border: 1px solid #dbe7f1;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.08);
 
-  border: 2px solid #6bb7e3;
-  box-shadow: 0 10px 26px rgba(0,0,0,0.10);
-}
-  
-  /* Center membership cards as a group */
-.club-grid {
-  justify-content: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-  .club:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 26px 60px rgba(0,0,0,0.18);
-  border-color: #44b6e5;
-}
-  
-/* TITLE BAR */
-.club h2 {
-  background: #6bb7e3;
-  color: #ffffff;
-  font-size: 18px;
-  text-transform: uppercase;
-
-  margin: 0 0 14px;      /* ⬅️ THIS MATTERS */
-  padding: 10px 12px;
-  border-radius: 12px;
+.club-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.14);
 }
 
-/* CONTENT */
-.club .price {
-  font-size: 28px;
+/* Name */
+.club-name {
+  margin: 0 0 6px;
+  font-size: 17px;          /* smaller, calmer */
   font-weight: 700;
+  text-transform: uppercase;
   color: #003366;
-  margin: 0 0 14px; /* ⬅️ LESS SPACE */
 }
 
-.club ul {
-  list-style: none;
-  padding: 0;
-  margin: 12px 0 16px;
+/* Price */
+.club-price {
+  font-size: 22px;
+  font-weight: 700;
+  color: #0f2f5f;
+  margin-bottom: 10px;
 }
 
-.club ul li {
-  margin: 6px 0;
-  padding: 0;
-  line-height: 1.35;
+.club-price span {
+  font-size: 13px;
+  font-weight: 500;
+  color: #6b7f95;
 }
-  
-.club a {
-  margin-top: 12px; /* ⬅️ NOT FLOATING */
-  background: #003366;
-  color: #ffffff;
-  padding: 12px 0;
-  border-radius: 10px;
-  font-weight: 600;
-  text-decoration: none;
+
+/* Description */
+.club-desc {
+  font-size: 14px;          /* smaller sentence text */
+  line-height: 1.55;
+  color: #2c3e50;
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .club-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (max-width: 600px) {
-  .club-grid { grid-template-columns: 1fr; }
+  .club-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* ================= FOOTER (IDENTICAL TO ABOUT) ================= */
@@ -417,49 +406,31 @@ body {
 <section class="clubs">
   <div class="club-grid">
 
-    <!-- Lake Shore -->
-    <div class="club">
-      <h2>Lake Shore Society</h2>
-      <div class="price">$360 / year</div>
-
-      <div class="club-features">
-        <div>Young professionals (20s)</div>
-        <div>CityPAC events</div>
-        <div>Community engagement</div>
-        <div>Leadership development</div>
-      </div>
-
-      <a href="#">Join Lake Shore</a>
+    <div class="club-card">
+      <h3 class="club-name">Lake Shore Society</h3>
+      <div class="club-price">$360 <span>/ year</span></div>
+      <p class="club-desc">
+        Designed for young professionals in their 20s looking to engage with CityPAC,
+        attend events, and build leadership skills in the pro-Israel community.
+      </p>
     </div>
 
-    <!-- Gold Coast -->
-    <div class="club">
-      <h2>Gold Coast Society</h2>
-      <div class="price">$720 / year</div>
-
-      <div class="club-features">
-        <div>Young professionals (30s)</div>
-        <div>CityPAC programming</div>
-        <div>Pro-Israel networking</div>
-        <div>Exclusive events</div>
-      </div>
-
-      <a href="#">Join Gold Coast</a>
+    <div class="club-card">
+      <h3 class="club-name">Gold Coast Society</h3>
+      <div class="club-price">$720 <span>/ year</span></div>
+      <p class="club-desc">
+        For professionals in their 30s seeking deeper involvement through programming,
+        networking, and meaningful political engagement with CityPAC.
+      </p>
     </div>
 
-    <!-- Chai -->
-    <div class="club">
-      <h2>Chai Society</h2>
-      <div class="price">$1,080 / year</div>
-
-      <div class="club-features">
-        <div>Most engaged young professionals</div>
-        <div>Exclusive Pro-Israel events</div>
-        <div>Chicago & national access</div>
-        <div>Premium CityPAC programming</div>
-      </div>
-
-      <a href="#">Join Chai Society</a>
+    <div class="club-card">
+      <h3 class="club-name">Chai Society</h3>
+      <div class="club-price">$1,080 <span>/ year</span></div>
+      <p class="club-desc">
+        CityPAC’s leadership tier for its most engaged members, offering exclusive access,
+        high-level events, and national pro-Israel political opportunities.
+      </p>
     </div>
 
   </div>
