@@ -219,19 +219,15 @@ body {
 .club {
   background: #ffffff;
   border-radius: 18px;
-  padding: 24px 22px;              /* tighter */
+  padding: 20px 20px 18px; /* TOP | SIDES | BOTTOM */
   text-align: center;
 
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 
-  min-height: 360px;               /* smaller than before */
-
   border: 2px solid #6bb7e3;
-  box-shadow: 0 12px 30px rgba(0,0,0,0.10);
-
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: 0 10px 26px rgba(0,0,0,0.10);
 }
   
   /* Center membership cards as a group */
@@ -251,41 +247,30 @@ body {
   
 /* TITLE BAR */
 .club h2 {
-  background: #44b6e5;
+  background: #6bb7e3;
   color: #ffffff;
-  padding: 10px;
-  border-radius: 8px;
   font-size: 18px;
   text-transform: uppercase;
-  margin-bottom: 14px;
+
+  margin: 0 0 14px;      /* ⬅️ THIS MATTERS */
+  padding: 10px 12px;
+  border-radius: 12px;
 }
 
 /* CONTENT */
 .club .price {
-  font-size: 24px;
+  font-size: 28px;
   font-weight: 700;
   color: #003366;
-  margin-bottom: 10px;
+  margin: 0 0 14px; /* ⬅️ LESS SPACE */
 }
 
-.club ul {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 22px;
-  flex-grow: 1;
-}
-
-.club ul li {
-  margin-bottom: 8px;
-  line-height: 1.4;
-}
-
-/* BUTTON */
 .club a {
+  margin-top: 12px; /* ⬅️ NOT FLOATING */
   background: #003366;
   color: #ffffff;
   padding: 12px 0;
-  border-radius: 8px;
+  border-radius: 10px;
   font-weight: 600;
   text-decoration: none;
 }
