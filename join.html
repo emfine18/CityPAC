@@ -181,6 +181,23 @@ body {
   }
 }
 
+/* ================= CARD HOVER (CLUBS + COMMITTEES) ================= */
+
+.club,
+.committee {
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.club:hover,
+.committee:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 22px 50px rgba(0,0,0,0.18);
+  border-color: #44b6e5;
+}
+  
 /* ================= PAGE INTRO ================= */
 .page-header {
   background: #f6f9fc;
