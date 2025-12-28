@@ -611,15 +611,35 @@ body {
   <div class="rsvp-label">
     What interests you about this event or future programs?
   </div>
-  <select name="entry.1533398778" required>
-    <option value="">Select one</option>
-    <option>Networking with other young professionals</option>
-    <option>Learning about U.S.–Israel policy</option>
-    <option>Political engagement and advocacy</option>
-    <option>Professional development opportunities</option>
-    <option>Future CityPAC programming</option>
-    <option>Other</option>
-  </select>
+
+  <div class="checkbox-group">
+    <label>
+      <input type="checkbox" name="entry.1533398778" value="U.S.–Israel policy discussion">
+      U.S.–Israel policy discussion
+    </label>
+
+    <label>
+      <input type="checkbox" name="entry.1533398778" value="Networking with other professionals">
+      Networking with other professionals
+    </label>
+
+    <label>
+      <input type="checkbox" name="entry.1533398778" value="Learning more about CityPAC">
+      Learning more about CityPAC
+    </label>
+
+    <label>
+      <input type="checkbox" id="interestOtherCheckbox">
+      Other
+    </label>
+
+    <input
+      type="text"
+      id="interestOtherInput"
+      placeholder="Please specify"
+      style="display:none; margin-top:10px;"
+    >
+  </div>
 </div>
   
   <div>
@@ -769,6 +789,31 @@ function launchEmojiConfetti(button) {
     setTimeout(() => emoji.remove(), 4500);
   }
 }
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const otherCheckbox = document.getElementById("interestOtherCheckbox");
+  const otherInput = document.getElementById("interestOtherInput");
+  const form = document.getElementById("rsvpForm");
+
+  if (!form) return;
+
+  otherCheckbox.addEventListener("change", function () {
+    otherInput.style.display = this.checked ? "block" : "none";
+    if (!this.checked) otherInput.value = "";
+  });
+
+  form.addEventListener("submit", function () {
+    if (otherCheckbox.checked && otherInput.value.trim() !== "") {
+      const hidden = document.createElement("input");
+      hidden.type = "hidden";
+      hidden.name = "entry.1533398778"; // SAME entry
+      hidden.value = otherInput.value.trim();
+      form.appendChild(hidden);
+    }
+  });
+});
 </script>
   
 </body>
