@@ -945,23 +945,31 @@ document.getElementById("interestOther").addEventListener("change", function () 
 
 <script>
 document.getElementById("rsvpForm").addEventListener("submit", function () {
-  // collect all checked interest boxes
+  const form = this;
+
   const checked = Array.from(
-    document.querySelectorAll('input[name="entry.1533398778"]:checked')
+    form.querySelectorAll('input[name="entry.1533398778"]:checked')
   ).map(cb => cb.value);
 
-  // remove existing ones so we don't double-submit
-  document
+  const otherCheckbox = document.getElementById("interestOther");
+  const otherText = document.getElementById("interestOtherText");
+
+  if (otherCheckbox.checked && otherText.value.trim() !== "") {
+    checked.push("Other: " + otherText.value.trim());
+  }
+
+  // disable original inputs so Google Form doesn't double-read
+  form
     .querySelectorAll('input[name="entry.1533398778"]')
     .forEach(el => el.disabled = true);
 
-  // create ONE combined value
+  // submit ONE combined value
   const hidden = document.createElement("input");
   hidden.type = "hidden";
   hidden.name = "entry.1533398778";
   hidden.value = checked.join(", ");
 
-  this.appendChild(hidden);
+  form.appendChild(hidden);
 });
 </script>
 
