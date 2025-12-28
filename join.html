@@ -230,18 +230,20 @@ body {
   line-height: 1.6;
 }
 
-/* ================= CLUB LEVELS (SIMPLE REBUILD) ================= */
+/* ================= CLUB LEVELS (FINAL FIXED) ================= */
 
 .clubs {
   background: #f6f9fc;
   padding: 60px 24px;
 }
 
+/* Grid */
 .club-grid {
-  max-width: 1200px;
+  max-width: 1300px;        /* enough room for 3 slim cards */
   margin: auto;
+
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, 1fr); /* ALWAYS 3 on desktop */
   gap: 28px;
 }
 
@@ -249,8 +251,14 @@ body {
 .club-card {
   background: #ffffff;
   border-radius: 14px;
-  padding: 20px 18px;
+
+  padding: 18px 16px;       /* thinner sides */
   min-height: 260px;
+
+  max-width: 360px;         /* ⬅️ forces text to wrap DOWN */
+  width: 100%;
+  margin: 0 auto;           /* center card in column */
+
   border: 1px solid #dbe7f1;
   box-shadow: 0 10px 24px rgba(0,0,0,0.08);
 
@@ -265,7 +273,7 @@ body {
 /* Name */
 .club-name {
   margin: 0 0 6px;
-  font-size: 17px;          /* smaller, calmer */
+  font-size: 16px;
   font-weight: 700;
   text-transform: uppercase;
   color: #003366;
@@ -273,7 +281,7 @@ body {
 
 /* Price */
 .club-price {
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 700;
   color: #0f2f5f;
   margin-bottom: 10px;
@@ -287,21 +295,21 @@ body {
 
 /* Description */
 .club-desc {
-  font-size: 14px;          /* smaller sentence text */
+  font-size: 13.5px;
   line-height: 1.55;
   color: #2c3e50;
   margin: 0;
   max-width: 95%;
-
 }
 
+/* Responsive — intentional only */
 @media (max-width: 1000px) {
   .club-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 650px) {
   .club-grid {
     grid-template-columns: 1fr;
   }
