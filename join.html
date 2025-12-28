@@ -16,6 +16,72 @@ body {
   color: #111;
 }
 
+/* ================= COMMITTEES ================= */
+.committees {
+  background: #f6f9fc;
+  padding: 80px 24px;
+}
+
+.committees-inner {
+  max-width: 1200px;
+  margin: auto;
+  text-align: center;
+}
+
+.committees h2 {
+  font-size: 34px;
+  color: #003366;
+  margin-bottom: 14px;
+}
+
+.committees-intro {
+  max-width: 760px;
+  margin: 0 auto 48px;
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+.committee-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+}
+
+.committee {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 28px;
+  text-align: left;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+.committee h3 {
+  color: #003366;
+  margin-bottom: 10px;
+}
+
+.committee p {
+  font-size: 15px;
+  line-height: 1.6;
+  margin-bottom: 18px;
+}
+
+.committee a {
+  color: #44b6e5;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.committee a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 800px) {
+  .committee-grid {
+    grid-template-columns: 1fr;
+  }
+}
+  
 /* ================= NAVY HEADER (IDENTICAL TO ABOUT) ================= */
 .site-header {
   background: #003366;
@@ -137,26 +203,34 @@ body {
 
 /* ================= CLUBS ================= */
 .clubs {
-  max-width: 1200px;
-  margin: 70px auto;
-  padding: 0 24px;
+  background: #003366; /* same as footer */
+  padding: 80px 24px;
 }
 
 .club-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
+  max-width: 1200px;
+  margin: auto;
 }
 
 .club {
+  background: #ffffff;
   border: 2px solid #44b6e5;
-  border-radius: 12px;
-  padding: 24px;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
+  border-radius: 14px;
+  padding: 26px 24px;
 }
 
+  /* Center membership cards as a group */
+.club-grid {
+  justify-content: center;
+}
+
+/* Make outlines hug content more tightly */
+.club {
+  max-width: 320px;
+  margin: auto;
+}
+
+  
 /* TITLE BAR */
 .club h2 {
   background: #44b6e5;
@@ -302,8 +376,7 @@ body {
 <section class="page-header">
   <h1>Join CityPAC</h1>
   <p>
-    Become part of Chicago’s next generation of pro-Israel leaders.
-  </p>
+  Be a force multiplier and become part of Chicago’s next generation of pro-Israel leaders.  </p>
 </section>
 
 <section class="clubs">
@@ -348,6 +421,65 @@ body {
   </div>
 </section>
 
+<section class="committees">
+  <div class="committees-inner">
+
+    <h2>CityPAC Committees</h2>
+    <p class="committees-intro">
+      Committees are the engine of CityPAC’s work. Members play a direct role in political engagement,
+      candidate research, outreach, and programming.
+    </p>
+
+    <div class="committee-grid">
+
+      <div class="committee">
+        <h3>Candidates Committee</h3>
+        <p>
+          Researches and evaluates political candidates committed to a strong U.S.–Israel relationship.
+          Members work directly with campaigns and help guide CityPAC’s political contributions.
+        </p>
+        <a href="mailto:contact@citypac.org?subject=I'd like to join the Candidates CityPAC Committee">
+          Join this committee →
+        </a>
+      </div>
+
+      <div class="committee">
+        <h3>Outreach Committee</h3>
+        <p>
+          Focuses on growing CityPAC’s membership and educating young professionals about the
+          organization’s mission and impact.
+        </p>
+        <a href="mailto:contact@citypac.org?subject=I'd like to join the Outreach CityPAC Committee">
+          Join this committee →
+        </a>
+      </div>
+
+      <div class="committee">
+        <h3>Development Committee</h3>
+        <p>
+          Serves as a bridge between CityPAC and the broader pro-Israel community, helping ensure
+          the organization has the resources to fulfill its mission.
+        </p>
+        <a href="mailto:contact@citypac.org?subject=I'd like to join the Development CityPAC Committee">
+          Join this committee →
+        </a>
+      </div>
+
+      <div class="committee">
+        <h3>Programming Committee</h3>
+        <p>
+          Plans and executes CityPAC events, including political briefings and major community programs
+          featuring local and national leaders.
+        </p>
+        <a href="mailto:contact@citypac.org?subject=I'd like to join the Programming CityPAC Committee">
+          Join this committee →
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+  
 <footer class="site-footer">
   <div class="footer-top-line"></div>
   <div class="footer-inner">
