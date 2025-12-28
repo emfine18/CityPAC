@@ -466,6 +466,94 @@ body {
   }
 }
 
+  /* INTEREST CHECKBOXES */
+.interest-option {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 16px;
+  font-size: 16px;
+}
+
+.interest-option input[type="checkbox"] {
+  width: 22px;
+  height: 22px;
+  appearance: none;
+  border: 2px solid #ffffff;
+  border-radius: 6px;   /* 👈 same radius as inputs */
+  background: transparent;
+  cursor: pointer;
+}
+
+.interest-option input[type="checkbox"]:checked {
+  background: #44b6e5;
+  border-color: #44b6e5;
+}
+
+/* ================= EVENT DESCRIPTION WIDTH ================= */
+.event-description {
+  max-width: 820px;
+  margin: 0 auto 40px;
+  line-height: 1.55;
+  font-size: 17px;
+}
+
+/* ================= INTEREST CHECKBOXES ================= */
+.interest-option {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 16px;
+  font-size: 16px;
+}
+
+.interest-option input[type="checkbox"] {
+  width: 22px;
+  height: 22px;
+  appearance: none;
+  border: 2px solid #ffffff;
+  border-radius: 6px;
+  background: transparent;
+  cursor: pointer;
+}
+
+.interest-option input[type="checkbox"]:checked {
+  background: #44b6e5;
+  border-color: #44b6e5;
+}
+
+/* ================= EVENT DESCRIPTION WIDTH ================= */
+.event-description {
+  max-width: 820px;
+  margin: 0 auto 40px;
+  line-height: 1.55;
+  font-size: 17px;
+}
+
+/* ================= INTEREST CHECKBOXES ================= */
+.interest-option {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 16px;
+  font-size: 16px;
+}
+
+.interest-option input[type="checkbox"] {
+  width: 22px;
+  height: 22px;
+  appearance: none;
+  border: 2px solid #ffffff;
+  border-radius: 6px;
+  background: transparent;
+  cursor: pointer;
+}
+
+.interest-option input[type="checkbox"]:checked {
+  background: #44b6e5;
+  border-color: #44b6e5;
+}
+  
 </style>
 </head>
 <body>
@@ -645,23 +733,32 @@ body {
     What interests you about this event or future programs?
   </div>
 
-  <div class="checkbox-group">
-    <label>
-      <input type="checkbox" name="entry.1533398778" value="U.S.–Israel policy discussion">
-      U.S.–Israel policy discussion
-    </label>
+  <label class="interest-option">
+    <input type="checkbox" name="entry.1533398778" value="U.S.–Israel policy discussion">
+    U.S.–Israel policy discussion
+  </label>
 
-    <label>
-      <input type="checkbox" name="entry.1533398778" value="Networking with other professionals">
-      Networking with other professionals
-    </label>
+  <label class="interest-option">
+    <input type="checkbox" name="entry.1533398778" value="Networking with other professionals">
+    Networking with other professionals
+  </label>
 
-    <label>
-      <input type="checkbox" name="entry.1533398778" value="Learning more about CityPAC">
-      Learning more about CityPAC
-    </label>
+  <label class="interest-option">
+    <input type="checkbox" name="entry.1533398778" value="Learning more about CityPAC">
+    Learning more about CityPAC
+  </label>
 
-    <label>
+  <label class="interest-option">
+    <input type="checkbox" name="entry.1533398778" value="Future leadership opportunities">
+    Future leadership opportunities
+  </label>
+
+  <label class="interest-option">
+    <input type="checkbox" name="entry.1533398778" value="Advocacy and policy engagement">
+    Advocacy and policy engagement
+  </label>
+
+  <label>
       <input type="checkbox" id="interestOtherCheckbox">
       Other
     </label>
