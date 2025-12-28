@@ -482,28 +482,52 @@ body {
   font-size: 17px;
 }
 
-/* ================= INTEREST CHECKBOXES ================= */
+/* ===== INTEREST CHECKBOXES (REAL BOXES) ===== */
+.rsvp-interests {
+  margin-top: 20px;
+}
+
 .interest-option {
   display: flex;
   align-items: center;
   gap: 14px;
   margin-bottom: 16px;
   font-size: 16px;
-}
-
-.interest-option input[type="checkbox"] {
-  width: 22px;
-  height: 22px;
-  appearance: none;
-  border: 2px solid #ffffff;
-  border-radius: 6px;
-  background: transparent;
   cursor: pointer;
 }
 
+/* hide native checkbox */
+.interest-option input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #ffffff;
+  border-radius: 6px;
+  background: transparent;
+  display: grid;
+  place-content: center;
+  cursor: pointer;
+}
+
+/* checkmark */
+.interest-option input[type="checkbox"]::before {
+  content: "✓";
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+  transform: scale(0);
+  transition: transform 0.12s ease-in-out;
+}
+
+/* checked state */
 .interest-option input[type="checkbox"]:checked {
   background: #44b6e5;
   border-color: #44b6e5;
+}
+
+.interest-option input[type="checkbox"]:checked::before {
+  transform: scale(1);
 }
   
 </style>
