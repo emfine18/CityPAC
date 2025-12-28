@@ -218,13 +218,23 @@ body {
 
 .club {
   background: #ffffff;
-  border-radius: 18px;
-  border: 1px solid rgba(68,182,229,0.35);
+  border-radius: 20px;
   padding: 32px 28px;
   text-align: center;
-  box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+
+  /* SIZE + LAYOUT */
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  min-height: 420px;
+
+  /* OUTLINE */
+  border: 2px solid #6bb7e3;
+
+  /* DEPTH */
+  box-shadow: 0 18px 45px rgba(0,0,0,0.12);
+
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
   /* Center membership cards as a group */
@@ -232,12 +242,15 @@ body {
   justify-content: center;
 }
 
-/* Make outlines hug content more tightly */
 .club {
-  max-width: 320px;
-  margin: auto;
+  box-shadow: 0 14px 34px rgba(0,0,0,0.10);
 }
 
+  .club:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 26px 60px rgba(0,0,0,0.18);
+  border-color: #44b6e5;
+}
   
 /* TITLE BAR */
 .club h2 {
@@ -387,6 +400,21 @@ body {
   Be a force multiplier and become part of Chicago’s next generation of pro-Israel leaders.  </p>
 </section>
 
+<div class="club">
+      <h2>Lake Shore Society</h2>
+      <div class="price">$360 / year</div>
+      <ul>
+        <li>Young professionals (20s)</li>
+        <li>CityPAC events</li>
+        <li>Community engagement</li>
+        <li>Leadership development</li>
+      </ul>
+      <a href="#">Join Lake Shore</a>
+    </div>
+
+  </div>
+</section>
+  
 <section class="clubs">
   <div class="club-grid">
 
@@ -413,21 +441,6 @@ body {
       </ul>
       <a href="#">Join Gold Coast</a>
     </div>
-
-    <div class="club">
-      <h2>Lake Shore Society</h2>
-      <div class="price">$360 / year</div>
-      <ul>
-        <li>Young professionals (20s)</li>
-        <li>CityPAC events</li>
-        <li>Community engagement</li>
-        <li>Leadership development</li>
-      </ul>
-      <a href="#">Join Lake Shore</a>
-    </div>
-
-  </div>
-</section>
 
 <section class="committees">
   <div class="committees-inner">
