@@ -238,10 +238,11 @@ body {
 }
 
 .club-grid {
-  max-width: 1100px;
+  max-width: 1200px;
   margin: auto;
+
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, 1fr); /* FORCE 3 */
   gap: 28px;
 }
 
@@ -250,7 +251,7 @@ body {
   background: #ffffff;
   border-radius: 14px;
   padding: 24px 22px;
-
+  min-height: 260px;
   border: 1px solid #dbe7f1;
   box-shadow: 0 10px 24px rgba(0,0,0,0.08);
 
@@ -293,7 +294,7 @@ body {
   margin: 0;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1000px) {
   .club-grid {
     grid-template-columns: repeat(2, 1fr);
   }
