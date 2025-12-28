@@ -151,6 +151,7 @@ body {
 /* ================= HERO ================= */
 .hero {
   position: relative;
+  z-index: 1;
   height: 70vh;
   background: url("images/eventhero.png") center top / cover no-repeat;
 }
@@ -162,7 +163,7 @@ body {
   left: 0;
   width: 100%;
   height: 30%;
-  z-index: 1;   /* gradient stays behind */
+  z-index: 2;   /* gradient stays behind */
   background: linear-gradient(
     to bottom,
     rgba(47,48,118,0) 0%,
@@ -173,6 +174,8 @@ body {
   
 /* ================= EVENT INFO ================= */
 .event-info {
+  position: relative;
+  z-index: 5;          /* <-- THIS IS #4 */
   background: #2f3076;
   padding: 10px 24px 100px;
 }
@@ -188,7 +191,6 @@ body {
   font-size: 14px;
   letter-spacing: 1px;
   opacity: 0.9;
-  margin-top: -100px;   /* moves CityPAC Presents UP */
   margin-bottom: 10px;
 }
   
