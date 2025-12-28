@@ -218,25 +218,22 @@ body {
 
 .club {
   background: #ffffff;
-  border-radius: 20px;
-  padding: 32px 28px;
+  border-radius: 18px;
+  padding: 24px 22px;              /* tighter */
   text-align: center;
 
-  /* SIZE + LAYOUT */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  min-height: 420px;
 
-  /* OUTLINE */
+  min-height: 360px;               /* smaller than before */
+
   border: 2px solid #6bb7e3;
-
-  /* DEPTH */
-  box-shadow: 0 18px 45px rgba(0,0,0,0.12);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.10);
 
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
-
+  
   /* Center membership cards as a group */
 .club-grid {
   justify-content: center;
@@ -294,8 +291,13 @@ body {
 }
 
 /* RESPONSIVE */
-@media (max-width: 1100px) {
-  .club-grid { grid-template-columns: repeat(2, 1fr); }
+.club-grid {
+  max-width: 1100px;               /* slightly narrower */
+  margin: auto;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);  /* FORCE 3 */
+  gap: 28px;
 }
 
 @media (max-width: 600px) {
