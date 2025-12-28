@@ -781,11 +781,24 @@ body {
     <span>Advocacy and policy engagement</span>
   </label>
 
-  <label class="interest-option">
-    <input type="checkbox" id="interestOther" value="Other">
-    <span>Other</span>
-  </label>
+<label class="interest-option">
+  <input
+    type="checkbox"
+    id="interestOther"
+    name="entry.1533398778"
+    value="Other"
+  >
+  <span>Other</span>
+</label>
 
+<input
+  type="text"
+  id="interestOtherText"
+  name="entry.1533398778"
+  placeholder="Please specify"
+  style="display:none; margin-left:34px; margin-top:6px;"
+>
+  
 </div>
   
   <div>
@@ -963,6 +976,20 @@ document.getElementById("rsvpForm").addEventListener("submit", function () {
   hidden.value = checked.join(", ");
 
   this.appendChild(hidden);
+});
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const otherCheckbox = document.getElementById("interestOther");
+  const otherInput = document.getElementById("interestOtherText");
+
+  if (!otherCheckbox || !otherInput) return;
+
+  otherCheckbox.addEventListener("change", function () {
+    otherInput.style.display = this.checked ? "block" : "none";
+    if (!this.checked) otherInput.value = "";
+  });
 });
 </script>
   
