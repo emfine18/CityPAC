@@ -6,53 +6,6 @@
 <title>The 2026 Midterms & the U.S.–Israel Relationship | CityPAC</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
-
-/* ===== INTEREST CHECKBOX FIX (FINAL) ===== */
-
-.rsvp-interests {
-  margin-top: 30px;
-}
-
-.interest-option {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 18px;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-/* REMOVE GLOBAL INPUT STYLING FROM CHECKBOXES */
-#rsvpForm input[type="checkbox"] {
-  all: unset;                 /* 🔥 nukes the rectangle issue */
-  width: 20px;
-  height: 20px;
-  border: 2px solid #ffffff;
-  border-radius: 6px;         /* same radius as other inputs */
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  position: relative;
-}
-
-/* CHECKMARK */
-#rsvpForm input[type="checkbox"]::after {
-  content: "✓";
-  font-size: 14px;
-  color: #003366;
-  display: none;
-}
-
-/* CHECKED STATE */
-#rsvpForm input[type="checkbox"]:checked {
-  background: #44b6e5;
-  border-color: #44b6e5;
-}
-
-#rsvpForm input[type="checkbox"]:checked::after {
-  display: block;
-}
   
 <style>
 * { box-sizing: border-box; font-family: 'Poppins', sans-serif; }
@@ -575,6 +528,53 @@ body {
 
 .interest-option input[type="checkbox"]:checked::before {
   transform: scale(1);
+}
+
+/* ===== INTEREST CHECKBOX FIX (FINAL) ===== */
+
+.rsvp-interests {
+  margin-top: 30px;
+}
+
+.interest-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* REMOVE GLOBAL INPUT STYLING FROM CHECKBOXES */
+#rsvpForm input[type="checkbox"] {
+  all: unset;                 /* 🔥 nukes the rectangle issue */
+  width: 20px;
+  height: 20px;
+  border: 2px solid #ffffff;
+  border-radius: 6px;         /* same radius as other inputs */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+}
+
+/* CHECKMARK */
+#rsvpForm input[type="checkbox"]::after {
+  content: "✓";
+  font-size: 14px;
+  color: #003366;
+  display: none;
+}
+
+/* CHECKED STATE */
+#rsvpForm input[type="checkbox"]:checked {
+  background: #44b6e5;
+  border-color: #44b6e5;
+}
+
+#rsvpForm input[type="checkbox"]:checked::after {
+  display: block;
 }
   
 </style>
