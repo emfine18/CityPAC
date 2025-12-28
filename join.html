@@ -252,10 +252,6 @@ body {
   justify-content: center;
 }
 
-.club {
-  box-shadow: 0 14px 34px rgba(0,0,0,0.10);
-}
-
   .club:hover {
   transform: translateY(-6px);
   box-shadow: 0 26px 60px rgba(0,0,0,0.18);
@@ -282,6 +278,18 @@ body {
   margin: 0 0 14px; /* ⬅️ LESS SPACE */
 }
 
+.club ul {
+  list-style: none;
+  padding: 0;
+  margin: 12px 0 16px;
+}
+
+.club ul li {
+  margin: 6px 0;
+  padding: 0;
+  line-height: 1.35;
+}
+  
 .club a {
   margin-top: 12px; /* ⬅️ NOT FLOATING */
   background: #003366;
@@ -290,16 +298,6 @@ body {
   border-radius: 10px;
   font-weight: 600;
   text-decoration: none;
-}
-
-/* RESPONSIVE */
-.club-grid {
-  max-width: 1100px;               /* slightly narrower */
-  margin: auto;
-
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);  /* FORCE 3 */
-  gap: 28px;
 }
 
 @media (max-width: 600px) {
@@ -402,9 +400,6 @@ body {
   <h1>Join CityPAC</h1>
   <p>
   Be a force multiplier and become part of Chicago’s next generation of pro-Israel leaders.  </p>
-</section>
-
-  </div>
 </section>
   
 <section class="clubs">
