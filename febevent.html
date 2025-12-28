@@ -943,6 +943,28 @@ document.getElementById("interestOther").addEventListener("change", function () 
     this.checked ? "block" : "none";
 });
 </script>
+
+<script>
+document.getElementById("rsvpForm").addEventListener("submit", function () {
+  // collect all checked interest boxes
+  const checked = Array.from(
+    document.querySelectorAll('input[name="entry.1533398778"]:checked')
+  ).map(cb => cb.value);
+
+  // remove existing ones so we don't double-submit
+  document
+    .querySelectorAll('input[name="entry.1533398778"]')
+    .forEach(el => el.disabled = true);
+
+  // create ONE combined value
+  const hidden = document.createElement("input");
+  hidden.type = "hidden";
+  hidden.name = "entry.1533398778";
+  hidden.value = checked.join(", ");
+
+  this.appendChild(hidden);
+});
+</script>
   
 </body>
 </html>
