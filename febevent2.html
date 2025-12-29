@@ -510,10 +510,60 @@ body {
 /* ================= EVENT DESCRIPTION WIDTH ================= */
 .event-description {
   max-width: 820px;
-  margin: 0 auto 40px;
+  margin: 0 auto 32px;
   padding: 0 24px;
   line-height: 1.55;
   font-size: 17px;
+}
+
+/* ================= EVENT ACTIONS ================= */
+.event-actions {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  max-width: 820px;
+  margin: 0 auto 40px;
+  padding: 0 24px;
+  flex-wrap: wrap;
+}
+
+.action-btn {
+  padding: 12px 24px;
+  border: 2px solid #44b6e5;
+  background: transparent;
+  color: #44b6e5;
+  font-weight: 600;
+  font-size: 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  font-family: 'Poppins', sans-serif;
+}
+
+.action-btn:hover {
+  background: #44b6e5;
+  color: #2f3076;
+}
+
+.contact-btn {
+  border-color: #e04b3f;
+  color: #e04b3f;
+}
+
+.contact-btn:hover {
+  background: #e04b3f;
+  color: #ffffff;
+}
+
+@media (max-width: 600px) {
+  .event-actions {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .action-btn {
+    width: 100%;
+  }
 }
 
 /* ===== INTEREST CHECKBOXES (REAL BOXES) ===== */
@@ -671,7 +721,18 @@ body {
       <br><br>
       Please complete the form below by February 1st to confirm your attendance.
       Location will be shared 24 hours prior. Drinks, hors d'oeuvres, and dessert served.
+      <br><br>
+      Have questions? Reach out to us at <strong>info@citypac.org</strong>
     </p>
+
+    <div class="event-actions">
+      <button class="action-btn contact-btn" onclick="window.location.href='mailto:info@citypac.org?subject=Questions%20About%20The%202026%20Midterms%20Event'">
+        ✉️ Contact with Questions
+      </button>
+      <button class="action-btn share-btn" onclick="shareEvent()">
+        ↗️ Share Event
+      </button>
+    </div>
 
   </div>
 </section>
@@ -912,6 +973,20 @@ document.addEventListener("DOMContentLoaded", function () {
 </script>
 
 <script>
+function shareEvent() {
+  if (navigator.share) {
+    navigator.share({
+      title: "The 2026 Midterms & the U.S.–Israel Relationship",
+      text: "Join CityPAC on February 17th for a discussion on The 2026 Midterms and the U.S.–Israel Relationship. Connect with young, pro-Israel professionals!",
+      url: window.location.href
+    }).catch(err => console.log('Share cancelled:', err));
+  } else {
+    alert("Share is not supported on your browser. Try copying the URL instead!");
+  }
+}
+</script>
+
+<script>
 document.addEventListener("DOMContentLoaded", function () {
   const form = document.getElementById("rsvpForm");
   const button = form.querySelector("button[type='submit']");
@@ -996,4 +1071,40 @@ document.getElementById("rsvpForm").addEventListener("submit", function () {
   ).map(cb => cb.value);
 
   const otherCheckbox = document.getElementById("interestOther");
-  const other
+  const otherText = document.getElementById("interestOtherText");
+
+  if (otherCheckbox.checked && otherText.value.trim() !== "") {
+    checked.push("Other: " + otherText.value.trim());
+  }
+
+  // disable original inputs so Google Form doesn't double-read
+  form
+    .querySelectorAll('input[name="entry.1533398778"]')
+    .forEach(el => el.disabled = true);
+
+  // submit ONE combined value
+  const hidden = document.createElement("input");
+  hidden.type = "hidden";
+  hidden.name = "entry.1533398778";
+  hidden.value = checked.join(", ");
+
+  form.appendChild(hidden);
+});
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const otherCheckbox = document.getElementById("interestOther");
+  const otherInput = document.getElementById("interestOtherText");
+
+  if (!otherCheckbox || !otherInput) return;
+
+  otherCheckbox.addEventListener("change", function () {
+    otherInput.style.display = this.checked ? "block" : "none";
+    if (!this.checked) otherInput.value = "";
+  });
+});
+</script>
+  
+</body>
+</html>
