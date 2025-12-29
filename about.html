@@ -175,6 +175,7 @@ body {
 }
 
 .history-stats {
+  margin-top: 36px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 36px;
@@ -209,6 +210,54 @@ body {
   font-size: 20px;
   font-weight: 600;
   color: #003366;
+}
+
+/* ================= ABOUT CARDS (MATCH COMMITTEE STYLE) ================= */
+
+.about-section {
+  max-width: 1100px;
+  margin: 70px auto;
+  padding: 0 24px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+}
+
+.about-block {
+  background: #ffffff;
+  border-radius: 26px;
+  padding: 48px 52px;
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.08);
+  margin-bottom: 0; /* override old spacing */
+}
+
+.about-block h2 {
+  color: #003366;
+  text-transform: none;
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 18px;
+}
+
+.about-block p {
+  font-size: 18px;
+  line-height: 1.7;
+  color: #111;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .about-block {
+    padding: 34px 28px;
+  }
+
+  .about-block h2 {
+    font-size: 26px;
+  }
+
+  .about-block p {
+    font-size: 17px;
+  }
 }
   
 /* ================= FOOTER (UNCHANGED) ================= */
@@ -315,14 +364,31 @@ body {
 
 <section class="about-section">
 
-  <div class="about-block">
-    <h2>Our Mission</h2>
-    <p>
-      CityPAC works to educate, engage, and empower the Chicago Jewish community
-      to participate directly in the political process in support of a strong,
-      enduring U.S.–Israel relationship.
-    </p>
+<div class="about-block">
+  <h2>Our History</h2>
+  <p>
+    Founded in 1984, CityPAC has contributed more than $1.4 million to over
+    400 pro-Israel Congressional candidates from both political parties
+    across all 50 states.
+  </p>
+
+  <div class="history-stats">
+    <div class="history-card">
+      <div class="history-number">$1.4M+</div>
+      <div class="history-label">Contributed</div>
+    </div>
+
+    <div class="history-card">
+      <div class="history-number">400+</div>
+      <div class="history-label">Candidates Supported</div>
+    </div>
+
+    <div class="history-card">
+      <div class="history-number">50</div>
+      <div class="history-label">States Reached</div>
+    </div>
   </div>
+</div>
 
   <div class="about-block">
     <h2>Who We Are</h2>
