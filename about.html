@@ -212,30 +212,37 @@ body {
 
 /* CARD */
 .history-card {
-  border: 3px solid #6bb3e6;
   border-radius: 28px;
   padding: 56px 28px;
   text-align: center;
-
-  /* MAKES THEM TALLER THAN WIDE */
   min-height: 260px;
 
   display: flex;
   flex-direction: column;
   justify-content: center;
+
+  background: linear-gradient(
+    135deg,
+    #e8f3fb 0%,
+    #cfe8f8 50%,
+    #b6dcf3 100%
+  );
+
+  border: 1px solid #9ccff0;
+  box-shadow: 0 14px 30px rgba(0, 51, 102, 0.12);
 }
 
 .history-number {
   font-size: 52px;
   font-weight: 800;
-  color: #102e5f;
+  color: #003366;
   margin-bottom: 12px;
 }
 
 .history-label {
   font-size: 20px;
   font-weight: 600;
-  color: #000;
+  color: #003366;
 }
 
 /* RESPONSIVE */
@@ -247,6 +254,36 @@ body {
   .history-card {
     min-height: 220px;
   }
+}
+
+  /* === MATCH OUR HISTORY TO ABOUT STYLE === */
+
+.history {
+  padding: 0;
+  background: transparent;
+}
+
+.history-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.history-eyebrow {
+  color: #44b6e5;
+  text-transform: uppercase;
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: normal;
+  margin-bottom: 18px;
+}
+
+.history-text {
+  font-size: 16px;
+  line-height: 1.75;
+  font-weight: 400;
+  color: #111;
+  max-width: none;
+  margin-bottom: 48px;
 }
   
 /* ================= FOOTER (UNCHANGED) ================= */
