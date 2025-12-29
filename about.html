@@ -149,6 +149,7 @@ body {
   font-size: 18px;
   line-height: 1.6;
 }
+  }
 
 /* ================= ABOUT CONTENT (CARDS) ================= */
 
@@ -186,6 +187,58 @@ body {
   line-height: 1.7;
   color: #111;
 }  
+
+  /* ================= IMPACT STATS (INSIDE 4TH CARD) ================= */
+
+.impact-stats {
+  margin-top: 32px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.impact-card {
+  border-radius: 22px;
+  padding: 32px 18px;
+  text-align: center;
+
+  background: linear-gradient(
+    135deg,
+    #d6ebfb 0%,
+    #bcdff7 50%,
+    #9fd1f2 100%
+  );
+
+  border: 1px solid #7bbbe6;
+  box-shadow: 0 12px 26px rgba(0, 51, 102, 0.18);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.impact-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 22px 44px rgba(0, 51, 102, 0.28);
+}
+
+.impact-number {
+  font-size: 32px;
+  font-weight: 800;
+  color: #003366;
+  margin-bottom: 8px;
+}
+
+.impact-label {
+  font-size: 15px;
+  font-weight: 600;
+  color: #003366;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .impact-stats {
+    grid-template-columns: 1fr;
+  }
+}
+  
 /* ================= FOOTER (UNCHANGED) ================= */
 .site-footer {
   background: #003366;
@@ -323,9 +376,23 @@ body {
 
 <div class="about-block">
   <h2>Our Impact & Successes</h2>
-  <p><strong>$1.4M+</strong> contributed to pro-Israel candidates nationwide</p>
-  <p><strong>400+</strong> candidates supported across both parties</p>
-  <p><strong>50</strong> states reached</p>
+
+  <div class="impact-stats">
+    <div class="impact-card">
+      <div class="impact-number">$1.4M+</div>
+      <div class="impact-label">Contributed Nationwide</div>
+    </div>
+
+    <div class="impact-card">
+      <div class="impact-number">400+</div>
+      <div class="impact-label">Candidates Supported</div>
+    </div>
+
+    <div class="impact-card">
+      <div class="impact-number">50</div>
+      <div class="impact-label">States Reached</div>
+    </div>
+  </div>
 </div>
   
 </section>
