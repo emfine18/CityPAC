@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The 2026 Midterms & the U.S.–Israel Relationship | CityPAC</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+  
+<style>
+* { box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+
+body {
+  margin: 0;
+  background: #003366;
+  color: #ffffff;
+}
+
+/* ================= HEADER ================= */
+.site-header {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 20;
+}
+
+.header-inner {
+  max-width: 1200px;
+  margin: auto;
+  padding: 22px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-logo img {
+  height: 56px;
+}
+
+/* ================= HEADER MENU ================= */
+
+.header-menu {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+/* ===== DESKTOP MENU LINKS ===== */
+.header-menu a {
+  color: #ffffff;               /* WHITE on desktop */
+  text-decoration: none;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 15px;
+  position: relative;
+  padding-bottom: 6px;
+  display: flex;
+  align-items: center;
+}
+
+/* WHITE underline on desktop */
+.header-menu a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 3px;
+  background: #ffffff;
+  transition: width 0.25s ease;
+}
+
+.header-menu a:hover::after {
+  width: 100%;
+}
+
+/* ===== DONATE BUTTON ===== */
+.header-menu .donate-btn {
+  background: #e04b3f;
+  color: #ffffff !important;    /* ALWAYS white */
+  padding: 10px 18px;
+  border-radius: 10px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.header-menu .donate-btn::after {
+  display: none;                /* no underline */
+}
+
+.header-menu .donate-btn:hover {
+  background: #c93c32;
+}
+
+/* ===== HAMBURGER ICON ===== */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.hamburger span {
+  width: 26px;
+  height: 3px;
+  background: #ffffff;          /* WHITE lines */
+}
+
+/* ================= MOBILE MENU ================= */
+@media (max-width: 900px) {
+  .hamburger {
+    display: flex;
+  }
+
+  .header-menu {
+    position: absolute;
+    top: 78px;
+    right: 24px;
+    background: #ffffff;
+    padding: 18px 22px;
+    border-radius: 8px;
+    display: none;
+    flex-direction: column;
+    gap: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    align-items: flex-start;
+  }
+
+  .header-menu.show {
+    display: flex;
+  }
+
+  /* ===== HAMBURGER MENU LINKS ===== */
+  .header-menu a {
+    color: #44b6e5;             /* BLUE in hamburger */
+  }
+
+  .header-menu a::after {
+    background: #44b6e5;        /* BLUE underline */
+  }
+
+  /* KEEP DONATE BUTTON WHITE TEXT */
+  .header-menu .donate-btn {
+    color: #ffffff !important;
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-size: 15px;
+  }
+}
+  
+/* ================= HERO ================= */
+.hero {
+  position: relative;
+  z-index: 1;
+  height: 70vh;
+  background: url("images/eventhero.png") center top / cover no-repeat;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 30%;
+  z-index: 2;   /* gradient stays behind */
+  background: linear-gradient(
+    to bottom,
+    rgba(47,48,118,0) 0%,
+    rgba(47,48,118,0.6) 60%,
+    #2f3076 100%
+  );
+}
+  
+/* ================= EVENT INFO ================= */
+.event-info {
+  position: relative;
+  z-index: 5;          /* <-- THIS IS #4 */
+  background: #2f3076;
+  padding-top: 0;
+  padding-bottom: 60px;
+}
+
+.event-info-inner {
+  max-width: 1100px;
+  margin: auto;
+  text-align: center;
+  position: relative;
+  top: -120px;   /* ← adjust this number */
+}
+
+.event-eyebrow {
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 1px;
+  opacity: 0.9;
+  margin-bottom: 4px;
+}
+  
+.event-title {
+  font-size: clamp(40px, 5vw, 64px);
+  font-weight: 700;
+  line-height: 1.1;
+  margin-top: 0;        /* 🔥 remove default h1 gap */
+  margin-bottom: 14px;
+}
+
+.event-subtitle {
+  font-size: 15px;
+  letter-spacing: 1px;
+  margin-bottom: 48px;
+  opacity: 0.95;
+}
+
+/* ================= SPEAKERS ================= */
+
+.speakers {
+  display: flex;
+  justify-content: center;
+  gap: 64px;
+  margin: 40px 0 48px;
+  flex-wrap: wrap;
+}
+
+.speaker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.speaker-circle {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  background: #c98a3a;
+  margin-bottom: 12px;
+}
+
+.speaker-name {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.speaker-role {
+  font-size: 12px;
+  opacity: 0.85;
+}
+
+/* ===== FINAL INTEREST CHECKBOX STYLE ===== */
+
+.interest-option {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 18px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.interest-option input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 32px;               /* box size */
+  height: 32px;
+  border: 2px solid #ffffff;
+  border-radius: 10px;
+  background: transparent;
+  display: flex;
+  align-items: center;       /* center ✓ vertically */
+  justify-content: center;   /* center ✓ horizontally */
+  cursor: pointer;
+}
+
+.interest-option input[type="checkbox"]::after {
+  content: "✓";
+  font-size: 30px;           /* check size */
+  font-weight: 800;
+  line-height: 1;
+  color: #ffffff;
+  display: none;
+}
+
+.interest-option input[type="checkbox"]:checked {
+  background: #44b6e5;
+  border-color: #44b6e5;
+}
+
+.interest-option input[type="checkbox"]:checked::after {
+  display: block;
+}  
+
+.site-footer {
+  background: #003366;
+  color: #ffffff;
+  font-size: 13px;
+}
+
+.footer-top-line {
+  height: 4px;
+  background: #44b6e5;
+}
+
+.footer-inner {
+  max-width: 1200px;
+  margin: auto;
+  padding: 32px 24px;
+  text-align: center;
+}
+
+.footer-disclaimer {
+  border: 1px solid #ffffff;
+  border-radius: 6px;
+  padding: 14px 18px;
+  margin-bottom: 22px;
+  line-height: 1.5;
+}
+
+.footer-logo img {
+  height: 48px;
+  margin-bottom: 18px;
+}
+
+.footer-menu {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+
+.footer-menu a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 13px;
+  position: relative;
+  padding-bottom: 4px;
+}
+
+.footer-menu a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background: #44b6e5;
+  transition: width 0.25s ease;
+}
+
+.footer-menu a:hover::after {
+  width: 100%;
+}
+
+.footer-copy {
+  font-size: 12px;
+  opacity: 0.85;
+}  
+
+  /* ================= RSVP (CLEAN, WHITE, DROPDOWNS) ================= */
+
+.rsvp {
+  background: #2f3072;
+  padding-bottom: 60px;
+}
+
+@media (max-width: 600px) {
+  .rsvp-title {
+    font-size: 26px;
+  }
+}
+  
+.rsvp-inner {
+  max-width: 900px;
+  margin: auto;
+  padding: 40px 24px 0;
+}
+
+.rsvp-title {
+  text-align: center;
+  font-size: 34px;
+  font-weight: 700;
+  margin-bottom: 40px;
+}
+  
+.rsvp-other-input {
+  width: 100%;
+  margin-top: 10px;
+}
+  
+#rsvpForm {
+  display: grid;
+  gap: 18px;
+}
+
+/* RSVP GRID ROWS */
+.rsvp-row {
+  display: grid;
+  gap: 16px;
+}
+
+.rsvp-row.full {
+  grid-template-columns: 1fr;
+}
+
+.rsvp-row.two {
+  grid-template-columns: 1fr 1fr;
+}
+
+.rsvp-row.three {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.rsvp::before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 4px;          /* thickness of the line */
+  background: #44b6e5;  /* CityPAC light blue */
+  margin-bottom: 40px; /* space before the title */
+}
+  
+/* INPUTS + SELECTS */
+#rsvpForm input,
+#rsvpForm select,
+#rsvpForm textarea {
+  width: 100%;
+  height: 52px;
+  padding: 0 14px;
+  background: transparent;
+  border: 1.5px solid rgba(255,255,255,0.9);
+  border-radius: 6px;
+  font-size: 15px;
+  color: #ffffff;
+}
+
+/* PLACEHOLDERS */
+#rsvpForm input::placeholder,
+#rsvpForm textarea::placeholder {
+  color: rgba(255,255,255,0.7);
+}
+
+#rsvpForm input::-webkit-input-placeholder,
+#rsvpForm textarea::-webkit-input-placeholder {
+  color: rgba(255,255,255,0.7);
+}
+  
+/* TEXTAREA */
+#rsvpForm textarea {
+  height: 120px;
+  padding-top: 12px;
+  resize: vertical;
+}
+
+/* SELECT ARROW */
+#rsvpForm select {
+  appearance: none;
+  background-image:
+    linear-gradient(45deg, transparent 50%, white 50%),
+    linear-gradient(135deg, white 50%, transparent 50%);
+  background-position:
+    calc(100% - 18px) 22px,
+    calc(100% - 12px) 22px;
+  background-size: 6px 6px;
+  background-repeat: no-repeat;
+}
+
+/* BUTTON */
+#rsvpForm button {
+  margin-top: 20px;
+  height: 54px;
+  background: #44b6e5;   /* light blue */
+  color: #ffffff;        /* white text */
+  border: none;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+  #rsvpForm button:hover {
+  background: #2fa6d8;
+}
+  
+  #rsvpForm select {
+  color: #ffffff;
+}
+
+#rsvpForm select option {
+  color: #000000; /* dropdown list itself must be dark to stay readable */
+  background: #ffffff;
+}
+
+  
+#rsvpForm button:disabled {
+  opacity: 0.7;
+}
+
+/* MOBILE */
+@media (max-width: 800px) {
+  /* ONLY full-width rows should stack */
+  .rsvp-row.full {
+    grid-template-columns: 1fr;
+  }
+}
+  
+/* ================= EVENT DESCRIPTION WIDTH ================= */
+.event-description {
+  max-width: 820px;
+  margin: 0 auto 40px;
+  padding: 0 24px;
+  line-height: 1.55;
+  font-size: 17px;
+}
+
+/* ===== INTEREST CHECKBOXES (REAL BOXES) ===== */
+.rsvp-interests {
+  margin-top: 20px;
+}
+
+.interest-option {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 16px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* hide native checkbox */
+.interest-option input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #ffffff;
+  border-radius: 6px;
+  background: transparent;
+  display: grid;
+  place-content: center;
+  cursor: pointer;
+}
+
+/* ===== INTEREST CHECKBOX FIX (FINAL) ===== */
+
+.rsvp-interests {
+  margin-top: 30px;
+}
+
+.interest-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* REMOVE GLOBAL INPUT STYLING FROM CHECKBOXES */
+#rsvpForm input[type="checkbox"] {
+  all: unset;                 /* 🔥 nukes the rectangle issue */
+  width: 20px;
+  height: 20px;
+  border: 2px solid #ffffff;
+  border-radius: 6px;         /* same radius as other inputs */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+}
+
+/* FINAL checkbox style — SINGLE centered check */
+#rsvpForm input[type="checkbox"] {
+  all: unset;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #ffffff;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background: transparent;
+}
+
+#rsvpForm input[type="checkbox"]::after {
+  content: "✓";
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1;
+  color: #ffffff;
+  display: none;
+}
+
+#rsvpForm input[type="checkbox"]:checked {
+  background: #44b6e5;
+  border-color: #44b6e5;
+}
+
+#rsvpForm input[type="checkbox"]:checked::after {
+  display: block;
+}
+  
+</style>
+</head>
+<body>
+
+<body>
+  
+<header class="site-header">
+  <div class="header-inner">
+    <a href="home.html" class="header-logo">
+      <img src="images/citypaclogo.png" alt="CityPAC">
+    </a>
+
+    <nav class="header-menu" id="menu">
+      <a href="home.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="join.html">Join</a>
+      <a href="contact.html">Contact</a>
+      <a href="donate.html" class="donate-btn">Donate</a>
+    </nav>
+
+    <div class="hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</header>
+  
+<section class="hero"></section>
+
+<section class="event-info">
+  <div class="event-info-inner">
+
+    <div class="event-eyebrow">CityPAC Presents</div>
+
+    <h1 class="event-title">
+      THE 2026 MIDTERMS & THE<br>
+      U.S.–ISRAEL RELATIONSHIP
+    </h1>
+
+    <div class="event-subtitle">
+      THE LOOP, CHICAGO • FEBRUARY 17, 2026
+    </div>
+
+    <div class="speakers">
+  <div class="speaker">
+    <div class="speaker-circle"></div>
+    <div class="speaker-name">Andy Hochberg</div>
+    <div class="speaker-role">Founder & CEO, Next Realty</div>
+  </div>
+
+  <div class="speaker">
+    <div class="speaker-circle"></div>
+    <div class="speaker-name">Emily Pevnick</div>
+    <div class="speaker-role">Board Member, CityPAC</div>
+  </div>
+</div>
+  
+
+    <p class="event-description">
+      You are invited to join CityPAC on February 17th at 6:30 PM for a timely discussion on
+      <strong>The 2026 Midterms and the U.S.–Israel Relationship</strong>.
+      Connect with fellow young, pro-Israel professionals for an in-depth conversation on
+      the future of bipartisan support for the U.S.–Israel relationship, with a focus on
+      the Illinois political landscape.
+      <br><br>
+      Please complete the form below by February 1st to confirm your attendance.
+      Location will be shared 24 hours prior. Drinks, hors d'oeuvres, and dessert served.
+    </p>
+
+  </div>
+</section>
+
+<section class="rsvp">
+  <div class="rsvp-inner">
+    <h2 class="rsvp-title">Reserve Your Spot Today</h2>
+
+<form id="rsvpForm">
+
+  <div>
+    <div class="rsvp-label">
+      Will you be attending The 2026 Midterms and the U.S.–Israel Relationship?
+    </div>
+    <select name="entry.1418552658" required>
+      <option value="">Select one</option>
+      <option>Yes</option>
+      <option>No</option>
+    </select>
+  </div>
+
+  <div>
+    <div class="rsvp-label">How did you hear about this event?</div>
+    <input name="entry.1203796393" required>
+  </div>
+
+  <div class="rsvp-row three">
+    <div>
+      <div class="rsvp-label">First name</div>
+      <input name="entry.276624258" required>
+    </div>
+    <div>
+      <div class="rsvp-label">Last name</div>
+      <input name="entry.379031892" required>
+    </div>
+    <div>
+      <div class="rsvp-label">Age</div>
+      <input name="entry.896738026" required>
+    </div>
+  </div>
+
+  <div class="rsvp-row two">
+    <div>
+      <div class="rsvp-label">Phone number</div>
+      <input name="entry.160040439" required>
+    </div>
+    <div>
+      <div class="rsvp-label">Email</div>
+      <input type="email" name="entry.1580435886" required>
+    </div>
+  </div>
+
+  <div class="rsvp-row two">
+    <div>
+      <div class="rsvp-label">Address</div>
+      <input name="entry.64126206" required>
+    </div>
+    <div>
+      <div class="rsvp-label">Zip Code</div>
+      <input name="entry.1964079643" required>
+    </div>
+  </div>
+
+  <div class="rsvp-row two">
+    <div>
+      <div class="rsvp-label">Current Employer</div>
+      <input name="entry.656163493" required>
+    </div>
+    <div>
+      <div class="rsvp-label">Job Title</div>
+      <input name="entry.1690518663" required>
+    </div>
+  </div>
+
+  <div>
+    <div class="rsvp-label">Industry</div>
+    <select name="entry.1087078679" required>
+      <option value="">Select industry</option>
+      <option>Finance / Banking / Investment Management / Credit / Private Equity</option>
+      <option>Real Estate / Development</option>
+      <option>Law / Legal Services</option>
+      <option>Consulting</option>
+      <option>Technology / Software / IT</option>
+      <option>Healthcare / Life Sciences</option>
+      <option>Government / Public Policy</option>
+      <option>Political / Advocacy / Nonprofit</option>
+      <option>Marketing / Communications / Public Relations</option>
+      <option>Media / Journalism</option>
+      <option>Education</option>
+      <option>Student</option>
+      <option>Other</option>
+    </select>
+  </div>
+
+  <div>
+    <div class="rsvp-label">
+      Would you like to join one of the following professional groups?
+    </div>
+    <select name="entry.493137383">
+      <option value="">Optional</option>
+      <option>Young Professionals in Finance</option>
+      <option>Young Professionals in Real Estate</option>
+      <option>Young Professionals in Law</option>
+      <option>Young Professionals in Consulting</option>
+      <option>Young Professionals in Healthcare</option>
+    </select>
+  </div>
+
+<div class="rsvp-interests">
+  <div class="rsvp-label">
+    What interests you about this event or future programs?
+  </div>
+
+  <label class="interest-option">
+    <input type="checkbox" name="entry.1533398778" value="U.S.–Israel policy discussion">
+    <span>U.S.–Israel policy discussion</span>
+  </label>
+
+  <label class="interest-option">
+    <input type="checkbox" name="entry.1533398778" value="Networking with other professionals">
+    <span>Networking with other professionals</span>
+  </label>
+
+  <label class="interest-option">
+    <input type="checkbox" name="entry.1533398778" value="Learning more about CityPAC">
+    <span>Learning more about CityPAC</span>
+  </label>
+
+  <label class="interest-option">
+    <input type="checkbox" name="entry.1533398778" value="Future leadership opportunities">
+    <span>Future leadership opportunities</span>
+  </label>
+
+  <label class="interest-option">
+    <input type="checkbox" name="entry.1533398778" value="Advocacy and policy engagement">
+    <span>Advocacy and policy engagement</span>
+  </label>
+
+<label class="interest-option">
+  <input
+    type="checkbox"
+    id="interestOther"
+    name="entry.1533398778"
+    value="Other"
+  >
+  <span>Other</span>
+</label>
+
+<input
+  type="text"
+  id="interestOtherText"
+  name="entry.1533398778"
+  placeholder="Please specify"
+  class="rsvp-other-input"
+  style="display:none;"
+>
+  
+</div>
+  
+  <div>
+    <div class="rsvp-label">
+      Do you currently have, or have you previously had, any involvement with Jewish and/or pro-Israel organizations?
+    </div>
+    <select name="entry.991937041" required>
+      <option value="">Select one</option>
+      <option>Yes</option>
+      <option>No</option>
+    </select>
+  </div>
+
+  <div>
+    <div class="rsvp-label">
+      Which Jewish and/or pro-Israel organizations?
+    </div>
+    <textarea name="entry.1041961967"></textarea>
+  </div>
+
+  <div>
+    <div class="rsvp-label">
+      Do you have any questions for the CityPAC Board?
+    </div>
+    <textarea name="entry.25377518"></textarea>
+  </div>
+
+  <button type="submit">Submit</button>
+</form>
+    
+<div id="rsvpSuccess" style="
+  display:none;
+  margin-top:20px;
+  font-weight:600;
+  color:#ffffff;
+  text-align:center;
+">
+  Thank you for your RSVP! Event location and check in details will be shared 24 hours before the event begins.
+</div>
+
+  </div>
+</section>
+  
+<footer class="site-footer">
+  <div class="footer-top-line"></div>
+  <div class="footer-inner">
+    <div class="footer-disclaimer">
+      Paid for by CityPAC and not authorized by any candidate or candidate committee.
+      Contributions to CityPAC are not deductible for federal income tax purposes.
+    </div>
+
+    <div class="footer-logo">
+      <img src="images/citypaclogo.png" alt="CityPAC Logo">
+    </div>
+
+    <nav class="footer-menu">
+      <a href="home.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="join.html">Join</a>
+      <a href="contact.html">Contact</a>
+      <a href="donate.html">Donate</a>
+    </nav>
+
+    <div class="footer-copy">
+      © 2025 CityPAC. All rights reserved.
+    </div>
+  </div>
+</footer>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const hamburger = document.getElementById("hamburger");
+  const menu = document.getElementById("menu");
+
+  if (!hamburger || !menu) return;
+
+  hamburger.addEventListener("click", function () {
+    menu.classList.toggle("show");
+  });
+});
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.getElementById("rsvpForm");
+  const button = form.querySelector("button[type='submit']");
+  const success = document.getElementById("rsvpSuccess");
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    button.disabled = true;
+    button.innerText = "Submitting…";
+
+fetch(
+  "https://script.google.com/macros/s/AKfycbxpltPUqdjcgKDbuEzGTPKW1-fwU-1PprbAIK_EQYlcKRoUAnqVhgJIa9JfNhdiRRlF/exec",
+  {
+    method: "POST",
+    mode: "no-cors",
+    body: new URLSearchParams(new FormData(form))
+  }
+).then(() => {
+  button.innerText = "Submitted ✓";
+  success.style.display = "block";
+  launchEmojiConfetti(button);
+  form.reset();
+});
+  });
+});
+</script>
+  
+  <script>
+function launchEmojiConfetti(button) {
+  const rect = button.getBoundingClientRect();
+  const emojis = ["🎉", "✨", "🇺🇸", "🇮🇱"];
+
+  const startX = rect.left + rect.width / 2;
+  const startY = rect.top + rect.height / 2;
+
+  for (let i = 0; i < 300; i++) {
+    const emoji = document.createElement("span");
+    emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+
+    emoji.style.position = "fixed";
+    emoji.style.left = startX + "px";
+    emoji.style.top = startY + "px";
+    emoji.style.fontSize = "26px";
+    emoji.style.pointerEvents = "none";
+    emoji.style.zIndex = "999999";
+
+    document.body.appendChild(emoji);
+
+    const angle = Math.random() * Math.PI * 2;
+    const distance = 350 + Math.random() * 400;
+
+    emoji.animate(
+      [
+        { transform: "translate(0,0)", opacity: 1 },
+        {
+          transform: `translate(${Math.cos(angle)*distance}px, ${Math.sin(angle)*distance}px) rotate(${Math.random()*720}deg)`,
+          opacity: 0
+        }
+      ],
+      { duration: 4500, easing: "ease-out" }
+    );
+
+    setTimeout(() => emoji.remove(), 4500);
+  }
+}
+</script>
+
+<script>
+document.getElementById("interestOther").addEventListener("change", function () {
+  document.getElementById("interestOtherText").style.display =
+    this.checked ? "block" : "none";
+});
+</script>
+
+<script>
+document.getElementById("rsvpForm").addEventListener("submit", function () {
+  const form = this;
+
+  const checked = Array.from(
+    form.querySelectorAll('input[name="entry.1533398778"]:checked')
+  ).map(cb => cb.value);
+
+  const otherCheckbox = document.getElementById("interestOther");
+  const other
