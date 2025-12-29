@@ -191,15 +191,15 @@ body {
   /* ================= IMPACT STATS (INSIDE 4TH CARD) ================= */
 
 .impact-stats {
-  margin-top: 32px;
+  max-width: 900px;
+  margin: 32px auto 0;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+  grid-template-columns: repeat(3, minmax(220px, 1fr));  gap: 24px;
 }
 
 .impact-card {
   border-radius: 22px;
-  padding: 32px 18px;
+  padding: 28px 18px;
   text-align: center;
 
   background: linear-gradient(
