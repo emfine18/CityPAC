@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Illinois Jewish Voter Portal</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>Vote Your Values - Chicago Jewish Voters</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/iframe-resizer/3.5.3/iframeResizer.min.js"></script>
     <style>
         * {
             margin: 0;
@@ -15,71 +15,60 @@
 
         body {
             font-family: 'Poppins', sans-serif;
-            background: #f8f9fa;
-            color: #333;
+            background: #f5f7fa;
+            color: #2c3e50;
         }
 
-        /* Header */
         .header {
-            background: linear-gradient(135deg, #003f87 0%, #0052b4 100%);
+            background: linear-gradient(135deg, rgba(0, 61, 122, 0.85) 0%, rgba(80, 140, 200, 0.85) 100%), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 400"><defs><linearGradient id="skyGrad" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:%235a9fd4;stop-opacity:1" /><stop offset="50%" style="stop-color:%232b5c8a;stop-opacity:1" /><stop offset="100%" style="stop-color:%23003d7a;stop-opacity:1" /></linearGradient></defs><rect width="1600" height="400" fill="url(%23skyGrad)"/></svg>') center/cover;
+            background-attachment: fixed;
             color: white;
-            padding: 40px 20px;
+            padding: 0;
             text-align: center;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            position: relative;
+            min-height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .header-banner {
+            z-index: 2;
+            position: relative;
         }
 
         .header h1 {
-            font-size: 2.8em;
-            font-weight: 700;
-            margin-bottom: 10px;
-        }
-
-        .header p {
-            font-size: 1.2em;
-            opacity: 0.95;
-            font-weight: 400;
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            color: white;
-            padding: 80px 20px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="%23ffffff" stroke-width="0.5" opacity="0.1"/></pattern></defs><rect width="1200" height="600" fill="url(%23grid)"/></svg>');
-            opacity: 0.5;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            max-width: 900px;
+            font-size: 3.2em;
+            font-weight: 800;
+            margin: 0;
+            letter-spacing: 2px;
+            line-height: 1.2;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+            max-width: 90%;
             margin: 0 auto;
         }
 
+        .hero {
+            background: linear-gradient(135deg, #1a2a4e 0%, #0f1a2e 100%);
+            color: white;
+            padding: 70px 20px;
+            text-align: center;
+        }
+
         .hero h2 {
-            font-size: 3.2em;
+            font-size: 2.8em;
             font-weight: 700;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            margin-bottom: 12px;
+            line-height: 1.2;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .hero p {
-            font-size: 1.4em;
-            margin-bottom: 30px;
-            opacity: 0.95;
-            font-weight: 400;
+            font-size: 1.2em;
+            color: #64b5f6;
+            font-weight: 500;
         }
 
         .container {
@@ -88,317 +77,301 @@
             padding: 0 20px;
         }
 
-        /* Search Section */
         .search-section {
             background: white;
-            border-radius: 12px;
-            padding: 50px 40px;
-            margin: -60px auto 60px;
+            border-radius: 10px;
+            padding: 35px;
+            margin: -50px auto 60px;
             position: relative;
             z-index: 10;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-            max-width: 900px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+            max-width: 1100px;
         }
 
         .search-title {
-            font-size: 1.8em;
-            color: #003f87;
+            font-size: 1.5em;
+            color: #003d7a;
             margin-bottom: 10px;
             font-weight: 700;
         }
 
         .search-subtitle {
             color: #666;
-            margin-bottom: 30px;
-            font-size: 1.05em;
+            margin-bottom: 25px;
+            font-size: 0.95em;
         }
 
         .search-form {
             display: flex;
             gap: 12px;
-            flex-wrap: wrap;
+            align-items: flex-end;
         }
 
         .input-group {
             flex: 1;
-            min-width: 250px;
+            min-width: 300px;
             display: flex;
             flex-direction: column;
         }
 
         label {
             font-weight: 600;
-            color: #003f87;
+            color: #2c3e50;
             margin-bottom: 8px;
-            font-size: 0.95em;
+            font-size: 0.9em;
         }
 
         input[type="text"] {
-            padding: 14px 16px;
-            border: 2px solid #ddd;
+            padding: 12px 14px;
+            border: 1.5px solid #ddd;
             border-radius: 8px;
-            font-size: 1em;
+            font-size: 0.95em;
             font-family: 'Poppins', sans-serif;
+            background: white;
             transition: all 0.3s;
         }
 
         input[type="text"]:focus {
             outline: none;
-            border-color: #c41e3a;
-            box-shadow: 0 0 0 3px rgba(196, 30, 58, 0.2);
-        }
-
-        input::placeholder {
-            color: #999;
+            border-color: #003d7a;
+            box-shadow: 0 0 0 3px rgba(0, 61, 122, 0.1);
         }
 
         .search-btn {
-            background: linear-gradient(135deg, #c41e3a 0%, #a01830 100%);
+            background: linear-gradient(135deg, #d41c22 0%, #b81419 100%);
             color: white;
             border: none;
-            padding: 14px 40px;
+            padding: 12px 32px;
             border-radius: 8px;
             font-weight: 700;
             cursor: pointer;
-            font-size: 1em;
+            font-size: 0.95em;
             font-family: 'Poppins', sans-serif;
             transition: all 0.3s;
-            align-self: flex-end;
-            min-width: 140px;
+            white-space: nowrap;
+            height: 48px;
         }
 
         .search-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(196, 30, 58, 0.3);
+            box-shadow: 0 6px 20px rgba(212, 28, 34, 0.35);
         }
 
-        /* Info Cards Section */
         .info-section {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin: 60px auto;
-            max-width: 1200px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin: 70px auto;
+            max-width: 1100px;
         }
 
         .info-card {
             background: white;
-            border-radius: 12px;
-            padding: 30px;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
-            transition: all 0.3s;
-            border-left: 5px solid #c41e3a;
-        }
-
-        .info-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 35px rgba(0,0,0,0.15);
+            border-radius: 10px;
+            padding: 28px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            border-top: 5px solid #003d7a;
         }
 
         .info-card h3 {
-            color: #003f87;
-            margin-bottom: 15px;
-            font-size: 1.3em;
+            color: #003d7a;
+            margin-bottom: 10px;
+            font-size: 1.2em;
             font-weight: 700;
         }
 
         .info-card p {
             color: #666;
-            line-height: 1.6;
-            margin-bottom: 15px;
-            font-size: 0.95em;
+            margin-bottom: 12px;
+            font-size: 0.9em;
+            line-height: 1.5;
         }
 
         .info-card-content {
-            background: #f8f9fa;
-            padding: 15px;
+            background: #f8fafb;
+            padding: 14px;
             border-radius: 8px;
-            font-size: 0.95em;
+            font-size: 0.85em;
+            line-height: 1.8;
         }
 
-        .info-card-link {
-            display: inline-block;
-            color: #003f87;
+        .info-card-content a {
+            color: #003d7a;
             text-decoration: none;
             font-weight: 600;
-            margin-top: 10px;
-            padding: 8px 16px;
-            background: #f0f0f0;
-            border-radius: 6px;
-            transition: all 0.3s;
+            display: block;
+            margin-top: 6px;
+        }
+
+        .info-card-content a:hover {
+            text-decoration: underline;
+        }
+
+        /* Vote.org Tools Section */
+        .voter-tools-section {
+            background: white;
+            border-radius: 10px;
+            padding: 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            margin-bottom: 70px;
+            max-width: 1100px;
+            margin-left: auto;
+            margin-right: auto;
+            overflow: hidden;
+        }
+
+        .voter-tools-header {
+            background: linear-gradient(135deg, #003d7a 0%, #0052a3 100%);
+            color: white;
+            padding: 24px 28px;
+        }
+
+        .voter-tools-header h3 {
+            font-size: 1.4em;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .voter-tools-header p {
+            opacity: 0.9;
             font-size: 0.9em;
         }
 
-        .info-card-link:hover {
-            background: #003f87;
-            color: white;
+        .voter-tools-tabs {
+            display: flex;
+            background: #f0f4f8;
+            border-bottom: 2px solid #e0e6ed;
         }
 
-        /* Polling Card */
-        .polling-card {
-            background: white;
-            border-radius: 12px;
-            padding: 30px;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
-            border-left: 5px solid #c41e3a;
-            grid-column: 1 / -1;
-        }
-
-        .polling-card h3 {
-            color: #003f87;
-            margin-bottom: 15px;
-            font-size: 1.3em;
-            font-weight: 700;
-        }
-
-        .polling-card p {
+        .voter-tool-tab {
+            flex: 1;
+            padding: 16px 12px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 0.9em;
+            font-weight: 600;
             color: #666;
-            line-height: 1.6;
-            margin-bottom: 20px;
-            font-size: 0.95em;
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.3s;
+            border-bottom: 3px solid transparent;
+            margin-bottom: -2px;
+        }
+
+        .voter-tool-tab:hover {
+            background: rgba(0, 61, 122, 0.05);
+        }
+
+        .voter-tool-tab.active {
+            color: #003d7a;
+            background: white;
+            border-bottom-color: #d41c22;
+        }
+
+        .voter-tool-tab svg {
+            width: 18px;
+            height: 18px;
+            margin-bottom: 4px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .voter-tool-content {
+            display: none;
+            min-height: 500px;
+        }
+
+        .voter-tool-content.active {
+            display: block;
+        }
+
+        .voter-tool-content iframe {
+            width: 100%;
+            min-height: 500px;
+            border: none;
+        }
+
+        .polling-section {
+            background: white;
+            border-radius: 10px;
+            padding: 28px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            border-top: 5px solid #003d7a;
+            margin-bottom: 70px;
+        }
+
+        .polling-section h3 {
+            color: #003d7a;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+            font-weight: 700;
         }
 
         .polling-search-form {
             display: flex;
             gap: 12px;
-            flex-wrap: wrap;
-            margin-bottom: 20px;
+            align-items: flex-end;
+            margin-top: 16px;
         }
 
         .polling-input-group {
             flex: 1;
-            min-width: 200px;
+            min-width: 300px;
             display: flex;
             flex-direction: column;
         }
 
         .polling-input-group label {
             font-weight: 600;
-            color: #003f87;
+            color: #2c3e50;
             margin-bottom: 8px;
-            font-size: 0.95em;
+            font-size: 0.9em;
         }
 
         .polling-input-group input {
-            padding: 12px;
-            border: 2px solid #ddd;
+            padding: 12px 14px;
+            border: 1.5px solid #ddd;
             border-radius: 8px;
-            font-size: 1em;
+            font-size: 0.95em;
             font-family: 'Poppins', sans-serif;
-            transition: all 0.3s;
-        }
-
-        .polling-input-group input:focus {
-            outline: none;
-            border-color: #c41e3a;
-            box-shadow: 0 0 0 3px rgba(196, 30, 58, 0.2);
+            background: white;
         }
 
         .polling-btn {
-            background: linear-gradient(135deg, #c41e3a 0%, #a01830 100%);
+            background: linear-gradient(135deg, #d41c22 0%, #b81419 100%);
             color: white;
             border: none;
-            padding: 12px 30px;
+            padding: 12px 32px;
             border-radius: 8px;
             font-weight: 700;
             cursor: pointer;
-            font-size: 1em;
+            font-size: 0.95em;
             font-family: 'Poppins', sans-serif;
             transition: all 0.3s;
-            align-self: flex-end;
+            white-space: nowrap;
+            height: 48px;
         }
 
         .polling-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(196, 30, 58, 0.3);
+            box-shadow: 0 6px 20px rgba(212, 28, 34, 0.35);
         }
 
         .polling-result {
-            background: #f8f9fa;
-            padding: 20px;
+            background: #f0fdf4;
+            padding: 14px;
             border-radius: 8px;
-            margin-top: 20px;
+            margin-top: 14px;
             display: none;
+            border-left: 4px solid #22c55e;
+            font-size: 0.9em;
         }
 
         .polling-result.show {
             display: block;
         }
 
-        .polling-result h4 {
-            color: #003f87;
-            margin-bottom: 10px;
-        }
-
-        .polling-result p {
-            color: #666;
-            margin-bottom: 8px;
-        }
-
-        /* CTA Section */
-        .cta-section {
-            background: linear-gradient(135deg, #003f87 0%, #0052b4 100%);
-            color: white;
-            padding: 60px 40px;
-            border-radius: 12px;
-            text-align: center;
-            margin: 60px auto;
-            max-width: 1000px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-        }
-
-        .cta-section h2 {
-            font-size: 2.2em;
-            margin-bottom: 20px;
-            font-weight: 700;
-        }
-
-        .cta-section p {
-            font-size: 1.1em;
-            margin-bottom: 30px;
-            opacity: 0.95;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .cta-btn {
-            padding: 16px 40px;
-            border: none;
-            border-radius: 8px;
-            font-weight: 700;
-            font-size: 1em;
-            cursor: pointer;
-            font-family: 'Poppins', sans-serif;
-            transition: all 0.3s;
-        }
-
-        .cta-btn-primary {
-            background: #c41e3a;
-            color: white;
-        }
-
-        .cta-btn-primary:hover {
-            background: #a01830;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-        }
-
-        .cta-btn-secondary {
-            background: rgba(255,255,255,0.2);
-            color: white;
-            border: 2px solid white;
-        }
-
-        .cta-btn-secondary:hover {
-            background: rgba(255,255,255,0.3);
-        }
-
-        /* Results Modal */
         .modal {
             display: none;
             position: fixed;
@@ -407,7 +380,7 @@
             top: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.7);
+            background: rgba(0,0,0,0.5);
             backdrop-filter: blur(4px);
             overflow-y: auto;
             padding: 20px;
@@ -415,9 +388,8 @@
 
         .modal.show {
             display: flex;
-            align-items: flex-start;
+            align-items: center;
             justify-content: center;
-            padding-top: 40px;
         }
 
         .modal-content {
@@ -431,9 +403,9 @@
         }
 
         .modal-header {
-            background: linear-gradient(135deg, #003f87 0%, #0052b4 100%);
+            background: linear-gradient(90deg, #003d7a 0%, #0052a3 100%);
             color: white;
-            padding: 30px;
+            padding: 40px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -441,8 +413,14 @@
         }
 
         .modal-header h2 {
-            font-size: 1.8em;
-            margin: 0;
+            font-size: 1.6em;
+            font-weight: 700;
+        }
+
+        .modal-header-subtitle {
+            font-size: 1.2em;
+            margin-top: 8px;
+            opacity: 0.9;
         }
 
         .modal-close {
@@ -465,38 +443,32 @@
         }
 
         .modal-body {
-            padding: 30px;
+            padding: 40px;
         }
 
-        /* Tabs */
         .tabs {
             display: flex;
             border-bottom: 2px solid #ddd;
             margin-bottom: 30px;
-            flex-wrap: wrap;
+            gap: 0;
         }
 
         .tab-btn {
-            padding: 15px 25px;
+            padding: 14px 28px;
             background: none;
             border: none;
             cursor: pointer;
-            font-size: 1.05em;
+            font-size: 1em;
             font-weight: 600;
-            color: #666;
+            color: #999;
             border-bottom: 3px solid transparent;
             transition: all 0.3s;
-            white-space: nowrap;
             font-family: 'Poppins', sans-serif;
         }
 
         .tab-btn.active {
-            color: #003f87;
-            border-bottom-color: #c41e3a;
-        }
-
-        .tab-btn:hover {
-            color: #003f87;
+            color: #003d7a;
+            border-bottom-color: #d41c22;
         }
 
         .tab-content {
@@ -505,335 +477,218 @@
 
         .tab-content.active {
             display: block;
-            animation: fadeIn 0.3s;
         }
 
-        /* Representative Card */
-        .representative-card {
+        .rep-card {
             background: white;
-            border-radius: 12px;
-            padding: 40px;
-            margin-bottom: 25px;
-            border: 3px solid #ddd;
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 20px;
+            border: 1.5px solid #e0e6ed;
             text-align: center;
-            transition: all 0.3s;
-        }
-
-        .representative-card:hover {
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
         }
 
         .rep-name {
-            font-size: 2em;
+            font-size: 1.8em;
             font-weight: 700;
-            color: #003f87;
-            margin-bottom: 20px;
+            color: #003d7a;
+            margin-bottom: 16px;
         }
 
         .rep-badge {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 30px;
-            font-size: 1.2em;
+            display: inline-block;
+            padding: 10px 24px;
+            border-radius: 8px;
             font-weight: 700;
+            font-size: 1em;
+            margin-bottom: 16px;
         }
 
         .badge-pro {
-            color: #155724;
-            background: #d4edda;
-            padding: 15px 30px;
-            border-radius: 8px;
-            display: inline-block;
+            background: #dcfce7;
+            color: #166534;
         }
 
         .badge-anti {
-            color: #721c24;
-            background: #f8d7da;
-            padding: 15px 30px;
-            border-radius: 8px;
-            display: inline-block;
+            background: #fed7aa;
+            color: #92400e;
         }
 
-        .badge-icon {
-            font-size: 1.8em;
-        }
-
-        .pro-icon {
-            color: #28a745;
-        }
-
-        .anti-icon {
-            color: #dc3545;
-        }
-
-        .contact-btn {
-            background: linear-gradient(135deg, #c41e3a 0%, #a01830 100%);
-            color: white;
-            padding: 16px 40px;
-            border: none;
-            border-radius: 8px;
-            font-weight: 700;
-            font-size: 1.1em;
-            cursor: pointer;
-            font-family: 'Poppins', sans-serif;
-            transition: all 0.3s;
-            margin-top: 20px;
-        }
-
-        .contact-btn:hover {
-            background: linear-gradient(135deg, #a01830 0%, #800125 100%);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-        }
-
-        .rep-phone {
-            font-size: 1.1em;
-            color: #666;
-            margin-top: 15px;
-        }
-
-        /* Candidate Card */
-        .candidate-card {
-            background: white;
-            border-radius: 12px;
-            padding: 40px;
-            margin-bottom: 25px;
-            border: 3px solid #ddd;
-            text-align: center;
-            transition: all 0.3s;
-        }
-
-        .candidate-card:hover {
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-        }
-
-        .candidate-name {
-            font-size: 2em;
-            font-weight: 700;
-            color: #003f87;
-            margin-bottom: 15px;
-        }
-
-        .candidate-label {
-            font-size: 1.2em;
-            font-weight: 700;
-            color: #155724;
-            background: #d4edda;
-            padding: 15px 30px;
-            border-radius: 8px;
-            display: inline-block;
-            margin-bottom: 20px;
-        }
-
-        .vote-button {
-            background: linear-gradient(135deg, #28a745 0%, #218838 100%);
-            color: white;
-            padding: 16px 40px;
-            border: none;
-            border-radius: 8px;
-            font-weight: 700;
-            font-size: 1.1em;
-            cursor: pointer;
-            font-family: 'Poppins', sans-serif;
-            transition: all 0.3s;
-            margin-top: 20px;
-        }
-
-        .vote-button:hover {
-            background: linear-gradient(135deg, #218838 0%, #1e7e34 100%);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(40, 167, 69, 0.3);
+        .rep-statement {
+            color: #555;
+            font-size: 0.95em;
+            margin-top: 12px;
+            line-height: 1.6;
         }
 
         .open-seat-badge {
             display: inline-block;
-            background: #fff3cd;
-            color: #856404;
-            padding: 10px 20px;
+            background: #fef3c7;
+            color: #78350f;
+            padding: 8px 16px;
             border-radius: 6px;
             font-weight: 600;
             margin-bottom: 20px;
+            font-size: 0.85em;
         }
 
-        /* Footer */
         .footer {
-            background: #1a1a2e;
+            background: #1a2a4e;
             color: white;
-            padding: 40px 20px;
+            padding: 35px 20px;
             text-align: center;
             margin-top: 80px;
+            font-size: 0.85em;
+            opacity: 0.9;
         }
 
-        .footer p {
-            opacity: 0.8;
+        .footer a {
+            color: #64b5f6;
+            text-decoration: none;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+        .footer a:hover {
+            text-decoration: underline;
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 900px) {
+            .info-section {
+                grid-template-columns: 1fr;
+            }
+
+            .search-form,
+            .polling-search-form {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .search-btn,
+            .polling-btn {
+                width: 100%;
+            }
+
             .hero h2 {
-                font-size: 2em;
+                font-size: 1.8em;
             }
 
-            .hero p {
-                font-size: 1.1em;
+            .voter-tools-tabs {
+                flex-wrap: wrap;
             }
 
-            .search-section {
-                margin: -40px 20px 40px;
-                padding: 30px 20px;
-            }
-
-            .search-form {
-                flex-direction: column;
-            }
-
-            .search-btn {
-                align-self: stretch;
-                width: 100%;
-            }
-
-            .representative-card,
-            .candidate-card {
-                padding: 25px;
-            }
-
-            .rep-name,
-            .candidate-name {
-                font-size: 1.5em;
-            }
-
-            .cta-section {
-                padding: 40px 20px;
-            }
-
-            .cta-section h2 {
-                font-size: 1.6em;
-            }
-
-            .cta-buttons {
-                flex-direction: column;
-            }
-
-            .cta-btn {
-                width: 100%;
+            .voter-tool-tab {
+                flex: 1 1 50%;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
     <div class="header">
-        <h1>Illinois Jewish Voter Portal</h1>
-        <p>Know Where Your Elected Officials Stand</p>
-    </div>
-
-    <!-- Hero Section -->
-    <div class="hero">
-        <div class="hero-content">
-            <h2>Find Your Representatives for 2026</h2>
-            <p>Search your district to see who's on the ballot and where they stand on the issues that matter.</p>
+        <div class="header-banner">
+            <h1>2026 ILLINOIS PRIMARY<br>ELECTION VOTER GUIDE</h1>
         </div>
     </div>
 
+    <div class="hero">
+        <h2>VOTE YOUR VALUES</h2>
+        <p>Early voting begins February 5th. Primary is March 17th.</p>
+    </div>
+
     <div class="container">
-        <!-- Search Section -->
         <div class="search-section">
             <h3 class="search-title">Find Your Representatives</h3>
-            <p class="search-subtitle">Enter your ZIP code for your 2026 candidates</p>
+            <p class="search-subtitle">Enter your ZIP code to see who's on your ballot and where they stand on Israel</p>
             
             <div class="search-form">
-                <div class="input-group" style="flex: 2;">
-                    <label for="zipcode">ZIP Code</label>
-                    <input type="text" id="zipcode" placeholder="e.g., 60601" maxlength="5" pattern="[0-9]{5}">
+                <div class="input-group">
+                    <label for="zipcode">ZIP Code or Address</label>
+                    <input type="text" id="zipcode" placeholder="e.g., 60601" maxlength="50">
                 </div>
                 <button class="search-btn" onclick="searchRepresentatives()">Search</button>
             </div>
         </div>
 
-        <!-- Info Cards -->
         <div class="info-section">
             <div class="info-card">
-                <h3>March 2026 Primary Election</h3>
-                <p>Vote in the Illinois primary.</p>
+                <h3>March 2026 Primary</h3>
+                <p>Vote on March 17th.</p>
                 <div class="info-card-content">
-                    <strong>Early Voting:</strong> February 21 - March 16<br>
-                    <strong>Election Day:</strong> March 17, 2026
+                    <strong>Early Voting:</strong><br>Feb 5 - Mar 16<br><br>
+                    <strong>Election Day:</strong><br>Mar 17, 2026
                 </div>
             </div>
 
             <div class="info-card">
-                <h3>Find Your Polling Place</h3>
-                <p>Locate where to vote on March 17.</p>
+                <h3>Key Resources</h3>
+                <p>Official election information.</p>
                 <div class="info-card-content">
-                    <a href="https://www.elections.il.gov/" target="_blank" class="info-card-link">Illinois Elections</a><br>
-                    <a href="https://www.vote411.org/" target="_blank" class="info-card-link">Vote411.org</a>
-                </div>
-            </div>
-
-            <div class="info-card">
-                <h3>Important Links</h3>
-                <p>Election resources and information.</p>
-                <div class="info-card-content">
-                    <a href="https://www.congress.gov/" target="_blank" class="info-card-link">Congress.gov</a><br>
-                    <a href="https://www.ilga.gov/" target="_blank" class="info-card-link">Illinois Legislature</a>
-                </div>
-            </div>
-
-            <div class="polling-card">
-                <h3>Polling Place Lookup</h3>
-                <p>Enter your address to find your polling location for March 17.</p>
-                <div class="polling-search-form">
-                    <div class="polling-input-group" style="flex: 2;">
-                        <label for="pollingAddress">Street Address</label>
-                        <input type="text" id="pollingAddress" placeholder="123 Main St, Chicago, IL">
-                    </div>
-                    <button class="polling-btn" onclick="lookupPollingPlace()">Lookup</button>
-                </div>
-                <div id="pollingResult" class="polling-result">
-                    <h4>Your Polling Place:</h4>
-                    <p id="pollingInfo"></p>
+                    <a href="https://www.elections.il.gov/" target="_blank">Illinois State Board of Elections</a>
+                    <a href="https://www.vote411.org/" target="_blank">Vote411.org</a>
+                    <a href="https://www.aipac.org/" target="_blank">AIPAC</a>
                 </div>
             </div>
         </div>
 
-        <!-- CTA Section -->
-        <div class="cta-section">
-            <h2>Get Involved</h2>
-            <p>Make your voice heard in 2026. Contact your representatives or volunteer today.</p>
-            <div class="cta-buttons">
-                <button class="cta-btn cta-btn-primary" onclick="alert('Donate button activated!')">Donate</button>
-                <button class="cta-btn cta-btn-secondary" onclick="alert('Volunteer button activated!')">Volunteer</button>
+        <!-- Vote.org Tools Section -->
+        <div class="voter-tools-section">
+            <div class="voter-tools-header">
+                <h3>Voter Tools</h3>
+                <p>Register, check your status, view your ballot, and find your polling place</p>
+            </div>
+            
+            <div class="voter-tools-tabs">
+                <button class="voter-tool-tab active" onclick="switchVoterTool('register')">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                    Register
+                </button>
+                <button class="voter-tool-tab" onclick="switchVoterTool('verify')">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    Check Status
+                </button>
+                <button class="voter-tool-tab" onclick="switchVoterTool('ballot')">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path></svg>
+                    Your Ballot
+                </button>
+                <button class="voter-tool-tab" onclick="switchVoterTool('polling')">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                    Polling Place
+                </button>
+            </div>
+
+            <div class="voter-tool-content active" id="register-tool">
+                <iframe src="https://register.vote.org/?partner=111111&campaign=free-tools" scrolling="no"></iframe>
+            </div>
+            <div class="voter-tool-content" id="verify-tool">
+                <iframe src="https://verify.vote.org/?partner=111111&campaign=free-tools" scrolling="no"></iframe>
+            </div>
+            <div class="voter-tool-content" id="ballot-tool">
+                <iframe src="https://ballot.vote.org/?partner=111111&campaign=free-tools" scrolling="no"></iframe>
+            </div>
+            <div class="voter-tool-content" id="polling-tool">
+                <iframe src="https://gttp.vote.org/?partner=111111&campaign=free-tools" scrolling="no"></iframe>
             </div>
         </div>
     </div>
 
-    <!-- Results Modal -->
     <div class="modal" id="resultsModal">
         <div class="modal-content">
             <div class="modal-header">
-                <h2 id="modalTitle">Your Representatives</h2>
+                <div>
+                    <h2>House District</h2>
+                    <div class="modal-header-subtitle" id="modalTitle"></div>
+                </div>
                 <button class="modal-close" onclick="closeModal()">&times;</button>
             </div>
 
             <div class="modal-body">
-                <!-- Tabs -->
                 <div class="tabs">
                     <button class="tab-btn active" onclick="switchTab('house')">House</button>
                     <button class="tab-btn" onclick="switchTab('senate')">Senate</button>
                 </div>
 
-                <!-- House Tab -->
                 <div class="tab-content active" id="house-tab">
                     <div id="houseContent"></div>
                 </div>
 
-                <!-- Senate Tab -->
                 <div class="tab-content" id="senate-tab">
                     <div id="senateContent"></div>
                 </div>
@@ -841,44 +696,242 @@
         </div>
     </div>
 
-    <!-- Footer -->
     <div class="footer">
-        <p>Illinois Jewish Voter Portal. Empowering voters for 2026.</p>
+        <p>Chicago Jewish Voters. Know where they stand on Israel.</p>
+        <p style="margin-top: 8px; font-size: 0.8em; opacity: 0.7;">Voter tools powered by <a href="https://vote.org" target="_blank">Vote.org</a></p>
     </div>
 
     <script>
-        // Illinois Representative Database - 2026 Elections
+        // Initialize iframe resizer
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof iFrameResize === 'function') {
+                iFrameResize({ log: false, checkOrigin: false });
+            }
+        });
+
+        function switchVoterTool(toolName) {
+            // Hide all tool contents
+            document.querySelectorAll('.voter-tool-content').forEach(el => el.classList.remove('active'));
+            // Deactivate all tabs
+            document.querySelectorAll('.voter-tool-tab').forEach(el => el.classList.remove('active'));
+            // Show selected tool
+            document.getElementById(toolName + '-tool').classList.add('active');
+            // Activate clicked tab
+            event.target.closest('.voter-tool-tab').classList.add('active');
+        }
+
         const illinoisData = {
             zips: {
-                '60601': { house: 'IL-01', senate: 'IL-US-Durbin' },
-                '60602': { house: 'IL-01', senate: 'IL-US-Durbin' },
-                '60603': { house: 'IL-07', senate: 'IL-US-Durbin' },
-                '60604': { house: 'IL-01', senate: 'IL-US-Durbin' },
-                '60605': { house: 'IL-05', senate: 'IL-US-Durbin' },
-                '60606': { house: 'IL-03', senate: 'IL-US-Durbin' },
-                '60607': { house: 'IL-07', senate: 'IL-US-Durbin' },
-                '60608': { house: 'IL-07', senate: 'IL-US-Durbin' },
-                '60609': { house: 'IL-02', senate: 'IL-US-Durbin' },
-                '60610': { house: 'IL-05', senate: 'IL-US-Durbin' },
-                '60611': { house: 'IL-09', senate: 'IL-US-Durbin' },
-                '60612': { house: 'IL-03', senate: 'IL-US-Durbin' },
-                '60613': { house: 'IL-09', senate: 'IL-US-Durbin' },
-                '60614': { house: 'IL-09', senate: 'IL-US-Durbin' },
-                '60615': { house: 'IL-05', senate: 'IL-US-Durbin' },
-                '60616': { house: 'IL-07', senate: 'IL-US-Durbin' },
-                '61201': { house: 'IL-13', senate: 'IL-US-Durbin' },
+                '60601': [{ house: 'IL-07', senate: 'IL-US-Durbin' }],
+                '60602': [{ house: 'IL-07', senate: 'IL-US-Durbin' }],
+                '60603': [{ house: 'IL-07', senate: 'IL-US-Durbin' }],
+                '60604': [{ house: 'IL-07', senate: 'IL-US-Durbin' }],
+                '60605': [{ house: 'IL-01', senate: 'IL-US-Durbin' }],
+                '60606': [{ house: 'IL-07', senate: 'IL-US-Durbin' }],
+                '60607': [{ house: 'IL-07', senate: 'IL-US-Durbin' }],
+                '60608': [{ house: 'IL-04', senate: 'IL-US-Durbin' }],
+                '60609': [{ house: 'IL-01', senate: 'IL-US-Durbin' }],
+                '60610': [{ house: 'IL-05', senate: 'IL-US-Durbin' }, { house: 'IL-07', senate: 'IL-US-Durbin' }],
+                '60611': [{ house: 'IL-05', senate: 'IL-US-Durbin' }],
+                '60612': [{ house: 'IL-07', senate: 'IL-US-Durbin' }],
+                '60613': [{ house: 'IL-05', senate: 'IL-US-Durbin' }],
+                '60614': [{ house: 'IL-05', senate: 'IL-US-Durbin' }],
+                '60615': [{ house: 'IL-01', senate: 'IL-US-Durbin' }],
+                '60616': [{ house: 'IL-01', senate: 'IL-US-Durbin' }],
+                '60617': [{ house: 'IL-01', senate: 'IL-US-Durbin' }],
+                '60618': [{ house: 'IL-05', senate: 'IL-US-Durbin' }],
+                '60619': [{ house: 'IL-01', senate: 'IL-US-Durbin' }],
+                '60620': [{ house: 'IL-01', senate: 'IL-US-Durbin' }],
+                '60621': [{ house: 'IL-01', senate: 'IL-US-Durbin' }],
+                '60622': [{ house: 'IL-04', senate: 'IL-US-Durbin' }],
+                '60623': [{ house: 'IL-04', senate: 'IL-US-Durbin' }],
+                '60624': [{ house: 'IL-07', senate: 'IL-US-Durbin' }],
+                '60625': [{ house: 'IL-05', senate: 'IL-US-Durbin' }],
+                '60626': [{ house: 'IL-09', senate: 'IL-US-Durbin' }],
+                '60628': [{ house: 'IL-01', senate: 'IL-US-Durbin' }],
+                '60629': [{ house: 'IL-04', senate: 'IL-US-Durbin' }],
+                '60630': [{ house: 'IL-05', senate: 'IL-US-Durbin' }],
+                '60631': [{ house: 'IL-05', senate: 'IL-US-Durbin' }],
+                '60632': [{ house: 'IL-04', senate: 'IL-US-Durbin' }],
+                '60633': [{ house: 'IL-01', senate: 'IL-US-Durbin' }],
+                '60634': [{ house: 'IL-05', senate: 'IL-US-Durbin' }],
+                '60636': [{ house: 'IL-01', senate: 'IL-US-Durbin' }],
+                '60637': [{ house: 'IL-01', senate: 'IL-US-Durbin' }],
+                '60638': [{ house: 'IL-03', senate: 'IL-US-Durbin' }],
+                '60639': [{ house: 'IL-04', senate: 'IL-US-Durbin' }],
+                '60640': [{ house: 'IL-05', senate: 'IL-US-Durbin' }],
+                '60641': [{ house: 'IL-05', senate: 'IL-US-Durbin' }],
+                '60642': [{ house: 'IL-05', senate: 'IL-US-Durbin' }],
+                '60643': [{ house: 'IL-01', senate: 'IL-US-Durbin' }],
+                '60644': [{ house: 'IL-07', senate: 'IL-US-Durbin' }],
+                '60645': [{ house: 'IL-09', senate: 'IL-US-Durbin' }],
+                '60646': [{ house: 'IL-09', senate: 'IL-US-Durbin' }],
+                '60647': [{ house: 'IL-04', senate: 'IL-US-Durbin' }],
+                '60649': [{ house: 'IL-01', senate: 'IL-US-Durbin' }],
+                '60651': [{ house: 'IL-07', senate: 'IL-US-Durbin' }],
+                '60652': [{ house: 'IL-03', senate: 'IL-US-Durbin' }],
+                '60653': [{ house: 'IL-01', senate: 'IL-US-Durbin' }],
+                '60654': [{ house: 'IL-05', senate: 'IL-US-Durbin' }],
+                '60655': [{ house: 'IL-01', senate: 'IL-US-Durbin' }],
+                '60656': [{ house: 'IL-05', senate: 'IL-US-Durbin' }],
+                '60657': [{ house: 'IL-05', senate: 'IL-US-Durbin' }],
+                '60659': [{ house: 'IL-09', senate: 'IL-US-Durbin' }],
+                '60660': [{ house: 'IL-09', senate: 'IL-US-Durbin' }],
+                '60661': [{ house: 'IL-07', senate: 'IL-US-Durbin' }],
+                '60706': [{ house: 'IL-05', senate: 'IL-US-Durbin' }],
+                '60707': [{ house: 'IL-04', senate: 'IL-US-Durbin' }],
+                '60714': [{ house: 'IL-05', senate: 'IL-US-Durbin' }],
+                '60201': [{ house: 'IL-09', senate: 'IL-US-Durbin' }],
+                '60202': [{ house: 'IL-09', senate: 'IL-US-Durbin' }],
+                '60203': [{ house: 'IL-09', senate: 'IL-US-Durbin' }],
+                '60076': [{ house: 'IL-09', senate: 'IL-US-Durbin' }],
+                '60077': [{ house: 'IL-09', senate: 'IL-US-Durbin' }],
+                '60091': [{ house: 'IL-09', senate: 'IL-US-Durbin' }],
+                '60093': [{ house: 'IL-09', senate: 'IL-US-Durbin' }],
+                '60025': [{ house: 'IL-09', senate: 'IL-US-Durbin' }],
+                '60026': [{ house: 'IL-09', senate: 'IL-US-Durbin' }],
+                '60062': [{ house: 'IL-10', senate: 'IL-US-Durbin' }],
+                '60035': [{ house: 'IL-10', senate: 'IL-US-Durbin' }],
+                '60015': [{ house: 'IL-10', senate: 'IL-US-Durbin' }],
+                '60022': [{ house: 'IL-10', senate: 'IL-US-Durbin' }],
+                '60043': [{ house: 'IL-10', senate: 'IL-US-Durbin' }],
+                '60045': [{ house: 'IL-10', senate: 'IL-US-Durbin' }],
+                '60089': [{ house: 'IL-10', senate: 'IL-US-Durbin' }],
+                '60090': [{ house: 'IL-10', senate: 'IL-US-Durbin' }]
             },
-
             house: {
-                'IL-01': { name: 'Jonathan Jackson', phone: '(202) 225-5844', stance: 'pro-israel' },
-                'IL-02': { name: 'Open Seat', stance: 'open', candidates: [{ name: 'Velda Jones-Potter', stance: 'pro-israel' }] },
-                'IL-03': { name: 'Delia Ramirez', phone: '(202) 225-1866', stance: 'anti-israel' },
-                'IL-04': { name: 'Open Seat', stance: 'open', candidates: [{ name: 'Jessica Gutierrez', stance: 'pro-israel' }] },
-                'IL-05': { name: 'Israel Steuart', phone: '(202) 225-2111', stance: 'pro-israel' },
-                'IL-06': { name: 'Sean Casten', phone: '(202) 225-4835', stance: 'pro-israel' },
-                'IL-07': { name: 'Danny Davis', phone: '(202) 225-5006', stance: 'anti-israel' },
-                'IL-08': { name: 'Open Seat', stance: 'open', candidates: [{ name: 'Raja Krishnamoorthi', stance: 'pro-israel' }] },
-                'IL-09': { name: 'Open Seat', stance: 'open', candidates: [{ name: 'Frank Bialkowski', stance: 'pro-israel' }] },
-                'IL-10': { name: 'Brad Schneider', phone: '(202) 225-3711', stance: 'pro-israel' },
-                'IL-11': { name: 'Bill Foster', phone: '(202) 225-3515', stance: 'pro-israel' },
-                'IL-12': { name: 'Mike
+                'IL-01': { name: 'Jonathan Jackson', party: 'D', stance: 'anti-israel', statement: 'Co-sponsored resolution accusing Israel of genocide. Called for immediate ceasefire.', tags: ['Claims Genocide'] },
+                'IL-02': { name: 'Robin Kelly', party: 'D', stance: 'anti-israel', statement: 'Called for ceasefire, urged Netanyahu to "end war of vengeance." Running for Senate.' },
+                'IL-03': { name: 'Delia Ramirez', party: 'D', stance: 'anti-israel', statement: 'Squad member. Co-sponsored resolution accusing Israel of genocide. Voted against Iron Dome funding.', tags: ['Squad Member', 'Claims Genocide'] },
+                'IL-04': { name: 'Chuy García', party: 'D', stance: 'anti-israel', statement: 'Squad member. Co-sponsored genocide resolution. Retiring - anointed chief of staff as successor.', tags: ['Squad Member', 'Claims Genocide', 'Retiring'], retiring: true },
+                'IL-05': { name: 'Mike Quigley', party: 'D', stance: 'anti-israel', statement: 'Calls for withholding military aid to Israel. Says Netanyahu strategy "has not worked."' },
+                'IL-06': { name: 'Sean Casten', party: 'D', stance: 'pro-israel', statement: 'Consistent supporter of Israel aid packages. Voted for Iron Dome funding.' },
+                'IL-07': { name: 'Danny K. Davis', party: 'D', stance: 'anti-israel', statement: 'Opposed military aid to Israel. Voted against Iron Dome funding.' },
+                'IL-08': { name: 'Raja Krishnamoorthi', party: 'D', stance: 'pro-israel', statement: 'AIPAC-endorsed. Strong supporter of Israel security assistance. Does not support cutting military aid. Running for Senate.' },
+                'IL-09': { name: 'Jan Schakowsky', party: 'D', stance: 'anti-israel', statement: 'Opposed "overly broad" antisemitism definition. Critical of Israeli military operations.' },
+                'IL-10': { name: 'Brad Schneider', party: 'D', stance: 'pro-israel', statement: 'Strong advocate for Israel aid and security cooperation. One of the most pro-Israel Democrats in Congress.' },
+                'IL-11': { name: 'Bill Foster', party: 'D', stance: 'pro-israel', statement: 'Consistent supporter of Israel military assistance. Voted for all Israel aid packages.' },
+                'IL-12': { name: 'Mike Bost', party: 'R', stance: 'pro-israel', statement: 'Strong Republican supporter of Israel security.' },
+                'IL-13': { name: 'Nikki Budzinski', party: 'D', stance: 'pro-israel', statement: 'Supporter of Israel aid packages. Opposes BDS movement.' },
+                'IL-14': { name: 'Lauren Underwood', party: 'D', stance: 'pro-israel', statement: 'Voted for Iron Dome funding and Israel aid.' },
+                'IL-15': { name: 'Mary Miller', party: 'R', stance: 'pro-israel', statement: 'Strong conservative supporter of Israel.' },
+                'IL-16': { name: 'Darin LaHood', party: 'R', stance: 'pro-israel', statement: 'Consistent Republican supporter of Israel security.' },
+                'IL-17': { name: 'Eric Sorensen', party: 'D', stance: 'pro-israel', statement: 'Supporter of Israel aid and security assistance.' }
+            },
+            senate: {
+                'IL-US-Durbin': {
+                    name: 'Durbin Seat (OPEN)',
+                    stance: 'open',
+                    candidates: [
+                        { name: 'Raja Krishnamoorthi', party: 'D', stance: 'pro-israel', statement: 'AIPAC-endorsed. Strongest candidate for Israel. Does not support cutting military aid.' },
+                        { name: 'Robin Kelly', party: 'D', stance: 'anti-israel', statement: 'Called for ceasefire, urged Netanyahu to "end war of vengeance." Supports conditioning aid.' },
+                        { name: 'Juliana Stratton', party: 'D', stance: 'pro-israel', statement: 'Believes in Israel\'s right to defend itself. Opposes cutting military aid.' },
+                        { name: 'Karin Norington-Reaves', party: 'D', stance: 'unknown', statement: 'Position on Israel not yet established.' }
+                    ]
+                }
+            }
+        };
+
+        function searchRepresentatives() {
+            const input = document.getElementById('zipcode').value.trim();
+            if (!input) {
+                alert('Please enter a ZIP code or address.');
+                return;
+            }
+            
+            let zip = null;
+            let isFullAddress = false;
+            
+            if (/^\d{5}$/.test(input)) {
+                zip = input;
+            } else {
+                isFullAddress = true;
+                const zipMatch = input.match(/\d{5}/);
+                if (zipMatch) {
+                    zip = zipMatch[0];
+                }
+            }
+            
+            if (!zip) {
+                alert('Please enter a valid 5-digit ZIP code.');
+                return;
+            }
+            
+            const locations = illinoisData.zips[zip];
+            if (!locations) {
+                alert('ZIP code not found in our database. Try using the Vote.org tools below to find your polling place and ballot information.');
+                return;
+            }
+            
+            if (locations.length > 1 && !isFullAddress) {
+                const districts = locations.map(l => l.house).join(' or ');
+                alert(`This ZIP code spans multiple districts (${districts}). Please enter your full address for accurate results, or use the Vote.org ballot tool below.`);
+                return;
+            }
+            
+            const location = locations[0];
+            const houseRep = illinoisData.house[location.house];
+            const senateRep = illinoisData.senate[location.senate];
+            
+            // Build house content
+            let houseHtml = '';
+            if (houseRep.retiring) {
+                houseHtml += `<div class="open-seat-badge">Retiring - Open Seat</div>`;
+            }
+            
+            let tagsHtml = '';
+            if (houseRep.tags) {
+                tagsHtml = houseRep.tags.map(tag => {
+                    if (tag === 'Squad Member') return '<span style="background:#e9d5ff;color:#6b21a8;padding:4px 10px;border-radius:4px;font-size:0.75em;font-weight:600;margin-right:6px;">Squad Member</span>';
+                    if (tag === 'Claims Genocide') return '<span style="background:#fee2e2;color:#991b1b;padding:4px 10px;border-radius:4px;font-size:0.75em;font-weight:600;margin-right:6px;">⚠ Claims Genocide</span>';
+                    if (tag === 'Retiring') return '<span style="background:#fef3c7;color:#92400e;padding:4px 10px;border-radius:4px;font-size:0.75em;font-weight:600;margin-right:6px;">Retiring</span>';
+                    return '';
+                }).join('');
+            }
+            
+            houseHtml += `<div class="rep-card">
+                <div class="rep-name">${houseRep.name} (${houseRep.party})</div>
+                ${tagsHtml ? '<div style="margin-bottom:12px;">' + tagsHtml + '</div>' : ''}
+                <div class="rep-badge ${houseRep.stance === 'pro-israel' ? 'badge-pro' : 'badge-anti'}">
+                    ${houseRep.stance === 'pro-israel' ? '✓ Pro-Israel' : '✗ Anti-Israel'}
+                </div>
+                <div class="rep-statement">${houseRep.statement}</div>
+            </div>`;
+            
+            document.getElementById('houseContent').innerHTML = houseHtml;
+
+            // Build senate content
+            let senateHtml = `<div class="open-seat-badge">Open Seat - Durbin Retiring</div>`;
+            senateRep.candidates.forEach(c => {
+                const badgeClass = c.stance === 'pro-israel' ? 'badge-pro' : (c.stance === 'anti-israel' ? 'badge-anti' : 'badge-unknown');
+                const badgeText = c.stance === 'pro-israel' ? '✓ Pro-Israel' : (c.stance === 'anti-israel' ? '✗ Anti-Israel' : '? Unknown');
+                senateHtml += `<div class="rep-card">
+                    <div class="rep-name">${c.name} (${c.party})</div>
+                    <div class="rep-badge ${badgeClass}">${badgeText}</div>
+                    <div class="rep-statement">${c.statement}</div>
+                </div>`;
+            });
+            document.getElementById('senateContent').innerHTML = senateHtml;
+            
+            document.getElementById('modalTitle').textContent = location.house;
+            document.getElementById('resultsModal').classList.add('show');
+        }
+
+        function switchTab(tabName) {
+            document.getElementById('house-tab').classList.remove('active');
+            document.getElementById('senate-tab').classList.remove('active');
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(tabName + '-tab').classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('resultsModal').classList.remove('show');
+        }
+
+        document.getElementById('zipcode').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') searchRepresentatives();
+        });
+    </script>
+</body>
+</html>
