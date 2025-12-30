@@ -205,6 +205,16 @@ body {
   margin-bottom: 14px;
 }
 
+.desktop-break {
+  display: block;
+}
+
+@media (max-width: 600px) {
+  .desktop-break {
+    display: none;
+  }
+}
+
 .event-details {
   display: flex;
   justify-content: center;
@@ -223,6 +233,22 @@ body {
 
 .detail-emoji {
   font-size: 24px;
+}
+
+@media (max-width: 600px) {
+  .event-details {
+    gap: 16px;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .detail-item {
+    font-size: 14px;
+  }
+
+  .detail-emoji {
+    font-size: 20px;
+  }
 }
 
 .event-subtitle {
@@ -494,6 +520,8 @@ body {
   justify-content: center;
   gap: 20px;
   flex-wrap: wrap;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
 .countdown-box {
@@ -502,6 +530,7 @@ body {
   border-radius: 12px;
   padding: 24px;
   min-width: 90px;
+  flex: 0 1 calc(25% - 15px);
 }
 
 .countdown-number {
@@ -519,18 +548,30 @@ body {
   opacity: 0.9;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 900px) {
   .countdown-box {
-    min-width: 70px;
-    padding: 16px 12px;
+    flex: 0 1 calc(50% - 10px);
+  }
+}
+
+@media (max-width: 600px) {
+  .countdown-timer {
+    gap: 12px;
+    justify-content: center;
+  }
+
+  .countdown-box {
+    min-width: 60px;
+    padding: 14px 10px;
+    flex: 0 1 calc(50% - 6px);
   }
 
   .countdown-number {
-    font-size: 32px;
+    font-size: 28px;
   }
 
   .countdown-label {
-    font-size: 11px;
+    font-size: 10px;
   }
 }
 
@@ -913,7 +954,7 @@ body {
     <div class="event-eyebrow">CityPAC Presents</div>
 
     <h1 class="event-title">
-      THE 2026 MIDTERMS & THE<br>
+      THE 2026 MIDTERMS & THE<br class="desktop-break">
       U.S.–ISRAEL RELATIONSHIP
     </h1>
 
