@@ -903,8 +903,12 @@
             alert(`Call ${repName} at ${phone}\n\nTalking Point: "As your constituent, I urge you to stand with Israel and support robust security assistance."`);
         }
 
-        document.getElementById('zipcode').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                searchRepresentatives();
-            }
-        });
+        // Allow Enter key to search
+        if (document.getElementById('zipcode')) {
+            document.getElementById('zipcode').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    searchRepresentatives();
+                }
+            });
+        }
+    </script>
