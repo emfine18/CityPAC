@@ -47,7 +47,7 @@ body {
 
 /* ===== DESKTOP MENU LINKS ===== */
 .header-menu a {
-  color: #ffffff;               /* WHITE on desktop */
+  color: #ffffff;
   text-decoration: none;
   font-weight: 600;
   text-transform: uppercase;
@@ -77,7 +77,7 @@ body {
 /* ===== DONATE BUTTON ===== */
 .header-menu .donate-btn {
   background: #e04b3f;
-  color: #ffffff !important;    /* ALWAYS white */
+  color: #ffffff !important;
   padding: 10px 18px;
   border-radius: 10px;
   font-weight: 700;
@@ -85,7 +85,7 @@ body {
 }
 
 .header-menu .donate-btn::after {
-  display: none;                /* no underline */
+  display: none;
 }
 
 .header-menu .donate-btn:hover {
@@ -103,7 +103,7 @@ body {
 .hamburger span {
   width: 26px;
   height: 3px;
-  background: #ffffff;          /* WHITE lines */
+  background: #ffffff;
 }
 
 /* ================= MOBILE MENU ================= */
@@ -130,16 +130,14 @@ body {
     display: flex;
   }
 
-  /* ===== HAMBURGER MENU LINKS ===== */
   .header-menu a {
-    color: #44b6e5;             /* BLUE in hamburger */
+    color: #44b6e5;
   }
 
   .header-menu a::after {
-    background: #44b6e5;        /* BLUE underline */
+    background: #44b6e5;
   }
 
-  /* KEEP DONATE BUTTON WHITE TEXT */
   .header-menu .donate-btn {
     color: #ffffff !important;
     padding: 8px 14px;
@@ -163,7 +161,7 @@ body {
   left: 0;
   width: 100%;
   height: 30%;
-  z-index: 2;   /* gradient stays behind */
+  z-index: 2;
   background: linear-gradient(
     to bottom,
     rgba(47,48,118,0) 0%,
@@ -175,18 +173,20 @@ body {
 /* ================= EVENT INFO ================= */
 .event-info {
   position: relative;
-  z-index: 5;          /* <-- THIS IS #4 */
+  z-index: 5;
   background: #2f3076;
   padding-top: 0;
-  padding-bottom: 60px;
+  padding-bottom: 20px;
 }
+
+
 
 .event-info-inner {
   max-width: 1100px;
   margin: auto;
   text-align: center;
   position: relative;
-  top: -120px;   /* ← adjust this number */
+  top: -120px;
 }
 
 .event-eyebrow {
@@ -201,7 +201,7 @@ body {
   font-size: clamp(40px, 5vw, 64px);
   font-weight: 700;
   line-height: 1.1;
-  margin-top: 0;        /* 🔥 remove default h1 gap */
+  margin-top: 0;
   margin-bottom: 14px;
 }
 
@@ -248,49 +248,404 @@ body {
   opacity: 0.85;
 }
 
-/* ===== FINAL INTEREST CHECKBOX STYLE ===== */
+/* ================= EVENT DESCRIPTION & ACTIONS ================= */
+.event-description {
+  max-width: 820px;
+  margin: 0 auto 32px;
+  padding: 0 24px;
+  line-height: 1.55;
+  font-size: 17px;
+}
+
+.event-actions {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 24px;
+  flex-wrap: wrap;
+}
+
+.action-btn {
+  padding: 12px 24px;
+  border: 2px solid #44b6e5;
+  background: transparent;
+  color: #44b6e5;
+  font-weight: 600;
+  font-size: 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  font-family: 'Poppins', sans-serif;
+}
+
+.action-btn:hover {
+  background: #44b6e5;
+  color: #2f3076;
+}
+
+@media (max-width: 600px) {
+  .event-actions {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .action-btn {
+    width: 100%;
+  }
+}
+
+/* ================= ACTION DIVIDER ================= */
+.action-divider {
+  width: 100%;
+  height: 4px;
+  background: #44b6e5;
+}
+
+/* ================= COUNTDOWN TIMER ================= */
+.countdown-section {
+  background: #2f3076;
+  padding: 40px 24px;
+}
+
+.countdown-inner {
+  max-width: 1100px;
+  margin: auto;
+  text-align: center;
+  padding: 20px 24px;
+}
+
+.countdown-section h2 {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 32px;
+  margin-top: 0;
+}
+
+.countdown-timer {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.countdown-box {
+  background: rgba(68, 182, 229, 0.1);
+  border: 2px solid #44b6e5;
+  border-radius: 12px;
+  padding: 24px;
+  min-width: 90px;
+}
+
+.countdown-number {
+  font-size: 42px;
+  font-weight: 700;
+  color: #44b6e5;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.countdown-label {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  opacity: 0.9;
+}
+
+@media (max-width: 600px) {
+  .countdown-box {
+    min-width: 70px;
+    padding: 16px 12px;
+  }
+
+  .countdown-number {
+    font-size: 32px;
+  }
+
+  .countdown-label {
+    font-size: 11px;
+  }
+}
+
+/* ================= FAQ ================= */
+.faq-section {
+  background: #2f3076;
+  padding: 60px 24px;
+  border-top: 4px solid #44b6e5;
+}
+
+.faq-inner {
+  max-width: 900px;
+  margin: auto;
+}
+
+.faq-section h2 {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 40px;
+  text-align: center;
+  margin-top: 0;
+}
+
+.faq-container {
+  display: grid;
+  gap: 12px;
+}
+
+.faq-item {
+  border: 1px solid rgba(68, 182, 229, 0.3);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.faq-question {
+  width: 100%;
+  padding: 20px;
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background 0.25s ease;
+  font-family: 'Poppins', sans-serif;
+}
+
+.faq-question:hover {
+  background: rgba(68, 182, 229, 0.1);
+}
+
+.faq-icon {
+  font-size: 24px;
+  font-weight: 700;
+  color: #44b6e5;
+  transition: transform 0.25s ease;
+}
+
+.faq-question.active .faq-icon {
+  transform: rotate(45deg);
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  background: rgba(68, 182, 229, 0.05);
+}
+
+.faq-answer.show {
+  max-height: 500px;
+}
+
+.faq-answer p {
+  margin: 0;
+  padding: 20px;
+  line-height: 1.6;
+  font-size: 15px;
+  opacity: 0.95;
+}
+
+/* ================= RSVP ================= */
+.rsvp {
+  background: #2f3072;
+  padding: 40px 24px 60px;
+  border-top: 4px solid #44b6e5;
+}
+
+.rsvp-inner {
+  max-width: 900px;
+  margin: auto;
+}
+
+.rsvp-title {
+  text-align: center;
+  font-size: 34px;
+  font-weight: 700;
+  margin-bottom: 40px;
+  margin-top: 0;
+}
+
+@media (max-width: 600px) {
+  .rsvp-title {
+    font-size: 26px;
+  }
+}
+
+.rsvp-label {
+  font-weight: 600;
+  font-size: 15px;
+  margin-bottom: 10px;
+  display: block;
+}
+  
+#rsvpForm {
+  display: grid;
+  gap: 18px;
+}
+
+#rsvpForm > div {
+  border: 1px solid rgba(68, 182, 229, 0.3);
+  border-radius: 8px;
+  padding: 18px;
+  background: rgba(68, 182, 229, 0.05);
+}
+
+.rsvp-row {
+  display: grid;
+  gap: 16px;
+}
+
+.rsvp-row.full {
+  grid-template-columns: 1fr;
+}
+
+.rsvp-row.two {
+  grid-template-columns: 1fr 1fr;
+}
+
+.rsvp-row.three {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.rsvp-other-input {
+  width: 100%;
+  margin-top: 10px;
+}
+  
+#rsvpForm input,
+#rsvpForm select,
+#rsvpForm textarea {
+  width: 100%;
+  height: 52px;
+  padding: 0 14px;
+  background: transparent;
+  border: 1.5px solid rgba(255,255,255,0.9);
+  border-radius: 6px;
+  font-size: 15px;
+  color: #ffffff;
+}
+
+#rsvpForm input::placeholder,
+#rsvpForm textarea::placeholder {
+  color: rgba(255,255,255,0.7);
+}
+
+#rsvpForm input::-webkit-input-placeholder,
+#rsvpForm textarea::-webkit-input-placeholder {
+  color: rgba(255,255,255,0.7);
+}
+  
+#rsvpForm textarea {
+  height: 120px;
+  padding-top: 12px;
+  resize: vertical;
+}
+
+#rsvpForm select {
+  appearance: none;
+  background-image:
+    linear-gradient(45deg, transparent 50%, white 50%),
+    linear-gradient(135deg, white 50%, transparent 50%);
+  background-position:
+    calc(100% - 18px) 22px,
+    calc(100% - 12px) 22px;
+  background-size: 6px 6px;
+  background-repeat: no-repeat;
+}
+
+#rsvpForm button {
+  margin-top: 20px;
+  height: 54px;
+  background: #44b6e5;
+  color: #ffffff;
+  border: none;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+#rsvpForm button:hover {
+  background: #2fa6d8;
+}
+  
+#rsvpForm select {
+  color: #ffffff;
+}
+
+#rsvpForm select option {
+  color: #000000;
+  background: #ffffff;
+}
+
+#rsvpForm button:disabled {
+  opacity: 0.7;
+}
+
+@media (max-width: 800px) {
+  .rsvp-row.full {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===== INTEREST CHECKBOXES ===== */
+.rsvp-interests {
+  margin-top: 30px;
+}
 
 .interest-option {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
   margin-bottom: 18px;
   font-size: 16px;
   cursor: pointer;
 }
 
-.interest-option input[type="checkbox"] {
-  appearance: none;
-  -webkit-appearance: none;
-  width: 32px;               /* box size */
-  height: 32px;
+#rsvpForm input[type="checkbox"] {
+  all: unset;
+  width: 20px;
+  height: 20px;
   border: 2px solid #ffffff;
-  border-radius: 10px;
-  background: transparent;
-  display: flex;
-  align-items: center;       /* center ✓ vertically */
-  justify-content: center;   /* center ✓ horizontally */
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
+  background: transparent;
 }
 
-.interest-option input[type="checkbox"]::after {
+#rsvpForm input[type="checkbox"]::after {
   content: "✓";
-  font-size: 30px;           /* check size */
-  font-weight: 800;
+  font-size: 14px;
+  font-weight: 700;
   line-height: 1;
   color: #ffffff;
   display: none;
 }
 
-.interest-option input[type="checkbox"]:checked {
+#rsvpForm input[type="checkbox"]:checked {
   background: #44b6e5;
   border-color: #44b6e5;
 }
 
-.interest-option input[type="checkbox"]:checked::after {
+#rsvpForm input[type="checkbox"]:checked::after {
   display: block;
-}  
+}
 
+#rsvpSuccess {
+  display: none;
+  margin-top: 20px;
+  font-weight: 600;
+  color: #ffffff;
+  text-align: center;
+}
+
+/* ================= FOOTER ================= */
 .site-footer {
   background: #003366;
   color: #ffffff;
@@ -358,309 +713,12 @@ body {
 .footer-copy {
   font-size: 12px;
   opacity: 0.85;
-}  
-
-  /* ================= RSVP (CLEAN, WHITE, DROPDOWNS) ================= */
-
-.rsvp {
-  background: #2f3072;
-  padding-bottom: 60px;
-}
-
-@media (max-width: 600px) {
-  .rsvp-title {
-    font-size: 26px;
-  }
-}
-  
-.rsvp-inner {
-  max-width: 900px;
-  margin: auto;
-  padding: 40px 24px 0;
-}
-
-.rsvp-title {
-  text-align: center;
-  font-size: 34px;
-  font-weight: 700;
-  margin-bottom: 40px;
-}
-  
-.rsvp-other-input {
-  width: 100%;
-  margin-top: 10px;
-}
-  
-#rsvpForm {
-  display: grid;
-  gap: 18px;
-}
-
-/* RSVP GRID ROWS */
-.rsvp-row {
-  display: grid;
-  gap: 16px;
-}
-
-.rsvp-row.full {
-  grid-template-columns: 1fr;
-}
-
-.rsvp-row.two {
-  grid-template-columns: 1fr 1fr;
-}
-
-.rsvp-row.three {
-  grid-template-columns: 1fr 1fr 1fr;
-}
-
-.rsvp::before {
-  content: "";
-  display: block;
-  width: 100%;
-  height: 4px;          /* thickness of the line */
-  background: #44b6e5;  /* CityPAC light blue */
-  margin-bottom: 40px; /* space before the title */
-}
-  
-/* INPUTS + SELECTS */
-#rsvpForm input,
-#rsvpForm select,
-#rsvpForm textarea {
-  width: 100%;
-  height: 52px;
-  padding: 0 14px;
-  background: transparent;
-  border: 1.5px solid rgba(255,255,255,0.9);
-  border-radius: 6px;
-  font-size: 15px;
-  color: #ffffff;
-}
-
-/* PLACEHOLDERS */
-#rsvpForm input::placeholder,
-#rsvpForm textarea::placeholder {
-  color: rgba(255,255,255,0.7);
-}
-
-#rsvpForm input::-webkit-input-placeholder,
-#rsvpForm textarea::-webkit-input-placeholder {
-  color: rgba(255,255,255,0.7);
-}
-  
-/* TEXTAREA */
-#rsvpForm textarea {
-  height: 120px;
-  padding-top: 12px;
-  resize: vertical;
-}
-
-/* SELECT ARROW */
-#rsvpForm select {
-  appearance: none;
-  background-image:
-    linear-gradient(45deg, transparent 50%, white 50%),
-    linear-gradient(135deg, white 50%, transparent 50%);
-  background-position:
-    calc(100% - 18px) 22px,
-    calc(100% - 12px) 22px;
-  background-size: 6px 6px;
-  background-repeat: no-repeat;
-}
-
-/* BUTTON */
-#rsvpForm button {
-  margin-top: 20px;
-  height: 54px;
-  background: #44b6e5;   /* light blue */
-  color: #ffffff;        /* white text */
-  border: none;
-  font-size: 16px;
-  font-weight: 600;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-  #rsvpForm button:hover {
-  background: #2fa6d8;
-}
-  
-  #rsvpForm select {
-  color: #ffffff;
-}
-
-#rsvpForm select option {
-  color: #000000; /* dropdown list itself must be dark to stay readable */
-  background: #ffffff;
-}
-
-  
-#rsvpForm button:disabled {
-  opacity: 0.7;
-}
-
-/* MOBILE */
-@media (max-width: 800px) {
-  /* ONLY full-width rows should stack */
-  .rsvp-row.full {
-    grid-template-columns: 1fr;
-  }
-}
-  
-/* ================= EVENT DESCRIPTION WIDTH ================= */
-.event-description {
-  max-width: 820px;
-  margin: 0 auto 32px;
-  padding: 0 24px;
-  line-height: 1.55;
-  font-size: 17px;
-}
-
-/* ================= EVENT ACTIONS ================= */
-.event-actions {
-  display: flex;
-  justify-content: center;
-  gap: 16px;
-  max-width: 820px;
-  margin: 0 auto 40px;
-  padding: 0 24px;
-  flex-wrap: wrap;
-}
-
-.action-btn {
-  padding: 12px 24px;
-  border: 2px solid #44b6e5;
-  background: transparent;
-  color: #44b6e5;
-  font-weight: 600;
-  font-size: 15px;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.25s ease;
-  font-family: 'Poppins', sans-serif;
-}
-
-.action-btn:hover {
-  background: #44b6e5;
-  color: #2f3076;
-}
-
-.contact-btn {
-  border-color: #e04b3f;
-  color: #e04b3f;
-}
-
-.contact-btn:hover {
-  background: #e04b3f;
-  color: #ffffff;
-}
-
-@media (max-width: 600px) {
-  .event-actions {
-    flex-direction: column;
-    gap: 12px;
-  }
-
-  .action-btn {
-    width: 100%;
-  }
-}
-
-/* ===== INTEREST CHECKBOXES (REAL BOXES) ===== */
-.rsvp-interests {
-  margin-top: 20px;
-}
-
-.interest-option {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  margin-bottom: 16px;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-/* hide native checkbox */
-.interest-option input[type="checkbox"] {
-  appearance: none;
-  -webkit-appearance: none;
-  width: 20px;
-  height: 20px;
-  border: 2px solid #ffffff;
-  border-radius: 6px;
-  background: transparent;
-  display: grid;
-  place-content: center;
-  cursor: pointer;
-}
-
-/* ===== INTEREST CHECKBOX FIX (FINAL) ===== */
-
-.rsvp-interests {
-  margin-top: 30px;
-}
-
-.interest-option {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 18px;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-/* REMOVE GLOBAL INPUT STYLING FROM CHECKBOXES */
-#rsvpForm input[type="checkbox"] {
-  all: unset;                 /* 🔥 nukes the rectangle issue */
-  width: 20px;
-  height: 20px;
-  border: 2px solid #ffffff;
-  border-radius: 6px;         /* same radius as other inputs */
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  position: relative;
-}
-
-/* FINAL checkbox style — SINGLE centered check */
-#rsvpForm input[type="checkbox"] {
-  all: unset;
-  width: 20px;
-  height: 20px;
-  border: 2px solid #ffffff;
-  border-radius: 6px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  background: transparent;
-}
-
-#rsvpForm input[type="checkbox"]::after {
-  content: "✓";
-  font-size: 14px;
-  font-weight: 700;
-  line-height: 1;
-  color: #ffffff;
-  display: none;
-}
-
-#rsvpForm input[type="checkbox"]:checked {
-  background: #44b6e5;
-  border-color: #44b6e5;
-}
-
-#rsvpForm input[type="checkbox"]:checked::after {
-  display: block;
 }
   
 </style>
 </head>
 <body>
 
-<body>
-  
 <header class="site-header">
   <div class="header-inner">
     <a href="home.html" class="header-logo">
@@ -698,19 +756,18 @@ body {
     </div>
 
     <div class="speakers">
-  <div class="speaker">
-    <div class="speaker-circle"></div>
-    <div class="speaker-name">Andy Hochberg</div>
-    <div class="speaker-role">Founder & CEO, Next Realty</div>
-  </div>
+      <div class="speaker">
+        <div class="speaker-circle"></div>
+        <div class="speaker-name">Andy Hochberg</div>
+        <div class="speaker-role">Founder & CEO, Next Realty</div>
+      </div>
 
-  <div class="speaker">
-    <div class="speaker-circle"></div>
-    <div class="speaker-name">Emily Pevnick</div>
-    <div class="speaker-role">Board Member, CityPAC</div>
-  </div>
-</div>
-  
+      <div class="speaker">
+        <div class="speaker-circle"></div>
+        <div class="speaker-name">Emily Pevnick</div>
+        <div class="speaker-role">Board Member, CityPAC</div>
+      </div>
+    </div>
 
     <p class="event-description">
       You are invited to join CityPAC on February 17th at 6:30 PM for a timely discussion on
@@ -726,14 +783,178 @@ body {
     </p>
 
     <div class="event-actions">
-      <button class="action-btn contact-btn" onclick="window.location.href='mailto:info@citypac.org?subject=Questions%20About%20The%202026%20Midterms%20Event'">
+      <button class="action-btn" onclick="window.location.href='mailto:info@citypac.org?subject=Questions%20About%20The%202026%20Midterms%20Event'">
         ✉️ Contact with Questions
       </button>
-      <button class="action-btn share-btn" onclick="shareEvent()">
+      <button class="action-btn" onclick="shareEvent()">
         ↗️ Share Event
+      </button>
+      <button class="action-btn" onclick="document.querySelector('.rsvp').scrollIntoView({behavior: 'smooth'})">
+        📝 RSVP
+      </button>
+      <button class="action-btn" onclick="document.querySelector('.faq-section').scrollIntoView({behavior: 'smooth'})">
+        ❓ FAQ
+      </button>
+      <button class="action-btn" onclick="addToCalendar()">
+        📅 Add to Calendar
       </button>
     </div>
 
+  </div>
+</section>
+
+<div class="action-divider"></div>
+
+<section class="countdown-section">
+  <div class="countdown-inner">
+    <h2>Event Countdown</h2>
+    <div class="countdown-timer">
+      <div class="countdown-box">
+        <div class="countdown-number" id="days">0</div>
+        <div class="countdown-label">Days</div>
+      </div>
+      <div class="countdown-box">
+        <div class="countdown-number" id="hours">0</div>
+        <div class="countdown-label">Hours</div>
+      </div>
+      <div class="countdown-box">
+        <div class="countdown-number" id="minutes">0</div>
+        <div class="countdown-label">Minutes</div>
+      </div>
+      <div class="countdown-box">
+        <div class="countdown-number" id="seconds">0</div>
+        <div class="countdown-label">Seconds</div>
+      </div>
+    </div>
+
+    <h2 style="margin-top: 48px; margin-bottom: 32px;">2026 Illinois Primary Elections Countdown</h2>
+    <div class="countdown-timer">
+      <div class="countdown-box">
+        <div class="countdown-number" id="electionDays">0</div>
+        <div class="countdown-label">Days</div>
+      </div>
+      <div class="countdown-box">
+        <div class="countdown-number" id="electionHours">0</div>
+        <div class="countdown-label">Hours</div>
+      </div>
+      <div class="countdown-box">
+        <div class="countdown-number" id="electionMinutes">0</div>
+        <div class="countdown-label">Minutes</div>
+      </div>
+      <div class="countdown-box">
+        <div class="countdown-number" id="electionSeconds">0</div>
+        <div class="countdown-label">Seconds</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="faq-section">
+  <div class="faq-inner">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-container">
+      
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFAQ(this)">
+          <span>What is CityPAC?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>CityPAC is a network of young, pro-Israel professionals dedicated to strengthening the U.S.–Israel relationship through political engagement, advocacy, and community building. We focus on supporting pro-Israel candidates and policies at the local and national level.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFAQ(this)">
+          <span>What time should I arrive?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Please plan to arrive by 6:30 PM on February 17th. We'll begin the discussion promptly at 6:45 PM, so arriving a few minutes early will allow you to check in and network with other attendees.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFAQ(this)">
+          <span>What should I wear?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Business casual attire is recommended. Think dress pants or skirts with a nice blouse or button-down shirt. This is a professional networking event, so please dress appropriately for a business setting.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFAQ(this)">
+          <span>What can I expect at the event?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>The evening will feature a panel discussion with our featured speakers on the 2026 Midterms and U.S.–Israel policy, followed by a Q&A session. Afterward, you'll have time to network with fellow professionals over drinks and appetizers. The event typically lasts 2–2.5 hours.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFAQ(this)">
+          <span>Is there a cost to attend?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>No, this event is completely free to attend! We cover all costs including food, drinks, and venue. Simply RSVP using the form above to secure your spot.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFAQ(this)">
+          <span>Will there be food and drinks?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Yes! We'll be serving hors d'oeuvres, dessert, and a selection of beverages including non-alcoholic options. Please let us know of any dietary restrictions during the RSVP process.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFAQ(this)">
+          <span>Is the food kosher?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>We are committed to accommodating dietary needs, including kosher options. If you require kosher food, please reach out to us at <strong>info@citypac.org</strong> when you RSVP so we can make proper arrangements.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFAQ(this)">
+          <span>How can I get more involved with CityPAC?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Great question! You can join one of our professional affinity groups during the RSVP process, or reach out to us at <strong>info@citypac.org</strong> to learn about volunteer opportunities, leadership roles, and membership. We'd love to have you as part of our community!</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFAQ(this)">
+          <span>Can I bring a guest?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>We ask that you RSVP only for yourself unless you've coordinated with us in advance. If you'd like to bring someone, please email <strong>info@citypac.org</strong> to request approval.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFAQ(this)">
+          <span>Where is parking available?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>The Loop has several parking options including garages and street parking. We recommend using public transportation (CTA) or rideshare if possible. Specific parking details and transit information will be shared 24 hours before the event.</p>
+        </div>
+      </div>
+
+    </div>
   </div>
 </section>
 
@@ -841,56 +1062,43 @@ body {
     </select>
   </div>
 
-<div class="rsvp-interests">
-  <div class="rsvp-label">
-    What interests you about this event or future programs?
+  <div>
+    <div class="rsvp-label">
+      What interests you about this event or future programs?
+    </div>
+
+    <label class="interest-option">
+      <input type="checkbox" name="entry.1533398778" value="U.S.–Israel policy discussion">
+      <span>U.S.–Israel policy discussion</span>
+    </label>
+
+    <label class="interest-option">
+      <input type="checkbox" name="entry.1533398778" value="Networking with other professionals">
+      <span>Networking with other professionals</span>
+    </label>
+
+    <label class="interest-option">
+      <input type="checkbox" name="entry.1533398778" value="Learning more about CityPAC">
+      <span>Learning more about CityPAC</span>
+    </label>
+
+    <label class="interest-option">
+      <input type="checkbox" name="entry.1533398778" value="Future leadership opportunities">
+      <span>Future leadership opportunities</span>
+    </label>
+
+    <label class="interest-option">
+      <input type="checkbox" name="entry.1533398778" value="Advocacy and policy engagement">
+      <span>Advocacy and policy engagement</span>
+    </label>
+
+    <label class="interest-option">
+      <input type="checkbox" id="interestOther" name="entry.1533398778" value="Other">
+      <span>Other</span>
+    </label>
+
+    <input type="text" id="interestOtherText" name="entry.1533398778" placeholder="Please specify" class="rsvp-other-input" style="display:none;">
   </div>
-
-  <label class="interest-option">
-    <input type="checkbox" name="entry.1533398778" value="U.S.–Israel policy discussion">
-    <span>U.S.–Israel policy discussion</span>
-  </label>
-
-  <label class="interest-option">
-    <input type="checkbox" name="entry.1533398778" value="Networking with other professionals">
-    <span>Networking with other professionals</span>
-  </label>
-
-  <label class="interest-option">
-    <input type="checkbox" name="entry.1533398778" value="Learning more about CityPAC">
-    <span>Learning more about CityPAC</span>
-  </label>
-
-  <label class="interest-option">
-    <input type="checkbox" name="entry.1533398778" value="Future leadership opportunities">
-    <span>Future leadership opportunities</span>
-  </label>
-
-  <label class="interest-option">
-    <input type="checkbox" name="entry.1533398778" value="Advocacy and policy engagement">
-    <span>Advocacy and policy engagement</span>
-  </label>
-
-<label class="interest-option">
-  <input
-    type="checkbox"
-    id="interestOther"
-    name="entry.1533398778"
-    value="Other"
-  >
-  <span>Other</span>
-</label>
-
-<input
-  type="text"
-  id="interestOtherText"
-  name="entry.1533398778"
-  placeholder="Please specify"
-  class="rsvp-other-input"
-  style="display:none;"
->
-  
-</div>
   
   <div>
     <div class="rsvp-label">
@@ -920,13 +1128,7 @@ body {
   <button type="submit">Submit</button>
 </form>
     
-<div id="rsvpSuccess" style="
-  display:none;
-  margin-top:20px;
-  font-weight:600;
-  color:#ffffff;
-  text-align:center;
-">
+<div id="rsvpSuccess">
   Thank you for your RSVP! Event location and check in details will be shared 24 hours before the event begins.
 </div>
 
@@ -984,6 +1186,78 @@ function shareEvent() {
     alert("Share is not supported on your browser. Try copying the URL instead!");
   }
 }
+
+function addToCalendar() {
+  const event = {
+    title: "The 2026 Midterms & the U.S.–Israel Relationship",
+    description: "Join CityPAC for a discussion on The 2026 Midterms and the U.S.–Israel Relationship. Location will be shared 24 hours before the event.",
+    location: "The Loop, Chicago, IL",
+    startDate: "20260217T183000",
+    endDate: "20260217T213000"
+  };
+
+  // Google Calendar URL
+  const googleCalendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(event.title)}&details=${encodeURIComponent(event.description)}&location=${encodeURIComponent(event.location)}&dates=${event.startDate}Z/${event.endDate}Z`;
+  
+  window.open(googleCalendarUrl, '_blank');
+}
+</script>
+
+<script>
+function updateCountdown() {
+  const eventDate = new Date("February 17, 2026 18:30:00").getTime();
+  const now = new Date().getTime();
+  const distance = eventDate - now;
+
+  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+  document.getElementById("days").textContent = String(days).padStart(2, '0');
+  document.getElementById("hours").textContent = String(hours).padStart(2, '0');
+  document.getElementById("minutes").textContent = String(minutes).padStart(2, '0');
+  document.getElementById("seconds").textContent = String(seconds).padStart(2, '0');
+
+  if (distance < 0) {
+    document.querySelector(".countdown-timer").innerHTML = "<div style='font-size: 20px; font-weight: 600; color: #44b6e5;'>Event is happening now!</div>";
+  }
+}
+
+function updateElectionCountdown() {
+  const electionDate = new Date("March 17, 2026 00:00:00").getTime();
+  const now = new Date().getTime();
+  const distance = electionDate - now;
+
+  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+  document.getElementById("electionDays").textContent = String(days).padStart(2, '0');
+  document.getElementById("electionHours").textContent = String(hours).padStart(2, '0');
+  document.getElementById("electionMinutes").textContent = String(minutes).padStart(2, '0');
+  document.getElementById("electionSeconds").textContent = String(seconds).padStart(2, '0');
+
+  if (distance < 0) {
+    document.getElementById("electionDays").parentElement.parentElement.innerHTML = "<div style='font-size: 20px; font-weight: 600; color: #44b6e5; text-align: center;'>Election Day is here!</div>";
+  }
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  updateCountdown();
+  updateElectionCountdown();
+  setInterval(updateCountdown, 1000);
+  setInterval(updateElectionCountdown, 1000);
+});
+</script>
+
+<script>
+function toggleFAQ(button) {
+  button.classList.toggle("active");
+  const answer = button.nextElementSibling;
+  answer.classList.toggle("show");
+}
 </script>
 
 <script>
@@ -998,24 +1272,24 @@ document.addEventListener("DOMContentLoaded", function () {
     button.disabled = true;
     button.innerText = "Submitting…";
 
-fetch(
-  "https://script.google.com/macros/s/AKfycbxpltPUqdjcgKDbuEzGTPKW1-fwU-1PprbAIK_EQYlcKRoUAnqVhgJIa9JfNhdiRRlF/exec",
-  {
-    method: "POST",
-    mode: "no-cors",
-    body: new URLSearchParams(new FormData(form))
-  }
-).then(() => {
-  button.innerText = "Submitted ✓";
-  success.style.display = "block";
-  launchEmojiConfetti(button);
-  form.reset();
-});
+    fetch(
+      "https://script.google.com/macros/s/AKfycbxpltPUqdjcgKDbuEzGTPKW1-fwU-1PprbAIK_EQYlcKRoUAnqVhgJIa9JfNhdiRRlF/exec",
+      {
+        method: "POST",
+        mode: "no-cors",
+        body: new URLSearchParams(new FormData(form))
+      }
+    ).then(() => {
+      button.innerText = "Submitted ✓";
+      success.style.display = "block";
+      launchEmojiConfetti(button);
+      form.reset();
+    });
   });
 });
 </script>
   
-  <script>
+<script>
 function launchEmojiConfetti(button) {
   const rect = button.getBoundingClientRect();
   const emojis = ["🎉", "✨", "🇺🇸", "🇮🇱"];
@@ -1077,12 +1351,10 @@ document.getElementById("rsvpForm").addEventListener("submit", function () {
     checked.push("Other: " + otherText.value.trim());
   }
 
-  // disable original inputs so Google Form doesn't double-read
   form
     .querySelectorAll('input[name="entry.1533398778"]')
     .forEach(el => el.disabled = true);
 
-  // submit ONE combined value
   const hidden = document.createElement("input");
   hidden.type = "hidden";
   hidden.name = "entry.1533398778";
