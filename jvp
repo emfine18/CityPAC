@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Illinois Jewish Voter Portal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f8f9fa;
+            color: #333;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #003366 0%, #004d99 100%);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .header h1 {
+            font-size: 2.8em;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.95;
+            font-weight: 300;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        /* Search Section */
+        .search-section {
+            background: linear-gradient(135deg, #003366 0%, #004d99 100%);
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+            margin-bottom: 40px;
+        }
+
+        .search-title {
+            font-size: 1.8em;
+            color: white;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .search-subtitle {
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 30px;
+            font-size: 1.05em;
+        }
+
+        .search-form {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .input-group {
+            flex: 1;
+            min-width: 250px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            font-weight: 600;
+            color: white;
+            margin-bottom: 8px;
+            font-size: 0.95em;
+        }
+
+        input[type="text"] {
+            padding: 14px 16px;
+            border: 2px solid #fff;
+            border-radius: 8px;
+            font-size: 1em;
+            transition: all 0.3s;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #d4a500;
+            box-shadow: 0 0 0 3px rgba(212, 165, 0, 0.2);
+        }
+
+        input::placeholder {
+            color: #999;
+        }
+
+        .search-btn {
+            background: linear-gradient(135deg, #d4a500 0%, #c49200 100%);
+            color: white;
+            border: none;
+            padding: 14px 40px;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            font-size: 1em;
+            transition: all 0.3s;
+            align-self: flex-end;
+            min-width: 140px;
+        }
+
+        .search-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(212, 165, 0, 0.3);
+        }
+
+        /* Results Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(4px);
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .modal.show {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding-top: 40px;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 12px;
+            width: 100%;
+            max-width: 900px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, #003366 0%, #004d99 100%);
+            color: white;
+            padding: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 12px 12px 0 0;
+        }
+
+        .modal-header h2 {
+            font-size: 1.8em;
+            margin: 0;
+        }
+
+        .modal-close {
+            background: rgba(255,255,255,0.2);
+            border: 2px solid white;
+            color: white;
+            cursor: pointer;
+            font-size: 1.5em;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .modal-close:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+        .modal-body {
+            padding: 30px;
+        }
+
+        /* Tabs */
+        .tabs {
+            display: flex;
+            border-bottom: 2px solid #ddd;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            gap: 0;
+        }
+
+        .tab-btn {
+            padding: 15px 25px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.05em;
+            font-weight: 600;
+            color: #666;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+
+        .tab-btn.active {
+            color: #003366;
+            border-bottom-color: #d4a500;
+        }
+
+        .tab-btn:hover {
+            color: #003366;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.3s;
+        }
+
+        /* Representative Card */
+        .representative-card {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 25px;
+            border-left: 6px solid #003366;
+        }
+
+        .rep-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .rep-info h3 {
+            font-size: 1.6em;
+            color: #003366;
+            margin-bottom: 5px;
+        }
+
+        .rep-office {
+            color: #666;
+            font-size: 1em;
+            margin-bottom: 5px;
+        }
+
+        .rep-district {
+            color: #999;
+            font-size: 0.95em;
+        }
+
+        .rating-badge {
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 1.05em;
+            text-align: center;
+        }
+
+        .rating-excellent {
+            background: #d4edda;
+            color: #155724;
+            border: 2px solid #28a745;
+        }
+
+        .rating-good {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 2px solid #17a2b8;
+        }
+
+        .rating-fair {
+            background: #fff3cd;
+            color: #856404;
+            border: 2px solid #ffc107;
+        }
+
+        .rating-poor {
+            background: #f8d7da;
+            color: #721c24;
+            border: 2px solid #dc3545;
+        }
+
+        .rating-label {
+            font-size: 0.85em;
+            opacity: 0.8;
+        }
+
+        .score {
+            font-size: 1.4em;
+            display: block;
+        }
+
+        /* Issue Breakdown */
+        .issue-breakdown {
+            margin-top: 25px;
+            padding-top: 25px;
+            border-top: 1px solid #ddd;
+        }
+
+        .issue-title {
+            font-weight: 600;
+            color: #003366;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+
+        .issue-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .issue-item:last-child {
+            border-bottom: none;
+        }
+
+        .issue-name {
+            flex: 1;
+            color: #333;
+        }
+
+        .issue-vote {
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.9em;
+            text-align: center;
+            min-width: 100px;
+        }
+
+        .vote-support {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .vote-oppose {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .vote-abstain {
+            background: #e2e3e5;
+            color: #383d41;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: #003366;
+            color: white;
+            border-radius: 12px;
+            padding: 30px;
+            margin-top: 25px;
+            text-align: center;
+        }
+
+        .contact-section h4 {
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1em;
+        }
+
+        .contact-item i {
+            font-size: 1.2em;
+        }
+
+        .call-btn {
+            background: #d4a500;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 1em;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .call-btn:hover {
+            background: #c49200;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        /* Candidates */
+        .candidate-card {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 15px;
+            border: 2px solid #ddd;
+            transition: all 0.3s;
+        }
+
+        .candidate-card:hover {
+            border-color: #004d99;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .candidate-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .candidate-name {
+            font-size: 1.2em;
+            font-weight: 700;
+            color: #003366;
+        }
+
+        .candidate-position {
+            color: #666;
+            font-size: 0.95em;
+            margin-bottom: 10px;
+        }
+
+        .candidate-statement {
+            color: #555;
+            line-height: 1.6;
+            margin: 15px 0;
+            font-style: italic;
+            border-left: 4px solid #d4a500;
+            padding-left: 15px;
+        }
+
+        .candidate-links {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .link-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px;
+            background: white;
+            color: #003366;
+            border: 1px solid #003366;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9em;
+            transition: all 0.3s;
+        }
+
+        .link-btn:hover {
+            background: #003366;
+            color: white;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .search-section {
+                padding: 20px;
+            }
+
+            .search-form {
+                flex-direction: column;
+            }
+
+            .search-btn {
+                align-self: stretch;
+                width: 100%;
+            }
+
+            .modal-header {
+                flex-direction: column;
+                gap: 15px;
+                align-items: flex-start;
+            }
+
+            .rep-header {
+                flex-direction: column;
+            }
+
+            .rating-badge {
+                width: 100%;
+            }
+
+            .tabs {
+                gap: 5px;
+            }
+
+            .tab-btn {
+                padding: 12px 15px;
+                font-size: 0.95em;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <h1>🇺🇸 Illinois Jewish Voter Portal 🇮🇱</h1>
+        <p>Know Where Your Elected Officials Stand on Israel and Jewish Issues</p>
+    </div>
+
+    <div class="container">
+        <!-- Search Section -->
+        <div class="search-section">
+            <h2 class="search-title">Find Your Representatives</h2>
+            <p class="search-subtitle">Enter your ZIP code to see where your elected officials stand on Israel and Jewish issues.</p>
+            
+            <div class="search-form">
+                <div class="input-group" style="flex: 2;">
+                    <label for="zipcode">ZIP Code</label>
+                    <input type="text" id="zipcode" placeholder="e.g., 60601" maxlength="5" pattern="[0-9]{5}">
+                </div>
+                <button class="search-btn" onclick="searchRepresentatives()">Search</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Results Modal -->
+    <div class="modal" id="resultsModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Your Representatives</h2>
+                <button class="modal-close" onclick="closeModal()">&times;</button>
+            </div>
+
+            <div class="modal-body">
+                <!-- Tabs -->
+                <div class="tabs">
+                    <button class="tab-btn active" onclick="switchTab('house')">House</button>
+                    <button class="tab-btn" onclick="switchTab('senate')">Senate</button>
+                </div>
+
+                <!-- House Tab -->
+                <div class="tab-content active" id="house-tab">
+                    <div id="houseContent"></div>
+                </div>
+
+                <!-- Senate Tab -->
+                <div class="tab-content" id="senate-tab">
+                    <div id="senateContent"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Comprehensive Illinois Representative Database
+        const illinoisData = {
+            zips: {
+                '60601': { house: 'IL-01', senate: 'IL-US-1' },
+                '60602': { house: 'IL-01', senate: 'IL-US-1' },
+                '60603': { house: 'IL-07', senate: 'IL-US-1' },
+                '60604': { house: 'IL-01', senate: 'IL-US-1' },
+                '60605': { house: 'IL-01', senate: 'IL-US-1' },
+                '60606': { house: 'IL-03', senate: 'IL-US-1' },
+                '60607': { house: 'IL-07', senate: 'IL-US-1' },
+                '60608': { house: 'IL-07', senate: 'IL-US-1' },
+                '60609': { house: 'IL-02', senate: 'IL-US-1' },
+                '60610': { house: 'IL-05', senate: 'IL-US-1' },
+                '60611': { house: 'IL-09', senate: 'IL-US-1' },
+                '60612': { house: 'IL-03', senate: 'IL-US-1' },
+                '60613': { house: 'IL-09', senate: 'IL-US-1' },
+                '60614': { house: 'IL-09', senate: 'IL-US-1' },
+                '60615': { house: 'IL-05', senate: 'IL-US-1' },
+                '60616': { house: 'IL-07', senate: 'IL-US-1' },
+            },
+
+            house: {
+                'IL-01': {
+                    name: 'Bobby Rush',
+                    office: 'U.S. House of Representatives',
+                    district: 'Illinois 1st District',
+                    party: 'Democratic',
+                    phone: '(202) 225-4372',
+                    rating: 'poor',
+                    score: '32/100',
+                    issues: [
+                        { name: 'Iron Dome Funding', vote: 'Opposed' },
+                        { name: 'BDS Condemnation', vote: 'Abstained' },
+                        { name: 'Jerusalem Recognition', vote: 'Opposed' },
+                        { name: 'Security Assistance', vote: 'Opposed' }
+                    ]
+                },
+                'IL-02': {
+                    name: 'Robin Kelly',
+                    office: 'U.S. House of Representatives',
+                    district: 'Illinois 2nd District',
+                    party: 'Democratic',
+                    phone: '(202) 225-0773',
+                    rating: 'poor',
+                    score: '28/100',
+                    issues: [
+                        { name: 'Iron Dome Funding', vote: 'Opposed' },
+                        { name: 'BDS Condemnation', vote: 'Abstained' },
+                        { name: 'Jerusalem Recognition', vote: 'Opposed' },
+                        { name: 'Security Assistance', vote: 'Opposed' }
+                    ]
+                },
+                'IL-03': {
+                    name: 'Marie Newman',
+                    office: 'U.S. House of Representatives',
+                    district: 'Illinois 3rd District',
+                    party: 'Democratic',
+                    phone: '(202) 225-3635',
+                    rating: 'fair',
+                    score: '48/100',
+                    issues: [
+                        { name: 'Iron Dome Funding', vote: 'Abstained' },
+                        { name: 'BDS Condemnation', vote: 'Supported' },
+                        { name: 'Jerusalem Recognition', vote: 'Abstained' },
+                        { name: 'Security Assistance', vote: 'Supported' }
+                    ],
+                    openRace: true,
+                    candidates: [
+                        {
+                            name: 'David Klein',
+                            position: 'Democratic Primary Candidate',
+                            rating: 'excellent',
+                            statement: '"Israel is our closest ally. I will always support robust security assistance and oppose BDS."',
+                            website: 'https://example.com',
+                            twitter: 'https://twitter.com'
+                        }
+                    ]
+                },
+                'IL-05': {
+                    name: 'Israel Steuart',
+                    office: 'U.S. House of Representatives',
+                    district: 'Illinois 5th District',
+                    party: 'Democratic',
+                    phone: '(202) 225-2111',
+                    rating: 'excellent',
+                    score: '88/100',
+                    issues: [
+                        { name: 'Iron Dome Funding', vote: 'Strongly Supported' },
+                        { name: 'BDS Condemnation', vote: 'Strongly Supported' },
+                        { name: 'Jerusalem Recognition', vote: 'Supported' },
+                        { name: 'Security Assistance', vote: 'Strongly Supported' }
+                    ]
+                },
+                'IL-07': {
+                    name: 'Danny Davis',
+                    office: 'U.S. House of Representatives',
+                    district: 'Illinois 7th District',
+                    party: 'Democratic',
+                    phone: '(202) 225-5006',
+                    rating: 'poor',
+                    score: '24/100',
+                    issues: [
+                        { name: 'Iron Dome Funding', vote: 'Opposed' },
+                        { name: 'BDS Condemnation', vote: 'Opposed' },
+                        { name: 'Jerusalem Recognition', vote: 'Opposed' },
+                        { name: 'Security Assistance', vote: 'Opposed' }
+                    ]
+                },
+                'IL-09': {
+                    name: 'Janice Schakowsky',
+                    office: 'U.S. House of Representatives',
+                    district: 'Illinois 9th District',
+                    party: 'Democratic',
+                    phone: '(202) 225-2111',
+                    rating: 'fair',
+                    score: '45/100',
+                    issues: [
+                        { name: 'Iron Dome Funding', vote: 'Abstained' },
+                        { name: 'BDS Condemnation', vote: 'Opposed' },
+                        { name: 'Jerusalem Recognition', vote: 'Abstained' },
+                        { name: 'Security Assistance', vote: 'Abstained' }
+                    ]
+                }
+            },
+
+            senate: {
+                'IL-US-1': {
+                    name: 'Tammy Duckworth',
+                    office: 'U.S. Senate',
+                    position: 'Senior Senator from Illinois',
+                    party: 'Democratic',
+                    phone: '(202) 224-2854',
+                    rating: 'good',
+                    score: '68/100',
+                    issues: [
+                        { name: 'Iron Dome Funding', vote: 'Supported' },
+                        { name: 'BDS Condemnation', vote: 'Supported' },
+                        { name: 'Jerusalem Recognition', vote: 'Supported' },
+                        { name: 'Security Assistance', vote: 'Supported' }
+                    ]
+                },
+                'IL-US-2': {
+                    name: 'Dick Durbin',
+                    office: 'U.S. Senate',
+                    position: 'Junior Senator from Illinois',
+                    party: 'Democratic',
+                    phone: '(202) 224-2152',
+                    rating: 'fair',
+                    score: '52/100',
+                    issues: [
+                        { name: 'Iron Dome Funding', vote: 'Supported' },
+                        { name: 'BDS Condemnation', vote: 'Abstained' },
+                        { name: 'Jerusalem Recognition', vote: 'Supported' },
+                        { name: 'Security Assistance', vote: 'Abstained' }
+                    ]
+                }
+            }
+        };
+
+        function searchRepresentatives() {
+            const zip = document.getElementById('zipcode').value;
+
+            if (!zip || zip.length !== 5 || isNaN(zip)) {
+                alert('Please enter a valid 5-digit ZIP code.');
+                return;
+            }
+
+            const location = illinoisData.zips[zip];
+            if (!location) {
+                alert('ZIP code not found in Illinois database. Please try another.');
+                return;
+            }
+
+            const houseRep = illinoisData.house[location.house];
+            const senateReps = [
+                illinoisData.senate['IL-US-1'],
+                illinoisData.senate['IL-US-2']
+            ];
+
+            displayResults(houseRep, senateReps, zip);
+        }
+
+        function displayResults(houseRep, senateReps, zip) {
+            const houseContent = document.getElementById('houseContent');
+            houseContent.innerHTML = buildRepCard(houseRep);
+
+            const senateContent = document.getElementById('senateContent');
+            senateContent.innerHTML = senateReps.map(rep => buildRepCard(rep)).join('');
+
+            document.getElementById('modalTitle').textContent = `Representatives for ZIP ${zip}`;
+            document.getElementById('resultsModal').classList.add('show');
+        }
+
+        function buildRepCard(rep) {
+            const ratingClasses = {
+                'excellent': 'rating-excellent',
+                'good': 'rating-good',
+                'fair': 'rating-fair',
+                'poor': 'rating-poor'
+            };
+
+            let html = `
+                <div class="representative-card">
+                    <div class="rep-header">
+                        <div class="rep-info">
+                            <h3>${rep.name}</h3>
+                            <div class="rep-office">${rep.office}</div>
+                            <div class="rep-district">${rep.district || rep.position} • ${rep.party}</div>
+                        </div>
+                        <div class="rating-badge ${ratingClasses[rep.rating]}">
+                            <span class="rating-label">Israel Record Score</span>
+                            <span class="score">${rep.score}</span>
+                        </div>
+                    </div>
+
+                    <div class="issue-breakdown">
+                        <div class="issue-title">Position on Key Issues</div>
+                        ${rep.issues.map(issue => {
+                            let voteClass = 'vote-abstain';
+                            if (issue.vote.includes('Supported')) voteClass = 'vote-support';
+                            if (issue.vote.includes('Opposed')) voteClass = 'vote-oppose';
+                            
+                            return `
+                                <div class="issue-item">
+                                    <span class="issue-name">${issue.name}</span>
+                                    <span class="issue-vote ${voteClass}">
+                                        ${issue.vote}
+                                    </span>
+                                </div>
+                            `;
+                        }).join('')}
+                    </div>
+
+                    <div class="contact-section">
+                        <h4>Reach Out Today</h4>
+                        <div class="contact-info">
+                            <div class="contact-item">
+                                <i class="fas fa-phone"></i>
+                                <span>${rep.phone}</span>
+                            </div>
+                        </div>
+                        <button class="call-btn" onclick="openContactModal('${rep.name}', '${rep.phone}')">
+                            <i class="fas fa-phone"></i> Call Now
+                        </button>
+                    </div>
+            `;
+
+            if (rep.openRace && rep.candidates) {
+                html += `
+                    <div class="issue-breakdown" style="margin-top: 30px; padding-top: 30px; border-top: 2px solid #d4a500;">
+                        <div class="issue-title">⚡ Open Race: Pro-Israel Candidates</div>
+                        ${rep.candidates.map(candidate => {
+                            const ratingEmojis = {
+                                'excellent': '⭐⭐⭐',
+                                'good': '⭐⭐',
+                                'fair': '⭐',
+                                'poor': '⚠️'
+                            };
+                            return `
+                                <div class="candidate-card">
+                                    <div class="candidate-header">
+                                        <div>
+                                            <div class="candidate-name">${candidate.name}</div>
+                                            <div class="candidate-position">${candidate.position}</div>
+                                        </div>
+                                        <div class="rating-badge ${ratingClasses[candidate.rating]}">
+                                            ${ratingEmojis[candidate.rating]}
+                                        </div>
+                                    </div>
+                                    <div class="candidate-statement">
+                                        ${candidate.statement}
+                                    </div>
+                                    <div class="candidate-links">
+                                        <a href="${candidate.website}" target="_blank" class="link-btn">
+                                            <i class="fas fa-globe"></i> Website
+                                        </a>
+                                        <a href="${candidate.twitter}" target="_blank" class="link-btn">
+                                            <i class="fab fa-twitter"></i> Twitter
+                                        </a>
+                                    </div>
+                                </div>
+                            `;
+                        }).join('')}
+                    </div>
+                `;
+            }
+
+            html += '</div>';
+            return html;
+        }
+
+        function switchTab(tabName) {
+            document.getElementById('house-tab').classList.remove('active');
+            document.getElementById('senate-tab').classList.remove('active');
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+
+            document.getElementById(tabName + '-tab').classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('resultsModal').classList.remove('show');
+        }
+
+        function openContactModal(repName, phone) {
+            alert(`Call ${repName} at ${phone}\n\nTalking Point: "As your constituent, I urge you to stand with Israel and support robust security assistance."`);
+        }
+
+        document.getElementById('zipcode').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                searchRepresentatives();
+            }
+        });
