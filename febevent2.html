@@ -176,7 +176,7 @@ body {
   z-index: 5;
   background: #2f3076;
   padding-top: 0;
-  padding-bottom: 20px;
+  padding-bottom: 10px;
 }
 
 
@@ -203,6 +203,26 @@ body {
   line-height: 1.1;
   margin-top: 0;
   margin-bottom: 14px;
+}
+
+.event-details {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  margin: 24px 0 32px;
+  flex-wrap: wrap;
+}
+
+.detail-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.detail-emoji {
+  font-size: 24px;
 }
 
 .event-subtitle {
@@ -246,6 +266,152 @@ body {
 .speaker-role {
   font-size: 12px;
   opacity: 0.85;
+}
+
+/* ================= SPEAKER BIOS ================= */
+.speaker-bio-toggle {
+  display: block;
+  margin: 24px auto;
+  padding: 12px 28px;
+  background: #44b6e5;
+  color: #ffffff;
+  border: none;
+  font-weight: 600;
+  font-size: 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  transition: background 0.25s ease;
+}
+
+.speaker-bio-toggle:hover {
+  background: #2fa6d8;
+}
+
+.speaker-bios {
+  background: rgba(68, 182, 229, 0.1);
+  border: 1px solid rgba(68, 182, 229, 0.3);
+  border-radius: 12px;
+  padding: 32px 24px;
+  margin: 0 auto 24px;
+  max-width: 820px;
+}
+
+.bio-content {
+  display: grid;
+  gap: 24px;
+}
+
+.bio-item {
+  background: transparent;
+}
+
+.bio-item h3 {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0 0 4px 0;
+  color: #44b6e5;
+}
+
+.bio-item p {
+  margin: 0 0 8px 0;
+  line-height: 1.6;
+  font-size: 15px;
+  opacity: 0.95;
+}
+
+.bio-item p:last-child {
+  margin-bottom: 0;
+}
+
+/* ================= SIGNUP ================= */
+.signup {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  text-align: center;
+  background: #2f3076;
+}
+
+.signup h2 {
+  color: #44b6e5;
+  text-transform: uppercase;
+  font-size: 28px;
+  margin: 0 0 24px 0;
+  font-weight: 700;
+}
+
+.signup-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.signup-row.bottom {
+  grid-template-columns: 1.4fr 0.6fr;
+}
+
+.signup input {
+  height: 52px;
+  padding: 0 14px;
+  background: transparent;
+  border: 1.5px solid rgba(255,255,255,0.9);
+  border-radius: 6px;
+  font-size: 15px;
+  color: #ffffff;
+  font-family: 'Poppins', sans-serif;
+}
+
+.signup input::placeholder {
+  color: rgba(255,255,255,0.7);
+}
+
+.signup input:focus {
+  outline: none;
+  border-color: #44b6e5;
+}
+
+.signup button {
+  height: 52px;
+  background: #44b6e5;
+  color: #ffffff;
+  border: none;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+}
+
+.signup button:hover {
+  background: #2fa6d8;
+}
+
+.signup button:disabled {
+  background: #9bb4d1;
+  cursor: default;
+}
+
+.signup-success {
+  display: none;
+  margin-top: 16px;
+  font-weight: 600;
+  color: #44b6e5;
+  font-size: 16px;
+}
+
+.signup-divider {
+  width: 100%;
+  height: 4px;
+  background: #44b6e5;
+}
+
+@media (max-width: 700px) {
+  .signup-row,
+  .signup-row.bottom {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* ================= EVENT DESCRIPTION & ACTIONS ================= */
@@ -751,8 +917,19 @@ body {
       U.S.–ISRAEL RELATIONSHIP
     </h1>
 
-    <div class="event-subtitle">
-      THE LOOP, CHICAGO • FEBRUARY 17, 2026
+    <div class="event-details">
+      <div class="detail-item">
+        <span class="detail-emoji">📅</span>
+        <span>February 17, 2026</span>
+      </div>
+      <div class="detail-item">
+        <span class="detail-emoji">🕕</span>
+        <span>6:30 PM</span>
+      </div>
+      <div class="detail-item">
+        <span class="detail-emoji">📍</span>
+        <span>The Loop, Chicago</span>
+      </div>
     </div>
 
     <div class="speakers">
@@ -767,6 +944,24 @@ body {
         <div class="speaker-name">Emily Pevnick</div>
         <div class="speaker-role">Board Member, CityPAC</div>
       </div>
+    </div>
+
+    <button class="speaker-bio-toggle" onclick="toggleSpeakerBios()">View Speaker Bios</button>
+
+    <div class="speaker-bios" id="speakerBios" style="display: none;">
+      <div class="bio-content">
+        <div class="bio-item">
+          <h3>Andy Hochberg</h3>
+          <p><strong>Founder & CEO, Next Realty</strong></p>
+          <p>Andy Hochberg is a real estate entrepreneur and passionate advocate for pro-Israel policy. With over a decade of experience in real estate development, Andy brings valuable insights into how business leaders can engage in the political process. He's deeply committed to strengthening U.S.–Israel relations and empowering young professionals to get involved in advocacy.</p>
+        </div>
+        <div class="bio-item">
+          <h3>Emily Pevnick</h3>
+          <p><strong>Board Member, CityPAC</strong></p>
+          <p>Emily Pevnick is a dedicated community organizer and policy expert with a focus on pro-Israel advocacy. As a board member of CityPAC, she works tirelessly to build networks of young professionals committed to strengthening bipartisan support for Israel. Emily brings extensive experience in political engagement and community leadership to her role.</p>
+        </div>
+      </div>
+      <button class="speaker-bio-toggle" onclick="toggleSpeakerBios()" style="margin-top: 20px;">Hide Speaker Bios</button>
     </div>
 
     <p class="event-description">
@@ -798,6 +993,9 @@ body {
       <button class="action-btn" onclick="addToCalendar()">
         📅 Add to Calendar
       </button>
+      <a href="about.html" class="action-btn" style="text-decoration: none; display: flex; align-items: center; justify-content: center;">
+        ℹ️ Learn More About CityPAC
+      </a>
     </div>
 
   </div>
@@ -1162,16 +1360,83 @@ body {
 </footer>
 
 <script>
+function toggleSpeakerBios() {
+  const bios = document.getElementById("speakerBios");
+  if (bios.style.display === "none") {
+    bios.style.display = "block";
+  } else {
+    bios.style.display = "none";
+  }
+}
+</script>
+
+<script>
 document.addEventListener("DOMContentLoaded", function () {
-  const hamburger = document.getElementById("hamburger");
-  const menu = document.getElementById("menu");
+  const signupForm = document.getElementById("signupForm");
+  const signupBtn = document.getElementById("signupBtn");
+  const signupSuccess = document.getElementById("signupSuccess");
 
-  if (!hamburger || !menu) return;
+  if (!signupForm || !signupBtn || !signupSuccess) return;
 
-  hamburger.addEventListener("click", function () {
-    menu.classList.toggle("show");
+  signupForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    signupBtn.disabled = true;
+    signupBtn.innerText = "Submitting…";
+
+    fetch(
+      "https://script.google.com/macros/s/AKfycbyMnbkQ0C_34sPpiuuUiiCRAL-Z9SmMYa9rZiWMbPTaF3aAyFjwn7FWRBYkdGsI0r-a2A/exec",
+      {
+        method: "POST",
+        mode: "no-cors",
+        body: new URLSearchParams(new FormData(signupForm))
+      }
+    ).then(() => {
+      signupBtn.innerText = "Submitted ✓";
+      signupSuccess.style.display = "block";
+      launchEmojiConfetti(signupBtn);
+      signupForm.reset();
+    });
   });
 });
+
+function launchEmojiConfetti(button) {
+  const rect = button.getBoundingClientRect();
+  const emojis = ["🎉", "✨", "🇺🇸", "🇮🇱"];
+
+  const startX = rect.left + rect.width / 2;
+  const startY = rect.top + rect.height / 2;
+
+  for (let i = 0; i < 300; i++) {
+    const emoji = document.createElement("span");
+    emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+
+    emoji.style.position = "fixed";
+    emoji.style.left = startX + "px";
+    emoji.style.top = startY + "px";
+    emoji.style.fontSize = "26px";
+    emoji.style.pointerEvents = "none";
+    emoji.style.zIndex = "999999";
+
+    document.body.appendChild(emoji);
+
+    const angle = Math.random() * Math.PI * 2;
+    const distance = 350 + Math.random() * 400;
+
+    emoji.animate(
+      [
+        { transform: "translate(0,0)", opacity: 1 },
+        {
+          transform: `translate(${Math.cos(angle)*distance}px, ${Math.sin(angle)*distance}px) rotate(${Math.random()*720}deg)`,
+          opacity: 0
+        }
+      ],
+      { duration: 4500, easing: "ease-out" }
+    );
+
+    setTimeout(() => emoji.remove(), 4500);
+  }
+}
 </script>
 
 <script>
