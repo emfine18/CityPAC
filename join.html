@@ -124,20 +124,21 @@ body {
 /* ================= PAGE INTRO ================= */
 .page-header {
   background: #f6f9fc;
-  padding: 70px 24px 50px;
+  padding: 32px 24px 28px;
   text-align: center;
 }
 
 .page-header h1 {
   font-size: 42px;
   font-weight: 800;
-  margin-bottom: 16px;
+  margin-top: 0;
+  margin-bottom: 8px;
   color: #003366;
 }
 
 .page-header p {
   max-width: 820px;
-  margin: auto;
+  margin: 0 auto;
   font-size: 18px;
   line-height: 1.6;
   color: #444;
@@ -146,7 +147,7 @@ body {
 /* ================= MAIN CONTENT ================= */
 .join-section {
   max-width: 1100px;
-  margin: 70px auto;
+  margin: 32px auto 70px;
   padding: 0 24px;
   display: grid;
   grid-template-columns: 1fr;
@@ -202,6 +203,36 @@ body {
 
 .join-block a:hover {
   text-decoration: underline;
+}
+
+/* Criteria list */
+.criteria-list {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+.criteria-list li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 16px;
+  color: #333;
+  padding: 16px 20px;
+  background: #f6f9fc;
+  border-radius: 12px;
+  line-height: 1.5;
+}
+
+.criteria-list li::before {
+  content: "✓";
+  color: #44b6e5;
+  font-weight: 700;
+  font-size: 14px;
+  flex-shrink: 0;
 }
 
 /* ================= MEMBERSHIP TIERS ================= */
@@ -520,6 +551,20 @@ body {
 </section>
 
 <section class="join-section">
+
+  <div class="join-block">
+    <div class="label">Become a Member</div>
+    <h2>Who Can Join?</h2>
+    <p>
+      CityPAC offers Chicago professionals who are passionate about politics and Israel a host of 
+      hands-on, non-bureaucratic opportunities to get involved and lead. CityPAC members must meet the following criteria:
+    </p>
+    <ul class="criteria-list">
+      <li>Be a young adult who shares a passion for Israel and for strengthening the U.S.–Israel relationship</li>
+      <li>Attend at least two political events with CityPAC each year</li>
+      <li>Make a financial contribution to CityPAC each year</li>
+    </ul>
+  </div>
 
   <div class="join-block">
     <div class="label">Membership</div>
