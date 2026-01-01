@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>About CityPAC</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
 * { box-sizing: border-box; font-family: 'Poppins', sans-serif; }
@@ -16,7 +16,7 @@ body {
   color: #111;
 }
 
-/* ================= NAVY HEADER (NO HERO) ================= */
+/* ================= NAVY HEADER (UNCHANGED) ================= */
 .site-header {
   background: #003366;
   width: 100%;
@@ -139,6 +139,7 @@ body {
 
 .page-header h1 {
   font-size: 42px;
+  font-weight: 800;
   margin-bottom: 16px;
   color: #003366;
 }
@@ -148,6 +149,7 @@ body {
   margin: auto;
   font-size: 18px;
   line-height: 1.6;
+  color: #444;
 }
 
 /* ================= ABOUT CONTENT (CARDS) ================= */
@@ -173,24 +175,78 @@ body {
   transform: translateY(-4px);
   box-shadow: 0 22px 50px rgba(0, 0, 0, 0.12);
 }
+
+.about-block .label {
+  font-size: 12px;
+  font-weight: 700;
+  color: #44b6e5;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 10px;
+}
   
 .about-block h2 {
   color: #003366;
-  font-size: 30px;
+  font-size: 28px;
   font-weight: 700;
   margin-bottom: 18px;
 }
 
 .about-block p {
-  font-size: 18px;
-  line-height: 1.7;
-  color: #111;
-}  
+  font-size: 17px;
+  line-height: 1.75;
+  color: #333;
+  margin-bottom: 16px;
+}
 
-  /* ================= IMPACT STATS (INSIDE 4TH CARD) ================= */
+.about-block p:last-child {
+  margin-bottom: 0;
+}
+
+.about-block p strong {
+  color: #003366;
+  font-weight: 600;
+}
+
+/* Feature list */
+.feature-list {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.feature-list li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 15px;
+  color: #333;
+  padding: 14px 18px;
+  background: #f6f9fc;
+  border-radius: 12px;
+  line-height: 1.5;
+}
+
+.feature-list li::before {
+  content: "✓";
+  color: #44b6e5;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+@media (max-width: 700px) {
+  .feature-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ================= IMPACT STATS ================= */
 
 .impact-stats {
-  max-width: 760px;          /* smaller than about card */
+  max-width: 760px;
   margin: 36px auto 0;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -239,7 +295,72 @@ body {
     max-width: 420px;
   }
 }
-  
+
+/* ================= CTA SECTION ================= */
+.cta-section {
+  background: #f6f9fc;
+  padding: 64px 24px;
+  text-align: center;
+}
+
+.cta-inner {
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+.cta-inner h3 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #003366;
+  margin-bottom: 16px;
+}
+
+.cta-inner p {
+  font-size: 17px;
+  color: #444;
+  margin-bottom: 28px;
+  line-height: 1.7;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.cta-btn {
+  display: inline-block;
+  padding: 14px 32px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.cta-btn.primary {
+  background: #e04b3f;
+  color: #ffffff;
+}
+
+.cta-btn.primary:hover {
+  background: #c93c32;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(224, 75, 63, 0.3);
+}
+
+.cta-btn.secondary {
+  background: #003366;
+  color: #ffffff;
+}
+
+.cta-btn.secondary:hover {
+  background: #004080;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 51, 102, 0.3);
+}
+
 /* ================= FOOTER (UNCHANGED) ================= */
 .site-footer {
   background: #003366;
@@ -309,6 +430,33 @@ body {
   font-size: 12px;
   opacity: 0.85;
 }
+
+@media (max-width: 768px) {
+  .page-header {
+    padding: 50px 24px 40px;
+  }
+  
+  .page-header h1 {
+    font-size: 32px;
+  }
+  
+  .about-section {
+    margin: 50px auto;
+    gap: 28px;
+  }
+  
+  .about-block {
+    padding: 32px 28px;
+  }
+  
+  .about-block h2 {
+    font-size: 24px;
+  }
+  
+  .about-block p {
+    font-size: 16px;
+  }
+}
 </style>
 </head>
 
@@ -335,9 +483,9 @@ body {
 </header>
 
 <section class="page-header">
-  <h1>Who We Are</h1>
+  <h1>About CityPAC</h1>
   <p>
-    CityPAC is an independent, bipartisan, pro-Israel political action committee
+    CityPAC is an independent, bipartisan, pro-Israel political action committee (PAC) 
     dedicated to strengthening the U.S.–Israel relationship.
   </p>
 </section>
@@ -345,57 +493,110 @@ body {
 <section class="about-section">
 
   <div class="about-block">
-    <h2>Our Mission</h2>
+    <div class="label">Who We Are</div>
+    <h2>Chicago's Pro-Israel Community</h2>
     <p>
-      CityPAC works to educate, engage, and empower the Chicago Jewish community
-      to participate directly in the political process in support of a strong,
-      enduring U.S.–Israel relationship.
+      Unique to Chicago, CityPAC is an all-volunteer organization that empowers young men 
+      and women to get directly involved in the political process, to learn about and support 
+      Israel, and to plan and participate in social and educational programs important to 
+      the pro-Israel community.
+    </p>
+    <p>
+      Through its work, CityPAC not only helps to maintain strong and steadfast Congressional 
+      support for Israel, but it also provides ongoing, <strong>real-world leadership opportunities</strong> 
+      for the Jewish community in Chicago.
     </p>
   </div>
 
   <div class="about-block">
-    <h2>Who We Are</h2>
+    <div class="label">Our Mission</div>
+    <h2>Educate. Engage. Empower.</h2>
     <p>
-      Unique to Chicago, CityPAC is an all-volunteer organization that empowers
-      young men and women to get involved in politics, learn about Israel, and
-      participate in meaningful social and educational programming.
+      CityPAC exists to educate, engage, and empower the Chicago Jewish community to participate 
+      directly in the political process in support of a strong, enduring U.S.–Israel relationship.
     </p>
     <p>
-      Through its work, CityPAC strengthens Congressional support for Israel
-      while developing the next generation of Jewish civic leaders.
+      We believe that <strong>bipartisan support for Israel</strong> is essential to both nations' 
+      security and prosperity. By connecting young professionals with candidates and elected 
+      officials who share our values, we ensure that pro-Israel voices are heard in Washington.
     </p>
   </div>
 
   <div class="about-block">
+    <div class="label">What We Do</div>
+    <h2>Making an Impact</h2>
+    <p>
+      CityPAC provides meaningful opportunities for members to engage with the political process 
+      and build lasting connections within the pro-Israel community.
+    </p>
+    <ul class="feature-list">
+      <li>Support pro-Israel Congressional candidates</li>
+      <li>Host educational briefings and events</li>
+      <li>Organize social and networking programs</li>
+      <li>Develop future community leaders</li>
+      <li>Build bipartisan political relationships</li>
+      <li>Connect members with elected officials</li>
+    </ul>
+  </div>
+
+  <div class="about-block">
+    <div class="label">Since 1984</div>
     <h2>Our History</h2>
     <p>
-      Founded in 1984, CityPAC has contributed more than $1.4 million to over
-      400 pro-Israel Congressional candidates from both political parties
-      across all 50 states.
+      Since 1984, CityPAC—led by the efforts of hundreds of committed Jewish Chicagoans 
+      in their 20s, 30s, and early 40s—has had one overriding mission: <strong>support 
+      candidates for and members of Congress</strong> that share the PAC's commitment to 
+      a strong and enduring U.S.–Israel relationship.
+    </p>
+    <p>
+      Over four decades, we have grown into one of Chicago's most impactful pro-Israel 
+      organizations, building relationships with lawmakers from both parties and across 
+      all 50 states. Our all-volunteer model ensures that every dollar raised goes directly 
+      toward supporting candidates who stand with Israel.
     </p>
   </div>
 
-<div class="about-block">
-  <h2>Our Impact & Successes</h2>
+  <div class="about-block">
+    <div class="label">By The Numbers</div>
+    <h2>Our Impact & Successes</h2>
+    <p>
+      For 40 years, CityPAC has been at the forefront of pro-Israel advocacy, 
+      building bipartisan support for the U.S.–Israel relationship across the nation.
+    </p>
 
-  <div class="impact-stats">
-    <div class="impact-card">
-      <div class="impact-number">$1.4M+</div>
-      <div class="impact-label">Contributed Nationwide</div>
-    </div>
+    <div class="impact-stats">
+      <div class="impact-card">
+        <div class="impact-number">$1.4M+</div>
+        <div class="impact-label">Contributed Nationwide</div>
+      </div>
 
-    <div class="impact-card">
-      <div class="impact-number">400+</div>
-      <div class="impact-label">Candidates Supported</div>
-    </div>
+      <div class="impact-card">
+        <div class="impact-number">400+</div>
+        <div class="impact-label">Candidates Supported</div>
+      </div>
 
-    <div class="impact-card">
-      <div class="impact-number">50</div>
-      <div class="impact-label">States Reached</div>
+      <div class="impact-card">
+        <div class="impact-number">50</div>
+        <div class="impact-label">States Reached</div>
+      </div>
     </div>
   </div>
-</div>
   
+</section>
+
+<section class="cta-section">
+  <div class="cta-inner">
+    <h3>Ready to Get Involved?</h3>
+    <p>
+      Join hundreds of young Jewish Chicagoans who are making a real difference in 
+      strengthening the U.S.–Israel relationship. Whether you're new to political advocacy 
+      or a seasoned activist, there's a place for you at CityPAC.
+    </p>
+    <div class="cta-buttons">
+      <a href="join.html" class="cta-btn primary">Join CityPAC</a>
+      <a href="donate.html" class="cta-btn secondary">Donate</a>
+    </div>
+  </div>
 </section>
   
 <footer class="site-footer">
