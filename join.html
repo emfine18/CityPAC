@@ -5,84 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Join CityPAC</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
 * { box-sizing: border-box; font-family: 'Poppins', sans-serif; }
 
 body {
   margin: 0;
-  background: #003366;
-  color: #003366;
-}
-
-/* ================= COMMITTEES ================= */
-.committees {
-  background: #f6f9fc;
-  padding: 80px 24px;
-}
-
-.committees-inner {
-  max-width: 1200px;
-  margin: auto;
-  text-align: center;
-}
-
-.committees h2 {
-  font-size: 34px;
-  color: #003366;
-  margin-bottom: 14px;
-}
-
-.committees-intro {
-  max-width: 760px;
-  margin: 0 auto 48px;
-  font-size: 17px;
-  line-height: 1.6;
-}
-
-.committee-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 28px;
-}
-
-.committee {
   background: #ffffff;
-  border-radius: 14px;
-  padding: 22px 28px; /* less top/bottom, same sides */
-  text-align: left;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-}
-  
-.committee h3 {
-  color: #003366;
-  margin-bottom: 10px;
+  color: #111;
 }
 
-.committee p {
-  font-size: 15px;
-  line-height: 1.6;
-  margin-bottom: 18px;
-}
-
-.committee a {
-  color: #44b6e5;
-  font-weight: 600;
-  text-decoration: none;
-}
-
-.committee a:hover {
-  text-decoration: underline;
-}
-
-@media (max-width: 800px) {
-  .committee-grid {
-    grid-template-columns: 1fr;
-  }
-}
-  
-/* ================= NAVY HEADER (IDENTICAL TO ABOUT) ================= */
+/* ================= NAVY HEADER ================= */
 .site-header {
   background: #003366;
   width: 100%;
@@ -99,7 +33,9 @@ body {
   align-items: center;
 }
 
-.header-logo img { height: 56px; }
+.header-logo img {
+  height: 56px;
+}
 
 .header-menu {
   display: flex;
@@ -128,7 +64,9 @@ body {
   transition: width 0.25s ease;
 }
 
-.header-menu a:hover::after { width: 100%; }
+.header-menu a:hover::after {
+  width: 100%;
+}
 
 .header-menu .donate-btn {
   background: #e04b3f;
@@ -137,6 +75,7 @@ body {
   border-radius: 10px;
   font-weight: 700;
 }
+
 .header-menu .donate-btn::after { display: none; }
 .header-menu .donate-btn:hover { background: #c93c32; }
 
@@ -146,6 +85,7 @@ body {
   gap: 6px;
   cursor: pointer;
 }
+
 .hamburger span {
   width: 26px;
   height: 3px;
@@ -181,35 +121,6 @@ body {
   }
 }
 
-/* ================= CARD HOVER (CLUBS + COMMITTEES) ================= */
-
-.club,
-.committee {
-  transition:
-    transform 0.25s ease,
-    box-shadow 0.25s ease,
-    border-color 0.25s ease;
-}
-
-.club:hover,
-.committee:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 22px 50px rgba(0,0,0,0.18);
-  border-color: #44b6e5;
-}
-
-  .club-features {
-  margin: 12px 0 16px;
-}
-
-.club-features div {
-  margin: 8px 0;
-  font-size: 18px;
-  font-weight: 600;
-  color: #0f2f5f;
-}
-
-  
 /* ================= PAGE INTRO ================= */
 .page-header {
   background: #f6f9fc;
@@ -219,6 +130,7 @@ body {
 
 .page-header h1 {
   font-size: 42px;
+  font-weight: 800;
   margin-bottom: 16px;
   color: #003366;
 }
@@ -228,92 +140,260 @@ body {
   margin: auto;
   font-size: 18px;
   line-height: 1.6;
+  color: #444;
 }
 
-/* ================= CLUB LEVELS (TALL RECTANGLES) ================= */
-
-.clubs {
-  background: #f6f9fc;
-  padding: 70px 24px;
-}
-
-/* Grid */
-.club-grid {
-  max-width: 1200px;             /* wide enough for 3 */
-  margin: auto;
-
+/* ================= MAIN CONTENT ================= */
+.join-section {
+  max-width: 1100px;
+  margin: 70px auto;
+  padding: 0 24px;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 32px;
+  grid-template-columns: 1fr;
+  gap: 40px;
 }
 
-/* Card */
-.club-card {
+.join-block {
   background: #ffffff;
-  border-radius: 16px;
-
-  padding: 28px 22px;            /* more vertical padding */
-  min-height: 360px;             /* ⬅️ TALLER */
-  max-width: 320px;              /* ⬅️ NARROWER */
-  width: 100%;
-  margin: 0 auto;
-
-  border: 1px solid #dbe7f1;
-  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
-
+  border-radius: 26px;
+  padding: 48px 52px;
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.08);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-.club-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 22px 48px rgba(0,0,0,0.14);
+.join-block:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 22px 50px rgba(0, 0, 0, 0.12);
 }
 
-/* Title — KEEP LARGE */
-.club-name {
-  margin: 0 0 10px;
-  font-size: 18px;               /* unchanged */
+.join-block .label {
+  font-size: 12px;
   font-weight: 700;
+  color: #44b6e5;
   text-transform: uppercase;
-  color: #003366;
+  letter-spacing: 1.5px;
+  margin-bottom: 4px;
 }
 
-/* Price — KEEP LARGE */
-.club-price {
-  font-size: 26px;               /* unchanged / big */
+.join-block h2 {
+  color: #003366;
+  font-size: 28px;
   font-weight: 700;
-  color: #0f2f5f;
+  margin-top: 0;
+  margin-bottom: 18px;
+}
+
+.join-block p {
+  font-size: 17px;
+  line-height: 1.75;
+  color: #333;
   margin-bottom: 16px;
 }
 
-.club-price span {
-  font-size: 14px;
+.join-block p:last-of-type {
+  margin-bottom: 0;
+}
+
+.join-block a {
+  color: #44b6e5;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.join-block a:hover {
+  text-decoration: underline;
+}
+
+/* ================= MEMBERSHIP TIERS ================= */
+.tiers-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 32px;
+}
+
+.tier-card {
+  border-radius: 22px;
+  padding: 40px 28px;
+  text-align: center;
+  background: linear-gradient(135deg, #d6ebfb 0%, #bcdff7 50%, #9fd1f2 100%);
+  border: 1px solid #7bbbe6;
+  box-shadow: 0 12px 26px rgba(0, 51, 102, 0.18);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.tier-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 22px 44px rgba(0, 51, 102, 0.28);
+}
+
+.tier-name {
+  font-size: 18px;
+  font-weight: 700;
+  color: #003366;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.tier-price {
+  font-size: 36px;
+  font-weight: 800;
+  color: #003366;
+  margin-bottom: 4px;
+}
+
+.tier-price span {
+  font-size: 16px;
   font-weight: 500;
-  color: #6b7f95;
+  color: #666;
 }
 
-/* Description */
-.club-desc {
-  font-size: 14.5px;             /* readable, not small */
+.tier-desc {
+  font-size: 15px;
   line-height: 1.6;
-  color: #2c3e50;
-  margin: 0;
+  color: #555;
+  margin-top: 16px;
 }
 
-/* Responsive — intentional only */
-@media (max-width: 1050px) {
-  .club-grid {
-    grid-template-columns: repeat(2, 1fr);
+@media (max-width: 900px) {
+  .tiers-grid {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 
-@media (max-width: 650px) {
-  .club-grid {
+/* ================= COMMITTEES ================= */
+.committees-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin-top: 32px;
+}
+
+.committee-card {
+  background: #f6f9fc;
+  border-radius: 20px;
+  padding: 28px 32px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.committee-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(0, 51, 102, 0.12);
+}
+
+.committee-card.featured {
+  grid-column: 1 / -1;
+}
+
+.committee-card h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #003366;
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+
+.committee-card p {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #555;
+  margin-bottom: 12px;
+}
+
+.committee-card p:last-of-type {
+  margin-bottom: 16px;
+}
+
+.committee-card a {
+  color: #44b6e5;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 15px;
+}
+
+.committee-card a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 700px) {
+  .committees-grid {
     grid-template-columns: 1fr;
   }
-}
   
-/* ================= FOOTER (IDENTICAL TO ABOUT) ================= */
+  .committee-card.featured {
+    grid-column: auto;
+  }
+}
+
+/* ================= CTA SECTION ================= */
+.cta-section {
+  background: #f6f9fc;
+  padding: 64px 24px;
+  text-align: center;
+}
+
+.cta-inner {
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+.cta-inner h3 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #003366;
+  margin-bottom: 16px;
+}
+
+.cta-inner p {
+  font-size: 17px;
+  color: #444;
+  margin-bottom: 28px;
+  line-height: 1.7;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.cta-btn {
+  display: inline-block;
+  padding: 14px 32px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.cta-btn.primary {
+  background: #e04b3f;
+  color: #ffffff;
+}
+
+.cta-btn.primary:hover {
+  background: #c93c32;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(224, 75, 63, 0.3);
+}
+
+.cta-btn.secondary {
+  background: #003366;
+  color: #ffffff;
+}
+
+.cta-btn.secondary:hover {
+  background: #004080;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 51, 102, 0.3);
+}
+
+/* ================= FOOTER ================= */
 .site-footer {
   background: #003366;
   color: #ffffff;
@@ -380,6 +460,33 @@ body {
   font-size: 12px;
   opacity: 0.85;
 }
+
+@media (max-width: 768px) {
+  .page-header {
+    padding: 50px 24px 40px;
+  }
+  
+  .page-header h1 {
+    font-size: 32px;
+  }
+  
+  .join-section {
+    margin: 50px auto;
+    gap: 28px;
+  }
+  
+  .join-block {
+    padding: 32px 28px;
+  }
+  
+  .join-block h2 {
+    font-size: 24px;
+  }
+  
+  .join-block p {
+    font-size: 16px;
+  }
+}
 </style>
 </head>
 
@@ -408,79 +515,88 @@ body {
 <section class="page-header">
   <h1>Join CityPAC</h1>
   <p>
-  Be a force multiplier and become part of Chicago’s next generation of pro-Israel leaders.  </p>
+    Be a force multiplier and become part of Chicago's next generation of pro-Israel leaders.
+  </p>
 </section>
-  
-<section class="clubs">
-  <div class="club-grid">
 
-    <div class="club-card">
-      <h3 class="club-name">Lake Shore Society</h3>
-      <div class="club-price">$360 <span>/ year</span></div>
-      <p class="club-desc">
-        Designed for young professionals in their 20s looking to engage with CityPAC,
-        attend events, and build leadership skills in the pro-Israel community.
-      </p>
-    </div>
+<section class="join-section">
 
-    <div class="club-card">
-      <h3 class="club-name">Gold Coast Society</h3>
-      <div class="club-price">$720 <span>/ year</span></div>
-      <p class="club-desc">
-        For professionals in their 30s seeking deeper involvement through programming,
-        networking, and meaningful political engagement with CityPAC.
-      </p>
-    </div>
-
-    <div class="club-card">
-      <h3 class="club-name">Chai Society</h3>
-      <div class="club-price">$1,080 <span>/ year</span></div>
-      <p class="club-desc">
-        CityPAC’s leadership tier for its most engaged members, offering exclusive access,
-        high-level events, and national pro-Israel political opportunities.
-      </p>
-    </div>
-
-  </div>
-</section>
-  
-<section class="committees">
-  <div class="committees-inner">
-
-    <h2>CityPAC Committees</h2>
-    <p class="committees-intro">
-      Committees are the engine of CityPAC’s work. Members play a direct role in political engagement,
-      candidate research, outreach, and programming.
+  <div class="join-block">
+    <div class="label">Membership</div>
+    <h2>Membership Levels</h2>
+    <p>
+      CityPAC offers three membership tiers designed for young professionals at different stages 
+      of their careers. Each level provides access to our events, educational programming, and 
+      the opportunity to be part of Chicago's pro-Israel political community.
     </p>
 
-    <div class="committee-grid">
+    <div class="tiers-grid">
+      <div class="tier-card">
+        <div class="tier-name">Lake Shore Society</div>
+        <div class="tier-price">$360 <span>/ year</span></div>
+        <p class="tier-desc">
+          Designed for young professionals in their 20s looking to engage with CityPAC, 
+          attend events, and build leadership skills in the pro-Israel community.
+        </p>
+      </div>
 
-      <div class="committee">
+      <div class="tier-card">
+        <div class="tier-name">Gold Coast Society</div>
+        <div class="tier-price">$720 <span>/ year</span></div>
+        <p class="tier-desc">
+          For professionals in their 30s seeking deeper involvement through programming, 
+          networking, and meaningful political engagement with CityPAC.
+        </p>
+      </div>
+
+      <div class="tier-card">
+        <div class="tier-name">Chai Society</div>
+        <div class="tier-price">$1,080 <span>/ year</span></div>
+        <p class="tier-desc">
+          CityPAC's leadership tier for its most engaged members, offering exclusive access, 
+          high-level events, and national pro-Israel political opportunities.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="join-block">
+    <div class="label">Get Involved</div>
+    <h2>CityPAC Committees</h2>
+    <p>
+      Committees are the engine of CityPAC's work. Members play a direct role in political engagement, 
+      candidate research, outreach, and programming. To get involved in one of our committees or for 
+      more information, please contact us at <a href="mailto:contact@citypac.org">contact@citypac.org</a>.
+    </p>
+
+    <div class="committees-grid">
+      <div class="committee-card">
         <h3>Candidates Committee</h3>
         <p>
-          Researches and evaluates political candidates committed to a strong U.S.–Israel relationship.
-          Members work directly with campaigns and help guide CityPAC’s political contributions.
+          The heart of CityPAC's mission. Identifies and researches candidates committed to a 
+          strong U.S.–Israel relationship, working directly with campaigns to evaluate positions 
+          and guide CityPAC's political contributions.
         </p>
         <a href="mailto:contact@citypac.org?subject=I'd like to join the Candidates CityPAC Committee">
           Join this committee →
         </a>
       </div>
 
-      <div class="committee">
+      <div class="committee-card">
         <h3>Outreach Committee</h3>
         <p>
-          Focuses on growing CityPAC’s membership and educating young professionals about the
-          organization’s mission and impact.
+          Focuses on growing CityPAC's membership and educating young professionals about the 
+          organization's mission and impact.
         </p>
         <a href="mailto:contact@citypac.org?subject=I'd like to join the Outreach CityPAC Committee">
           Join this committee →
         </a>
       </div>
 
-      <div class="committee">
+      <div class="committee-card">
         <h3>Development Committee</h3>
         <p>
-          Serves as a bridge between CityPAC and the broader pro-Israel community, helping ensure
+          Serves as a bridge between CityPAC and the broader pro-Israel community, helping ensure 
           the organization has the resources to fulfill its mission.
         </p>
         <a href="mailto:contact@citypac.org?subject=I'd like to join the Development CityPAC Committee">
@@ -488,21 +604,35 @@ body {
         </a>
       </div>
 
-      <div class="committee">
+      <div class="committee-card">
         <h3>Programming Committee</h3>
         <p>
-          Plans and executes CityPAC events, including political briefings and major community programs
+          Plans and executes CityPAC events, including political briefings and major community programs 
           featuring local and national leaders.
         </p>
         <a href="mailto:contact@citypac.org?subject=I'd like to join the Programming CityPAC Committee">
           Join this committee →
         </a>
       </div>
+    </div>
+  </div>
 
+</section>
+
+<section class="cta-section">
+  <div class="cta-inner">
+    <h3>Ready to Join?</h3>
+    <p>
+      Become part of Chicago's pro-Israel political community and help strengthen 
+      the U.S.–Israel relationship for generations to come.
+    </p>
+    <div class="cta-buttons">
+      <a href="mailto:contact@citypac.org?subject=I'd like to join CityPAC" class="cta-btn primary">Contact Us to Join</a>
+      <a href="donate.html" class="cta-btn secondary">Donate</a>
     </div>
   </div>
 </section>
-  
+
 <footer class="site-footer">
   <div class="footer-top-line"></div>
   <div class="footer-inner">
