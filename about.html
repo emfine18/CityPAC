@@ -182,13 +182,14 @@ body {
   color: #44b6e5;
   text-transform: uppercase;
   letter-spacing: 1.5px;
-  margin-bottom: 10px;
+  margin-bottom: 4px;
 }
   
 .about-block h2 {
   color: #003366;
   font-size: 28px;
   font-weight: 700;
+  margin-top: 0;
   margin-bottom: 18px;
 }
 
@@ -199,7 +200,7 @@ body {
   margin-bottom: 16px;
 }
 
-.about-block p:last-child {
+.about-block p:last-of-type {
   margin-bottom: 0;
 }
 
@@ -246,8 +247,7 @@ body {
 /* ================= IMPACT STATS ================= */
 
 .impact-stats {
-  max-width: 760px;
-  margin: 36px auto 0;
+  margin: 36px 0 0;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
@@ -292,7 +292,199 @@ body {
 @media (max-width: 768px) {
   .impact-stats {
     grid-template-columns: 1fr;
-    max-width: 420px;
+  }
+}
+
+/* ================= LEADERSHIP SECTION ================= */
+
+.leadership-block {
+  background: #ffffff;
+  border-radius: 26px;
+  padding: 48px 52px;
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.08);
+}
+
+.leadership-intro .label {
+  font-size: 12px;
+  font-weight: 700;
+  color: #44b6e5;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 4px;
+}
+
+.leadership-intro h2 {
+  color: #003366;
+  font-size: 28px;
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 18px;
+}
+
+.leadership-intro p {
+  font-size: 17px;
+  line-height: 1.75;
+  color: #333;
+  margin-bottom: 28px;
+}
+
+/* Toggle Button */
+.leadership-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 32px;
+  background: #003366;
+  color: #ffffff;
+  border: none;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.leadership-toggle:hover {
+  background: #004080;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 51, 102, 0.3);
+}
+
+.leadership-toggle .toggle-icon {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+/* Expandable Content */
+.leadership-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease;
+}
+
+.leadership-content.open {
+  max-height: 5000px;
+}
+
+.leadership-content-inner {
+  padding-top: 48px;
+}
+
+/* Leadership Group */
+.leadership-group {
+  margin-bottom: 48px;
+}
+
+.leadership-group:last-child {
+  margin-bottom: 0;
+}
+
+.leadership-group-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: #44b6e5;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 24px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #e8f4fc;
+}
+
+/* Leadership Grid */
+.leadership-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+}
+
+@media (max-width: 800px) {
+  .leadership-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
+/* Leadership Card */
+.leader-card {
+  background: #f6f9fc;
+  border-radius: 20px;
+  padding: 32px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.leader-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(0, 51, 102, 0.1);
+}
+
+.leader-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.leader-photo {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #ffffff;
+  background: #e8f4fc;
+  flex-shrink: 0;
+}
+
+/* Placeholder for missing photos */
+.leader-photo-placeholder {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 4px solid #ffffff;
+  background: linear-gradient(135deg, #d6ebfb 0%, #bcdff7 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  color: #003366;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.leader-info {
+  text-align: left;
+}
+
+.leader-name {
+  font-size: 20px;
+  font-weight: 700;
+  color: #003366;
+  margin-bottom: 2px;
+}
+
+.leader-position {
+  font-size: 13px;
+  font-weight: 600;
+  color: #44b6e5;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.leader-bio {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #555;
+  text-align: left;
+}
+
+@media (max-width: 600px) {
+  .leader-header {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .leader-info {
+    text-align: center;
   }
 }
 
@@ -445,15 +637,18 @@ body {
     gap: 28px;
   }
   
-  .about-block {
+  .about-block,
+  .leadership-block {
     padding: 32px 28px;
   }
   
-  .about-block h2 {
+  .about-block h2,
+  .leadership-intro h2 {
     font-size: 24px;
   }
   
-  .about-block p {
+  .about-block p,
+  .leadership-intro p {
     font-size: 16px;
   }
 }
@@ -581,6 +776,229 @@ body {
       </div>
     </div>
   </div>
+
+  <!-- LEADERSHIP SECTION -->
+  <div class="leadership-block">
+    <div class="leadership-intro">
+      <div class="label">Our Team</div>
+      <h2>Volunteer Leadership</h2>
+      <p>
+        CityPAC is powered entirely by dedicated volunteers who donate their time and expertise 
+        to advance our mission. Our leadership team consists of young professionals from across 
+        Chicago who are passionate about strengthening the U.S.–Israel relationship and developing 
+        the next generation of pro-Israel advocates.
+      </p>
+      <button class="leadership-toggle" id="leadershipToggle">
+        See CityPAC's Leadership
+        <span class="toggle-icon">+</span>
+      </button>
+    </div>
+
+    <div class="leadership-content" id="leadershipContent">
+      <div class="leadership-content-inner">
+        
+        <!-- EXECUTIVE BOARD -->
+        <div class="leadership-group">
+          <div class="leadership-group-title">Executive Board</div>
+          <div class="leadership-grid">
+            
+            <div class="leader-card">
+              <div class="leader-header">
+                <div class="leader-photo-placeholder">FL</div>
+                <!-- Replace with: <img src="images/leadership/firstname-lastname.jpg" alt="First Last" class="leader-photo"> -->
+                <div class="leader-info">
+                  <div class="leader-name">First Last</div>
+                  <div class="leader-position">President</div>
+                </div>
+              </div>
+              <p class="leader-bio">
+                First has been an active member of CityPAC since 2015 and has served in 
+                various leadership roles before being elected President. A graduate of 
+                Northwestern University, First works as a financial analyst in downtown 
+                Chicago and is passionate about civic engagement and building bipartisan 
+                support for Israel. Outside of CityPAC, First serves on the board of 
+                several local Jewish organizations.
+              </p>
+            </div>
+
+            <div class="leader-card">
+              <div class="leader-header">
+                <div class="leader-photo-placeholder">FL</div>
+                <div class="leader-info">
+                  <div class="leader-name">First Last</div>
+                  <div class="leader-position">Vice President</div>
+                </div>
+              </div>
+              <p class="leader-bio">
+                First joined CityPAC in 2017 and quickly became one of our most active 
+                members. With a background in nonprofit management and community organizing, 
+                First brings valuable experience to our leadership team. First oversees 
+                our educational programming initiatives and works closely with our 
+                Political Director on candidate engagement. First holds an MBA from 
+                the University of Chicago Booth School of Business.
+              </p>
+            </div>
+
+            <div class="leader-card">
+              <div class="leader-header">
+                <div class="leader-photo-placeholder">FL</div>
+                <div class="leader-info">
+                  <div class="leader-name">First Last</div>
+                  <div class="leader-position">Treasurer</div>
+                </div>
+              </div>
+              <p class="leader-bio">
+                As Treasurer, First oversees all of CityPAC's financial operations, 
+                including fundraising, budgeting, and FEC compliance. A CPA with over 
+                10 years of experience in public accounting, First ensures that our 
+                all-volunteer model runs efficiently and that every dollar raised goes 
+                directly toward supporting pro-Israel candidates. First is also actively 
+                involved in Chicago's Jewish Federation.
+              </p>
+            </div>
+
+            <div class="leader-card">
+              <div class="leader-header">
+                <div class="leader-photo-placeholder">FL</div>
+                <div class="leader-info">
+                  <div class="leader-name">First Last</div>
+                  <div class="leader-position">Secretary</div>
+                </div>
+              </div>
+              <p class="leader-bio">
+                First manages CityPAC's communications, member outreach, and organizational 
+                records. With a background in marketing and public relations, First has 
+                helped modernize our digital presence and expand our reach to young 
+                professionals across Chicago. First graduated from Indiana University 
+                and works in corporate communications for a Fortune 500 company. First 
+                is passionate about making political engagement accessible to all.
+              </p>
+            </div>
+
+            <div class="leader-card">
+              <div class="leader-header">
+                <div class="leader-photo-placeholder">FL</div>
+                <div class="leader-info">
+                  <div class="leader-name">First Last</div>
+                  <div class="leader-position">Political Director</div>
+                </div>
+              </div>
+              <p class="leader-bio">
+                First coordinates CityPAC's candidate vetting, endorsement process, and 
+                political strategy. Having worked on numerous Congressional campaigns 
+                and with experience in government relations, First brings deep expertise 
+                in the political landscape. First maintains relationships with elected 
+                officials from both parties and helps identify candidates who share our 
+                commitment to a strong U.S.–Israel relationship. First holds a law degree 
+                from DePaul University.
+              </p>
+            </div>
+
+            <div class="leader-card">
+              <div class="leader-header">
+                <div class="leader-photo-placeholder">FL</div>
+                <div class="leader-info">
+                  <div class="leader-name">First Last</div>
+                  <div class="leader-position">Events Chair</div>
+                </div>
+              </div>
+              <p class="leader-bio">
+                First plans and executes all of CityPAC's social, educational, and 
+                fundraising events. From intimate parlor meetings with candidates to 
+                large-scale galas, First brings creativity and meticulous attention to 
+                detail to every program. First has been with CityPAC for six years and 
+                has helped grow our events calendar significantly. A marketing professional 
+                by day, First is dedicated to creating meaningful experiences that engage 
+                and inspire our members.
+              </p>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- BOARD MEMBERS -->
+        <div class="leadership-group">
+          <div class="leadership-group-title">Board Members</div>
+          <div class="leadership-grid">
+            
+            <div class="leader-card">
+              <div class="leader-header">
+                <div class="leader-photo-placeholder">FL</div>
+                <div class="leader-info">
+                  <div class="leader-name">First Last</div>
+                  <div class="leader-position">Board Member</div>
+                </div>
+              </div>
+              <p class="leader-bio">
+                First is an attorney specializing in corporate law at a major Chicago 
+                firm. Having been involved with CityPAC for over five years, First 
+                provides valuable legal guidance to our organization and serves on our 
+                candidate vetting committee. First is a graduate of the University of 
+                Michigan Law School and is actively involved in pro-Israel advocacy 
+                both locally and nationally.
+              </p>
+            </div>
+
+            <div class="leader-card">
+              <div class="leader-header">
+                <div class="leader-photo-placeholder">FL</div>
+                <div class="leader-info">
+                  <div class="leader-name">First Last</div>
+                  <div class="leader-position">Board Member</div>
+                </div>
+              </div>
+              <p class="leader-bio">
+                First works in healthcare administration and brings a unique perspective 
+                to our board. Dedicated to building bipartisan support for Israel, First 
+                has helped expand CityPAC's outreach to new communities across Chicago. 
+                First holds a Master's in Public Health from the University of Illinois 
+                and volunteers with several healthcare-focused nonprofits in addition 
+                to serving on our board.
+              </p>
+            </div>
+
+            <div class="leader-card">
+              <div class="leader-header">
+                <div class="leader-photo-placeholder">FL</div>
+                <div class="leader-info">
+                  <div class="leader-name">First Last</div>
+                  <div class="leader-position">Board Member</div>
+                </div>
+              </div>
+              <p class="leader-bio">
+                First is a tech entrepreneur who founded a successful startup in Chicago's 
+                thriving tech scene. First brings innovative ideas to CityPAC's outreach 
+                and engagement strategies, helping us leverage technology to connect with 
+                young professionals. A graduate of MIT, First is passionate about combining 
+                technological innovation with civic engagement to strengthen pro-Israel 
+                advocacy for the next generation.
+              </p>
+            </div>
+
+            <div class="leader-card">
+              <div class="leader-header">
+                <div class="leader-photo-placeholder">FL</div>
+                <div class="leader-info">
+                  <div class="leader-name">First Last</div>
+                  <div class="leader-position">Board Member</div>
+                </div>
+              </div>
+              <p class="leader-bio">
+                First is a real estate professional who has been involved with CityPAC 
+                since its early days. With deep roots in Chicago's Jewish community, 
+                First has helped connect CityPAC with key stakeholders and donors across 
+                the city. First serves as a mentor to newer members and is committed to 
+                developing the next generation of pro-Israel leaders. First graduated 
+                from the University of Wisconsin-Madison.
+              </p>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
   
 </section>
 
@@ -628,6 +1046,20 @@ body {
 <script>
 document.getElementById("hamburger").onclick = () =>
   document.getElementById("menu").classList.toggle("show");
+
+// Leadership toggle
+document.getElementById("leadershipToggle").onclick = function() {
+  this.classList.toggle("open");
+  document.getElementById("leadershipContent").classList.toggle("open");
+  
+  // Update icon
+  const icon = this.querySelector('.toggle-icon');
+  if (this.classList.contains("open")) {
+    icon.textContent = '−';
+  } else {
+    icon.textContent = '+';
+  }
+};
 </script>
 
 </body>
