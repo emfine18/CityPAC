@@ -1,0 +1,1329 @@
+import React, { useState } from 'react';
+import { Eye, EyeOff, LogOut, Plus, Filter, TrendingUp, Calendar, DollarSign, Mail, Apple } from 'lucide-react';
+
+const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+
+export default function CityPACPortal() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [loginMethod, setLoginMethod] = useState('choose');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+  const [loginError, setLoginError] = useState('');
+  const [activeTab, setActiveTab] = useState('dashboard');
+  const [filterYear, setFilterYear] = useState('all');
+  const [isSignUp, setIsSignUp] = useState(false);
+
+  // Member data state
+  const [memberData, setMemberData] = useState(null);
+  const [contributions, setContributions] = useState([]);
+  const [token, setToken] = useState(localStorage.getItem('authToken'));
+
+  // Load member data when logged in
+  React.useEffect(() => {
+    if (isLoggedIn && token) {
+      fetchMemberData();
+      fetchContributions();
+    }
+  }, [isLoggedIn, token]);
+
+  const fetchMemberData = async () => {
+    try {
+      const response = await fetch(`${API_BASE_URL}/api/member/profile`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      if (response.ok) {
+        const data = await response.json();
+        setMemberData(data);
+      }
+    } catch (error) {
+      console.error('Error fetching member data:', error);
+    }
+  };
+
+  const fetchContributions = async () => {
+    try {
+      const response = await fetch(`${API_BASE_URL}/api/contributions`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      if (response.ok) {
+        const data = await response.json();
+        setContributions(data);
+      }
+    } catch (error) {
+      console.error('Error fetching contributions:', error);
+    }
+  };
+
+  const handleEmailLogin = async (e) => {
+    e.preventDefault();
+    setLoginError('');
+
+    if (!email || !password) {
+      setLoginError('Please enter both email and password');
+      return;
+    }
+
+    try {
+      const response = await fetch(`${API_BASE_URL}/auth/login`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        localStorage.setItem('authToken', data.token);
+        setToken(data.token);
+        setIsLoggedIn(true);
+        setLoginMethod('email');
+        setEmail('');
+        setPassword('');
+      } else {
+        setLoginError(data.error || 'Invalid credentials');
+      }
+    } catch (error) {
+      setLoginError('Error connecting to server: ' + error.message);
+    }
+  };
+
+  const handleSignUp = async (e) => {
+    e.preventDefault();
+    setLoginError('');
+
+    if (!email || !password || !firstName || !lastName) {
+      setLoginError('Please fill in all fields');
+      return;
+    }
+
+    try {
+      const response = await fetch(`${API_BASE_URL}/auth/signup`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password, firstName, lastName }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        localStorage.setItem('authToken', data.token);
+        setToken(data.token);
+        setIsLoggedIn(true);
+        setLoginMethod('email');
+        setEmail('');
+        setPassword('');
+        setFirstName('');
+        setLastName('');
+      } else {
+        setLoginError(data.error || 'Sign up failed');
+      }
+    } catch (error) {
+      setLoginError('Error connecting to server: ' + error.message);
+    }
+  };
+
+  const handleSocialLogin = (provider) => {
+    if (provider === 'google') {
+      window.location.href = `${API_BASE_URL}/auth/google`;
+    } else if (provider === 'apple') {
+      window.location.href = `${API_BASE_URL}/auth/apple`;
+    }
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem('authToken');
+    setIsLoggedIn(false);
+    setLoginMethod('choose');
+    setToken(null);
+    setMemberData(null);
+    setContributions([]);
+    setEmail('');
+    setPassword('');
+  };
+
+  const handleNewContribution = async () => {
+    const amount = prompt('Enter contribution amount ($):');
+    if (!amount || isNaN(amount)) return;
+
+    const eventName = prompt('Event name (optional):', 'Monthly sustaining gift');
+
+    try {
+      const response = await fetch(`${API_BASE_URL}/api/contributions`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          amount: parseFloat(amount),
+          eventName: eventName || 'Monthly sustaining gift',
+        }),
+      });
+
+      if (response.ok) {
+        const newContribution = await response.json();
+        setContributions([newContribution, ...contributions]);
+        alert('Contribution received! Thank you for supporting CityPAC.');
+      } else {
+        setLoginError('Failed to process contribution');
+      }
+    } catch (error) {
+      setLoginError('Error processing contribution: ' + error.message);
+    }
+  };
+
+  const handleBackToLogin = () => {
+    setLoginMethod('choose');
+    setLoginError('');
+    setIsSignUp(false);
+  };
+
+  const filteredContributions = filterYear === 'all'
+    ? contributions
+    : contributions.filter(c => new Date(c.date).getFullYear().toString() === filterYear);
+
+  // LOGIN SCREEN
+  if (!isLoggedIn) {
+    return (
+      <div style={{ backgroundColor: '#ffffff' }}>
+        <style>{`
+          * { 
+            box-sizing: border-box; 
+            font-family: 'Poppins', 'Segoe UI', sans-serif;
+          }
+
+          body { margin: 0; }
+
+          .portal-container {
+            min-height: 100vh;
+            background: #f6f9fc;
+            display: flex;
+            flex-direction: column;
+          }
+
+          /* Header */
+          .portal-header {
+            background: #003366;
+            padding: 22px 24px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+          }
+
+          .portal-header-inner {
+            max-width: 1200px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+          }
+
+          .portal-logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: #ffffff;
+            text-decoration: none;
+          }
+
+          .portal-logo span {
+            color: #44b6e5;
+          }
+
+          .portal-nav a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 13px;
+            text-transform: uppercase;
+            margin-left: 28px;
+          }
+
+          /* Login Content */
+          .login-wrapper {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 24px;
+          }
+
+          .login-container {
+            width: 100%;
+            max-width: 420px;
+            animation: fadeIn 0.6s ease-out;
+          }
+
+          @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+          }
+
+          .login-header {
+            text-align: center;
+            margin-bottom: 36px;
+          }
+
+          .login-header h1 {
+            font-size: 36px;
+            font-weight: 800;
+            color: #003366;
+            margin: 0 0 8px 0;
+          }
+
+          .login-header .subtitle {
+            font-size: 14px;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            font-weight: 600;
+          }
+
+          .login-card {
+            background: #ffffff;
+            border-radius: 22px;
+            padding: 44px 32px;
+            box-shadow: 0 14px 34px rgba(0, 0, 0, 0.08);
+          }
+
+          .login-card h2 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #003366;
+            margin: 0 0 8px 0;
+          }
+
+          .login-card .subtitle {
+            font-size: 15px;
+            color: #666;
+            margin-bottom: 28px;
+          }
+
+          /* Buttons */
+          .social-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 24px;
+          }
+
+          .social-btn {
+            width: 100%;
+            padding: 14px 18px;
+            border: 2px solid #e0e0e0;
+            background: #ffffff;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 15px;
+            color: #333;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.25s ease;
+            font-family: 'Poppins', sans-serif;
+          }
+
+          .social-btn:hover {
+            background: #f6f9fc;
+            border-color: #44b6e5;
+            color: #003366;
+          }
+
+          .email-btn {
+            background: #003366;
+            color: #ffffff;
+            border-color: #003366;
+          }
+
+          .email-btn:hover {
+            background: #004080;
+            border-color: #004080;
+          }
+
+          /* Divider */
+          .divider {
+            position: relative;
+            margin: 28px 0;
+          }
+
+          .divider-line {
+            height: 1px;
+            background: #e0e0e0;
+          }
+
+          .divider-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #ffffff;
+            padding: 0 12px;
+            font-size: 13px;
+            color: #999;
+            font-weight: 500;
+          }
+
+          /* Form */
+          .login-form {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+          }
+
+          .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+          }
+
+          .form-group label {
+            font-size: 13px;
+            font-weight: 600;
+            color: #333;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+          }
+
+          .form-group input {
+            padding: 12px 14px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 15px;
+            font-family: 'Poppins', sans-serif;
+            transition: border-color 0.25s ease;
+          }
+
+          .form-group input:focus {
+            outline: none;
+            border-color: #44b6e5;
+            background: #f9fbff;
+          }
+
+          .password-wrapper {
+            position: relative;
+          }
+
+          .password-toggle {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: #999;
+            cursor: pointer;
+            padding: 4px;
+          }
+
+          .forgot-password {
+            text-align: right;
+            margin-top: 8px;
+          }
+
+          .forgot-password a {
+            font-size: 13px;
+            color: #44b6e5;
+            text-decoration: none;
+            font-weight: 600;
+          }
+
+          .forgot-password a:hover {
+            text-decoration: underline;
+          }
+
+          /* Submit Button */
+          .submit-btn {
+            background: #e04b3f;
+            color: #ffffff;
+            padding: 14px 24px;
+            border: none;
+            border-radius: 12px;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            margin-top: 16px;
+            font-family: 'Poppins', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+          }
+
+          .submit-btn:hover {
+            background: #c93c32;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(224, 75, 63, 0.3);
+          }
+
+          /* Error Message */
+          .error-message {
+            background: #fee;
+            border: 1px solid #e04b3f;
+            color: #c93c32;
+            padding: 12px 16px;
+            border-radius: 10px;
+            font-size: 14px;
+            margin-bottom: 16px;
+          }
+
+          /* Footer */
+          .login-footer {
+            margin-top: 24px;
+            padding-top: 24px;
+            border-top: 1px solid #e0e0e0;
+            text-align: center;
+            font-size: 14px;
+            color: #666;
+          }
+
+          .login-footer a {
+            color: #44b6e5;
+            text-decoration: none;
+            font-weight: 600;
+          }
+
+          .login-footer a:hover {
+            text-decoration: underline;
+          }
+
+          .login-footer button {
+            background: none;
+            border: none;
+            color: #44b6e5;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: underline;
+            font-family: 'Poppins', sans-serif;
+          }
+
+          .terms {
+            font-size: 12px;
+            color: #999;
+            text-align: center;
+            margin-top: 20px;
+            line-height: 1.5;
+          }
+
+          .terms a {
+            color: #44b6e5;
+            text-decoration: none;
+          }
+
+          .terms a:hover {
+            text-decoration: underline;
+          }
+
+          /* Back Button */
+          .back-btn {
+            background: none;
+            border: none;
+            color: #666;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-bottom: 20px;
+            font-family: 'Poppins', sans-serif;
+          }
+
+          .back-btn:hover {
+            color: #003366;
+          }
+        `}</style>
+
+        <div className="portal-container">
+          <header className="portal-header">
+            <div className="portal-header-inner">
+              <a href="/" className="portal-logo">City<span>PAC</span></a>
+              <nav className="portal-nav">
+                <a href="/">Home</a>
+                <a href="/member-portal">Portal</a>
+              </nav>
+            </div>
+          </header>
+
+          <div className="login-wrapper">
+            <div className="login-container">
+              {loginMethod === 'choose' && (
+                <>
+                  <div className="login-header">
+                    <h1>CityPAC</h1>
+                    <div className="subtitle">Member Portal</div>
+                  </div>
+
+                  <div className="login-card">
+                    <h2>Welcome</h2>
+                    <div className="subtitle">Sign in to manage your contributions</div>
+
+                    <div className="social-buttons">
+                      <button onClick={() => handleSocialLogin('google')} className="social-btn">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                          <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                          <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                          <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+                          <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+                        </svg>
+                        Sign in with Google
+                      </button>
+
+                      <button onClick={() => handleSocialLogin('apple')} className="social-btn">
+                        <Apple size={18} />
+                        Sign in with Apple
+                      </button>
+
+                      <button onClick={() => { setLoginMethod('email'); setIsSignUp(false); }} className="social-btn email-btn">
+                        <Mail size={18} />
+                        Sign in with Email
+                      </button>
+                    </div>
+
+                    <div className="divider">
+                      <div className="divider-line"></div>
+                      <div className="divider-text">or</div>
+                    </div>
+
+                    <div className="terms">
+                      By signing in, you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
+                    </div>
+                  </div>
+                </>
+              )}
+
+              {loginMethod === 'email' && (
+                <>
+                  <button onClick={handleBackToLogin} className="back-btn">← Back</button>
+
+                  <div className="login-card">
+                    <h2>{isSignUp ? 'Create Account' : 'Sign in with Email'}</h2>
+                    <div className="subtitle">
+                      {isSignUp ? 'Join CityPAC and become a member' : 'Enter your email and password'}
+                    </div>
+
+                    <form onSubmit={isSignUp ? handleSignUp : handleEmailLogin} className="login-form">
+                      {loginError && <div className="error-message">{loginError}</div>}
+
+                      {isSignUp && (
+                        <>
+                          <div className="form-group">
+                            <label>First Name</label>
+                            <input
+                              type="text"
+                              value={firstName}
+                              onChange={(e) => setFirstName(e.target.value)}
+                              placeholder="Sarah"
+                            />
+                          </div>
+
+                          <div className="form-group">
+                            <label>Last Name</label>
+                            <input
+                              type="text"
+                              value={lastName}
+                              onChange={(e) => setLastName(e.target.value)}
+                              placeholder="Cohen"
+                            />
+                          </div>
+                        </>
+                      )}
+
+                      <div className="form-group">
+                        <label>Email Address</label>
+                        <input
+                          type="email"
+                          value={email}
+                          onChange={(e) => setEmail(e.target.value)}
+                          placeholder="you@example.com"
+                        />
+                      </div>
+
+                      <div className="form-group">
+                        <label>Password</label>
+                        <div className="password-wrapper">
+                          <input
+                            type={showPassword ? "text" : "password"}
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            placeholder="••••••••"
+                          />
+                          <button
+                            type="button"
+                            onClick={() => setShowPassword(!showPassword)}
+                            className="password-toggle"
+                          >
+                            {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                          </button>
+                        </div>
+                      </div>
+
+                      {!isSignUp && (
+                        <div className="forgot-password">
+                          <a href="#">Forgot password?</a>
+                        </div>
+                      )}
+
+                      <button type="submit" className="submit-btn">
+                        {isSignUp ? 'Create Account' : 'Sign In'}
+                      </button>
+                    </form>
+
+                    <div className="login-footer">
+                      {isSignUp ? (
+                        <>Already have an account? <button onClick={() => setIsSignUp(false)}>Sign in</button></>
+                      ) : (
+                        <>Don't have an account? <button onClick={() => setIsSignUp(true)}>Create one</button></>
+                      )}
+                    </div>
+                  </div>
+                </>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // DASHBOARD
+  return (
+    <div>
+      <style>{`
+        * { 
+          box-sizing: border-box; 
+          font-family: 'Poppins', 'Segoe UI', sans-serif;
+        }
+
+        body { margin: 0; }
+
+        .dashboard-wrapper {
+          background: #f6f9fc;
+          min-height: 100vh;
+        }
+
+        /* Header */
+        .dashboard-header {
+          background: #003366;
+          padding: 22px 24px;
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+          position: sticky;
+          top: 0;
+          z-index: 100;
+        }
+
+        .dashboard-header-inner {
+          max-width: 1200px;
+          margin: auto;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+
+        .dashboard-logo {
+          font-size: 24px;
+          font-weight: 800;
+          color: #ffffff;
+          text-decoration: none;
+        }
+
+        .dashboard-logo span {
+          color: #44b6e5;
+        }
+
+        .logout-btn {
+          background: none;
+          border: none;
+          color: #ffffff;
+          font-size: 13px;
+          font-weight: 600;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+          font-family: 'Poppins', sans-serif;
+          transition: opacity 0.25s ease;
+        }
+
+        .logout-btn:hover {
+          opacity: 0.8;
+        }
+
+        /* Main Content */
+        .dashboard-main {
+          max-width: 1200px;
+          margin: auto;
+          padding: 40px 24px;
+        }
+
+        .dashboard-welcome {
+          margin-bottom: 40px;
+          animation: fadeIn 0.6s ease-out;
+        }
+
+        .dashboard-welcome h1 {
+          font-size: 36px;
+          font-weight: 800;
+          color: #003366;
+          margin: 0 0 8px 0;
+        }
+
+        .dashboard-welcome p {
+          font-size: 16px;
+          color: #666;
+          margin: 0;
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 24px;
+          margin-bottom: 40px;
+        }
+
+        .stat-card {
+          background: #ffffff;
+          border-radius: 20px;
+          padding: 28px 24px;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+          transition: all 0.25s ease;
+        }
+
+        .stat-card:hover {
+          transform: translateY(-4px);
+          box-shadow: 0 14px 32px rgba(0, 0, 0, 0.12);
+        }
+
+        .stat-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: flex-start;
+          margin-bottom: 16px;
+        }
+
+        .stat-label {
+          font-size: 11px;
+          font-weight: 700;
+          color: #44b6e5;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+        }
+
+        .stat-icon {
+          width: 48px;
+          height: 48px;
+          border-radius: 12px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: #f0f4ff;
+        }
+
+        .stat-icon.blue { background: #f0f4ff; color: #1e40af; }
+        .stat-icon.green { background: #f0fdf4; color: #16a34a; }
+        .stat-icon.red { background: #fef2f2; color: #dc2626; }
+
+        .stat-value {
+          font-size: 32px;
+          font-weight: 800;
+          color: #003366;
+          margin: 8px 0;
+        }
+
+        .stat-subtitle {
+          font-size: 13px;
+          color: #999;
+        }
+
+        /* Tabs */
+        .dashboard-tabs {
+          background: #ffffff;
+          border-radius: 20px;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+          overflow: hidden;
+        }
+
+        .tabs-header {
+          display: flex;
+          border-bottom: 1px solid #e0e0e0;
+        }
+
+        .tab-btn {
+          flex: 1;
+          padding: 18px 24px;
+          background: none;
+          border: none;
+          font-size: 14px;
+          font-weight: 700;
+          color: #999;
+          cursor: pointer;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+          font-family: 'Poppins', sans-serif;
+          border-bottom: 3px solid transparent;
+          transition: all 0.25s ease;
+        }
+
+        .tab-btn.active {
+          color: #003366;
+          border-bottom-color: #e04b3f;
+        }
+
+        .tab-btn:hover {
+          color: #003366;
+        }
+
+        .tabs-content {
+          padding: 32px 28px;
+        }
+
+        /* CTA */
+        .cta-box {
+          background: linear-gradient(135deg, #d6ebfb 0%, #bcdff7 100%);
+          border: 2px solid #44b6e5;
+          border-radius: 18px;
+          padding: 28px 32px;
+          margin-bottom: 32px;
+        }
+
+        .cta-box h3 {
+          font-size: 18px;
+          font-weight: 700;
+          color: #003366;
+          margin: 0 0 8px 0;
+        }
+
+        .cta-box p {
+          font-size: 15px;
+          color: #555;
+          margin: 0 0 16px 0;
+          line-height: 1.6;
+        }
+
+        .cta-btn {
+          background: #e04b3f;
+          color: #ffffff;
+          border: none;
+          padding: 12px 24px;
+          border-radius: 10px;
+          font-size: 13px;
+          font-weight: 700;
+          cursor: pointer;
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+          font-family: 'Poppins', sans-serif;
+          transition: all 0.25s ease;
+        }
+
+        .cta-btn:hover {
+          background: #c93c32;
+          transform: translateY(-2px);
+          box-shadow: 0 8px 20px rgba(224, 75, 63, 0.3);
+        }
+
+        /* Member Info */
+        .member-info-grid {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 16px;
+        }
+
+        .info-box {
+          background: #f6f9fc;
+          border-radius: 14px;
+          padding: 18px 20px;
+        }
+
+        .info-label {
+          font-size: 11px;
+          font-weight: 700;
+          color: #999;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+          margin-bottom: 6px;
+        }
+
+        .info-value {
+          font-size: 15px;
+          font-weight: 700;
+          color: #003366;
+        }
+
+        /* Contributions List */
+        .contributions-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 20px;
+        }
+
+        .contributions-header h3 {
+          font-size: 16px;
+          font-weight: 700;
+          color: #003366;
+          margin: 0;
+        }
+
+        .filter-group {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+        }
+
+        .filter-select {
+          padding: 8px 12px;
+          border: 2px solid #e0e0e0;
+          border-radius: 8px;
+          font-size: 13px;
+          font-family: 'Poppins', sans-serif;
+          color: #666;
+          cursor: pointer;
+        }
+
+        .filter-select:focus {
+          outline: none;
+          border-color: #44b6e5;
+        }
+
+        .contribution-item {
+          background: #f6f9fc;
+          border-radius: 14px;
+          padding: 18px 20px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          transition: all 0.25s ease;
+          margin-bottom: 12px;
+        }
+
+        .contribution-item:hover {
+          background: #eef4fa;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+        }
+
+        .contribution-info h4 {
+          font-size: 14px;
+          font-weight: 700;
+          color: #003366;
+          margin: 0 0 6px 0;
+        }
+
+        .contribution-meta {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+        }
+
+        .contribution-date {
+          font-size: 13px;
+          color: #999;
+        }
+
+        .contribution-badge {
+          font-size: 11px;
+          font-weight: 600;
+          padding: 4px 10px;
+          border-radius: 6px;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+        }
+
+        .badge-event {
+          background: #dbeafe;
+          color: #1e40af;
+        }
+
+        .badge-recurring {
+          background: #fef3c7;
+          color: #92400e;
+        }
+
+        .contribution-amount {
+          font-size: 16px;
+          font-weight: 700;
+          color: #003366;
+        }
+
+        /* Settings */
+        .settings-section {
+          margin-bottom: 32px;
+        }
+
+        .settings-section h3 {
+          font-size: 16px;
+          font-weight: 700;
+          color: #003366;
+          margin: 0 0 20px 0;
+        }
+
+        .setting-item {
+          border: 2px solid #e0e0e0;
+          border-radius: 14px;
+          padding: 18px 20px;
+          margin-bottom: 12px;
+        }
+
+        .setting-label {
+          font-size: 12px;
+          font-weight: 700;
+          color: #999;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+          margin-bottom: 6px;
+        }
+
+        .setting-value {
+          font-size: 14px;
+          color: #333;
+          margin-bottom: 8px;
+        }
+
+        .setting-link {
+          font-size: 13px;
+          color: #44b6e5;
+          text-decoration: none;
+          font-weight: 600;
+          cursor: pointer;
+        }
+
+        .setting-link:hover {
+          text-decoration: underline;
+        }
+
+        .checkbox-group {
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
+        }
+
+        .checkbox-item {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          cursor: pointer;
+        }
+
+        .checkbox-item input {
+          width: 18px;
+          height: 18px;
+          cursor: pointer;
+        }
+
+        .checkbox-item label {
+          font-size: 14px;
+          color: #333;
+          cursor: pointer;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+          .stats-grid {
+            grid-template-columns: 1fr;
+          }
+
+          .member-info-grid {
+            grid-template-columns: 1fr;
+          }
+        }
+
+        @media (max-width: 600px) {
+          .tabs-header {
+            flex-wrap: wrap;
+          }
+
+          .tab-btn {
+            flex: 0 1 50%;
+          }
+
+          .contribution-item {
+            flex-direction: column;
+            align-items: flex-start;
+          }
+
+          .contribution-amount {
+            align-self: flex-end;
+            margin-top: 12px;
+          }
+        }
+      `}</style>
+
+      <div className="dashboard-wrapper">
+        <header className="dashboard-header">
+          <div className="dashboard-header-inner">
+            <a href="/" className="dashboard-logo">City<span>PAC</span></a>
+            <button onClick={handleLogout} className="logout-btn">
+              <LogOut size={16} />
+              Sign Out
+            </button>
+          </div>
+        </header>
+
+        <div className="dashboard-main">
+          <div className="dashboard-welcome">
+            <h1>Welcome, {memberData?.firstName || 'Member'}</h1>
+            <p>Manage your membership and track your impact</p>
+          </div>
+
+          {/* Stats */}
+          <div className="stats-grid">
+            <div className="stat-card">
+              <div className="stat-header">
+                <div className="stat-label">Total Contributed</div>
+                <div className="stat-icon blue">
+                  <DollarSign size={24} />
+                </div>
+              </div>
+              <div className="stat-value">${contributions.reduce((sum, c) => sum + c.amount, 0).toLocaleString()}</div>
+              <div className="stat-subtitle">
+                Since {memberData?.joinDate ? new Date(memberData.joinDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long' }) : 'joining'}
+              </div>
+            </div>
+
+            <div className="stat-card">
+              <div className="stat-header">
+                <div className="stat-label">Member Status</div>
+                <div className="stat-icon green">
+                  <TrendingUp size={24} />
+                </div>
+              </div>
+              <div className="stat-value" style={{ color: '#16a34a' }}>Active</div>
+              <div className="stat-subtitle">Good standing</div>
+            </div>
+
+            <div className="stat-card">
+              <div className="stat-header">
+                <div className="stat-label">Total Contributions</div>
+                <div className="stat-icon red">
+                  <Calendar size={24} />
+                </div>
+              </div>
+              <div className="stat-value">{contributions.length}</div>
+              <div className="stat-subtitle">Donations made</div>
+            </div>
+          </div>
+
+          {/* Tabs */}
+          <div className="dashboard-tabs">
+            <div className="tabs-header">
+              <button className={`tab-btn ${activeTab === 'dashboard' ? 'active' : ''}`} onClick={() => setActiveTab('dashboard')}>
+                Dashboard
+              </button>
+              <button className={`tab-btn ${activeTab === 'contributions' ? 'active' : ''}`} onClick={() => setActiveTab('contributions')}>
+                Contribution History
+              </button>
+              <button className={`tab-btn ${activeTab === 'settings' ? 'active' : ''}`} onClick={() => setActiveTab('settings')}>
+                Account Settings
+              </button>
+            </div>
+
+            <div className="tabs-content">
+              {activeTab === 'dashboard' && (
+                <div>
+                  <div className="cta-box">
+                    <h3>Make a Contribution</h3>
+                    <p>Support CityPAC's mission to strengthen U.S.–Israel relations and empower young professionals in Chicago.</p>
+                    <button onClick={handleNewContribution} className="cta-btn">
+                      <Plus size={16} />
+                      New Contribution
+                    </button>
+                  </div>
+
+                  <h3 style={{ fontSize: '16px', fontWeight: '700', color: '#003366', margin: '0 0 20px 0' }}>Member Information</h3>
+                  <div className="member-info-grid">
+                    <div className="info-box">
+                      <div className="info-label">Email</div>
+                      <div className="info-value">{memberData?.email}</div>
+                    </div>
+                    <div className="info-box">
+                      <div className="info-label">Joined</div>
+                      <div className="info-value">
+                        {memberData?.joinDate ? new Date(memberData.joinDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long' }) : 'N/A'}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {activeTab === 'contributions' && (
+                <div>
+                  <div className="contributions-header">
+                    <h3>Your Contributions</h3>
+                    <div className="filter-group">
+                      <Filter size={16} color="#999" />
+                      <select value={filterYear} onChange={(e) => setFilterYear(e.target.value)} className="filter-select">
+                        <option value="all">All Years</option>
+                        <option value="2025">2025</option>
+                        <option value="2024">2024</option>
+                        <option value="2023">2023</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  {filteredContributions.length > 0 ? (
+                    filteredContributions.map((contribution) => (
+                      <div key={contribution._id} className="contribution-item">
+                        <div className="contribution-info">
+                          <h4>{contribution.eventName}</h4>
+                          <div className="contribution-meta">
+                            <span className="contribution-date">{new Date(contribution.date).toLocaleDateString()}</span>
+                            <span className={`contribution-badge ${contribution.eventType === 'event' ? 'badge-event' : 'badge-recurring'}`}>
+                              {contribution.eventType === 'event' ? 'Event' : 'Recurring'}
+                            </span>
+                          </div>
+                        </div>
+                        <div className="contribution-amount">${contribution.amount.toLocaleString()}</div>
+                      </div>
+                    ))
+                  ) : (
+                    <div style={{ textAlign: 'center', padding: '40px 20px', color: '#999' }}>
+                      No contributions found for this period
+                    </div>
+                  )}
+                </div>
+              )}
+
+              {activeTab === 'settings' && (
+                <div>
+                  <div className="settings-section">
+                    <h3>Account Settings</h3>
+                    <div className="setting-item">
+                      <div className="setting-label">Email Address</div>
+                      <div className="setting-value">{memberData?.email}</div>
+                      <a href="#" className="setting-link">Change Email</a>
+                    </div>
+                    <div className="setting-item">
+                      <div className="setting-label">Password</div>
+                      <div className="setting-value">••••••••</div>
+                      <a href="#" className="setting-link">Change Password</a>
+                    </div>
+                  </div>
+
+                  <div className="settings-section" style={{ borderTop: '1px solid #e0e0e0', paddingTop: '24px' }}>
+                    <h3>Communication Preferences</h3>
+                    <div className="checkbox-group">
+                      <label className="checkbox-item">
+                        <input type="checkbox" defaultChecked />
+                        <span>Event invitations & announcements</span>
+                      </label>
+                      <label className="checkbox-item">
+                        <input type="checkbox" defaultChecked />
+                        <span>Newsletter & updates</span>
+                      </label>
+                      <label className="checkbox-item">
+                        <input type="checkbox" />
+                        <span>Donation receipts & tax documents</span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
