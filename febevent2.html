@@ -455,9 +455,10 @@ body {
   gap: 16px;
   max-width: 820px;
   margin: 0 auto;
-  padding: 24px;
+  padding: 12px 24px;
   flex-wrap: wrap;
 }
+
 
 .action-btn {
   padding: 12px 24px;
@@ -961,7 +962,7 @@ body {
     <div class="event-details">
       <div class="detail-item">
         <span class="detail-emoji">📅</span>
-        <span>February 17, 2026</span>
+        <span>February 11, 2026</span>
       </div>
       <div class="detail-item">
         <span class="detail-emoji">🕕</span>
@@ -1019,7 +1020,7 @@ document.addEventListener("DOMContentLoaded", function () {
     </div>
 
     <p class="event-description">
-      You are invited to join CityPAC on February 17th at 6:30 PM for a timely discussion on
+      You are invited to join CityPAC on February 11th at 6:30 PM for a timely discussion on
       <strong>The 2026 Midterms and the U.S.–Israel Relationship</strong>.
       Connect with fellow young, pro-Israel professionals for an in-depth conversation on
       the future of bipartisan support for the U.S.–Israel relationship, with a focus on
@@ -1122,7 +1123,7 @@ document.addEventListener("DOMContentLoaded", function () {
           <span class="faq-icon">+</span>
         </button>
         <div class="faq-answer">
-          <p>Please plan to arrive by 6:30 PM on February 17th. We'll begin the discussion promptly at 6:45 PM, so arriving a few minutes early will allow you to check in and network with other attendees.</p>
+          <p>Please plan to arrive by 6:30 PM on February 11th. We'll begin the discussion promptly at 6:45 PM, so arriving a few minutes early will allow you to check in and network with other attendees.</p>
         </div>
       </div>
 
@@ -1513,7 +1514,7 @@ function shareEvent() {
   if (navigator.share) {
     navigator.share({
       title: "The 2026 Midterms & the U.S.–Israel Relationship",
-      text: "Join CityPAC on February 17th for a discussion on The 2026 Midterms and the U.S.–Israel Relationship. Connect with young, pro-Israel professionals!",
+      text: "Join CityPAC on February 11th for a discussion on The 2026 Midterms and the U.S.–Israel Relationship. Connect with young, pro-Israel professionals!",
       url: window.location.href
     }).catch(err => console.log('Share cancelled:', err));
   } else {
@@ -1539,7 +1540,7 @@ function addToCalendar() {
 
 <script>
 function updateCountdown() {
-  const eventDate = new Date("February 17, 2026 18:30:00").getTime();
+  const eventDate = new Date("February 11, 2026 18:30:00").getTime();
   const now = new Date().getTime();
   const distance = eventDate - now;
 
