@@ -932,7 +932,7 @@ body {
   background: linear-gradient(135deg, #44b6e5 0%, #2fa6d8 100%);
   color: white;
   padding: 16px 32px;
-  border-radius: 50px;
+  border-radius: 8px;
   font-weight: 700;
   box-shadow: 0 8px 30px rgba(68, 182, 229, 0.4);
   cursor: pointer;
@@ -988,16 +988,16 @@ body {
   }
 }
 
-.circle:nth-child(1) { --tx: 80px; --ty: -80px; animation-delay: 0s; }
-.circle:nth-child(2) { --tx: -80px; --ty: -80px; animation-delay: 0.3s; }
-.circle:nth-child(3) { --tx: 80px; --ty: 80px; animation-delay: 0.6s; }
-.circle:nth-child(4) { --tx: -80px; --ty: 80px; animation-delay: 0.9s; }
-.circle:nth-child(5) { --tx: 100px; --ty: 0; animation-delay: 1.2s; }
-.circle:nth-child(6) { --tx: -100px; --ty: 0; animation-delay: 1.5s; }
-.circle:nth-child(7) { --tx: 0; --ty: 100px; animation-delay: 1.8s; }
-.circle:nth-child(8) { --tx: 0; --ty: -100px; animation-delay: 2.1s; }
+.circle:nth-child(1) { --tx: 100px; --ty: 0; animation-delay: 0s; }
+.circle:nth-child(2) { --tx: -100px; --ty: 0; animation-delay: 0.3s; }
+.circle:nth-child(3) { --tx: 0; --ty: 100px; animation-delay: 0.6s; }
+.circle:nth-child(4) { --tx: 0; --ty: -100px; animation-delay: 0.9s; }
+.circle:nth-child(5) { --tx: 70px; --ty: 70px; animation-delay: 1.2s; }
+.circle:nth-child(6) { --tx: -70px; --ty: -70px; animation-delay: 1.5s; }
+.circle:nth-child(7) { --tx: 70px; --ty: -70px; animation-delay: 1.8s; }
+.circle:nth-child(8) { --tx: -70px; --ty: 70px; animation-delay: 2.1s; }
 
-@media (max-width: 600px) {
+  @media (max-width: 600px) {
   .sticky-rsvp {
     bottom: 24px;
     right: 24px;
