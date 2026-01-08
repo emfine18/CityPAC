@@ -934,7 +934,7 @@ body {
   padding: 16px 32px;
   border-radius: 8px;
   font-weight: 700;
-  box-shadow: 0 8px 30px rgba(68, 182, 229, 0.4);
+  box-shadow: 0 4px 15px rgba(68, 182, 229, 0.2);
   cursor: pointer;
   transition: all 0.3s ease;
   font-size: 16px;
@@ -945,7 +945,7 @@ body {
 .sticky-rsvp:hover {
   background: linear-gradient(135deg, #2fa6d8 0%, #1f8bc4 100%);
   transform: scale(1.1);
-  box-shadow: 0 12px 40px rgba(68, 182, 229, 0.6);
+  box-shadow: 0 6px 20px rgba(68, 182, 229, 0.3);
 }
 
 @keyframes float {
@@ -975,6 +975,7 @@ body {
   justify-content: center;
   font-size: 28px;
   animation: orbit 4s linear infinite;
+  will-change: transform, opacity;
 }
 
 @keyframes orbit {
@@ -1783,6 +1784,25 @@ function launchEmojiConfetti(button) {
 }
 </script>
 
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const button = document.querySelector(".sticky-rsvp");
+  const floatingCircles = document.querySelector(".floating-circles");
+  const rsvpSection = document.querySelector(".rsvp");
+
+  window.addEventListener("scroll", function () {
+    const rsvpRect = rsvpSection.getBoundingClientRect();
+    if (rsvpRect.top < window.innerHeight && rsvpRect.bottom > 0) {
+      button.style.display = "none";
+      floatingCircles.style.display = "none";
+    } else {
+      button.style.display = "block";
+      floatingCircles.style.display = "block";
+    }
+  });
+});
+</script>
+  
 <script>
 document.getElementById("interestOther").addEventListener("change", function () {
   document.getElementById("interestOtherText").style.display =
