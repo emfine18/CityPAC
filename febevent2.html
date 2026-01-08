@@ -922,6 +922,33 @@ body {
   font-size: 12px;
   opacity: 0.85;
 }
+
+  .sticky-rsvp {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 100;
+  background: #44b6e5;
+  color: white;
+  padding: 16px 28px;
+  border-radius: 50px;
+  font-weight: 700;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  cursor: pointer;
+}
+
+.sticky-rsvp:hover {
+  background: #2fa6d8;
+}
+
+@media (max-width: 600px) {
+  .sticky-rsvp {
+    bottom: 16px;
+    right: 16px;
+    padding: 12px 20px;
+    font-size: 14px;
+  }
+}
   
 </style>
 </head>
@@ -946,6 +973,11 @@ body {
     </div>
   </div>
 </header>
+
+<div class="sticky-rsvp" onclick="document.querySelector('.rsvp').scrollIntoView({behavior: 'smooth'})">
+  📝 Reserve Spot
+</div>
+
   
 <section class="hero"></section>
 
@@ -1056,6 +1088,7 @@ document.addEventListener("DOMContentLoaded", function () {
   </div>
 </section>
 
+  
 <div class="action-divider"></div>
 
 <section class="countdown-section">
