@@ -923,18 +923,21 @@ body {
   opacity: 0.85;
 }
 
-  .sticky-rsvp {
+/* ================= STICKY RSVP BUTTON ================= */
+.sticky-rsvp {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
+  bottom: 40px;
+  right: 40px;
   z-index: 100;
   background: #44b6e5;
   color: white;
-  padding: 16px 28px;
-  border-radius: 50px;
+  padding: 14px 24px;
+  border-radius: 8px;
   font-weight: 700;
   box-shadow: 0 4px 20px rgba(0,0,0,0.3);
   cursor: pointer;
+  transition: background 0.25s ease;
+  font-size: 15px;
 }
 
 .sticky-rsvp:hover {
@@ -943,8 +946,8 @@ body {
 
 @media (max-width: 600px) {
   .sticky-rsvp {
-    bottom: 16px;
-    right: 16px;
+    bottom: 24px;
+    right: 24px;
     padding: 12px 20px;
     font-size: 14px;
   }
@@ -975,7 +978,7 @@ body {
 </header>
 
 <div class="sticky-rsvp" onclick="document.querySelector('.rsvp').scrollIntoView({behavior: 'smooth'})">
-  RSVP
+  RSVP NOW
 </div>
 
   
