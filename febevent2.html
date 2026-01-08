@@ -989,14 +989,14 @@ body {
   }
 }
 
-.circle:nth-child(1) { --tx: 100px; --ty: 0; animation-delay: 0s; }
-.circle:nth-child(2) { --tx: -100px; --ty: 0; animation-delay: 0.3s; }
-.circle:nth-child(3) { --tx: 0; --ty: 100px; animation-delay: 0.6s; }
-.circle:nth-child(4) { --tx: 0; --ty: -100px; animation-delay: 0.9s; }
-.circle:nth-child(5) { --tx: 70px; --ty: 70px; animation-delay: 1.2s; }
-.circle:nth-child(6) { --tx: -70px; --ty: -70px; animation-delay: 1.5s; }
-.circle:nth-child(7) { --tx: 70px; --ty: -70px; animation-delay: 1.8s; }
-.circle:nth-child(8) { --tx: -70px; --ty: 70px; animation-delay: 2.1s; }
+.circle:nth-child(1) { left: 100%; top: 50%; transform: translate(-50%, -50%); --tx: 60px; --ty: 0; animation-delay: 0s; }
+.circle:nth-child(2) { left: 0; top: 50%; transform: translate(-50%, -50%); --tx: -60px; --ty: 0; animation-delay: 0.3s; }
+.circle:nth-child(3) { left: 50%; top: 100%; transform: translate(-50%, -50%); --tx: 0; --ty: 60px; animation-delay: 0.6s; }
+.circle:nth-child(4) { left: 50%; top: 0; transform: translate(-50%, -50%); --tx: 0; --ty: -60px; animation-delay: 0.9s; }
+.circle:nth-child(5) { left: 100%; top: 100%; transform: translate(-50%, -50%); --tx: 42px; --ty: 42px; animation-delay: 1.2s; }
+.circle:nth-child(6) { left: 0; top: 0; transform: translate(-50%, -50%); --tx: -42px; --ty: -42px; animation-delay: 1.5s; }
+.circle:nth-child(7) { left: 100%; top: 0; transform: translate(-50%, -50%); --tx: 42px; --ty: -42px; animation-delay: 1.8s; }
+.circle:nth-child(8) { left: 0; top: 100%; transform: translate(-50%, -50%); --tx: -42px; --ty: 42px; animation-delay: 2.1s; }
 
   @media (max-width: 600px) {
   .sticky-rsvp {
