@@ -958,13 +958,14 @@ body {
 }
 
 .floating-circles {
-  position: fixed;
-  bottom: 40px;
-  right: 40px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
   z-index: 99;
   width: 0;
   height: 0;
   pointer-events: none;
+  transform: translate(-50%, -50%);
 }
 
 .circle {
@@ -979,7 +980,7 @@ body {
   left: 0;
   top: 0;
 }
-
+  
 @keyframes orbit {
   0% {
     opacity: 1;
