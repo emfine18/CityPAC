@@ -987,6 +987,19 @@ body {
       </div>
     </div>
 
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const hamburger = document.getElementById("hamburger");
+  const menu = document.getElementById("menu");
+
+  if (!hamburger || !menu) return;
+
+  hamburger.addEventListener("click", function () {
+    menu.classList.toggle("show");
+  });
+});
+</script>
+    
     <button class="speaker-bio-toggle" onclick="toggleSpeakerBios()">View Speaker Bios</button>
 
     <div class="speaker-bios" id="speakerBios" style="display: none;">
